@@ -11,11 +11,16 @@
         android:id="@+id/item2"
         android:icon="@android:drawable/ic_menu_search"
         android:title="item2"
-        app:showAsAction="always"/>
+        app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/item3"
         android:icon="@android:drawable/ic_menu_search"
         android:title="item3"
         app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/item4"
+        android:title=""
+        app:showAsAction="ifRoom"/>
 </menu>
