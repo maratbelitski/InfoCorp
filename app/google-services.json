@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "344693274185",
+    "project_id": "infocorp-b24fd",
+    "storage_bucket": "infocorp-b24fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344693274185:android:0b2af93c483f30202df198",
+        "android_client_info": {
+          "package_name": "com.infocorp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXqSjI0JRZI9QowjIQYwlW3TJX-i7qPAM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

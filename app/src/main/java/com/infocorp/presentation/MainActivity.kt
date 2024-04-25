@@ -2,6 +2,8 @@ package com.infocorp.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.google.firebase.Firebase
+import com.google.firebase.initialize
 import com.infocorp.R
 import com.infocorp.databinding.ActivityMainBinding
 
@@ -11,8 +13,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.bottomMenu.background = null
-        binding.bottomMenu.menu.getItem(3).isEnabled = false
+        bottomNavigation()
 
+    }
+
+    private fun bottomNavigation() {
+        binding.bottomMenu.background = null
     }
 }
