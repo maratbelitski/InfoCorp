@@ -9,5 +9,14 @@
         android:id="@+id/generalFragment"
         android:name="com.infocorp.presentation.generaldisplay.GeneralFragment"
         android:label="fragment_general"
-        tools:layout="@layout/fragment_general" />
+        tools:layout="@layout/fragment_general" >
+        <action
+            android:id="@+id/action_generalFragment_to_listCorporationsFragment"
+            app:destination="@id/listCorporationsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listCorporationsFragment"
+        android:name="com.infocorp.presentation.listdisplay.ListCorporationsFragment"
+        android:label="fragment_list_corporations"
+        tools:layout="@layout/fragment_list_corporations" />
 </navigation>

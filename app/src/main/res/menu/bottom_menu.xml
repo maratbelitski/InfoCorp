@@ -2,21 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/item1"
-        android:icon="@android:drawable/ic_menu_search"
-        android:title="item1"
+        android:id="@+id/generalFragment"
+        android:icon="@drawable/info_logo"
+        android:title="General"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/item2"
-        android:icon="@android:drawable/ic_menu_search"
-        android:title="item2"
+        android:id="@+id/listCorporationsFragment"
+        android:icon="@drawable/list_logo"
+        android:title="List corp"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/item3"
-        android:icon="@android:drawable/ic_menu_search"
-        android:title="item3"
+        android:icon="@drawable/grade"
+        android:title="Favourites"
         app:showAsAction="always"/>
 
     <item

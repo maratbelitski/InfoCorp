@@ -151,19 +151,19 @@ class GeneralFragment : Fragment() {
 //        database.push().setValue(corp9)
 //        database.push().setValue(corp10)
 
-        database.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val result = snapshot.children
-                result.forEach {
-                    val corp = it.getValue(CorporationDto::class.java)
-                    Log.i("MyLog", "$corp")
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-        })
+//        database.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                val result = snapshot.children
+//                result.forEach {
+//                    val corp = it.getValue(CorporationDto::class.java)
+//                    Log.i("MyLog", "$corp")
+//                }
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//
+//            }
+//        })
     }
 
     override fun onDestroyView() {
