@@ -70,7 +70,7 @@
             app:fabSize="normal"
             app:layout_anchor="@+id/bottom_app_bar"
             app:layout_anchorGravity="center"
-            app:rippleColor="@color/white"
+            app:rippleColor="@color/ripple_color"
             app:tint="@color/white" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

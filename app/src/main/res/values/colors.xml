@@ -4,5 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#D50000</color>
     <color name="bottom_menu_background">#1c1c1e</color>
-    <color name="ripple_color">#222222</color>
+    <color name="ripple_color">#494949</color>
 </resources>

@@ -63,7 +63,10 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1-Beta")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
 
+    //glide
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 
+    //firebase data
     implementation("com.google.firebase:firebase-database")
     implementation("com.google.firebase:firebase-core:21.1.1")
     implementation(platform("com.google.firebase:firebase-bom:32.8.1"))

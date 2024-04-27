@@ -18,5 +18,10 @@
         android:id="@+id/listCorporationsFragment"
         android:name="com.infocorp.presentation.listdisplay.ListCorporationsFragment"
         android:label="fragment_list_corporations"
-        tools:layout="@layout/fragment_list_corporations" />
+        tools:layout="@layout/fragment_list_corporations" >
+        <action
+            android:id="@+id/action_listCorporationsFragment_to_generalFragment4"
+            app:popUpTo="@id/generalFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

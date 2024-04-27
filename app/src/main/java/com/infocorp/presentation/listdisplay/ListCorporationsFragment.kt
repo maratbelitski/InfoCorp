@@ -13,9 +13,12 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import com.infocorp.data.corporationdto.CorporationDto
+import com.infocorp.data.mapper.CorporationMapper
 import com.infocorp.databinding.FragmentListCorporationsBinding
+import com.infocorp.domain.Corporation
 import com.infocorp.presentation.MainActivity
 import com.infocorp.presentation.UpdateBottomMenu
+import com.infocorp.presentation.listdisplay.adapter.CorporationAdapter
 
 class ListCorporationsFragment : Fragment() {
 
@@ -27,7 +30,7 @@ class ListCorporationsFragment : Fragment() {
     private val binding: FragmentListCorporationsBinding
         get() = _binding ?: throw Exception()
 
-
+    private lateinit var myAdapter: CorporationAdapter
     private lateinit var updateStateBottomMenu: UpdateBottomMenu
     private lateinit var firebase: DatabaseReference
     override fun onCreateView(
@@ -42,17 +45,24 @@ class ListCorporationsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initViews()
-        updateStateBottomMenu.disableBottomMenu()
+
+        val mapper = CorporationMapper()
 
         firebase.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val result = snapshot.children
+                val list = mutableListOf<Corporation>()
                 result.forEach {
-                    val corp = it.getValue(CorporationDto::class.java)
-                    if (corp != null) {
-                        Log.i("MyLog", "$corp")
+                    val corpDto = it.getValue(CorporationDto::class.java)
+                    if (corpDto != null) {
+                        val corp = mapper.corporationDtoToCorporation(corpDto)
+                       // Log.i("MyLog", "$corp")
+
+                        list.add(corp)
+
                     }
                 }
+                myAdapter.submitList(list)
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -64,6 +74,9 @@ class ListCorporationsFragment : Fragment() {
     }
 
     private fun initViews() {
+        myAdapter = CorporationAdapter()
+        binding.recycler.adapter = myAdapter
+
         firebase = Firebase.database.getReference(FIRE_BASE_KEY)
 
         updateStateBottomMenu = activity as MainActivity
@@ -72,6 +85,6 @@ class ListCorporationsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        updateStateBottomMenu.enableBottomMenu()
+      //  updateStateBottomMenu.enableBottomMenu()
     }
 }

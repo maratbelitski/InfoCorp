@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">InfoCorp</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Hello general fragment</string>
     <string name="it_company">IT - компания</string>
 </resources>
