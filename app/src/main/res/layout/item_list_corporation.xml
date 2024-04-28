@@ -34,10 +34,9 @@
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="16dp"
                 android:textColor="@color/white"
-                android:textSize="14sp"
-
+               android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/ivPoster"
                 app:layout_constraintTop_toTopOf="@+id/ivPoster"
                 tools:text="Company name" />
