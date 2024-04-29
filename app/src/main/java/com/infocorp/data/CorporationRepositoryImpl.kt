@@ -14,6 +14,7 @@ import com.infocorp.domain.Corporation
 import com.infocorp.domain.CorporationRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -29,12 +30,14 @@ class CorporationRepositoryImpl @Inject constructor(
     }
 
     override fun downloadDataFromFirebase() {
-        val myScope = CoroutineScope(Dispatchers.IO)
+
 
         firebaseReference.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
+                val myScope = CoroutineScope(Dispatchers.IO)
                 val responseFirebase = snapshot.children
+
                 responseFirebase.forEach { child ->
 
                     val corpDto = child.getValue(CorporationDto::class.java)
@@ -46,6 +49,7 @@ class CorporationRepositoryImpl @Inject constructor(
                         }
                     }
                 }
+                myScope.cancel()
             }
 
             override fun onCancelled(error: DatabaseError) {
