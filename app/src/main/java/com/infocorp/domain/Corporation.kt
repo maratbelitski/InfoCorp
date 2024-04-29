@@ -7,12 +7,12 @@ import java.util.UUID
 @Parcelize
 data class Corporation(
     val id: String = UUID.randomUUID().toString(),
-    val idFirebase: String = "Unknown",
-    val name: String = "Unknown",
-    val poster: String = "Unknown",
-    val description: String = "Unknown",
-    val address: String = "Unknown",
-    val phones: String = "Unknown",
-    val email: String = "Unknown",
-    val website: String = "Unknown"
+    val idFirebase: String = "",
+    val name: String = "",
+    val poster: String = "",
+    val description: String = "",
+    val address: String = "",
+    val phones: String = "",
+    val email: String = "",
+    val website: String = ""
 ) : Parcelable

@@ -2,8 +2,9 @@ package com.infocorp.data.mapper
 
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.domain.Corporation
+import javax.inject.Inject
 
-class CorporationMapper {
+class CorporationMapper @Inject constructor() {
     fun corporationDtoToCorporation(corpDto: CorporationDto): Corporation {
         return Corporation(
             id = corpDto.id,
