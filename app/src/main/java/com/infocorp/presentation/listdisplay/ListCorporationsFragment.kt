@@ -1,14 +1,12 @@
 package com.infocorp.presentation.listdisplay
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.infocorp.databinding.FragmentListCorporationsBinding
-import com.infocorp.domain.Corporation
 import com.infocorp.presentation.listdisplay.adapter.CorporationAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,9 +33,6 @@ class ListCorporationsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initViews()
-
-        //  временно !!!  нужно загружать из room!!!
-        fragmentViewModel.downloadDataFromRemoteSource()
 
         onObservers()
     }
