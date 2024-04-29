@@ -6,7 +6,7 @@ import java.util.UUID
 
 @Parcelize
 data class Corporation(
-    val id: String = UUID.randomUUID().toString(),
+    val id: String = "",
     val idFirebase: String = "",
     val name: String = "",
     val poster: String = "",

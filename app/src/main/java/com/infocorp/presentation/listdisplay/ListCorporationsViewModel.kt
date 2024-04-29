@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ListCorporationsViewModel @Inject constructor(
-    private val downloadDataFromFirebase: DownloadDataFromFirebaseUseCase
+    private val downloadDataFromFirebase: DownloadDataFromFirebaseUseCase,
 ) : ViewModel() {
 
 

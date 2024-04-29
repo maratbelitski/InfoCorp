@@ -1,18 +1,24 @@
 package com.infocorp.data.corporationdto
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 import java.util.UUID
 
 @Parcelize
+@Entity
 data class CorporationDto(
+    @PrimaryKey
+    @SerializedName("id")
     val id: String = UUID.randomUUID().toString(),
-    val idFirebase: String = "Unknown",
-    val name: String = "Unknown",
-    val poster: String = "Unknown",
-    val description: String = "Unknown",
-    val address: String = "Unknown",
-    val phones: String = "Unknown",
-    val email: String = "Unknown",
-    val website: String = "Unknown"
+    @SerializedName("idFirebase") val idFirebase: String = "Unknown",
+    @SerializedName("name") val name: String = "Unknown",
+    @SerializedName("poster") val poster: String = "Unknown",
+    @SerializedName("description") val description: String = "Unknown",
+    @SerializedName("address") val address: String = "Unknown",
+    @SerializedName("phones") val phones: String = "Unknown",
+    @SerializedName("email") val email: String = "Unknown",
+    @SerializedName("website") val website: String = "Unknown"
 ) : Parcelable
