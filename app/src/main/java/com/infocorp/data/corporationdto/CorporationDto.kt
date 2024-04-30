@@ -14,6 +14,7 @@ data class CorporationDto(
     @SerializedName("id")
     val id: String = UUID.randomUUID().toString(),
     @SerializedName("idFirebase") val idFirebase: String = "Unknown",
+    var isFavourite:Boolean = false,
     @SerializedName("name") val name: String = "Unknown",
     @SerializedName("poster") val poster: String = "Unknown",
     @SerializedName("description") val description: String = "Unknown",

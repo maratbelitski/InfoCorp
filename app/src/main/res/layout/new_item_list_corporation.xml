@@ -10,8 +10,6 @@
         android:layout_height="wrap_content"
         android:foreground="?attr/selectableItemBackground"
         android:background="@drawable/background_item_favourite"
-        android:clickable="true"
-        android:focusable="true"
         app:cardBackgroundColor="@color/bottom_menu_background"
         app:cardCornerRadius="12dp"
         app:cardElevation="1dp"
@@ -20,7 +18,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="4dp">
+            android:padding="4dp">
 
             <ImageView
                 android:id="@+id/ivPoster"
@@ -38,9 +36,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:textColor="@color/white"
-               android:textStyle="bold"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tvDirection"
                 app:layout_constraintStart_toEndOf="@+id/ivPoster"
-                app:layout_constraintTop_toTopOf="@+id/ivPoster"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
                 tools:text="Company name" />
 
             <TextView
@@ -50,6 +50,7 @@
                 android:text="@string/it_company"
                 android:textColor="#8C8C8C"
                 android:textSize="11sp"
+                app:layout_constraintBottom_toTopOf="@+id/cardView"
                 app:layout_constraintStart_toStartOf="@+id/tvName"
                 app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
@@ -65,17 +66,19 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="#1C9700"
                 app:cardCornerRadius="6dp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tvDirection"
                 app:layout_constraintStart_toStartOf="@+id/tvDirection"
                 app:layout_constraintTop_toBottomOf="@+id/tvDirection">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:padding="4dp"
                     android:text="New corp"
                     android:textColor="@color/white"

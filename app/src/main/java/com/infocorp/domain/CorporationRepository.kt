@@ -1,11 +1,10 @@
 package com.infocorp.domain
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.google.firebase.database.ValueEventListener
-import com.infocorp.data.corporationdto.CorporationDto
+import com.infocorp.domain.entity.Corporation
 
 interface CorporationRepository {
-   fun downloadDataFromFirebase()
-   fun downloadDataFromLocalStorage(): LiveData<List<Corporation>>
+    fun downloadDataFromFirebase()
+    fun downloadDataFromLocalStorage(): LiveData<List<Corporation>>
+    fun addToFavourite(corporation: Corporation)
 }

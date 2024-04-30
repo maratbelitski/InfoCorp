@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">InfoCorp</string>
     <string name="hello_blank_fragment">Hello general fragment</string>
-    <string name="it_company">IT - компания</string>
+    <string name="it_company">IT - company</string>
 </resources>

@@ -6,7 +6,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.infocorp.data.corporationdto.CorporationDto
-import com.infocorp.domain.Corporation
 
 @Dao
 interface CorporationDao {
@@ -16,4 +15,7 @@ interface CorporationDao {
 
     @Query("SELECT * FROM corporations")
     fun downloadAllCorporations(): LiveData<List<CorporationDto>>
+
+    @Query("UPDATE corporations SET isFavourite=:isFavourite WHERE id =:id")
+    fun updateFavorite(id: String, isFavourite: Boolean)
 }
