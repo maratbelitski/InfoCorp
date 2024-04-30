@@ -2,12 +2,12 @@ package com.infocorp.presentation.listdisplay
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.Firebase
-import com.google.firebase.initialize
 import com.infocorp.domain.entity.Corporation
-import com.infocorp.domain.usecases.AddCorporationToFavourite
+import com.infocorp.domain.usecases.AddCorpToFavourite
+import com.infocorp.domain.usecases.ChangeStateCorporationToFavourite
 import com.infocorp.domain.usecases.DownloadDataFromFirebaseUseCase
 import com.infocorp.domain.usecases.DownloadDataFromLocalStorageUseCase
+import com.infocorp.domain.usecases.RemoveCorpFromFavourite
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,7 +17,10 @@ import javax.inject.Inject
 class ListCorporationsViewModel @Inject constructor(
     private val downloadDataFromFirebase: DownloadDataFromFirebaseUseCase,
     private val downloadDataFromLocalStorage: DownloadDataFromLocalStorageUseCase,
-    private val addCorporationToFavourite: AddCorporationToFavourite
+    private val changeStateCorporationToFavourite: ChangeStateCorporationToFavourite,
+    private val addCorpToFavourite: AddCorpToFavourite,
+    private val removeCorpFromFavourite: RemoveCorpFromFavourite
+
 ) : ViewModel() {
 
     init {
@@ -32,9 +35,21 @@ class ListCorporationsViewModel @Inject constructor(
         }
     }
 
-    fun addCorpToFavorite(corporation: Corporation) {
+    fun changeStateCorp(corporation: Corporation) {
         viewModelScope.launch(Dispatchers.IO) {
-            addCorporationToFavourite.invoke(corporation)
+            changeStateCorporationToFavourite.invoke(corporation)
+        }
+    }
+
+    fun addCorpToFavourite(corporation: Corporation) {
+        viewModelScope.launch(Dispatchers.IO) {
+            addCorpToFavourite.invoke(corporation)
+        }
+    }
+
+    fun removeCorpFromFavourite(corporation: Corporation) {
+        viewModelScope.launch(Dispatchers.IO) {
+            removeCorpFromFavourite.invoke(corporation)
         }
     }
 }

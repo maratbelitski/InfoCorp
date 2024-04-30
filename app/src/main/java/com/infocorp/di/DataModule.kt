@@ -2,15 +2,11 @@ package com.infocorp.di
 
 import android.content.Context
 import com.google.firebase.Firebase
-import com.google.firebase.FirebaseApp
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.database
-import com.google.firebase.initialize
-import com.infocorp.data.CorporationRepositoryImpl
 import com.infocorp.data.datastorage.CorporationDao
 import com.infocorp.data.datastorage.CorporationDataBase
-import com.infocorp.domain.CorporationRepository
-import dagger.Binds
+import com.infocorp.data.datastorage.FavouriteDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -46,6 +42,12 @@ class DataModule {
     @Provides
     @Singleton
     fun provideCorporationDao(dataBase: CorporationDataBase): CorporationDao{
-        return dataBase.getDao()
+        return dataBase.getDaoCorp()
+    }
+
+    @Provides
+    @Singleton
+    fun provideCorporationDaoFavourite(dataBase: CorporationDataBase): FavouriteDao{
+        return dataBase.getDaoFavourite()
     }
 }

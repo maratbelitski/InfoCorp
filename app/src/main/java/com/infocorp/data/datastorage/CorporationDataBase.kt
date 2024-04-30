@@ -5,10 +5,13 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.infocorp.data.corporationdto.CorporationDto
+import com.infocorp.data.corporationdto.FavouriteCorporationsDto
 
-@Database(entities = [CorporationDto::class], version = 1, exportSchema = true)
+@Database(entities = [CorporationDto::class, FavouriteCorporationsDto::class], version = 1, exportSchema = true)
 abstract class CorporationDataBase : RoomDatabase() {
-    abstract fun getDao(): CorporationDao
+    abstract fun getDaoCorp(): CorporationDao
+    abstract fun getDaoFavourite(): FavouriteDao
+
 
     companion object {
         private const val Database_NAME = "corporation.db"

@@ -42,7 +42,12 @@ class ListCorporationsFragment : Fragment() {
 
     private fun onListeners() {
         myAdapter.onLongClick = {
-            fragmentViewModel.addCorpToFavorite(it)
+            fragmentViewModel.changeStateCorp(it)
+
+            when (it.isFavourite) {
+                true -> fragmentViewModel.removeCorpFromFavourite(it)
+                false -> fragmentViewModel.addCorpToFavourite(it)
+            }
         }
 
         myAdapter.onClick = {

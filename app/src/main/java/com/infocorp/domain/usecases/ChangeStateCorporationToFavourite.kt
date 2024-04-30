@@ -4,8 +4,8 @@ import com.infocorp.domain.CorporationRepository
 import com.infocorp.domain.entity.Corporation
 import javax.inject.Inject
 
-class AddCorporationToFavourite @Inject constructor(private val repository: CorporationRepository) {
+class ChangeStateCorporationToFavourite @Inject constructor(private val repository: CorporationRepository) {
     operator fun invoke(corporation: Corporation) {
-        repository.addToFavourite(corporation)
+        repository.changeStateCorp(corporation)
     }
 }

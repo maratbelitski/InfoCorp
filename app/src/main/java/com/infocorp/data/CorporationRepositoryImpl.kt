@@ -1,20 +1,18 @@
 package com.infocorp.data
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
-import com.google.firebase.Firebase
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.initialize
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.datastorage.CorporationDao
+import com.infocorp.data.datastorage.FavouriteDao
 import com.infocorp.data.mapper.CorporationMapper
-import com.infocorp.domain.entity.Corporation
 import com.infocorp.domain.CorporationRepository
+import com.infocorp.domain.entity.Corporation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
@@ -24,11 +22,12 @@ import javax.inject.Inject
 class CorporationRepositoryImpl @Inject constructor(
     private val mapper: CorporationMapper,
     private val firebaseReference: DatabaseReference,
-    private val dao: CorporationDao
+    private val daoCorp: CorporationDao,
+    private val daoFavourite: FavouriteDao,
 ) : CorporationRepository {
 
     fun insertDataInLocalDataBase(corpDto: CorporationDto) {
-        dao.addOneCorpInDataBase(corpDto)
+        daoCorp.addOneCorpInDataBase(corpDto)
     }
 
     override fun downloadDataFromFirebase() {
@@ -59,12 +58,27 @@ class CorporationRepositoryImpl @Inject constructor(
     }
 
     override fun downloadDataFromLocalStorage(): LiveData<List<Corporation>> {
-        val dataFromDB = dao.downloadAllCorporations()
+        val dataFromDB = daoCorp.downloadAllCorporations()
         return dataFromDB.map { dto -> dto.map { mapper.corporationDtoToCorporation(it) } }
     }
 
-    override fun addToFavourite(corporation: Corporation) {
+    override fun changeStateCorp(corporation: Corporation) {
         val corpDto = mapper.corporationToCorporationDto(corporation)
-        dao.updateFavorite(corpDto.id, !corpDto.isFavourite)
+
+        daoCorp.updateFavorite(corpDto.id, !corpDto.isFavourite)
+    }
+
+    override fun addCorpToFavourite(corporation: Corporation) {
+        val corpDto = mapper.corporationToCorporationDto(corporation)
+        val favouriteCorp = mapper.corporationDtoToFavouriteCorp(corpDto)
+
+        daoFavourite.addInFavourite(favouriteCorp)
+    }
+
+    override fun removeCorpFromFavourite(corporation: Corporation) {
+        val corpDto = mapper.corporationToCorporationDto(corporation)
+        val favouriteCorp = mapper.corporationDtoToFavouriteCorp(corpDto)
+
+        daoFavourite.removeCorpInnFavourite(favouriteCorp)
     }
 }
