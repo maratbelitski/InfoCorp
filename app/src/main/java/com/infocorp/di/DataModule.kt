@@ -5,6 +5,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.database
+import com.google.firebase.initialize
 import com.infocorp.data.CorporationRepositoryImpl
 import com.infocorp.data.datastorage.CorporationDao
 import com.infocorp.data.datastorage.CorporationDataBase

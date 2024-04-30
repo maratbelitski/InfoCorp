@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+
 import com.infocorp.R
 import com.infocorp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,7 +17,6 @@ class MainActivity : AppCompatActivity(), UpdateBottomMenu {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         bottomNavigation()
     }
 

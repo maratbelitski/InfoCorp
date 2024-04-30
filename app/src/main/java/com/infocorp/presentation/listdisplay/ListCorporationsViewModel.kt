@@ -2,6 +2,8 @@ package com.infocorp.presentation.listdisplay
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.Firebase
+import com.google.firebase.initialize
 import com.infocorp.domain.entity.Corporation
 import com.infocorp.domain.usecases.AddCorporationToFavourite
 import com.infocorp.domain.usecases.DownloadDataFromFirebaseUseCase
