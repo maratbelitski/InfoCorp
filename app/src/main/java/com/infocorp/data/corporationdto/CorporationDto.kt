@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 import java.util.UUID
 
 @Parcelize
-@Entity(tableName = "corporations")
+@Entity(tableName = "corporationsTable")
 data class CorporationDto(
     @PrimaryKey
     @SerializedName("id")

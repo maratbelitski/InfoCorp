@@ -7,6 +7,7 @@ import com.infocorp.domain.entity.Corporation
 interface CorporationRepository {
     fun downloadDataFromFirebase()
     fun downloadDataFromLocalStorage(): LiveData<List<Corporation>>
+    fun downloadFavouriteFromLocalStorage(): LiveData<List<Corporation>>
     fun changeStateCorp(corporation: Corporation)
     fun addCorpToFavourite(corporation: Corporation)
     fun removeCorpFromFavourite(corporation: Corporation)

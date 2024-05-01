@@ -12,12 +12,16 @@ import com.infocorp.data.corporationdto.FavouriteCorporationsDto
 
 @Dao
 interface FavouriteDao {
-    @Query("SELECT * FROM favourite")
-    fun loadAllFavorite(): LiveData<List<FavouriteCorporationsDto>>
+    @Query("SELECT * FROM favouriteTable")
+    fun loadAllFavorite(): List<FavouriteCorporationsDto>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addInFavourite(favouriteId: FavouriteCorporationsDto)
 
     @Delete
     fun removeCorpInnFavourite(favouriteId: FavouriteCorporationsDto)
+
+    @Query("SELECT * FROM corporationsTable " +
+            "INNER JOIN favouriteTable ON favouriteTable.id = corporationsTable.id")
+    fun downloadAllFavouriteCorporations(): LiveData<List<CorporationDto>>
 }
