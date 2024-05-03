@@ -16,19 +16,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-
-            <ImageView
-                android:id="@+id/ivPoster"
-                android:layout_width="wrap_content"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/posterCard"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="250dp"
-                android:minWidth="250dp"
-                android:padding="8dp"
-                android:scaleType="centerCrop"
+                app:cardBackgroundColor="@color/black"
+                app:cardCornerRadius="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@tools:sample/avatars" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/ivPoster"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minWidth="250dp"
+                    android:minHeight="250dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/corp_list_logo" />
+            </androidx.cardview.widget.CardView>
+
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/nameCard"
@@ -39,7 +49,7 @@
                 app:cardCornerRadius="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ivPoster">
+                app:layout_constraintTop_toBottomOf="@+id/posterCard">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -59,6 +69,8 @@
                         app:layout_constraintTop_toTopOf="parent"
                         tools:text="Aльфа - Гомель" />
 
+
+
                     <TextView
                         android:id="@+id/tvDirection"
                         android:layout_width="match_parent"
@@ -73,6 +85,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tvName"
                         app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -119,6 +132,7 @@
                         app:layout_constraintStart_toStartOf="@+id/description"
                         app:layout_constraintTop_toBottomOf="@+id/description"
                         tools:text="@string/tools_description" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -127,7 +141,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                app:cardBackgroundColor="@color/red"
+                app:cardBackgroundColor="@color/bottom_menu_background"
                 app:cardCornerRadius="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -137,9 +151,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/address"
+                        app:layout_constraintBottom_toBottomOf="@+id/address"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/address" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/red"
+                        app:layout_constraintBottom_toTopOf="@id/tvAddressCorp"
+                        app:layout_constraintTop_toBottomOf="@+id/address" />
                     <TextView
                         android:id="@+id/address"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/bottom_menu_background"
                         android:padding="8dp"
@@ -147,7 +176,6 @@
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -174,7 +202,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                app:cardBackgroundColor="@color/red"
+                app:cardBackgroundColor="@color/bottom_menu_background"
                 app:cardCornerRadius="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -184,9 +212,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/phone"
+                        app:layout_constraintBottom_toBottomOf="@+id/phones"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/phones" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/red"
+                        app:layout_constraintBottom_toTopOf="@id/tvPhonesCorp"
+                        app:layout_constraintTop_toBottomOf="@+id/phones" />
+
                     <TextView
                         android:id="@+id/phones"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/bottom_menu_background"
                         android:padding="8dp"
@@ -194,7 +238,6 @@
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -204,12 +247,12 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:layout_marginTop="1dp"
+                        android:autoLink="phone"
                         android:background="@color/bottom_menu_background"
                         android:padding="8dp"
                         android:paddingBottom="8dp"
-                        android:autoLink="phone"
-                        android:textColorLink="#1F55EA"
                         android:textColor="@color/white"
+                        android:textColorLink="#1F55EA"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/phones"
                         app:layout_constraintTop_toBottomOf="@+id/phones"
@@ -223,7 +266,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                app:cardBackgroundColor="@color/red"
+                app:cardBackgroundColor="@color/bottom_menu_background"
                 app:cardCornerRadius="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -233,9 +276,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/email"
+                        app:layout_constraintBottom_toBottomOf="@+id/email"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/email" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/red"
+                        app:layout_constraintBottom_toTopOf="@id/tvEmailCorp"
+                        app:layout_constraintTop_toBottomOf="@+id/email" />
+
                     <TextView
                         android:id="@+id/email"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/bottom_menu_background"
                         android:padding="8dp"
@@ -243,7 +302,6 @@
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -253,16 +311,16 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:layout_marginTop="1dp"
+                        android:autoLink="email"
                         android:background="@color/bottom_menu_background"
                         android:padding="8dp"
                         android:paddingBottom="8dp"
-                        android:autoLink="email"
-                        android:textColorLink="#2962FF"
                         android:textColor="@color/white"
+                        android:textColorLink="#2962FF"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/email"
                         app:layout_constraintTop_toBottomOf="@+id/email"
-                        tools:text="office@1c-minsk.by"/>
+                        tools:text="office@1c-minsk.by" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -271,7 +329,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                app:cardBackgroundColor="@color/red"
+                app:cardBackgroundColor="@color/bottom_menu_background"
                 app:cardCornerRadius="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -281,9 +339,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/web"
+                        app:layout_constraintBottom_toBottomOf="@+id/website"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/website" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/red"
+                        app:layout_constraintBottom_toTopOf="@id/tvWebsiteCorp"
+                        app:layout_constraintTop_toBottomOf="@+id/website" />
+
                     <TextView
                         android:id="@+id/website"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/bottom_menu_background"
                         android:padding="8dp"
@@ -291,7 +365,6 @@
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -301,16 +374,16 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:layout_marginTop="1dp"
+                        android:autoLink="web"
                         android:background="@color/bottom_menu_background"
                         android:padding="8dp"
                         android:paddingBottom="8dp"
-                        android:autoLink="web"
-                        android:textColorLink="#2962FF"
                         android:textColor="@color/white"
+                        android:textColorLink="#2962FF"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/website"
                         app:layout_constraintTop_toBottomOf="@+id/website"
-                        tools:text="http://alfagomel.by"/>
+                        tools:text="http://alfagomel.by" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
