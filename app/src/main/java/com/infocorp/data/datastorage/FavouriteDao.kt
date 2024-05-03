@@ -22,6 +22,6 @@ interface FavouriteDao {
     fun removeCorpInnFavourite(favouriteId: FavouriteCorporationsDto)
 
     @Query("SELECT * FROM corporationsTable " +
-            "INNER JOIN favouriteTable ON favouriteTable.id = corporationsTable.id")
+            "INNER JOIN favouriteTable ON favouriteTable.id = corporationsTable.id ORDER BY name")
     fun downloadAllFavouriteCorporations(): LiveData<List<CorporationDto>>
 }

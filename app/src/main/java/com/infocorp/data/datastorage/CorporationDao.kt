@@ -13,7 +13,7 @@ interface CorporationDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addOneCorpInDataBase(corporation: CorporationDto)
 
-    @Query("SELECT * FROM corporationsTable")
+    @Query("SELECT * FROM corporationsTable ORDER BY name")
     fun downloadAllCorporations(): LiveData<List<CorporationDto>>
 
     @Query("UPDATE corporationsTable SET isFavourite=:isFavourite WHERE id =:id")

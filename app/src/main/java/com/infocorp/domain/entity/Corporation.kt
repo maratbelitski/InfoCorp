@@ -1,6 +1,7 @@
 package com.infocorp.domain.entity
 
 import android.os.Parcelable
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.parcelize.Parcelize
 import java.util.UUID
 
