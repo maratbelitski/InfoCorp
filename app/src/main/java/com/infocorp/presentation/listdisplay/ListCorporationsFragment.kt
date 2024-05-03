@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.infocorp.databinding.FragmentListCorporationsBinding
+import com.infocorp.presentation.MainActivity
+import com.infocorp.presentation.UpdateBottomMenu
 import com.infocorp.presentation.listdisplay.adapter.CorporationAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,7 +23,7 @@ class ListCorporationsFragment : Fragment() {
 
     private val fragmentViewModel: ListCorporationsViewModel by viewModels()
     private lateinit var myAdapter: CorporationAdapter
-    //private lateinit var updateStateBottomMenu: UpdateBottomMenu
+    private lateinit var updateStateBottomMenu: UpdateBottomMenu
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,7 +54,10 @@ class ListCorporationsFragment : Fragment() {
         }
 
         myAdapter.onClick = {
-            Toast.makeText(requireActivity(), "click", Toast.LENGTH_SHORT).show()
+            val action = ListCorporationsFragmentDirections
+                .actionListCorporationsFragmentToDetailCorporationFragment(it)
+
+            findNavController().navigate(action)
         }
     }
 
@@ -62,11 +68,14 @@ class ListCorporationsFragment : Fragment() {
     }
 
     private fun initViews() {
+//        updateStateBottomMenu = activity as MainActivity
+//        updateStateBottomMenu.enableBottomMenu()
+
         myAdapter = CorporationAdapter()
 
         binding.recycler.adapter = myAdapter
 
-        // updateStateBottomMenu = activity as MainActivity
+
     }
 
     override fun onDestroyView() {

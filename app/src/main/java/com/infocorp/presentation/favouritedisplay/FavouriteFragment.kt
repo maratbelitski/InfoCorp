@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.infocorp.databinding.FragmentFavouriteBinding
 import com.infocorp.presentation.listdisplay.adapter.CorporationAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,6 +42,12 @@ class FavouriteFragment : Fragment() {
         myAdapter.onLongClick = {
             fragmentViewModel.removeCorpFromFavourite(it)
             fragmentViewModel.changeStateCorp(it)
+        }
+
+        myAdapter.onClick = {
+            val action = FavouriteFragmentDirections
+                .actionFavouriteFragmentToDetailCorporationFragment(it)
+            findNavController().navigate(action)
         }
     }
 

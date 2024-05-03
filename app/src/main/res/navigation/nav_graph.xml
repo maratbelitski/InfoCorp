@@ -14,10 +14,27 @@
         android:id="@+id/listCorporationsFragment"
         android:name="com.infocorp.presentation.listdisplay.ListCorporationsFragment"
         android:label="fragment_list_corporations"
-        tools:layout="@layout/fragment_list_corporations" />
+        tools:layout="@layout/fragment_list_corporations" >
+        <action
+            android:id="@+id/action_listCorporationsFragment_to_detailCorporationFragment"
+            app:destination="@id/detailCorporationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favouriteFragment"
         android:name="com.infocorp.presentation.favouritedisplay.FavouriteFragment"
         android:label="fragment_favourite"
-        tools:layout="@layout/fragment_favourite" />
+        tools:layout="@layout/fragment_favourite" >
+        <action
+            android:id="@+id/action_favouriteFragment_to_detailCorporationFragment"
+            app:destination="@id/detailCorporationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailCorporationFragment"
+        android:name="com.infocorp.presentation.detaildisplay.DetailCorporationFragment"
+        android:label="fragment_detail_corporation"
+        tools:layout="@layout/fragment_detail_corporation" >
+        <argument
+            android:name="corporation"
+            app:argType="com.infocorp.domain.entity.Corporation" />
+    </fragment>
 </navigation>

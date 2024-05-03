@@ -1,6 +1,7 @@
 package com.infocorp.presentation
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -12,10 +13,14 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), UpdateBottomMenu {
-    private lateinit var binding: ActivityMainBinding
+    //private lateinit var binding: ActivityMainBinding
+
+    private val binding by lazy {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         bottomNavigation()
     }
@@ -31,11 +36,11 @@ class MainActivity : AppCompatActivity(), UpdateBottomMenu {
     }
 
     override fun disableBottomMenu() {
-       // binding.coordinatorLayout.visibility = View.GONE
+         binding.coordinatorLayout.visibility = View.GONE
     }
 
     override fun enableBottomMenu() {
-//        binding.coordinatorLayout.visibility = View.VISIBLE
-        binding.bottomMenu.menu.getItem(0).isChecked = true
+       binding.coordinatorLayout.visibility = View.VISIBLE
+        //binding.bottomMenu.menu.getItem(0).isChecked = true
     }
 }
