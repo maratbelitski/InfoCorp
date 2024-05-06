@@ -1,15 +1,14 @@
 package com.infocorp.presentation.listdisplay
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.infocorp.databinding.FragmentListCorporationsBinding
-import com.infocorp.presentation.MainActivity
 import com.infocorp.presentation.UpdateBottomMenu
 import com.infocorp.presentation.listdisplay.adapter.CorporationAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -62,9 +61,28 @@ class ListCorporationsFragment : Fragment() {
     }
 
     private fun onObservers() {
-        fragmentViewModel.listFromFirebase.observe(viewLifecycleOwner) {
+        fragmentViewModel.showShimmer.observe(viewLifecycleOwner) {
+            Log.i("MyLog", "1$it")
+
+            when (it) {
+                true -> {
+                    binding.shimmer.visibility = View.VISIBLE
+                    binding.recycler.visibility = View.GONE
+                }
+
+                false -> {
+                    binding.recycler.visibility = View.VISIBLE
+                    binding.shimmer.visibility = View.GONE
+                }
+            }
+        }
+
+        fragmentViewModel.listFromLocalSource.observe(viewLifecycleOwner) {
+            Log.i("MyLog", "list $it")
             myAdapter.submitList(it)
         }
+
+
     }
 
     private fun initViews() {

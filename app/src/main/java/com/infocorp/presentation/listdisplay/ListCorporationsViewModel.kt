@@ -1,5 +1,6 @@
 package com.infocorp.presentation.listdisplay
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.infocorp.domain.entity.Corporation
@@ -10,6 +11,7 @@ import com.infocorp.domain.usecases.DownloadDataFromLocalStorageUseCase
 import com.infocorp.domain.usecases.RemoveCorpFromFavourite
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,18 +24,22 @@ class ListCorporationsViewModel @Inject constructor(
     private val removeCorpFromFavourite: RemoveCorpFromFavourite
 
 ) : ViewModel() {
+    val showShimmer = MutableLiveData(true)
+    val listFromLocalSource = downloadDataFromLocalStorage.invoke()
 
     init {
         downloadDataFromRemoteSource()
     }
 
-    val listFromFirebase = downloadDataFromLocalStorage.invoke()
 
     private fun downloadDataFromRemoteSource() {
         viewModelScope.launch(Dispatchers.IO) {
             downloadDataFromFirebase.invoke()
+            delay(1000)
+            showShimmer.postValue(false)
         }
     }
+
 
     fun changeStateCorp(corporation: Corporation) {
         viewModelScope.launch(Dispatchers.IO) {

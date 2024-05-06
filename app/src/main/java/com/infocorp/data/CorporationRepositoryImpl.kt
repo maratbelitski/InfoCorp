@@ -17,8 +17,10 @@ import com.infocorp.domain.entity.Corporation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.properties.Delegates
 
 class CorporationRepositoryImpl @Inject constructor(
     private val mapper: CorporationMapper,
@@ -26,6 +28,7 @@ class CorporationRepositoryImpl @Inject constructor(
     private val daoCorp: CorporationDao,
     private val daoFavourite: FavouriteDao,
 ) : CorporationRepository {
+
 
     fun insertDataInLocalDataBase(corpDto: CorporationDto) {
         daoCorp.addOneCorpInDataBase(corpDto)
@@ -54,6 +57,7 @@ class CorporationRepositoryImpl @Inject constructor(
 
                     if (corpDtoWithChildId != null) {
                         myScope.launch {
+
                             for (value in listIdFavourite) {
                                 if (value == corpDtoWithChildId.id) {
                                     corpDtoWithChildId.isFavourite = true
@@ -74,7 +78,6 @@ class CorporationRepositoryImpl @Inject constructor(
 
     override fun downloadDataFromLocalStorage(): LiveData<List<Corporation>> {
         val dataFromDB = daoCorp.downloadAllCorporations()
-
         return dataFromDB.map { dto -> dto.map { mapper.corporationDtoToCorporation(it) } }
     }
 

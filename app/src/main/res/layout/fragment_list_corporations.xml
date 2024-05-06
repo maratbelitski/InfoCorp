@@ -4,14 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
     android:background="@color/black"
+    android:padding="8dp"
     tools:context=".presentation.listdisplay.ListCorporationsFragment">
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/item_list_corporation_shimmer" />
+            <include layout="@layout/item_list_corporation_shimmer" />
+            <include layout="@layout/item_list_corporation_shimmer" />
+            <include layout="@layout/item_list_corporation_shimmer" />
+            <include layout="@layout/item_list_corporation_shimmer" />
+            <include layout="@layout/item_list_corporation_shimmer" />
+            <include layout="@layout/item_list_corporation_shimmer" />
+            <include layout="@layout/item_list_corporation_shimmer" />
+            <include layout="@layout/item_list_corporation_shimmer" />
+            <include layout="@layout/item_list_corporation_shimmer" />
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"

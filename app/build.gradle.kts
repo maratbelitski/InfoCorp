@@ -46,9 +46,9 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.13.0")
+    implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
+    implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     //nav component
@@ -71,7 +71,7 @@ dependencies {
 
     //firebase data
     implementation("com.google.firebase:firebase-core:21.1.1")
-    implementation("com.google.firebase:firebase-database:20.3.1")
+    implementation("com.google.firebase:firebase-database:21.0.0")
 
 
     //hilt
@@ -82,7 +82,7 @@ dependencies {
     //view model
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
-    implementation("androidx.fragment:fragment-ktx:1.6.2")
+    implementation("androidx.fragment:fragment-ktx:1.7.0")
 
     //room
     implementation ("androidx.room:room-runtime:2.6.1")
@@ -90,6 +90,8 @@ dependencies {
     annotationProcessor ("androidx.room:room-compiler:2.6.1")
     kapt ("androidx.room:room-compiler:2.6.1")
 
+    //shimmer
+    implementation("com.facebook.shimmer:shimmer:0.5.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
