@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.infocorp.databinding.FragmentFavouriteBinding
 import com.infocorp.presentation.listdisplay.adapter.CorporationAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,6 +38,7 @@ class FavouriteFragment : Fragment() {
         onObservers()
 
         onListeners()
+        removeBySwipe()
     }
 
     private fun onListeners() {
@@ -49,6 +52,28 @@ class FavouriteFragment : Fragment() {
                 .actionFavouriteFragmentToDetailCorporationFragment(it)
             findNavController().navigate(action)
         }
+    }
+
+    private fun removeBySwipe() {
+        val callback = object :
+            ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val currentCorp = myAdapter.currentList[viewHolder.adapterPosition]
+                fragmentViewModel.changeStateCorp(currentCorp)
+                fragmentViewModel.removeCorpFromFavourite(currentCorp)
+            }
+        }
+
+        val touchHelper = ItemTouchHelper(callback)
+        touchHelper.attachToRecyclerView(binding.recycler)
     }
 
     private fun onObservers() {
