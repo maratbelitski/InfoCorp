@@ -6,4 +6,5 @@
     <color name="bottom_menu_background">#1c1c1e</color>
     <color name="ripple_color">#494949</color>
     <color name="shimmer_child_color">#8E8E8E</color>
+    <color name="unknown_text_color">#8E8E8E</color>
 </resources>

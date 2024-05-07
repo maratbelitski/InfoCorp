@@ -28,7 +28,7 @@
                 android:minWidth="50dp"
                 android:maxWidth="50dp"
                 android:background="@drawable/shape_shimmer_child"
-                android:backgroundTint="@color/shimmer_child_color"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
@@ -40,7 +40,7 @@
                 android:minWidth="100dp"
                 android:layout_marginStart="16dp"
                 android:background="@drawable/shape_shimmer_child"
-                android:backgroundTint="@color/shimmer_child_color"
+
                 app:layout_constraintBottom_toTopOf="@+id/tvDirection"
                 app:layout_constraintStart_toEndOf="@+id/ivPoster"
                 app:layout_constraintTop_toTopOf="@+id/ivPoster"
@@ -52,7 +52,7 @@
                 android:layout_height="15dp"
                 android:minWidth="60dp"
                 android:background="@drawable/shape_shimmer_child"
-                android:backgroundTint="@color/shimmer_child_color"
+
                 android:layout_marginTop="4dp"
                 app:layout_constraintStart_toStartOf="@+id/tvName"
                 app:layout_constraintTop_toBottomOf="@+id/tvName" />
@@ -64,7 +64,7 @@
                 android:minWidth="15dp"
                 android:minHeight="15dp"
                 android:background="@drawable/shape_shimmer_child"
-                android:backgroundTint="@color/shimmer_child_color"
+
                 android:layout_marginEnd="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -5,11 +5,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.infocorp.databinding.FragmentListCorporationsBinding
+import com.infocorp.domain.entity.Corporation
 import com.infocorp.presentation.UpdateBottomMenu
+import com.infocorp.presentation.listdisplay.ListCorporationsFragmentDirections
 import com.infocorp.presentation.listdisplay.adapter.CorporationAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,8 +43,26 @@ class ListCorporationsFragment : Fragment() {
         onObservers()
 
         onListeners()
-    }
 
+        searchCorporation()
+    }
+    private fun searchCorporation(){
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                fragmentViewModel.listFromLocalSource.observe(viewLifecycleOwner) {
+                    val newList = it.filter { product ->
+                        product.name.contains(newText.toString().trim(), ignoreCase = true)
+                    }
+                    myAdapter.submitList(newList)
+                }
+                return false
+            }
+        })
+    }
     private fun onListeners() {
         myAdapter.onLongClick = {
             fragmentViewModel.changeStateCorp(it)
@@ -55,21 +76,17 @@ class ListCorporationsFragment : Fragment() {
         myAdapter.onClick = {
             val action = ListCorporationsFragmentDirections
                 .actionListCorporationsFragmentToDetailCorporationFragment(it)
-
             findNavController().navigate(action)
         }
     }
 
     private fun onObservers() {
         fragmentViewModel.showShimmer.observe(viewLifecycleOwner) {
-            Log.i("MyLog", "1$it")
-
             when (it) {
                 true -> {
                     binding.shimmer.visibility = View.VISIBLE
                     binding.recycler.visibility = View.GONE
                 }
-
                 false -> {
                     binding.recycler.visibility = View.VISIBLE
                     binding.shimmer.visibility = View.GONE
@@ -78,11 +95,8 @@ class ListCorporationsFragment : Fragment() {
         }
 
         fragmentViewModel.listFromLocalSource.observe(viewLifecycleOwner) {
-            Log.i("MyLog", "list $it")
             myAdapter.submitList(it)
         }
-
-
     }
 
     private fun initViews() {

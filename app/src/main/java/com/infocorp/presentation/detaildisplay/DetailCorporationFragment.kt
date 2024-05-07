@@ -7,11 +7,13 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context.CLIPBOARD_SERVICE
 import android.content.Intent
+import android.content.res.Resources
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -25,7 +27,7 @@ import com.infocorp.presentation.UpdateBottomMenu
 
 class DetailCorporationFragment : Fragment() {
 
-    companion object{
+    companion object {
         private const val BELARUS_LOCATION = "geo:0,0?q= Беларусь"
     }
 
@@ -87,12 +89,45 @@ class DetailCorporationFragment : Fragment() {
                 .placeholder(R.drawable.corp_list_logo)
                 .into(ivPoster)
 
-            tvName.text = arguments.corporation.name
-            tvDescriptionCorp.text = arguments.corporation.description
-            tvAddressCorp.text = arguments.corporation.address
-            tvPhonesCorp.text = arguments.corporation.phones
-            tvEmailCorp.text = arguments.corporation.email
-            tvWebsiteCorp.text = arguments.corporation.website
+            val defaultValue = getString(R.string.not_specified)
+            val defaultColor = resources.getColor(R.color.unknown_text_color)
+
+            val name = arguments.corporation.name
+            var description = arguments.corporation.description
+            var address = arguments.corporation.address
+            var phones = arguments.corporation.phones
+            var email = arguments.corporation.email
+            var website = arguments.corporation.website
+
+            with(binding) {
+                if (description.isBlank()) {
+                    description = defaultValue
+                    tvDescriptionCorp.setTextColor(defaultColor)
+                }
+                if (address.isBlank()) {
+                    address = defaultValue
+                    tvAddressCorp.setTextColor(defaultColor)
+                }
+                if (phones.isBlank()) {
+                    phones = defaultValue
+                    tvPhonesCorp.setTextColor(defaultColor)
+                }
+                if (email.isBlank()) {
+                    email = defaultValue
+                    tvEmailCorp.setTextColor(defaultColor)
+                }
+                if (website.isBlank()) {
+                    website = defaultValue
+                    tvWebsiteCorp.setTextColor(defaultColor)
+                }
+            }
+
+            tvName.text = name
+            tvDescriptionCorp.text = description
+            tvAddressCorp.text = address
+            tvPhonesCorp.text = phones
+            tvEmailCorp.text = email
+            tvWebsiteCorp.text = website
         }
     }
 

@@ -8,4 +8,8 @@
     </style>
 
     <style name="Theme.InfoCorp" parent="Base.Theme.InfoCorp" />
+
+    <style name="Style.searchView" parent="Widget.AppCompat.SearchView">
+        <item name="android:editTextColor">#FFFFFF</item>
+    </style>
 </resources>
