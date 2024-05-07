@@ -105,4 +105,11 @@ class CorporationRepositoryImpl @Inject constructor(
 
         daoFavourite.removeCorpInnFavourite(favouriteCorp)
     }
+
+    override fun searchCorporation(list: List<Corporation>, text:String): List<Corporation> {
+        val newListFiltered = list.filter { product ->
+            product.name.contains(text.trim(), ignoreCase = true)
+        }
+        return newListFiltered
+    }
 }

@@ -11,4 +11,5 @@ interface CorporationRepository {
     fun changeStateCorp(corporation: Corporation)
     fun addCorpToFavourite(corporation: Corporation)
     fun removeCorpFromFavourite(corporation: Corporation)
+    fun searchCorporation(list: List<Corporation>, text:String): List<Corporation>
 }

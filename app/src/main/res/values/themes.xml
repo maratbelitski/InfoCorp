@@ -9,7 +9,9 @@
 
     <style name="Theme.InfoCorp" parent="Base.Theme.InfoCorp" />
 
+
     <style name="Style.searchView" parent="Widget.AppCompat.SearchView">
         <item name="android:editTextColor">#FFFFFF</item>
+        <item name="android:textColorHint">#FFFFFF</item>
     </style>
 </resources>

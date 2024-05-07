@@ -1,7 +1,6 @@
 package com.infocorp.presentation.listdisplay
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.infocorp.databinding.FragmentListCorporationsBinding
-import com.infocorp.domain.entity.Corporation
 import com.infocorp.presentation.UpdateBottomMenu
-import com.infocorp.presentation.listdisplay.ListCorporationsFragmentDirections
 import com.infocorp.presentation.listdisplay.adapter.CorporationAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,23 +43,23 @@ class ListCorporationsFragment : Fragment() {
 
         searchCorporation()
     }
-    private fun searchCorporation(){
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+
+    private fun searchCorporation() {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 fragmentViewModel.listFromLocalSource.observe(viewLifecycleOwner) {
-                    val newList = it.filter { product ->
-                        product.name.contains(newText.toString().trim(), ignoreCase = true)
-                    }
+                    val newList = fragmentViewModel.searchCorporation(it, newText ?: "")
                     myAdapter.submitList(newList)
                 }
                 return false
             }
         })
     }
+
     private fun onListeners() {
         myAdapter.onLongClick = {
             fragmentViewModel.changeStateCorp(it)
