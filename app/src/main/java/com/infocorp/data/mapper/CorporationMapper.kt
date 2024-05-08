@@ -2,6 +2,7 @@ package com.infocorp.data.mapper
 
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.corporationdto.FavouriteCorporationsDto
+import com.infocorp.data.corporationdto.NewCorporationsDto
 import com.infocorp.domain.model.Corporation
 import javax.inject.Inject
 
@@ -11,6 +12,7 @@ class CorporationMapper @Inject constructor() {
             id = corpDto.id,
             idFirebase = corpDto.idFirebase,
             isFavourite = corpDto.isFavourite,
+            isNew = corpDto.isNew,
             name = corpDto.name,
             poster = corpDto.poster,
             description = corpDto.description,
@@ -26,6 +28,7 @@ class CorporationMapper @Inject constructor() {
             id = corp.id,
             idFirebase = corp.idFirebase,
             isFavourite = corp.isFavourite,
+            isNew = corp.isNew,
             name = corp.name,
             poster = corp.poster,
             description = corp.description,
@@ -38,6 +41,18 @@ class CorporationMapper @Inject constructor() {
 
     fun corporationDtoToFavouriteCorp(corp: CorporationDto): FavouriteCorporationsDto {
         return FavouriteCorporationsDto(
+            id = corp.id
+        )
+    }
+
+    fun corporationDtoToNewCorp(corp: CorporationDto): NewCorporationsDto {
+        return NewCorporationsDto(
+            id = corp.id
+        )
+    }
+
+    fun corporationToNewCorp(corp: Corporation): NewCorporationsDto {
+        return NewCorporationsDto(
             id = corp.id
         )
     }

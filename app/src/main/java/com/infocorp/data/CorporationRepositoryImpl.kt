@@ -10,6 +10,7 @@ import com.google.firebase.database.ValueEventListener
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.datastorage.CorporationDao
 import com.infocorp.data.datastorage.FavouriteDao
+import com.infocorp.data.datastorage.NewCorpDao
 import com.infocorp.data.mapper.CorporationMapper
 import com.infocorp.domain.CorporationRepository
 import com.infocorp.domain.model.Corporation
@@ -24,6 +25,7 @@ class CorporationRepositoryImpl @Inject constructor(
     private val firebaseReference: DatabaseReference,
     private val daoCorp: CorporationDao,
     private val daoFavourite: FavouriteDao,
+    private val daoNewCorps: NewCorpDao,
 ) : CorporationRepository {
 
 
@@ -39,8 +41,17 @@ class CorporationRepositoryImpl @Inject constructor(
         return listId
     }
 
+    private fun giveIdOfNewCorps(): List<String> {
+        val value = daoNewCorps.loadAllNewCorps()
+        val listId = mutableListOf<String>()
+
+        if (value.isNotEmpty()) value.forEach { listId.add(it.id) }
+        return listId
+    }
+
     override fun downloadDataFromFirebase() {
         val listIdFavourite = giveIdOfFavourite()
+        val listIdNewCorps = giveIdOfNewCorps()
 
         firebaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -60,6 +71,12 @@ class CorporationRepositoryImpl @Inject constructor(
                                     corpDtoWithChildId.isFavourite = true
                                 }
                             }
+
+                            for (value in listIdNewCorps) {
+                                if (value == corpDtoWithChildId.id) {
+                                    corpDtoWithChildId.isNew = false
+                                }
+                            }
                             insertDataInLocalDataBase(corpDtoWithChildId)
                         }
                     }
@@ -68,7 +85,7 @@ class CorporationRepositoryImpl @Inject constructor(
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.e("MyLog", error.message)
+                Log.e("MyLog","Error message ${error.message}" )
             }
         })
     }
@@ -89,11 +106,22 @@ class CorporationRepositoryImpl @Inject constructor(
         daoCorp.updateFavorite(corpDto.id, !corpDto.isFavourite)
     }
 
+    override fun changeStateCorpToOld(corporation: Corporation) {
+        val corpDto = mapper.corporationToCorporationDto(corporation)
+
+        daoCorp.updateNew(corpDto.id, false)
+    }
+
     override fun addCorpToFavourite(corporation: Corporation) {
         val corpDto = mapper.corporationToCorporationDto(corporation)
         val favouriteCorp = mapper.corporationDtoToFavouriteCorp(corpDto)
 
         daoFavourite.addInFavourite(favouriteCorp)
+    }
+
+    override fun addCorpToFNewCorpsList(corporation: Corporation) {
+        val newCorp = mapper.corporationToNewCorp(corporation)
+        daoNewCorps.addInNewCorps(newCorp)
     }
 
     override fun removeCorpFromFavourite(corporation: Corporation) {

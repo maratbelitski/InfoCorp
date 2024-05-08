@@ -7,6 +7,7 @@ import com.google.firebase.database.database
 import com.infocorp.data.datastorage.CorporationDao
 import com.infocorp.data.datastorage.CorporationDataBase
 import com.infocorp.data.datastorage.FavouriteDao
+import com.infocorp.data.datastorage.NewCorpDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -49,5 +50,11 @@ class DataModule {
     @Singleton
     fun provideCorporationDaoFavourite(dataBase: CorporationDataBase): FavouriteDao{
         return dataBase.getDaoFavourite()
+    }
+
+    @Provides
+    @Singleton
+    fun provideNewCorporationsDao(dataBase: CorporationDataBase): NewCorpDao{
+        return dataBase.getDaoNewCorps()
     }
 }

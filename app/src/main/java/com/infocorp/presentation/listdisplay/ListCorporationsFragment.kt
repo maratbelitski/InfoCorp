@@ -1,6 +1,7 @@
 package com.infocorp.presentation.listdisplay
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,37 +62,50 @@ class ListCorporationsFragment : Fragment() {
     }
 
     private fun onListeners() {
-        myAdapter.onLongClick = {
-            fragmentViewModel.changeStateCorp(it)
+        with(fragmentViewModel){
 
-            when (it.isFavourite) {
-                true -> fragmentViewModel.removeCorpFromFavourite(it)
-                false -> fragmentViewModel.addCorpToFavourite(it)
+            myAdapter.onLongClick = {
+                addInNewCorps(it)
+                changeStateFavoriteCorp(it)
+                changeStateNewCorp(it)
+
+                when (it.isFavourite) {
+                    true -> removeCorpFromFavourite(it)
+                    false -> addCorpToFavourite(it)
+                }
             }
-        }
 
-        myAdapter.onClick = {
-            val action = ListCorporationsFragmentDirections
-                .actionListCorporationsFragmentToDetailCorporationFragment(it)
-            findNavController().navigate(action)
+            myAdapter.onClick = {
+                addInNewCorps(it)
+                changeStateNewCorp(it)
+
+                val action = ListCorporationsFragmentDirections
+                    .actionListCorporationsFragmentToDetailCorporationFragment(it)
+                findNavController().navigate(action)
+            }
         }
     }
 
     private fun onObservers() {
         fragmentViewModel.showShimmer.observe(viewLifecycleOwner) {
-            when (it) {
-                true -> {
-                    binding.shimmer.visibility = View.VISIBLE
-                    binding.recycler.visibility = View.GONE
-                }
-                false -> {
-                    binding.recycler.visibility = View.VISIBLE
-                    binding.shimmer.visibility = View.GONE
+
+            with(binding) {
+
+                when (it) {
+                    true -> {
+                        shimmer.visibility = View.VISIBLE
+                        recycler.visibility = View.GONE
+                    }
+                    false -> {
+                        recycler.visibility = View.VISIBLE
+                        shimmer.visibility = View.GONE
+                    }
                 }
             }
         }
 
         fragmentViewModel.listFromLocalSource.observe(viewLifecycleOwner) {
+            Log.i("MyLog", it.toString())
             myAdapter.submitList(it)
         }
     }
@@ -103,8 +117,6 @@ class ListCorporationsFragment : Fragment() {
         myAdapter = CorporationAdapter()
 
         binding.recycler.adapter = myAdapter
-
-
     }
 
     override fun onDestroyView() {

@@ -8,6 +8,7 @@ data class Corporation(
     val id: String = "",
     val idFirebase: String = "",
     var isFavourite:Boolean = false,
+    var isNew:Boolean = true,
     val name: String = "",
     val poster: String = "",
     val description: String = "",

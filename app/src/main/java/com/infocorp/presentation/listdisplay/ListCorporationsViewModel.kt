@@ -5,10 +5,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.infocorp.domain.model.Corporation
 import com.infocorp.domain.usecases.AddCorpToFavourite
-import com.infocorp.domain.usecases.ChangeStateCorporationToFavourite
+import com.infocorp.domain.usecases.AddInNewCorpsListUseCase
+import com.infocorp.domain.usecases.ChangeStateCorporationToFavouriteUseCase
+import com.infocorp.domain.usecases.ChangeStateCorporationToOldUseCase
 import com.infocorp.domain.usecases.DownloadDataFromFirebaseUseCase
 import com.infocorp.domain.usecases.DownloadDataFromLocalStorageUseCase
-import com.infocorp.domain.usecases.RemoveCorpFromFavourite
+import com.infocorp.domain.usecases.RemoveCorpFromFavouriteUseCase
 import com.infocorp.domain.usecases.SearchCorpInListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -20,10 +22,12 @@ import javax.inject.Inject
 class ListCorporationsViewModel @Inject constructor(
     private val downloadDataFromFirebase: DownloadDataFromFirebaseUseCase,
     private val downloadDataFromLocalStorage: DownloadDataFromLocalStorageUseCase,
-    private val changeStateCorporationToFavourite: ChangeStateCorporationToFavourite,
+    private val changeStateCorporationToFavouriteUseCase: ChangeStateCorporationToFavouriteUseCase,
+    private val changeStateCorporationToOld: ChangeStateCorporationToOldUseCase,
     private val addCorpToFavourite: AddCorpToFavourite,
-    private val removeCorpFromFavourite: RemoveCorpFromFavourite,
-    private val searchCorp: SearchCorpInListUseCase
+    private val removeCorpFromFavouriteUseCase: RemoveCorpFromFavouriteUseCase,
+    private val searchCorp: SearchCorpInListUseCase,
+    private val addToNewCorpList: AddInNewCorpsListUseCase
 
 ) : ViewModel() {
     val showShimmer = MutableLiveData(true)
@@ -33,9 +37,16 @@ class ListCorporationsViewModel @Inject constructor(
         downloadDataFromRemoteSource()
     }
 
-    fun searchCorporation(listCorp:List<Corporation>, text:String):List<Corporation>{
+    fun addInNewCorps(corp: Corporation) {
+        viewModelScope.launch(Dispatchers.IO) {
+            addToNewCorpList.invoke(corp)
+        }
+    }
+
+    fun searchCorporation(listCorp: List<Corporation>, text: String): List<Corporation> {
         return searchCorp.invoke(listCorp, text)
     }
+
     private fun downloadDataFromRemoteSource() {
         viewModelScope.launch(Dispatchers.IO) {
             downloadDataFromFirebase.invoke()
@@ -44,10 +55,15 @@ class ListCorporationsViewModel @Inject constructor(
         }
     }
 
-
-    fun changeStateCorp(corporation: Corporation) {
+    fun changeStateFavoriteCorp(corporation: Corporation) {
         viewModelScope.launch(Dispatchers.IO) {
-            changeStateCorporationToFavourite.invoke(corporation)
+            changeStateCorporationToFavouriteUseCase.invoke(corporation)
+        }
+    }
+
+    fun changeStateNewCorp(corporation: Corporation) {
+        viewModelScope.launch(Dispatchers.IO) {
+            changeStateCorporationToOld.invoke(corporation)
         }
     }
 
@@ -59,7 +75,7 @@ class ListCorporationsViewModel @Inject constructor(
 
     fun removeCorpFromFavourite(corporation: Corporation) {
         viewModelScope.launch(Dispatchers.IO) {
-            removeCorpFromFavourite.invoke(corporation)
+            removeCorpFromFavouriteUseCase.invoke(corporation)
         }
     }
 }

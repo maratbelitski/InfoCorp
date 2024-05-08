@@ -10,6 +10,7 @@ import android.content.Intent
 import android.content.res.Resources
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -58,9 +59,9 @@ class DetailCorporationFragment : Fragment() {
 
     private fun onListeners() {
         binding.btnGoToAdditionally.setOnClickListener {
-        val action = DetailCorporationFragmentDirections
-            .actionDetailCorporationFragmentToAdditionallyFragment(arguments.corporation)
-        findNavController().navigate(action)
+            val action = DetailCorporationFragmentDirections
+                .actionDetailCorporationFragmentToAdditionallyFragment(arguments.corporation)
+            findNavController().navigate(action)
         }
     }
 
@@ -70,6 +71,7 @@ class DetailCorporationFragment : Fragment() {
     }
 
     private fun initArgs() {
+        Log.i("MyLog", "detail ${arguments.corporation}")
         with(binding) {
             Glide.with(ivPoster)
                 .load(arguments.corporation.poster)
@@ -86,32 +88,32 @@ class DetailCorporationFragment : Fragment() {
             var email = arguments.corporation.email
             var website = arguments.corporation.website
 
-            with(binding) {
-                if (description.isBlank()) {
-                    description = defaultValue
-                    tvDescriptionCorp.setTextColor(defaultColor)
-                }
-                if (address.isBlank()) {
-                    address = defaultValue
-                    addressCard.tvAddressCorp.setTextColor(defaultColor)
-                }
-                if (phones.isBlank()) {
-                    phones = defaultValue
-                    tvPhonesCorp.setTextColor(defaultColor)
-                }
-                if (email.isBlank()) {
-                    email = defaultValue
-                    tvEmailCorp.setTextColor(defaultColor)
-                }
-                if (website.isBlank()) {
-                    website = defaultValue
-                    tvWebsiteCorp.setTextColor(defaultColor)
-                }
+
+            if (description.isBlank()) {
+                description = defaultValue
+                tvDescriptionCorp.setTextColor(defaultColor)
             }
+            if (address.isBlank()) {
+                address = defaultValue
+                addressCard.tvAddressText.setTextColor(defaultColor)
+            }
+            if (phones.isBlank()) {
+                phones = defaultValue
+                tvPhonesCorp.setTextColor(defaultColor)
+            }
+            if (email.isBlank()) {
+                email = defaultValue
+                tvEmailCorp.setTextColor(defaultColor)
+            }
+            if (website.isBlank()) {
+                website = defaultValue
+                tvWebsiteCorp.setTextColor(defaultColor)
+            }
+
 
             nameCard.tvName.text = name
             tvDescriptionCorp.text = description
-            addressCard.tvAddressCorp.text = address
+            addressCard.tvAddressText.text = address
             tvPhonesCorp.text = phones
             tvEmailCorp.text = email
             tvWebsiteCorp.text = website
