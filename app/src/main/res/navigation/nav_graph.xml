@@ -35,6 +35,22 @@
         tools:layout="@layout/fragment_detail_corporation" >
         <argument
             android:name="corporation"
-            app:argType="com.infocorp.domain.entity.Corporation" />
+            app:argType="com.infocorp.domain.model.Corporation" />
+        <action
+            android:id="@+id/action_detailCorporationFragment_to_additionallyFragment"
+            app:destination="@id/additionallyFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/additionallyFragment"
+        android:name="com.infocorp.presentation.additionallydisplay.AdditionallyFragment"
+        android:label="fragment_additionally"
+        tools:layout="@layout/fragment_additionally" >
+        <argument
+            android:name="corporation"
+            app:argType="com.infocorp.domain.model.Corporation" />
     </fragment>
 </navigation>

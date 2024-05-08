@@ -2,7 +2,7 @@ package com.infocorp.data.mapper
 
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.corporationdto.FavouriteCorporationsDto
-import com.infocorp.domain.entity.Corporation
+import com.infocorp.domain.model.Corporation
 import javax.inject.Inject
 
 class CorporationMapper @Inject constructor() {

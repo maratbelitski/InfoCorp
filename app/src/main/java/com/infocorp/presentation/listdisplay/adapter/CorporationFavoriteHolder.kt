@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.infocorp.databinding.FavouriteItemListCorporationBinding
-import com.infocorp.domain.entity.Corporation
+import com.infocorp.domain.model.Corporation
 
 class CorporationFavoriteHolder(private val binding: FavouriteItemListCorporationBinding) :
     RecyclerView.ViewHolder(binding.root) {

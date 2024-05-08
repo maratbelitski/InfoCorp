@@ -2,7 +2,7 @@ package com.infocorp.presentation.favouritedisplay
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.infocorp.domain.entity.Corporation
+import com.infocorp.domain.model.Corporation
 import com.infocorp.domain.usecases.ChangeStateCorporationToFavourite
 import com.infocorp.domain.usecases.DownloadFavouriteFromLocalStorageUseCase
 import com.infocorp.domain.usecases.RemoveCorpFromFavourite

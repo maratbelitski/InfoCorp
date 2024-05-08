@@ -73,7 +73,6 @@ dependencies {
     implementation("com.google.firebase:firebase-core:21.1.1")
     implementation("com.google.firebase:firebase-database:21.0.0")
 
-
     //hilt
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("com.google.dagger:hilt-android:2.51.1")

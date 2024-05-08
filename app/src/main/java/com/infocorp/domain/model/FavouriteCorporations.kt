@@ -1,4 +1,4 @@
-package com.infocorp.domain.entity
+package com.infocorp.domain.model
 
 data class FavouriteCorporations (
     val id: String =""

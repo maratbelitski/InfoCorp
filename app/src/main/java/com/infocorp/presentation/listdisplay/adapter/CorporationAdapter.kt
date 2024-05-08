@@ -3,7 +3,7 @@ package com.infocorp.presentation.listdisplay.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.infocorp.domain.entity.Corporation
+import com.infocorp.domain.model.Corporation
 
 class CorporationAdapter : ListAdapter<Corporation, ViewHolder>(CorporationDiffUtils()) {
     companion object {

@@ -3,7 +3,7 @@ package com.infocorp.presentation.listdisplay
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.infocorp.domain.entity.Corporation
+import com.infocorp.domain.model.Corporation
 import com.infocorp.domain.usecases.AddCorpToFavourite
 import com.infocorp.domain.usecases.ChangeStateCorporationToFavourite
 import com.infocorp.domain.usecases.DownloadDataFromFirebaseUseCase

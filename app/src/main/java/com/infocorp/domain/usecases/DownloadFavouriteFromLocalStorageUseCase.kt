@@ -2,7 +2,7 @@ package com.infocorp.domain.usecases
 
 import androidx.lifecycle.LiveData
 import com.infocorp.domain.CorporationRepository
-import com.infocorp.domain.entity.Corporation
+import com.infocorp.domain.model.Corporation
 import javax.inject.Inject
 
 class DownloadFavouriteFromLocalStorageUseCase @Inject constructor(private val repository: CorporationRepository) {

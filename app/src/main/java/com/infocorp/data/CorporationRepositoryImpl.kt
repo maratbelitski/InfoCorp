@@ -3,7 +3,6 @@ package com.infocorp.data
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
-import androidx.room.util.foreignKeyCheck
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -13,14 +12,12 @@ import com.infocorp.data.datastorage.CorporationDao
 import com.infocorp.data.datastorage.FavouriteDao
 import com.infocorp.data.mapper.CorporationMapper
 import com.infocorp.domain.CorporationRepository
-import com.infocorp.domain.entity.Corporation
+import com.infocorp.domain.model.Corporation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.properties.Delegates
 
 class CorporationRepositoryImpl @Inject constructor(
     private val mapper: CorporationMapper,

@@ -1,8 +1,7 @@
 package com.infocorp.domain.usecases
 
-import com.infocorp.data.corporationdto.FavouriteCorporationsDto
 import com.infocorp.domain.CorporationRepository
-import com.infocorp.domain.entity.Corporation
+import com.infocorp.domain.model.Corporation
 import javax.inject.Inject
 
 class AddCorpToFavourite @Inject constructor(private val repository: CorporationRepository) {

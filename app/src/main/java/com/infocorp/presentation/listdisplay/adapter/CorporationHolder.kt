@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.infocorp.databinding.ItemListCorporationBinding
-import com.infocorp.domain.entity.Corporation
+import com.infocorp.domain.model.Corporation
 
 class CorporationHolder(private val binding: ItemListCorporationBinding) :
     RecyclerView.ViewHolder(binding.root) {

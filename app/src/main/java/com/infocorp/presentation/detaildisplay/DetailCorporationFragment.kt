@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.infocorp.R
@@ -26,10 +27,6 @@ import com.infocorp.presentation.UpdateBottomMenu
 
 
 class DetailCorporationFragment : Fragment() {
-
-    companion object {
-        private const val BELARUS_LOCATION = "geo:0,0?q= Беларусь"
-    }
 
     private var _binding: FragmentDetailCorporationBinding? = null
     private val binding: FragmentDetailCorporationBinding
@@ -60,20 +57,10 @@ class DetailCorporationFragment : Fragment() {
     }
 
     private fun onListeners() {
-        binding.btnSearchInInternet.setOnClickListener {
-            val query = arguments.corporation.name + resources.getString(R.string.it_query)
-            val intent = Intent(Intent.ACTION_WEB_SEARCH)
-            intent.putExtra(SearchManager.QUERY, query)
-            startActivity(intent)
-        }
-
-        binding.btnShowLocation.setOnClickListener {
-            val corporation = arguments.corporation.name
-            val address = arguments.corporation.address
-            val gmmIntentUri = Uri.parse("$BELARUS_LOCATION + $corporation + $address")
-            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-            mapIntent.setPackage("com.google.android.apps.maps")
-            startActivity(mapIntent)
+        binding.btnGoToAdditionally.setOnClickListener {
+        val action = DetailCorporationFragmentDirections
+            .actionDetailCorporationFragmentToAdditionallyFragment(arguments.corporation)
+        findNavController().navigate(action)
         }
     }
 
@@ -106,7 +93,7 @@ class DetailCorporationFragment : Fragment() {
                 }
                 if (address.isBlank()) {
                     address = defaultValue
-                    tvAddressCorp.setTextColor(defaultColor)
+                    addressCard.tvAddressCorp.setTextColor(defaultColor)
                 }
                 if (phones.isBlank()) {
                     phones = defaultValue
@@ -122,9 +109,9 @@ class DetailCorporationFragment : Fragment() {
                 }
             }
 
-            tvName.text = name
+            nameCard.tvName.text = name
             tvDescriptionCorp.text = description
-            tvAddressCorp.text = address
+            addressCard.tvAddressCorp.text = address
             tvPhonesCorp.text = phones
             tvEmailCorp.text = email
             tvWebsiteCorp.text = website

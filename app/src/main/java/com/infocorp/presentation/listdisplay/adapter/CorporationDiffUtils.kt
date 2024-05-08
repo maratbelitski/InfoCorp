@@ -1,7 +1,7 @@
 package com.infocorp.presentation.listdisplay.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.infocorp.domain.entity.Corporation
+import com.infocorp.domain.model.Corporation
 
 class CorporationDiffUtils : DiffUtil.ItemCallback<Corporation>() {
     override fun areItemsTheSame(oldItem: Corporation, newItem: Corporation): Boolean {

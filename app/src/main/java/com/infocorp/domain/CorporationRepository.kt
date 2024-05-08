@@ -1,8 +1,7 @@
 package com.infocorp.domain
 
 import androidx.lifecycle.LiveData
-import com.infocorp.data.corporationdto.FavouriteCorporationsDto
-import com.infocorp.domain.entity.Corporation
+import com.infocorp.domain.model.Corporation
 
 interface CorporationRepository {
     fun downloadDataFromFirebase()

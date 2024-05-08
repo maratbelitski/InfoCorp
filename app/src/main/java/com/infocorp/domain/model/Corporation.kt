@@ -1,9 +1,7 @@
-package com.infocorp.domain.entity
+package com.infocorp.domain.model
 
 import android.os.Parcelable
-import androidx.appcompat.app.AppCompatActivity
 import kotlinx.parcelize.Parcelize
-import java.util.UUID
 
 @Parcelize
 data class Corporation(
