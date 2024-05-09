@@ -13,6 +13,8 @@ import androidx.navigation.fragment.navArgs
 import com.infocorp.R
 import com.infocorp.databinding.FragmentAdditionallyBinding
 import com.infocorp.domain.model.Corporation
+import com.infocorp.presentation.MainActivity
+import com.infocorp.presentation.UpdateBottomMenu
 
 
 class AdditionallyFragment : Fragment() {
@@ -27,6 +29,10 @@ class AdditionallyFragment : Fragment() {
         get() = _binding ?: throw Exception()
 
     private val arguments: AdditionallyFragmentArgs by navArgs()
+
+    private val updateStateBottomMenu by lazy {
+        activity as MainActivity
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,6 +48,7 @@ class AdditionallyFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         onListeners()
+        updateStateBottomMenu.disableBottomMenu()
     }
     private fun onListeners() {
         binding.searchCard.search.setOnClickListener {
