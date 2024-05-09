@@ -1,9 +1,11 @@
 package com.infocorp.data.mapper
 
 import com.infocorp.data.corporationdto.CorporationDto
+import com.infocorp.data.corporationdto.DataDto
 import com.infocorp.data.corporationdto.FavouriteCorporationsDto
 import com.infocorp.data.corporationdto.NewCorporationsDto
 import com.infocorp.domain.model.Corporation
+import com.infocorp.domain.model.Data
 import javax.inject.Inject
 
 class CorporationMapper @Inject constructor() {
@@ -54,6 +56,18 @@ class CorporationMapper @Inject constructor() {
     fun corporationToNewCorp(corp: Corporation): NewCorporationsDto {
         return NewCorporationsDto(
             id = corp.id
+        )
+    }
+
+    fun dataDtoToData(dataDto: DataDto): Data {
+        return Data(
+            titleCorp = dataDto.titleCorp ?: "",
+            fioPerson = dataDto.fioPerson ?: "",
+            type = dataDto.type ?: "",
+            direction = dataDto.direction ?: "",
+            unp = dataDto.unp ?: "",
+            address = dataDto.address ?: "",
+            status = dataDto.status ?: ""
         )
     }
 }

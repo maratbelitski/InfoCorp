@@ -1,7 +1,6 @@
 package com.infocorp.presentation.listdisplay
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.infocorp.databinding.FragmentListCorporationsBinding
+import com.infocorp.domain.model.Corporation
 import com.infocorp.presentation.UpdateBottomMenu
+import com.infocorp.presentation.egrdisplay.adapter.ResponseEgrAdapter
 import com.infocorp.presentation.listdisplay.adapter.CorporationAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,7 +23,9 @@ class ListCorporationsFragment : Fragment() {
         get() = _binding ?: throw Exception()
 
     private val fragmentViewModel: ListCorporationsViewModel by viewModels()
-    private lateinit var myAdapter: CorporationAdapter
+    private val myAdapter: CorporationAdapter by lazy {
+        CorporationAdapter()
+    }
     private lateinit var updateStateBottomMenu: UpdateBottomMenu
 
     override fun onCreateView(
@@ -105,7 +108,6 @@ class ListCorporationsFragment : Fragment() {
         }
 
         fragmentViewModel.listFromLocalSource.observe(viewLifecycleOwner) {
-            Log.i("MyLog", it.toString())
             myAdapter.submitList(it)
         }
     }
@@ -113,9 +115,6 @@ class ListCorporationsFragment : Fragment() {
     private fun initViews() {
 //        updateStateBottomMenu = activity as MainActivity
 //        updateStateBottomMenu.enableBottomMenu()
-
-        myAdapter = CorporationAdapter()
-
         binding.recycler.adapter = myAdapter
     }
 

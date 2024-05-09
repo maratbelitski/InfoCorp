@@ -9,6 +9,18 @@
 
     <style name="Theme.InfoCorp" parent="Base.Theme.InfoCorp" />
 
+    <style name="MyTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorSecondary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/white</item>
+        <item name="colorAccent">@color/white</item>
+        <item name="android:textColorHint">@color/hint_text_color</item>
+        <item name="hintTextColor">@color/white</item>
+        <item name="cursorColor">@color/white</item>
+        <item name="boxStrokeColor">@color/white</item>
+        <item name="boxStrokeWidthFocused">1dp</item>
+        <item name="boxStrokeWidth">1dp</item>
+    </style>
 
     <style name="Style.searchView" parent="Widget.AppCompat.SearchView">
         <item name="android:editTextColor">#FFFFFF</item>

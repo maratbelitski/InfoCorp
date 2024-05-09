@@ -61,7 +61,6 @@ class DetailCorporationFragment : Fragment() {
     }
 
     private fun initArgs() {
-        Log.i("MyLog", "detail ${arguments.corporation}")
         with(binding) {
             Glide.with(ivPoster)
                 .load(arguments.corporation.poster)

@@ -47,7 +47,7 @@ class GeneralFragment : Fragment() {
         // проверка dadata
 //        GlobalScope.launch(Dispatchers.Default) {
 //           val result = CorporationFactory().corporationService.getAllCorporations("АБУШЕНКО ВИ")
-//            Log.i("MyLog","${result.body()?.suggestions}")
+//            Log.i("MyLog","${result.body()?.suggestionDtos}")
 //        }
 
 

@@ -48,8 +48,13 @@ class AdditionallyFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         onListeners()
+        initViews()
+    }
+
+    private fun initViews() {
         updateStateBottomMenu.disableBottomMenu()
     }
+
     private fun onListeners() {
         binding.searchCard.search.setOnClickListener {
             val query = arguments.corporation.name + resources.getString(R.string.it_query)
@@ -70,6 +75,12 @@ class AdditionallyFragment : Fragment() {
 
         binding.btnGoToGeneral.setOnClickListener {
             findNavController().popBackStack()
+        }
+
+        binding.egrCard.egr.setOnClickListener {
+            val action = AdditionallyFragmentDirections
+                .actionAdditionallyFragmentToEgrFragment(arguments.corporation)
+            findNavController().navigate(action)
         }
     }
 

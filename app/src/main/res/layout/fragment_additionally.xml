@@ -1,32 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="8dp"
-    tools:context=".presentation.additionallydisplay.AdditionallyFragment">
+    android:scrollbars="none">
 
-    <include
-        android:id="@+id/nameCard"
-        layout="@layout/name_layout"/>
-
-    <include
-        android:id="@+id/searchCard"
-        layout="@layout/search_in_internet_layout"/>
-
-    <include
-        android:id="@+id/locationCard"
-        layout="@layout/show_location_layout"/>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnGoToGeneral"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="@color/red"
-        android:textColor="@color/white"
-        android:text="@string/to_general"
-        android:drawableStart="@drawable/arrow_back_general" />
-</LinearLayout>
+        android:orientation="vertical"
+        android:padding="8dp"
+        tools:context=".presentation.additionallydisplay.AdditionallyFragment">
+
+        <include
+            android:id="@+id/nameCard"
+            layout="@layout/name_layout" />
+
+        <include
+            android:id="@+id/searchCard"
+            layout="@layout/search_in_internet_layout" />
+
+        <include
+            android:id="@+id/locationCard"
+            layout="@layout/show_location_layout" />
+
+        <include
+            android:id="@+id/egrCard"
+            layout="@layout/search_on_egr_layout" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnGoToGeneral"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/red"
+            android:drawableStart="@drawable/arrow_back_general"
+            android:text="@string/to_general"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</ScrollView>

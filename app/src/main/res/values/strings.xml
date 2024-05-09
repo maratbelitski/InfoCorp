@@ -21,4 +21,13 @@
     <string name="go">GO</string>
     <string name="search__location_by_address">Search for a corporation\'s location by its address using Google Maps</string>
     <string name="to_general">to general</string>
+    <string name="search_on_the_egr">Search on the USR (EGR)</string>
+    <string name="egr_text">The Unified State Register of Legal Entities and Individual Entrepreneurs is a nationwide system created to register legal entities and individual entrepreneurs registered in Belarus and provide access to information about them.</string>
+    <string name="search_by_title">Search by title</string>
+    <string name="hint_search_by_name">Enter the name of the corporation</string>
+    <string name="hint_search_by_unp">Enter the UNP</string>
+    <string name="search_by_unp">Search by UNP</string>
+    <string name="search">search</string>
+    <string name="response_from_usr_egr">Response from USR (EGR)</string>
+    <string name="response_usr_egr">Response USR (EGR)</string>
 </resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/search"
+    android:id="@+id/egr"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="24dp"
@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/red"
-            app:layout_constraintBottom_toTopOf="@id/tvLocationText"
+            app:layout_constraintBottom_toTopOf="@id/tvEgrText"
             app:layout_constraintTop_toBottomOf="@+id/tvResponseTitle" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:background="@color/bottom_menu_background"
             android:padding="8dp"
-            android:text="@string/search_in_internet"
+            android:text="@string/search_on_the_egr"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -37,7 +37,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvLocationText"
+            android:id="@+id/tvEgrText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
@@ -45,7 +45,7 @@
             android:background="@color/bottom_menu_background"
             android:padding="8dp"
             android:paddingBottom="8dp"
-            android:text="@string/search_by_name_text"
+            android:text="@string/egr_text"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tvResponseTitle"
@@ -61,7 +61,7 @@
             android:text="@string/go"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tvLocationText"
-            app:layout_constraintTop_toBottomOf="@+id/tvLocationText" />
+            app:layout_constraintStart_toStartOf="@+id/tvEgrText"
+            app:layout_constraintTop_toBottomOf="@+id/tvEgrText" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -52,5 +52,21 @@
         <argument
             android:name="corporation"
             app:argType="com.infocorp.domain.model.Corporation" />
+        <action
+            android:id="@+id/action_additionallyFragment_to_egrFragment"
+            app:destination="@id/egrFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/egrFragment"
+        android:name="com.infocorp.presentation.egrdisplay.EgrFragment"
+        android:label="fragment_egr"
+        tools:layout="@layout/fragment_egr" >
+        <argument
+            android:name="corporation"
+            app:argType="com.infocorp.domain.model.Corporation" />
     </fragment>
 </navigation>

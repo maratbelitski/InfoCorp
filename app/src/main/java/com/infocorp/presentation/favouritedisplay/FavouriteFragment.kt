@@ -1,7 +1,6 @@
 package com.infocorp.presentation.favouritedisplay
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.infocorp.databinding.FragmentFavouriteBinding
+import com.infocorp.presentation.egrdisplay.adapter.ResponseEgrAdapter
 import com.infocorp.presentation.listdisplay.adapter.CorporationAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -49,7 +49,6 @@ class FavouriteFragment : Fragment() {
         }
 
         myAdapter.onClick = {
-            Log.i("MyLog", "favourite $it")
             val action = FavouriteFragmentDirections
                 .actionFavouriteFragmentToDetailCorporationFragment(it)
             findNavController().navigate(action)

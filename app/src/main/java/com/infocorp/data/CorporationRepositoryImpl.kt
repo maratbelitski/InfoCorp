@@ -12,8 +12,10 @@ import com.infocorp.data.datastorage.CorporationDao
 import com.infocorp.data.datastorage.FavouriteDao
 import com.infocorp.data.datastorage.NewCorpDao
 import com.infocorp.data.mapper.CorporationMapper
+import com.infocorp.data.network.CorporationService
 import com.infocorp.domain.CorporationRepository
 import com.infocorp.domain.model.Corporation
+import com.infocorp.domain.model.Data
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
@@ -26,6 +28,7 @@ class CorporationRepositoryImpl @Inject constructor(
     private val daoCorp: CorporationDao,
     private val daoFavourite: FavouriteDao,
     private val daoNewCorps: NewCorpDao,
+    private val retrofitService: CorporationService
 ) : CorporationRepository {
 
 
@@ -136,5 +139,17 @@ class CorporationRepositoryImpl @Inject constructor(
             product.name.contains(text.trim(), ignoreCase = true)
         }
         return newListFiltered
+    }
+
+    override suspend fun getInfoEgrByTitle(titleCorp:String): List<Data> {
+        val response = retrofitService.getCorporationsByTittle(titleCorp)
+       // Log.i("MyLog","IMPL-1 CODE:${response.code()} response - ${response.body()?.suggestionDto}")
+        if (response.isSuccessful) {
+           // Log.i("MyLog","IMPL CODE:${response.code()} response - ${response.body()?.suggestionDto}")
+           val list = response.body()?.suggestionDto ?: emptyList()
+           return list.map { sug-> mapper.dataDtoToData(sug.dataDto)}
+        } else {
+            throw RuntimeException("Exception in fun getInfoEgrByTitle, code: ${response.code()}")
+        }
     }
 }
