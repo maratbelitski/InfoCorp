@@ -42,7 +42,7 @@
             android:id="@+id/byName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/MyTextInputLayout"
+            style="@style/MyTextInputLayoutStyle"
             android:layout_margin="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,19 +62,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:backgroundTint="@color/red"
             android:text="@string/search_by_title"
+android:backgroundTint="@color/red"
             android:textColor="@color/white"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/byName"
+            app:layout_constraintEnd_toEndOf="@+id/byName"
+            app:layout_constraintStart_toStartOf="@id/byName"
             app:layout_constraintTop_toBottomOf="@+id/byName" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/byUnp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/MyTextInputLayout"
+            style="@style/MyTextInputLayoutStyle"
             android:layout_margin="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

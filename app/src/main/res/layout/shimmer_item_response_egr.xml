@@ -40,13 +40,23 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvEgrName"
-                android:layout_width="150dp"
+                android:layout_width="350dp"
                 android:layout_height="12dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/shape_shimmer_child"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/title"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEgrName2"
+                android:layout_width="350dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/shape_shimmer_child"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEgrName"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvEgrFio"
@@ -151,7 +161,7 @@
                 android:background="@drawable/shape_shimmer_child"
                 android:backgroundTint="@color/links_color"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvEgrName" />
+                app:layout_constraintTop_toBottomOf="@+id/tvEgrName2" />
 
             <TextView
                 android:id="@+id/type"
@@ -199,7 +209,7 @@
 
             <TextView
                 android:id="@+id/status"
-                android:layout_width="50dp"
+                android:layout_width="150dp"
                 android:layout_height="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="8dp"

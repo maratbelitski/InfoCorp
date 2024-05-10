@@ -24,7 +24,7 @@
             android:background="@color/bottom_menu_background"
             android:padding="8dp"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="@dimen/big_text_size"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -9,7 +9,7 @@
 
     <style name="Theme.InfoCorp" parent="Base.Theme.InfoCorp" />
 
-    <style name="MyTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="MyTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="colorPrimary">@color/white</item>
         <item name="colorSecondary">@color/white</item>
         <item name="colorPrimaryContainer">@color/white</item>

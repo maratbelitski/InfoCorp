@@ -143,7 +143,7 @@ class CorporationRepositoryImpl @Inject constructor(
 
     override suspend fun getInfoEgrByTitle(titleCorp:String): List<Data> {
         val response = retrofitService.getCorporationsByTittle(titleCorp)
-       // Log.i("MyLog","IMPL-1 CODE:${response.code()} response - ${response.body()?.suggestionDto}")
+        Log.i("MyLog","IMPL-1 CODE:${response.code()} response - ${response.body()?.suggestionDto}")
         if (response.isSuccessful) {
            // Log.i("MyLog","IMPL CODE:${response.code()} response - ${response.body()?.suggestionDto}")
            val list = response.body()?.suggestionDto ?: emptyList()

@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.PagerSnapHelper
+import com.infocorp.R
 import com.infocorp.databinding.FragmentEgrBinding
 import com.infocorp.presentation.MainActivity
 import com.infocorp.presentation.egrdisplay.adapter.ResponseEgrAdapter
@@ -58,6 +60,8 @@ class EgrFragment : Fragment() {
 
     private fun onObservers() {
         fragmentViewModel.listDataEgr.observe(viewLifecycleOwner) {
+            if (it.isEmpty()) { Toast.makeText(requireContext(), "Response is empty. Check your enter data", Toast.LENGTH_SHORT).show()
+            }
             myAdapter.submitList(it)
         }
 
@@ -68,11 +72,18 @@ class EgrFragment : Fragment() {
                         shimmerCardResponse.visibility = View.VISIBLE
                         recycler.visibility = View.GONE
                     }
+
                     false -> {
                         recycler.visibility = View.VISIBLE
                         shimmerCardResponse.visibility = View.GONE
                     }
                 }
+            }
+        }
+
+        fragmentViewModel.exceptionNetwork.observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) {
+                Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
             }
         }
     }
