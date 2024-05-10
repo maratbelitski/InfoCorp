@@ -1,16 +1,11 @@
 package com.infocorp.presentation.egrdisplay.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.google.gson.annotations.SerializedName
 import com.infocorp.R
-import com.infocorp.databinding.ItemListCorporationBinding
 import com.infocorp.databinding.ItemResponseEgrFormaLayoutBinding
-import com.infocorp.domain.model.Corporation
 import com.infocorp.domain.model.Data
 
 class ResponseEgrHolder(private val binding: ItemResponseEgrFormaLayoutBinding) :
@@ -29,53 +24,67 @@ class ResponseEgrHolder(private val binding: ItemResponseEgrFormaLayoutBinding) 
         with(binding) {
 
             val defaultValue = itemView.resources.getString(R.string.not_specified)
-            val defaultColor = ContextCompat.getColor(itemView.context,R.color.unknown_text_color)
+            val defaultColor = ContextCompat.getColor(itemView.context, R.color.unknown_text_color)
+            val normalColor = ContextCompat.getColor(itemView.context, R.color.white)
 
-            var name = responseEgr.titleCorp
-            var fio = responseEgr.fioPerson
-            var type = responseEgr.type
-            var direction = responseEgr.direction
-            var unp = responseEgr.unp
-            var address = responseEgr.address
-            var status = responseEgr.status
+            val name = responseEgr.titleCorp
+            val fio = responseEgr.fioPerson
+            val type = responseEgr.type
+            val direction = responseEgr.direction
+            val unp = responseEgr.unp
+            val address = responseEgr.address
+            val status = responseEgr.status
 
 
             if (name.isEmpty()) {
-                name = defaultValue
+                tvEgrName.text = defaultValue
                 tvEgrName.setTextColor(defaultColor)
+            } else {
+                tvEgrName.text = name
+                tvEgrName.setTextColor(normalColor)
             }
             if (address.isEmpty()) {
-                address = defaultValue
+                tvEgrAddress.text = defaultValue
                 tvEgrAddress.setTextColor(defaultColor)
+            } else {
+                tvEgrAddress.text = address
+                tvEgrAddress.setTextColor(normalColor)
             }
             if (fio.isEmpty()) {
-                fio = defaultValue
+                tvEgrFio.text = defaultValue
                 tvEgrFio.setTextColor(defaultColor)
+            } else {
+                tvEgrFio.text = fio
+                tvEgrFio.setTextColor(normalColor)
             }
             if (type.isEmpty()) {
-                type = defaultValue
+                tvEgrType.text = defaultValue
                 tvEgrType.setTextColor(defaultColor)
+            } else {
+                tvEgrType.text = type
+                tvEgrType.setTextColor(normalColor)
             }
             if (direction.isEmpty()) {
-                direction = defaultValue
+                tvEgrDirection.text = defaultValue
                 tvEgrDirection.setTextColor(defaultColor)
+            } else {
+                tvEgrDirection.text = direction
+                tvEgrDirection.setTextColor(normalColor)
             }
             if (unp.isEmpty()) {
-               unp = defaultValue
+                tvEgrUnp.text = defaultValue
                 tvEgrUnp.setTextColor(defaultColor)
+            } else {
+                tvEgrUnp.text = unp
+                tvEgrUnp.setTextColor(normalColor)
             }
             if (status.isEmpty()) {
-                status = defaultValue
+                tvEgrStatus.text = defaultValue
                 tvEgrStatus.setTextColor(defaultColor)
+            } else {
+                tvEgrStatus.text = status
+                tvEgrStatus.setTextColor(normalColor)
             }
-
-            tvEgrName.text = name
-            tvEgrFio.text = fio
-            tvEgrAddress.text = address
-            tvEgrType.text = type
-            tvEgrDirection.text = direction
-            tvEgrUnp.text = unp
-            tvEgrStatus.text = status
         }
     }
 }
