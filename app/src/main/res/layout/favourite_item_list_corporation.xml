@@ -8,7 +8,6 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_item_favourite"
         android:foreground="?attr/selectableItemBackground"
         app:cardBackgroundColor="@color/bottom_menu_background"
         app:cardCornerRadius="12dp"
@@ -38,7 +37,7 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/tvDirection"
                 app:layout_constraintStart_toEndOf="@+id/ivPoster"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ivPoster"
                 app:layout_constraintVertical_chainStyle="packed"
                 tools:text="Company name" />
 
@@ -49,7 +48,7 @@
                 android:text="@string/it_company"
                 android:textColor="#8C8C8C"
                 android:textSize="11sp"
-                app:layout_constraintBottom_toTopOf="@+id/cardView"
+
                 app:layout_constraintStart_toStartOf="@+id/tvName"
                 app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
@@ -67,7 +66,7 @@
                 android:id="@+id/cardView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/red"
+                android:backgroundTint="@color/red"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 

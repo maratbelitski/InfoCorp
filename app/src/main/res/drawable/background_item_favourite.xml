@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape>
-            <gradient
-                android:angle="135"
-                android:centerX="5%"
-                android:centerColor="@color/bottom_menu_background"
-                android:startColor="@color/red"
-                android:endColor="@color/bottom_menu_background"
-                android:type="linear"
-                />
-        </shape>
-    </item>
-</selector>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <corners
+        android:bottomLeftRadius="0dp"
+        android:bottomRightRadius="0dp"
+        android:topLeftRadius="100dp"
+        android:topRightRadius="100dp" />
+    <solid android:color="@color/red" />
+</shape>
