@@ -8,6 +8,7 @@ import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.infocorp.domain.model.Data
 import com.infocorp.domain.usecases.GetInfoEgrByTitleUseCase
+import com.infocorp.domain.usecases.GetInfoEgrByUnpUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -15,7 +16,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EgrViewModel @Inject constructor(
-    private val getInfoByTitle: GetInfoEgrByTitleUseCase
+    private val getInfoByTitle: GetInfoEgrByTitleUseCase,
+    private val getInfoByUnp: GetInfoEgrByUnpUseCase
 ): ViewModel() {
 
     private var _listDataEgr = MutableLiveData<List<Data>>()
@@ -25,6 +27,11 @@ class EgrViewModel @Inject constructor(
     fun getInfoEgrByName(titleCorp:String){
         viewModelScope.launch(Dispatchers.IO) {
            _listDataEgr.postValue(getInfoByTitle.invoke(titleCorp))
+        }
+    }
+    fun getInfoEgrByUnp(unp:String){
+        viewModelScope.launch(Dispatchers.IO) {
+            _listDataEgr.postValue(getInfoByUnp.invoke(unp))
         }
     }
 }

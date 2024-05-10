@@ -3,6 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_gravity="center"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -10,6 +12,7 @@
         android:id="@+id/egr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:foregroundGravity="center"
         android:padding="8dp"
         app:cardBackgroundColor="@color/bottom_menu_background"
         app:cardCornerRadius="12dp"
@@ -23,6 +26,7 @@
                 android:id="@+id/tvResponseTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:padding="8dp"
                 android:text="@string/response_from_usr_egr"
                 android:textColor="@color/white"
@@ -39,100 +43,188 @@
                 android:background="@color/red"
                 app:layout_constraintTop_toBottomOf="@+id/tvResponseTitle" />
 
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvEgrName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
+                android:textIsSelectable="true"
+                android:paddingStart="8dp"
                 android:textColor="@color/white"
                 android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/line"
+                app:layout_constraintTop_toBottomOf="@+id/title"
                 tools:text="Alfa-Gomel" />
-
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvEgrFio"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
+                android:textIsSelectable="true"
+                android:paddingStart="8dp"
 
                 android:textColor="@color/white"
                 android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvEgrName"
-                app:layout_constraintTop_toBottomOf="@+id/tvEgrName"
+                app:layout_constraintTop_toBottomOf="@+id/fio"
                 tools:text="FIO Person" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvEgrType"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:maxLines="2"
-                android:minLines="2"
-                android:padding="8dp"
+                android:paddingStart="8dp"
                 android:textColor="@color/white"
                 android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvEgrFio"
-                app:layout_constraintTop_toBottomOf="@+id/tvEgrFio"
+                app:layout_constraintTop_toBottomOf="@+id/type"
                 tools:text="Type" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvEgrDirection"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:maxLines="2"
-                android:minLines="2"
-                android:padding="8dp"
+                android:textIsSelectable="true"
+
+                android:minLines="3"
+                android:paddingStart="8dp"
                 android:textColor="@color/white"
                 android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvEgrType"
-                app:layout_constraintTop_toBottomOf="@+id/tvEgrType"
+                app:layout_constraintTop_toBottomOf="@+id/direction"
                 tools:text="Direction" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvEgrUnp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
+                android:textIsSelectable="true"
+                android:paddingStart="8dp"
 
                 android:textColor="@color/white"
                 android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvEgrDirection"
-                app:layout_constraintTop_toBottomOf="@+id/tvEgrDirection"
+                app:layout_constraintTop_toBottomOf="@+id/unp"
                 tools:text="UNP" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvEgrAddress"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:maxLines="2"
-                android:minLines="2"
-                android:padding="8dp"
+
+                android:minLines="3"
+                android:paddingStart="8dp"
                 android:textColor="@color/white"
                 android:textIsSelectable="true"
                 android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvEgrUnp"
+                app:layout_constraintTop_toBottomOf="@+id/address"
                 tools:text="Adress" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvEgrStatus"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
+                android:paddingStart="8dp"
+                android:paddingBottom="8dp"
                 android:textColor="@color/white"
 
                 android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvEgrAddress"
+                app:layout_constraintTop_toBottomOf="@+id/status"
                 tools:text="Status" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:paddingStart="8dp"
+                android:textColor="@color/unknown_text_color"
+                android:text="Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line" />
+
+            <TextView
+                android:id="@+id/fio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:paddingStart="8dp"
+                android:paddingTop="8dp"
+                android:textColor="@color/unknown_text_color"
+                android:text="Personal information"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEgrName" />
+
+            <TextView
+                android:id="@+id/type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:paddingStart="8dp"
+                android:paddingTop="8dp"
+                android:textColor="@color/unknown_text_color"
+                android:text="Individual or Legal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEgrFio" />
+
+            <TextView
+                android:id="@+id/direction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:paddingStart="8dp"
+                android:paddingTop="8dp"
+                android:textColor="@color/unknown_text_color"
+                android:text="Direction of activity"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEgrType" />
+
+            <TextView
+                android:id="@+id/unp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:paddingStart="8dp"
+                android:paddingTop="8dp"
+                android:textColor="@color/unknown_text_color"
+                android:text="Personal number (UNP)"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEgrDirection" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:paddingStart="8dp"
+                android:paddingTop="8dp"
+                android:textColor="@color/unknown_text_color"
+                android:text="Address of company"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEgrUnp" />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:paddingStart="8dp"
+                android:paddingTop="8dp"
+                android:textColor="@color/unknown_text_color"
+                android:text="Status: Active, Liquidated, etc. "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEgrAddress" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

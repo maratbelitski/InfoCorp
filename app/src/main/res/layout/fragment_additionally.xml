@@ -15,7 +15,7 @@
 
         <include
             android:id="@+id/nameCard"
-            layout="@layout/name_layout" />
+            layout="@layout/name_layout"/>
 
         <include
             android:id="@+id/searchCard"

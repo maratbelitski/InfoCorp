@@ -28,8 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/red"
-            app:layout_constraintBottom_toTopOf="@id/tvLocationText"
             app:layout_constraintTop_toBottomOf="@+id/tvAddressCorp" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvAddressCorp"
             android:layout_width="wrap_content"
@@ -47,6 +47,7 @@
             android:id="@+id/tvAddressText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textIsSelectable="true"
             android:layout_gravity="bottom"
             android:layout_marginTop="1dp"
             android:background="@color/bottom_menu_background"

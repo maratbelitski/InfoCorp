@@ -3,6 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#D50000</color>
+    <color name="links_color">#00B8D4</color>
     <color name="bottom_menu_background">#1c1c1e</color>
     <color name="ripple_color">#494949</color>
     <color name="shimmer_child_color">#8E8E8E</color>

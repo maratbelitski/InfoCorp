@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.PagerSnapHelper
 import com.infocorp.databinding.FragmentEgrBinding
 import com.infocorp.presentation.MainActivity
 import com.infocorp.presentation.egrdisplay.adapter.ResponseEgrAdapter
@@ -66,6 +67,11 @@ class EgrFragment : Fragment() {
             val title = binding.searchingForma.etByTitle.text.toString()
             fragmentViewModel.getInfoEgrByName(title)
         }
+
+        binding.searchingForma.btnSearchByUnp.setOnClickListener {
+            val unp = binding.searchingForma.etByUnp.text.toString()
+            fragmentViewModel.getInfoEgrByUnp(unp)
+        }
     }
 
     private fun initArgs() {
@@ -74,6 +80,8 @@ class EgrFragment : Fragment() {
 
     private fun initViews() {
         binding.recycler.adapter = myAdapter
+       // val helper = PagerSnapHelper()
+       // helper.attachToRecyclerView(binding.recycler)
     }
     override fun onDestroy() {
         super.onDestroy()

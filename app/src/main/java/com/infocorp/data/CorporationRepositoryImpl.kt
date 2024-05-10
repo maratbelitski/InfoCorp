@@ -152,4 +152,15 @@ class CorporationRepositoryImpl @Inject constructor(
             throw RuntimeException("Exception in fun getInfoEgrByTitle, code: ${response.code()}")
         }
     }
+
+    override suspend fun getInfoEgrByUnp(unp: String): List<Data> {
+        val response = retrofitService.getCorporationsByUnp(unp)
+
+        if (response.isSuccessful) {
+            val list = response.body()?.suggestionDto ?: emptyList()
+            return list.map { sug-> mapper.dataDtoToData(sug.dataDto)}
+        } else {
+            throw RuntimeException("Exception in fun getInfoEgrByTitle, code: ${response.code()}")
+        }
+    }
 }

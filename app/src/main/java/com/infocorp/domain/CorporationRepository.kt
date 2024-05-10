@@ -16,4 +16,5 @@ interface CorporationRepository {
     fun removeCorpFromFavourite(corporation: Corporation)
     fun searchCorporation(list: List<Corporation>, text:String): List<Corporation>
     suspend fun getInfoEgrByTitle(titleCorp: String): List<Data>
+    suspend fun getInfoEgrByUnp(unp: String): List<Data>
 }
