@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/ripple_color"
+        app:cardBackgroundColor="@color/shimmer_parent_color"
         app:cardCornerRadius="12dp"
         app:cardElevation="1dp"
         app:cardUseCompatPadding="true">
@@ -28,7 +28,6 @@
                 android:minWidth="50dp"
                 android:maxWidth="50dp"
                 android:background="@drawable/shape_shimmer_child"
-
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
@@ -40,7 +39,6 @@
                 android:minWidth="100dp"
                 android:layout_marginStart="16dp"
                 android:background="@drawable/shape_shimmer_child"
-
                 app:layout_constraintBottom_toTopOf="@+id/tvDirection"
                 app:layout_constraintStart_toEndOf="@+id/ivPoster"
                 app:layout_constraintTop_toTopOf="@+id/ivPoster"
@@ -49,10 +47,9 @@
             <TextView
                 android:id="@+id/tvDirection"
                 android:layout_width="wrap_content"
-                android:layout_height="15dp"
+                android:layout_height="10dp"
                 android:minWidth="60dp"
                 android:background="@drawable/shape_shimmer_child"
-
                 android:layout_marginTop="4dp"
                 app:layout_constraintStart_toStartOf="@+id/tvName"
                 app:layout_constraintTop_toBottomOf="@+id/tvName" />

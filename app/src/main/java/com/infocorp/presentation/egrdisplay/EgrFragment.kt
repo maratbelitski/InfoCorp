@@ -17,8 +17,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class EgrFragment : Fragment() {
 
-    private var _binding:FragmentEgrBinding? = null
-    private val binding:FragmentEgrBinding
+    private var _binding: FragmentEgrBinding? = null
+    private val binding: FragmentEgrBinding
         get() = _binding ?: throw Exception()
 
     private val arguments: EgrFragmentArgs by navArgs()
@@ -60,6 +60,21 @@ class EgrFragment : Fragment() {
         fragmentViewModel.listDataEgr.observe(viewLifecycleOwner) {
             myAdapter.submitList(it)
         }
+
+        fragmentViewModel.showShimmer.observe(viewLifecycleOwner) {
+            with(binding) {
+                when (it) {
+                    true -> {
+                        shimmerCardResponse.visibility = View.VISIBLE
+                        recycler.visibility = View.GONE
+                    }
+                    false -> {
+                        recycler.visibility = View.VISIBLE
+                        shimmerCardResponse.visibility = View.GONE
+                    }
+                }
+            }
+        }
     }
 
     private fun onListeners() {
@@ -80,9 +95,10 @@ class EgrFragment : Fragment() {
 
     private fun initViews() {
         binding.recycler.adapter = myAdapter
-       // val helper = PagerSnapHelper()
-       // helper.attachToRecyclerView(binding.recycler)
+        // val helper = PagerSnapHelper()
+        // helper.attachToRecyclerView(binding.recycler)
     }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

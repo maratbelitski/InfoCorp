@@ -93,15 +93,14 @@ class ListCorporationsFragment : Fragment() {
         fragmentViewModel.showShimmer.observe(viewLifecycleOwner) {
 
             with(binding) {
-
                 when (it) {
                     true -> {
-                        shimmer.visibility = View.VISIBLE
+                        shimmerCardList.shimmer.visibility = View.VISIBLE
                         recycler.visibility = View.GONE
                     }
                     false -> {
                         recycler.visibility = View.VISIBLE
-                        shimmer.visibility = View.GONE
+                        shimmerCardList.shimmer.visibility = View.GONE
                     }
                 }
             }
