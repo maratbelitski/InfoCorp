@@ -22,8 +22,11 @@
         <item name="boxStrokeWidth">1dp</item>
     </style>
 
-    <style name="Style.searchView" parent="Widget.AppCompat.SearchView">
+
+    <style name="Style.searchView" parent="Widget.AppCompat.SearchView.ActionBar">
         <item name="android:editTextColor">#FFFFFF</item>
-        <item name="android:textColorHint">#FFFFFF</item>
+        <item name="android:textColorHint">@color/hint_text_color</item>
+        <item name="hintTextColor">#FFFFFF</item>
+        <item name="android:queryHint">ssssssss</item>
     </style>
 </resources>

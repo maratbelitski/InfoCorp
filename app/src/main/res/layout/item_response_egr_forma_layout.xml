@@ -48,6 +48,7 @@
                 android:textIsSelectable="true"
                 android:minLines="2"
                 android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:textColor="@color/white"
                 android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="parent"

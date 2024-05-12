@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.infocorp.data.corporationdto.CorporationDto
+import retrofit2.http.DELETE
 
 @Dao
 interface CorporationDao {
@@ -21,4 +22,7 @@ interface CorporationDao {
 
     @Query("UPDATE corporationsTable SET isNew=:isNew WHERE id =:id")
     fun updateNew(id: String, isNew: Boolean)
+
+    @Query("DELETE FROM corporationsTable")
+    fun clearCorporationsTable()
 }

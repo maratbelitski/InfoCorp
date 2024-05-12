@@ -1,4 +1,4 @@
-package com.infocorp.domain.usecases
+package com.infocorp.domain.usecases.corporation
 
 import androidx.lifecycle.LiveData
 import com.infocorp.domain.CorporationRepository

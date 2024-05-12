@@ -44,25 +44,44 @@ class GeneralFragment : Fragment() {
         updateStateBottomMenu.enableBottomMenu()
 
 
-        // проверка dadata
-//        GlobalScope.launch(Dispatchers.Default) {
-//           val result = CorporationFactory().corporationService.getAllCorporations("АБУШЕНКО ВИ")
-//            Log.i("MyLog","${result.body()?.suggestionDtos}")
-//        }
 
 
-//        val database = Firebase.database.getReference("CORPORATION")
+
+//       val databaseChild = Firebase.database.getReference("USER_CORPORATION")
+//       val databaseParent = Firebase.database.getReference("CORPORATION")
+//      databaseParent.child("-NxdT6ZLh-traxEVFmK3").removeValue()
+
+
+
+//        databaseChild.addValueEventListener(object : ValueEventListener{
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                val response = snapshot.children
+//                response.forEach { child ->
+//                    val childValue = child.getValue(CorporationDto::class.java)
 //
-//
+//                    if (child.key == "-NxdQoErgl8ch0S9XdSn" ){
+//                       databaseParent.push().setValue(childValue)
+//                   }
+//                }
+//            }
+//            override fun onCancelled(error: DatabaseError) { TODO() }
+//        })
+
+
+
 //        val corp1 = CorporationDto(
-//            idFirebase = database.key.toString(),
-//            name = "Robosoft",
+//            idFirebase = databaseParent.key.toString(),
+//            name = "ROBOOOOOOO",
 //            poster = "http://belorussia.su/com_logo/1371724587logo1_big.jpg",
 //            description = "Robosoft LLC - успешная транснациональная компания, на рынке 7 лет, занимаемся предоставлением услуг по разработке и поддержке комплексных IT решений. Деятельность компании осуществляется параллельно в двух направлениях - системы GPS мониторинга и решения для финансовых рынков. Robosoft — это сплоченная команда единомышленников, нацеленных на  качественный результат. Наши сильные стороны - высокий профессионализм, интересные проекты, корпоративная культура и материальная забота о своих сотрудниках.",
 //            phones = "(056) 788-91-62",
 //            email = "hr@robosoft.info",
 //            website = "http://www.robosoft.info"
 //        )
+//        databaseParent.push().setValue(corp1)
+
+
+
 //        val corp2 = CorporationDto(
 //            idFirebase = database.key.toString(),
 //            name = "SaM Solutions Belarus",
@@ -149,16 +168,6 @@ class GeneralFragment : Fragment() {
 //            website = "www.omegasoftware.ru"
 //        )
 
-//        database.push().setValue(corp1)
-//        database.push().setValue(corp2)
-//        database.push().setValue(corp3)
-//        database.push().setValue(corp4)
-//        database.push().setValue(corp5)
-//        database.push().setValue(corp6)
-//        database.push().setValue(corp7)
-//        database.push().setValue(corp8)
-//        database.push().setValue(corp9)
-//        database.push().setValue(corp10)
     }
 
     override fun onDestroyView() {

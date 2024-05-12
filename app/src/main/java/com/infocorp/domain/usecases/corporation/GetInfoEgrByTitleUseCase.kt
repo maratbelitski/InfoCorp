@@ -1,4 +1,4 @@
-package com.infocorp.domain.usecases
+package com.infocorp.domain.usecases.corporation
 
 import com.infocorp.domain.CorporationRepository
 import com.infocorp.domain.model.Data

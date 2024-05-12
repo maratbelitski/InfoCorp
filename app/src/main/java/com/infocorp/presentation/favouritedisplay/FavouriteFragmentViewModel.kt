@@ -3,9 +3,9 @@ package com.infocorp.presentation.favouritedisplay
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.infocorp.domain.model.Corporation
-import com.infocorp.domain.usecases.ChangeStateCorporationToFavouriteUseCase
-import com.infocorp.domain.usecases.DownloadFavouriteFromLocalStorageUseCase
-import com.infocorp.domain.usecases.RemoveCorpFromFavouriteUseCase
+import com.infocorp.domain.usecases.corporation.ChangeStateCorporationToFavouriteUseCase
+import com.infocorp.domain.usecases.corporation.DownloadFavouriteFromLocalStorageUseCase
+import com.infocorp.domain.usecases.corporation.RemoveCorpFromFavouriteUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

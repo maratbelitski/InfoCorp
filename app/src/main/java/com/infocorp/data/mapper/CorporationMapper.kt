@@ -3,7 +3,7 @@ package com.infocorp.data.mapper
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.corporationdto.DataDto
 import com.infocorp.data.corporationdto.FavouriteCorporationsDto
-import com.infocorp.data.corporationdto.NewCorporationsDto
+import com.infocorp.data.corporationdto.OldCorporationsDto
 import com.infocorp.domain.model.Corporation
 import com.infocorp.domain.model.Data
 import javax.inject.Inject
@@ -47,14 +47,14 @@ class CorporationMapper @Inject constructor() {
         )
     }
 
-    fun corporationDtoToNewCorp(corp: CorporationDto): NewCorporationsDto {
-        return NewCorporationsDto(
+    fun corporationDtoToNewCorp(corp: CorporationDto): OldCorporationsDto {
+        return OldCorporationsDto(
             id = corp.id
         )
     }
 
-    fun corporationToNewCorp(corp: Corporation): NewCorporationsDto {
-        return NewCorporationsDto(
+    fun corporationToOldCorp(corp: Corporation): OldCorporationsDto {
+        return OldCorporationsDto(
             id = corp.id
         )
     }

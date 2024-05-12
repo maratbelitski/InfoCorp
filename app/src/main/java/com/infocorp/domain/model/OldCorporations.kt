@@ -1,5 +1,5 @@
 package com.infocorp.domain.model
 
-data class NewCorporations (
+data class OldCorporations (
     val id: String =""
 )

@@ -6,13 +6,13 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.corporationdto.FavouriteCorporationsDto
-import com.infocorp.data.corporationdto.NewCorporationsDto
+import com.infocorp.data.corporationdto.OldCorporationsDto
 
-@Database(entities = [CorporationDto::class, FavouriteCorporationsDto::class, NewCorporationsDto::class],
+@Database(entities = [CorporationDto::class, FavouriteCorporationsDto::class, OldCorporationsDto::class],
     version = 1, exportSchema = true)
 abstract class CorporationDataBase : RoomDatabase() {
     abstract fun getDaoCorp(): CorporationDao
-    abstract fun getDaoNewCorps(): NewCorpDao
+    abstract fun getDaoNewCorps(): OldCorpDao
     abstract fun getDaoFavourite(): FavouriteDao
 
 

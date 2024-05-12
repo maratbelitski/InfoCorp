@@ -10,7 +10,7 @@ import com.google.firebase.database.ValueEventListener
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.datastorage.CorporationDao
 import com.infocorp.data.datastorage.FavouriteDao
-import com.infocorp.data.datastorage.NewCorpDao
+import com.infocorp.data.datastorage.OldCorpDao
 import com.infocorp.data.mapper.CorporationMapper
 import com.infocorp.data.network.CorporationService
 import com.infocorp.domain.CorporationRepository
@@ -27,13 +27,15 @@ class CorporationRepositoryImpl @Inject constructor(
     private val firebaseReference: DatabaseReference,
     private val daoCorp: CorporationDao,
     private val daoFavourite: FavouriteDao,
-    private val daoNewCorps: NewCorpDao,
+    private val daoOldCorps: OldCorpDao,
     private val retrofitService: CorporationService
 ) : CorporationRepository {
 
-
-    fun insertDataInLocalDataBase(corpDto: CorporationDto) {
+    private fun insertDataInLocalDataBase(corpDto: CorporationDto) {
         daoCorp.addOneCorpInDataBase(corpDto)
+    }
+    fun clearLocalDataBase() {
+        daoCorp.clearCorporationsTable()
     }
 
     private fun giveIdOfFavourite(): List<String> {
@@ -44,8 +46,8 @@ class CorporationRepositoryImpl @Inject constructor(
         return listId
     }
 
-    private fun giveIdOfNewCorps(): List<String> {
-        val value = daoNewCorps.loadAllNewCorps()
+    private fun giveIdOfOldCorps(): List<String> {
+        val value = daoOldCorps.loadAllOldCorps()
         val listId = mutableListOf<String>()
 
         if (value.isNotEmpty()) value.forEach { listId.add(it.id) }
@@ -54,7 +56,7 @@ class CorporationRepositoryImpl @Inject constructor(
 
     override fun downloadDataFromFirebase() {
         val listIdFavourite = giveIdOfFavourite()
-        val listIdNewCorps = giveIdOfNewCorps()
+        val listIdOldCorps = giveIdOfOldCorps()
 
         firebaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -72,12 +74,14 @@ class CorporationRepositoryImpl @Inject constructor(
                             for (value in listIdFavourite) {
                                 if (value == corpDtoWithChildId.id) {
                                     corpDtoWithChildId.isFavourite = true
+                                    corpDtoWithChildId.isNew = false
                                 }
                             }
 
-                            for (value in listIdNewCorps) {
+                            for (value in listIdOldCorps) {
                                 if (value == corpDtoWithChildId.id) {
                                     corpDtoWithChildId.isNew = false
+                                   // corpDtoWithChildId.isFavourite = false
                                 }
                             }
                             insertDataInLocalDataBase(corpDtoWithChildId)
@@ -88,7 +92,7 @@ class CorporationRepositoryImpl @Inject constructor(
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.e("MyLog","Error message ${error.message}" )
+                Log.e("MyLog", "Error message ${error.message}")
             }
         })
     }
@@ -122,9 +126,9 @@ class CorporationRepositoryImpl @Inject constructor(
         daoFavourite.addInFavourite(favouriteCorp)
     }
 
-    override fun addCorpToFNewCorpsList(corporation: Corporation) {
-        val newCorp = mapper.corporationToNewCorp(corporation)
-        daoNewCorps.addInNewCorps(newCorp)
+    override fun addCorpToOldCorpsList(corporation: Corporation) {
+        val newCorp = mapper.corporationToOldCorp(corporation)
+        daoOldCorps.addInOldCorps(newCorp)
     }
 
     override fun removeCorpFromFavourite(corporation: Corporation) {
@@ -134,20 +138,20 @@ class CorporationRepositoryImpl @Inject constructor(
         daoFavourite.removeCorpInnFavourite(favouriteCorp)
     }
 
-    override fun searchCorporation(list: List<Corporation>, text:String): List<Corporation> {
+    override fun searchCorporation(list: List<Corporation>, text: String): List<Corporation> {
         val newListFiltered = list.filter { product ->
             product.name.contains(text.trim(), ignoreCase = true)
         }
         return newListFiltered
     }
 
-    override suspend fun getInfoEgrByTitle(titleCorp:String): List<Data> {
+    override suspend fun getInfoEgrByTitle(titleCorp: String): List<Data> {
         val response = retrofitService.getCorporationsByTittle(titleCorp)
-        Log.i("MyLog","IMPL-1 CODE:${response.code()} response - ${response.body()?.suggestionDto}")
+
         if (response.isSuccessful) {
-           // Log.i("MyLog","IMPL CODE:${response.code()} response - ${response.body()?.suggestionDto}")
-           val list = response.body()?.suggestionDto ?: emptyList()
-           return list.map { sug-> mapper.dataDtoToData(sug.dataDto)}
+            // Log.i("MyLog","IMPL CODE:${response.code()} response - ${response.body()?.suggestionDto}")
+            val list = response.body()?.suggestionDto ?: emptyList()
+            return list.map { sug -> mapper.dataDtoToData(sug.dataDto) }
         } else {
             throw RuntimeException("Exception in fun getInfoEgrByTitle, code: ${response.code()}")
         }
@@ -158,7 +162,7 @@ class CorporationRepositoryImpl @Inject constructor(
 
         if (response.isSuccessful) {
             val list = response.body()?.suggestionDto ?: emptyList()
-            return list.map { sug-> mapper.dataDtoToData(sug.dataDto)}
+            return list.map { sug -> mapper.dataDtoToData(sug.dataDto) }
         } else {
             throw RuntimeException("Exception in fun getInfoEgrByTitle, code: ${response.code()}")
         }

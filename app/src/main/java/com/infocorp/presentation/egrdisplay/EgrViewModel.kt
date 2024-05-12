@@ -1,18 +1,14 @@
 package com.infocorp.presentation.egrdisplay
 
 import android.util.Log
-import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.infocorp.domain.model.Data
-import com.infocorp.domain.usecases.GetInfoEgrByTitleUseCase
-import com.infocorp.domain.usecases.GetInfoEgrByUnpUseCase
+import com.infocorp.domain.usecases.corporation.GetInfoEgrByTitleUseCase
+import com.infocorp.domain.usecases.corporation.GetInfoEgrByUnpUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

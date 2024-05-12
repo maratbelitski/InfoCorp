@@ -30,4 +30,5 @@
     <string name="search">search</string>
     <string name="response_from_usr_egr">Response from USR (EGR)</string>
     <string name="response_usr_egr">Response USR (EGR)</string>
+    <string name="input_name_corp">Input name corp</string>
 </resources>

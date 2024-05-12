@@ -3,15 +3,16 @@ package com.infocorp.presentation.listdisplay
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.infocorp.data.CorporationRepositoryImpl
 import com.infocorp.domain.model.Corporation
-import com.infocorp.domain.usecases.AddCorpToFavourite
-import com.infocorp.domain.usecases.AddInNewCorpsListUseCase
-import com.infocorp.domain.usecases.ChangeStateCorporationToFavouriteUseCase
-import com.infocorp.domain.usecases.ChangeStateCorporationToOldUseCase
-import com.infocorp.domain.usecases.DownloadDataFromFirebaseUseCase
-import com.infocorp.domain.usecases.DownloadDataFromLocalStorageUseCase
-import com.infocorp.domain.usecases.RemoveCorpFromFavouriteUseCase
-import com.infocorp.domain.usecases.SearchCorpInListUseCase
+import com.infocorp.domain.usecases.corporation.AddCorpToFavourite
+import com.infocorp.domain.usecases.corporation.AddInOldCorpsListUseCase
+import com.infocorp.domain.usecases.corporation.ChangeStateCorporationToFavouriteUseCase
+import com.infocorp.domain.usecases.corporation.ChangeStateCorporationToOldUseCase
+import com.infocorp.domain.usecases.corporation.DownloadDataFromFirebaseUseCase
+import com.infocorp.domain.usecases.corporation.DownloadDataFromLocalStorageUseCase
+import com.infocorp.domain.usecases.corporation.RemoveCorpFromFavouriteUseCase
+import com.infocorp.domain.usecases.corporation.SearchCorpInListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -27,14 +28,27 @@ class ListCorporationsViewModel @Inject constructor(
     private val addCorpToFavourite: AddCorpToFavourite,
     private val removeCorpFromFavouriteUseCase: RemoveCorpFromFavouriteUseCase,
     private val searchCorp: SearchCorpInListUseCase,
-    private val addToNewCorpList: AddInNewCorpsListUseCase
+    private val addToNewCorpList: AddInOldCorpsListUseCase,
+    private val repositoryImpl: CorporationRepositoryImpl
 
 ) : ViewModel() {
     val showShimmer = MutableLiveData(true)
-    val listFromLocalSource = downloadDataFromLocalStorage.invoke()
+
+    val listFromLocalSource by lazy {
+        downloadDataFromLocalStorage.invoke()
+    }
+
 
     init {
+        clearCorporationTable()
         downloadDataFromRemoteSource()
+    }
+
+
+    private fun clearCorporationTable() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repositoryImpl.clearLocalDataBase()
+        }
     }
 
     fun addInNewCorps(corp: Corporation) {
@@ -49,6 +63,7 @@ class ListCorporationsViewModel @Inject constructor(
 
     private fun downloadDataFromRemoteSource() {
         viewModelScope.launch(Dispatchers.IO) {
+
             downloadDataFromFirebase.invoke()
             delay(1000)
             showShimmer.postValue(false)

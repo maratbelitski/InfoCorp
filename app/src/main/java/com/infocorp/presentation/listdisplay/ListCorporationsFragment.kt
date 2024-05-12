@@ -1,6 +1,7 @@
 package com.infocorp.presentation.listdisplay
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,7 +66,7 @@ class ListCorporationsFragment : Fragment() {
     }
 
     private fun onListeners() {
-        with(fragmentViewModel){
+        with(fragmentViewModel) {
 
             myAdapter.onLongClick = {
                 addInNewCorps(it)
@@ -98,6 +99,7 @@ class ListCorporationsFragment : Fragment() {
                         shimmerCardList.shimmer.visibility = View.VISIBLE
                         recycler.visibility = View.GONE
                     }
+
                     false -> {
                         recycler.visibility = View.VISIBLE
                         shimmerCardList.shimmer.visibility = View.GONE
@@ -105,6 +107,7 @@ class ListCorporationsFragment : Fragment() {
                 }
             }
         }
+
 
         fragmentViewModel.listFromLocalSource.observe(viewLifecycleOwner) {
             myAdapter.submitList(it)

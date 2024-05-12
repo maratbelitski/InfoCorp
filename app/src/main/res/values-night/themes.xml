@@ -6,8 +6,22 @@
         <item name="android:navigationBarColor">@color/bottom_menu_background</item>
     </style>
 
-    <style name="Style.searchView" parent="Widget.AppCompat.SearchView">
+    <style name="MyTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorSecondary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/white</item>
+        <item name="colorAccent">@color/white</item>
+        <item name="android:textColorHint">@color/hint_text_color</item>
+        <item name="hintTextColor">@color/white</item>
+        <item name="cursorColor">@color/white</item>
+        <item name="boxStrokeColor">@color/white</item>
+        <item name="boxStrokeWidthFocused">1dp</item>
+        <item name="boxStrokeWidth">1dp</item>
+    </style>
+
+    <style name="Style.searchView" parent="Widget.AppCompat.SearchView.ActionBar">
         <item name="android:editTextColor">#FFFFFF</item>
-        <item name="android:textColorHint">#FFFFFF</item>
+        <item name="android:textColorHint">@color/hint_text_color</item>
+        <item name="hintTextColor">#FFFFFF</item>
     </style>
 </resources>
