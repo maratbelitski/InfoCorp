@@ -22,7 +22,19 @@ class MainActivity : AppCompatActivity(), UpdateBottomMenu {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
         bottomNavigation()
+        onListeners()
+    }
+
+    private fun onListeners() {
+        binding.fab.setOnClickListener {
+            val navHostFragment =
+                supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
+            val navController = navHostFragment.navController
+
+            navController.navigate(R.id.userCorpGeneralFragment)
+        }
     }
 
     private fun bottomNavigation() {
@@ -36,11 +48,11 @@ class MainActivity : AppCompatActivity(), UpdateBottomMenu {
     }
 
     override fun disableBottomMenu() {
-         binding.coordinatorLayout.visibility = View.GONE
+        binding.coordinatorLayout.visibility = View.GONE
     }
 
     override fun enableBottomMenu() {
-       binding.coordinatorLayout.visibility = View.VISIBLE
+        binding.coordinatorLayout.visibility = View.VISIBLE
         //binding.bottomMenu.menu.getItem(0).isChecked = true
     }
 }

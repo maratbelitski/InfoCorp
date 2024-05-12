@@ -3,7 +3,7 @@
     <style name="Base.Theme.InfoCorp" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/black</item>
         <item name="android:colorBackground">@color/black</item>
-        <item name="android:navigationBarColor">@color/bottom_menu_background</item>
+        <item name="android:navigationBarColor">@color/second_background_color</item>
     </style>
 
     <style name="MyTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">

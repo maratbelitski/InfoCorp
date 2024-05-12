@@ -31,4 +31,11 @@
     <string name="response_from_usr_egr">Response from USR (EGR)</string>
     <string name="response_usr_egr">Response USR (EGR)</string>
     <string name="input_name_corp">Input name corp</string>
+    <string name="user_corporations">User corporations</string>
+    <string name="a_list_of_your_custom">A list of your custom corporations. Corporations that you have created and information about corporations that you have changed.</string>
+    <string name="create_your_corporation">Here you can create your own corporation and send the information to a common database.</string>
+    <string name="change_info_corporation">Here you can edit/change the information about the corporation and send it to a shared database.</string>
+    <string name="create">Create your own corporation</string>
+    <string name="edit_information">Edit information</string>
+    <string name="send_the_data">If you want the data about this company to be included in the general database, send the data to the developer</string>
 </resources>

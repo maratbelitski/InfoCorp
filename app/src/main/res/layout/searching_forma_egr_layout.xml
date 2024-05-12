@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="12dp"
     android:foreground="?attr/selectableItemBackground"
-    app:cardBackgroundColor="@color/bottom_menu_background"
+    app:cardBackgroundColor="@color/second_background_color"
     app:cardCornerRadius="12dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
             android:id="@+id/tvSearchByTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/bottom_menu_background"
+            android:background="@color/second_background_color"
             android:padding="8dp"
             android:text="@string/search_on_the_egr"
             android:textColor="@color/white"
@@ -52,7 +52,7 @@
                 android:id="@+id/etByTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                style="@style/MyTextInputLayoutStyle"
                 android:hint="@string/hint_search_by_name" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/search_by_title"
-android:backgroundTint="@color/red"
+            android:backgroundTint="@color/red"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/byName"
             app:layout_constraintStart_toStartOf="@id/byName"
@@ -83,9 +83,9 @@ android:backgroundTint="@color/red"
                android:id="@+id/etByUnp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@style/MyTextInputLayoutStyle"
                 android:inputType="number"
-                android:hint="@string/hint_search_by_unp"
-                android:textColor="@color/white" />
+                android:hint="@string/hint_search_by_unp" />
         </com.google.android.material.textfield.TextInputLayout>
 
 

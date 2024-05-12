@@ -5,7 +5,7 @@
 
     <corners android:radius="8dp"/>
 
-    <solid android:color="@color/bottom_menu_background"/>
+    <solid android:color="@color/second_background_color"/>
 
     <stroke android:width="2dp"
         android:color="@color/red"/>

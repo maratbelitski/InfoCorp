@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:foregroundGravity="center"
         android:padding="8dp"
-        app:cardBackgroundColor="@color/bottom_menu_background"
+        app:cardBackgroundColor="@color/second_background_color"
         app:cardCornerRadius="12dp"
         app:cardUseCompatPadding="true">
 

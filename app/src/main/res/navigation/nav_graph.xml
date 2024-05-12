@@ -69,4 +69,26 @@
             android:name="corporation"
             app:argType="com.infocorp.domain.model.Corporation" />
     </fragment>
+    <fragment
+        android:id="@+id/userCorpGeneralFragment"
+        android:name="com.infocorp.presentation.usercorpgeneraldisplay.UserCorpGeneralFragment"
+        android:label="fragment_user_corp_general"
+        tools:layout="@layout/fragment_user_corp_general" >
+        <action
+            android:id="@+id/action_userCorpGeneralFragment_to_listUserCorporationsFragment"
+            app:destination="@id/listUserCorporationsFragment" />
+        <action
+            android:id="@+id/action_userCorpGeneralFragment_to_createUserCorporationFragment"
+            app:destination="@id/createUserCorporationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listUserCorporationsFragment"
+        android:name="com.infocorp.presentation.listusercorporations.ListUserCorporationsFragment"
+        android:label="fragment_list_user_corporations"
+        tools:layout="@layout/fragment_list_user_corporations" />
+    <fragment
+        android:id="@+id/createUserCorporationFragment"
+        android:name="com.infocorp.presentation.createusercorp.CreateUserCorporationFragment"
+        android:label="fragment_create_user_corporation"
+        tools:layout="@layout/fragment_create_user_corporation" />
 </navigation>

@@ -9,7 +9,8 @@
     <color name="shimmer_child_color">#8E8E8E</color>
 
     <color name="links_color">#0183C8</color>
-    <color name="bottom_menu_background">#1c1c1e</color>
+    <color name="second_background_color">#1c1c1e</color>
+    <color name="first_background_color">#FF000000</color>
     <color name="ripple_color">#494949</color>
 
     <color name="unknown_text_color_response_egr">#0183C8</color>

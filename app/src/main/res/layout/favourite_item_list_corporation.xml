@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:foreground="?attr/selectableItemBackground"
-        app:cardBackgroundColor="@color/bottom_menu_background"
+        app:cardBackgroundColor="@color/second_background_color"
         app:cardCornerRadius="12dp"
         app:cardElevation="1dp"
         app:cardUseCompatPadding="true">

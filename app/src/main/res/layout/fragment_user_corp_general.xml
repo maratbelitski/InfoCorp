@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:padding="@dimen/normal_padding_size"
+    tools:context=".presentation.usercorpgeneraldisplay.UserCorpGeneralFragment">
+
+    <include
+        android:id="@+id/listUserCorpCard"
+        layout="@layout/list_user_corps" />
+
+    <include
+        android:id="@+id/createUserCorpCard"
+        layout="@layout/create_user_corps" />
+
+    <include layout="@layout/change_info_corp"
+        android:id="@+id/changeInfoCorpCard"/>
+</LinearLayout>
