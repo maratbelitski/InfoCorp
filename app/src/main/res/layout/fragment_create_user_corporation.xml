@@ -45,7 +45,7 @@
                     android:layout_margin="8dp"
                     android:background="@color/second_background_color"
                     android:text="Poster"
-                    android:textColor="@color/white"
+                    android:textColor="@color/links_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvResponseTitle" />
@@ -60,8 +60,10 @@
                     app:layout_constraintTop_toBottomOf="@+id/tvPosterText">
 
                     <com.google.android.material.textfield.TextInputEditText
+                       android:id="@+id/etPosterInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="textUri"
                         style="@style/MyTextInputLayoutStyle"
                         android:hint="Enter url image" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -89,7 +91,7 @@
 
                     android:paddingTop="8dp"
                     android:text="Tittle"
-                    android:textColor="@color/white"
+                    android:textColor="@color/links_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/etPoster"
                     app:layout_constraintTop_toBottomOf="@+id/etPoster" />
@@ -105,6 +107,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/tvTittleText">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etTittleInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/MyTextInputLayoutStyle"
@@ -119,7 +122,7 @@
                     android:background="@color/second_background_color"
                     android:paddingTop="8dp"
                     android:text="Description"
-                    android:textColor="@color/white"
+                    android:textColor="@color/links_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/etTittle"
                     app:layout_constraintTop_toBottomOf="@+id/etTittle" />
@@ -135,6 +138,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/tvDescriptionText">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDescriptionInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/MyTextInputLayoutStyle"
@@ -150,7 +154,7 @@
                     android:background="@color/second_background_color"
                     android:paddingTop="8dp"
                     android:text="Address"
-                    android:textColor="@color/white"
+                    android:textColor="@color/links_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/etDescription"
                     app:layout_constraintTop_toBottomOf="@+id/etDescription" />
@@ -165,6 +169,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/tvAddressText">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etAddressInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/MyTextInputLayoutStyle"
@@ -179,7 +184,7 @@
                     android:background="@color/second_background_color"
                     android:paddingTop="8dp"
                     android:text="Phones"
-                    android:textColor="@color/white"
+                    android:textColor="@color/links_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/etAddress"
                     app:layout_constraintTop_toBottomOf="@+id/etAddress" />
@@ -194,8 +199,10 @@
                     app:layout_constraintTop_toBottomOf="@+id/tvPhonesText">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPhonesInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="phone"
                         style="@style/MyTextInputLayoutStyle"
                         android:hint="Enter phones" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -208,7 +215,7 @@
                     android:background="@color/second_background_color"
                     android:paddingTop="8dp"
                     android:text="Email"
-                    android:textColor="@color/white"
+                    android:textColor="@color/links_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/etPhones"
                     app:layout_constraintTop_toBottomOf="@+id/etPhones" />
@@ -223,8 +230,10 @@
                     app:layout_constraintTop_toBottomOf="@+id/tvEmailText">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEmailInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
                         style="@style/MyTextInputLayoutStyle"
                         android:hint="Enter email" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -237,7 +246,7 @@
                     android:background="@color/second_background_color"
                     android:paddingTop="8dp"
                     android:text="Website"
-                    android:textColor="@color/white"
+                    android:textColor="@color/links_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/etEmail"
                     app:layout_constraintTop_toBottomOf="@+id/etEmail" />
@@ -252,8 +261,10 @@
                     app:layout_constraintTop_toBottomOf="@+id/tvWebsiteText">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etWebsiteInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="textUri"
                         style="@style/MyTextInputLayoutStyle"
                         android:hint="Enter url website" />
                 </com.google.android.material.textfield.TextInputLayout>
