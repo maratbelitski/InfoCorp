@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(), UpdateBottomMenu {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        bottomNavigation()
+        onBottomNavigation()
         onListeners()
     }
 
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), UpdateBottomMenu {
         }
     }
 
-    private fun bottomNavigation() {
+    private fun onBottomNavigation() {
         binding.bottomMenu.background = null
 
         val navHostFragment =

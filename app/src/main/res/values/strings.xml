@@ -38,4 +38,7 @@
     <string name="create">Create your own corporation</string>
     <string name="edit_information">Edit information</string>
     <string name="send_the_data">If you want the data about this company to be included in the general database, send the data to the developer</string>
+    <string name="user_corp">User corp</string>
+    <string name="your_list">Your list</string>
+    <string name="clear_fields">Clear fields</string>
 </resources>

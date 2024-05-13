@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.corporationdto.UserCorporationDto
 import com.infocorp.databinding.FragmentCreateUserCorporationBinding
@@ -62,6 +63,26 @@ class CreateUserCorporationFragment : Fragment() {
                 Toast.LENGTH_SHORT
             ).show()
         }
+
+        binding.btnYourList.setOnClickListener {
+            val action = CreateUserCorporationFragmentDirections
+                .actionCreateUserCorporationFragmentToListUserCorporationsFragment()
+            findNavController().navigate(action)
+        }
+
+        binding.btnClearFields.setOnClickListener {
+            with(binding) {
+                etPosterInput.text?.clear()
+                etTittleInput.text?.clear()
+                etDescriptionInput.text?.clear()
+                etAddressInput.text?.clear()
+                etPhonesInput.text?.clear()
+                etEmailInput.text?.clear()
+                etWebsiteInput.text?.clear()
+
+                etPoster.requestFocus()
+            }
+        }
     }
 
     private fun addUserCorporation() {
@@ -103,12 +124,3 @@ class CreateUserCorporationFragment : Fragment() {
         _binding = null
     }
 }
-//            etPosterInput.text?.clear()
-//            etTittleInput.text?.clear()
-//            etDescriptionInput.text?.clear()
-//            etAddressInput.text?.clear()
-//            etPhonesInput.text?.clear()
-//            etEmailInput.text?.clear()
-//            etWebsiteInput.text?.clear()
-
-

@@ -1,7 +1,6 @@
 package com.infocorp.presentation.listdisplay
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.infocorp.databinding.FragmentListCorporationsBinding
-import com.infocorp.domain.model.Corporation
-import com.infocorp.presentation.UpdateBottomMenu
-import com.infocorp.presentation.egrdisplay.adapter.ResponseEgrAdapter
+import com.infocorp.presentation.MainActivity
 import com.infocorp.presentation.listdisplay.adapter.CorporationAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,7 +24,9 @@ class ListCorporationsFragment : Fragment() {
     private val myAdapter: CorporationAdapter by lazy {
         CorporationAdapter()
     }
-    private lateinit var updateStateBottomMenu: UpdateBottomMenu
+    private val updateStateBottomMenu by lazy {
+        activity as MainActivity
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -69,7 +68,7 @@ class ListCorporationsFragment : Fragment() {
         with(fragmentViewModel) {
 
             myAdapter.onLongClick = {
-                addInNewCorps(it)
+                addInOldCorps(it)
                 changeStateFavoriteCorp(it)
                 changeStateNewCorp(it)
 
@@ -80,7 +79,7 @@ class ListCorporationsFragment : Fragment() {
             }
 
             myAdapter.onClick = {
-                addInNewCorps(it)
+                addInOldCorps(it)
                 changeStateNewCorp(it)
 
                 val action = ListCorporationsFragmentDirections
@@ -107,7 +106,9 @@ class ListCorporationsFragment : Fragment() {
                 }
             }
         }
-
+        fragmentViewModel.disableBottomNavigation.observe(viewLifecycleOwner) {
+           if (!it) updateStateBottomMenu.enableBottomMenu()
+        }
 
         fragmentViewModel.listFromLocalSource.observe(viewLifecycleOwner) {
             myAdapter.submitList(it)
@@ -115,8 +116,6 @@ class ListCorporationsFragment : Fragment() {
     }
 
     private fun initViews() {
-//        updateStateBottomMenu = activity as MainActivity
-//        updateStateBottomMenu.enableBottomMenu()
         binding.recycler.adapter = myAdapter
     }
 

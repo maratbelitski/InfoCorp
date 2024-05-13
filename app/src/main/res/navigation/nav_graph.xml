@@ -94,5 +94,9 @@
         android:id="@+id/createUserCorporationFragment"
         android:name="com.infocorp.presentation.createusercorp.CreateUserCorporationFragment"
         android:label="fragment_create_user_corporation"
-        tools:layout="@layout/fragment_create_user_corporation" />
+        tools:layout="@layout/fragment_create_user_corporation" >
+        <action
+            android:id="@+id/action_createUserCorporationFragment_to_listUserCorporationsFragment"
+            app:destination="@id/listUserCorporationsFragment" />
+    </fragment>
 </navigation>

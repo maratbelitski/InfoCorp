@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -44,10 +45,13 @@ class DetailCorporationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initViews()
+       // initViews()
 
         onListeners()
 
+        fragmentViewModel.disableBottomNavigation.observe(viewLifecycleOwner){
+            if (it) updateStateBottomMenu.disableBottomMenu()
+        }
     }
 
     private fun onListeners() {
@@ -70,7 +74,7 @@ class DetailCorporationFragment : Fragment() {
                 .into(ivPoster)
 
             val defaultValue = getString(R.string.not_specified)
-            val defaultColor = resources.getColor(R.color.unknown_text_color)
+            val defaultColor = ContextCompat.getColor(requireContext(),R.color.unknown_text_color)
 
             val name = arguments.corporation.name
             var description = arguments.corporation.description
@@ -113,7 +117,7 @@ class DetailCorporationFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        updateStateBottomMenu.enableBottomMenu()
+      //  updateStateBottomMenu.enableBottomMenu()
         _binding = null
     }
 }

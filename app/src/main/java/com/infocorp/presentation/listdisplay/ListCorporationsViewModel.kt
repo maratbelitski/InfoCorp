@@ -1,5 +1,6 @@
 package com.infocorp.presentation.listdisplay
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -28,7 +29,7 @@ class ListCorporationsViewModel @Inject constructor(
     private val addCorpToFavourite: AddCorpToFavourite,
     private val removeCorpFromFavouriteUseCase: RemoveCorpFromFavouriteUseCase,
     private val searchCorp: SearchCorpInListUseCase,
-    private val addToNewCorpList: AddInOldCorpsListUseCase,
+    private val addToOldCorpList: AddInOldCorpsListUseCase,
     private val repositoryImpl: CorporationRepositoryImpl
 
 ) : ViewModel() {
@@ -37,7 +38,9 @@ class ListCorporationsViewModel @Inject constructor(
     val listFromLocalSource by lazy {
         downloadDataFromLocalStorage.invoke()
     }
-
+    private var _disableBottomNavigation = MutableLiveData(false)
+    val disableBottomNavigation: LiveData<Boolean>
+        get() = _disableBottomNavigation
 
     init {
         clearCorporationTable()
@@ -51,9 +54,9 @@ class ListCorporationsViewModel @Inject constructor(
         }
     }
 
-    fun addInNewCorps(corp: Corporation) {
+    fun addInOldCorps(corp: Corporation) {
         viewModelScope.launch(Dispatchers.IO) {
-            addToNewCorpList.invoke(corp)
+            addToOldCorpList.invoke(corp)
         }
     }
 

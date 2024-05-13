@@ -4,6 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#D50000</color>
     <color name="green">#1C9700</color>
+    <color name="yellow">#FFD600</color>
+    <color name="blue">#0183C8</color>
 
     <color name="shimmer_parent_color">#494949</color>
     <color name="shimmer_child_color">#8E8E8E</color>

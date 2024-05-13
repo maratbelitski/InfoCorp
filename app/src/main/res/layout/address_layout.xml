@@ -38,7 +38,7 @@
             android:padding="8dp"
             android:text="@string/address"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="@dimen/big_text_size"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

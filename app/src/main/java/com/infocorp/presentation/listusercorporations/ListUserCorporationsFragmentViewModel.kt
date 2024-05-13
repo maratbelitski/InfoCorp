@@ -1,5 +1,7 @@
 package com.infocorp.presentation.listusercorporations
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.infocorp.domain.usecases.corporation.DownloadDataFromLocalStorageUseCase
 import com.infocorp.domain.usecases.usercorporation.DownloadDataFromDataBaseUseCase
@@ -13,4 +15,8 @@ class ListUserCorporationsFragmentViewModel @Inject constructor(
     val listFromLocalSource by lazy {
         downloadDataFromDatabase.invoke()
     }
+
+    private var _disableBottomNavigation = MutableLiveData(true)
+    val disableBottomNavigation: LiveData<Boolean>
+        get() = _disableBottomNavigation
 }

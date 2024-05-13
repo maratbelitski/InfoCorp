@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.infocorp.databinding.FragmentFavouriteBinding
+import com.infocorp.presentation.MainActivity
 import com.infocorp.presentation.egrdisplay.adapter.ResponseEgrAdapter
 import com.infocorp.presentation.listdisplay.adapter.CorporationAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,7 +23,13 @@ class FavouriteFragment : Fragment() {
         get() = _binding ?: throw Exception()
 
     private val fragmentViewModel: FavouriteFragmentViewModel by viewModels()
-    private lateinit var myAdapter: CorporationAdapter
+    private val myAdapter by lazy {
+        CorporationAdapter()
+    }
+    private val updateStateBottomMenu by lazy {
+        activity as MainActivity
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -81,10 +88,13 @@ class FavouriteFragment : Fragment() {
         fragmentViewModel.listFavouriteCorp.observe(viewLifecycleOwner) {
             myAdapter.submitList(it)
         }
+
+        fragmentViewModel.disableBottomNavigation.observe(viewLifecycleOwner) {
+            if (!it) updateStateBottomMenu.enableBottomMenu()
+        }
     }
 
     private fun initViews() {
-        myAdapter = CorporationAdapter()
         binding.recycler.adapter = myAdapter
     }
 

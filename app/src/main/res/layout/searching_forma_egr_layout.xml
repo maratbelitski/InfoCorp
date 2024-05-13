@@ -44,6 +44,8 @@
             android:layout_height="wrap_content"
             style="@style/MyTextInputLayoutStyle"
             android:layout_margin="8dp"
+            app:startIconDrawable="@drawable/title"
+            app:startIconTint="@color/hint_text_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line">
@@ -65,6 +67,7 @@
             android:text="@string/search_by_title"
             android:backgroundTint="@color/red"
             android:textColor="@color/white"
+            android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="@+id/byName"
             app:layout_constraintStart_toStartOf="@id/byName"
             app:layout_constraintTop_toBottomOf="@+id/byName" />
@@ -75,6 +78,8 @@
             android:layout_height="wrap_content"
             style="@style/MyTextInputLayoutStyle"
             android:layout_margin="8dp"
+            app:startIconDrawable="@drawable/number"
+            app:startIconTint="@color/hint_text_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnSearchByName">
@@ -98,6 +103,7 @@
             android:backgroundTint="@color/red"
             android:text="@string/search_by_unp"
             android:textColor="@color/white"
+            android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/byUnp"
             app:layout_constraintStart_toStartOf="@+id/byUnp"

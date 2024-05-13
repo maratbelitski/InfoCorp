@@ -37,7 +37,7 @@ class ListUserCorporationsFragment : Fragment() {
     ): View {
         _binding =  FragmentListUserCorporationsBinding.inflate(layoutInflater)
 
-        updateStateBottomMenu.disableBottomMenu()
+       // updateStateBottomMenu.disableBottomMenu()
 
         return binding.root
     }
@@ -64,6 +64,10 @@ class ListUserCorporationsFragment : Fragment() {
     private fun onObservers() {
         fragmentViewModel.listFromLocalSource.observe(viewLifecycleOwner) {
             myAdapter.submitList(it)
+        }
+
+        fragmentViewModel.disableBottomNavigation.observe(viewLifecycleOwner){
+            if (it) updateStateBottomMenu.disableBottomMenu()
         }
     }
 

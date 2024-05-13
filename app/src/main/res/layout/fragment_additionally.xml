@@ -31,6 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:textSize="11sp"
             android:backgroundTint="@color/red"
             android:drawableStart="@drawable/arrow_back_general"
             android:text="@string/to_general"
