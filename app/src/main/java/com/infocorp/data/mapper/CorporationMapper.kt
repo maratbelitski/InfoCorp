@@ -4,6 +4,7 @@ import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.corporationdto.DataDto
 import com.infocorp.data.corporationdto.FavouriteCorporationsDto
 import com.infocorp.data.corporationdto.OldCorporationsDto
+import com.infocorp.data.corporationdto.UserCorporationDto
 import com.infocorp.domain.model.Corporation
 import com.infocorp.domain.model.Data
 import javax.inject.Inject
@@ -22,6 +23,22 @@ class CorporationMapper @Inject constructor() {
             phones = corpDto.phones,
             email = corpDto.email,
             website = corpDto.website
+        )
+    }
+
+    fun userCorporationDtoToCorporation(userCorpDto: UserCorporationDto): Corporation {
+        return Corporation(
+            id = userCorpDto.id,
+            idFirebase = userCorpDto.idFirebase,
+            isFavourite = userCorpDto.isFavourite,
+            isNew = userCorpDto.isNew,
+            name = userCorpDto.name,
+            poster = userCorpDto.poster,
+            description = userCorpDto.description,
+            address = userCorpDto.address,
+            phones = userCorpDto.phones,
+            email = userCorpDto.email,
+            website = userCorpDto.website
         )
     }
 

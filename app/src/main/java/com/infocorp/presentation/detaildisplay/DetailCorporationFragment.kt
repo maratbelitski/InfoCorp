@@ -13,8 +13,10 @@ import com.bumptech.glide.Glide
 import com.infocorp.R
 import com.infocorp.databinding.FragmentDetailCorporationBinding
 import com.infocorp.presentation.MainActivity
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class DetailCorporationFragment : Fragment() {
 
     private var _binding: FragmentDetailCorporationBinding? = null

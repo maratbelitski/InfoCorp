@@ -7,6 +7,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.database
+import com.google.firebase.database.ktx.database
+import com.google.firebase.Firebase
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.datastorage.CorporationDao
 import com.infocorp.data.datastorage.FavouriteDao
@@ -24,12 +27,20 @@ import javax.inject.Inject
 
 class CorporationRepositoryImpl @Inject constructor(
     private val mapper: CorporationMapper,
-    private val firebaseReference: DatabaseReference,
+    private val firebase: Firebase,
     private val daoCorp: CorporationDao,
     private val daoFavourite: FavouriteDao,
     private val daoOldCorps: OldCorpDao,
     private val retrofitService: CorporationService
 ) : CorporationRepository {
+
+    companion object {
+        private const val FIRE_BASE_GENERAL = "CORPORATION"
+    }
+
+    private val firebaseReference by  lazy {
+        firebase.database.getReference(FIRE_BASE_GENERAL)
+    }
 
     private fun insertDataInLocalDataBase(corpDto: CorporationDto) {
         daoCorp.addOneCorpInDataBase(corpDto)

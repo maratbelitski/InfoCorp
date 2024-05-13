@@ -6,40 +6,75 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
-import com.infocorp.R
+import androidx.fragment.app.viewModels
 import com.infocorp.data.corporationdto.CorporationDto
+import com.infocorp.data.corporationdto.UserCorporationDto
 import com.infocorp.databinding.FragmentCreateUserCorporationBinding
-import com.infocorp.databinding.FragmentUserCorpGeneralBinding
+import com.infocorp.presentation.MainActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CreateUserCorporationFragment : Fragment() {
+
+    companion object {
+        private const val FIRE_BASE_USER = "USER_CORPORATION"
+    }
 
     private var _binding: FragmentCreateUserCorporationBinding? = null
     private val binding: FragmentCreateUserCorporationBinding
         get() = _binding ?: throw Exception()
+
+    private val fragmentViewModel: CreateUserCorporationFragmentViewModel by viewModels()
+
+    private val updateStateBottomMenu by lazy {
+        activity as MainActivity
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCreateUserCorporationBinding.inflate(layoutInflater)
+
+        updateStateBottomMenu.disableBottomMenu()
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val databaseChild = Firebase.database.getReference("USER_CORPORATION")
+        onListeners()
+    }
 
+    private fun onListeners() {
         binding.btnSend.setOnClickListener {
-            createUserCorporation(databaseChild)
-            Toast.makeText(requireContext(), "Information send to developer", Toast.LENGTH_SHORT).show()
+            sendUserCorporation()
+            Toast.makeText(requireContext(), "Information send to developer", Toast.LENGTH_SHORT)
+                .show()
+        }
+
+        binding.btnCreate.setOnClickListener {
+            addUserCorporation()
+            Toast.makeText(
+                requireContext(),
+                "Information saved to your database",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
-    private fun createUserCorporation(databaseChild: DatabaseReference) {
+    private fun addUserCorporation() {
+        val newCorp = getValuesAndCreateCorp()
+        fragmentViewModel.addUserCorporationToDataBase(newCorp)
+    }
+
+    private fun sendUserCorporation() {
+        val newCorp = getValuesAndCreateCorp()
+        fragmentViewModel.sendUserCorporation(newCorp)
+    }
+
+    private fun getValuesAndCreateCorp(): UserCorporationDto {
         with(binding) {
             val poster = etPosterInput.text.toString()
             val tittle = etTittleInput.text.toString()
@@ -50,8 +85,8 @@ class CreateUserCorporationFragment : Fragment() {
             val website = etWebsiteInput.text.toString()
 
 
-            val userCorp = CorporationDto(
-                idFirebase = databaseChild.key.toString(),
+            return UserCorporationDto(
+                idFirebase = FIRE_BASE_USER,
                 name = tittle,
                 address = address,
                 poster = poster,
@@ -60,20 +95,20 @@ class CreateUserCorporationFragment : Fragment() {
                 email = email,
                 website = website
             )
-
-            databaseChild.push().setValue(userCorp)
-
-            etPosterInput.text?.clear()
-            etTittleInput.text?.clear()
-            etDescriptionInput.text?.clear()
-            etAddressInput.text?.clear()
-            etPhonesInput.text?.clear()
-            etEmailInput.text?.clear()
-            etWebsiteInput.text?.clear()
         }
     }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
 }
+//            etPosterInput.text?.clear()
+//            etTittleInput.text?.clear()
+//            etDescriptionInput.text?.clear()
+//            etAddressInput.text?.clear()
+//            etPhonesInput.text?.clear()
+//            etEmailInput.text?.clear()
+//            etWebsiteInput.text?.clear()
+
+

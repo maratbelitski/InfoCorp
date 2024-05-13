@@ -85,7 +85,11 @@
         android:id="@+id/listUserCorporationsFragment"
         android:name="com.infocorp.presentation.listusercorporations.ListUserCorporationsFragment"
         android:label="fragment_list_user_corporations"
-        tools:layout="@layout/fragment_list_user_corporations" />
+        tools:layout="@layout/fragment_list_user_corporations" >
+        <action
+            android:id="@+id/action_listUserCorporationsFragment_to_detailCorporationFragment"
+            app:destination="@id/detailCorporationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/createUserCorporationFragment"
         android:name="com.infocorp.presentation.createusercorp.CreateUserCorporationFragment"
