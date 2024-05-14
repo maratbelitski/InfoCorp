@@ -37,7 +37,6 @@ class DetailCorporationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentDetailCorporationBinding.inflate(layoutInflater)
-
         initArgs()
         return binding.root
     }
@@ -45,11 +44,13 @@ class DetailCorporationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       // initViews()
-
         onListeners()
 
-        fragmentViewModel.disableBottomNavigation.observe(viewLifecycleOwner){
+        onObservers()
+    }
+
+    private fun onObservers() {
+        fragmentViewModel.disableBottomNavigation.observe(viewLifecycleOwner) {
             if (it) updateStateBottomMenu.disableBottomMenu()
         }
     }
@@ -60,18 +61,20 @@ class DetailCorporationFragment : Fragment() {
                 .actionDetailCorporationFragmentToAdditionallyFragment(arguments.corporation)
             findNavController().navigate(action)
         }
-    }
 
-    private fun initViews() {
-        updateStateBottomMenu.disableBottomMenu()
+        binding.btnEditInfo.setOnClickListener {
+            val action = DetailCorporationFragmentDirections
+                .actionDetailCorporationFragmentToCreateUserCorporationFragment(arguments.corporation)
+            findNavController().navigate(action)
+        }
     }
 
     private fun initArgs() {
         with(binding) {
-            Glide.with(ivPoster)
+            Glide.with(posterCard.ivPoster)
                 .load(arguments.corporation.poster)
                 .placeholder(R.drawable.corp_list_logo)
-                .into(ivPoster)
+                .into(posterCard.ivPoster)
 
             val defaultValue = getString(R.string.not_specified)
             val defaultColor = ContextCompat.getColor(requireContext(),R.color.unknown_text_color)
@@ -86,7 +89,7 @@ class DetailCorporationFragment : Fragment() {
 
             if (description.isBlank()) {
                 description = defaultValue
-                tvDescriptionCorp.setTextColor(defaultColor)
+                descriptionCard.tvDescriptionCorp.setTextColor(defaultColor)
             }
             if (address.isBlank()) {
                 address = defaultValue
@@ -94,30 +97,29 @@ class DetailCorporationFragment : Fragment() {
             }
             if (phones.isBlank()) {
                 phones = defaultValue
-                tvPhonesCorp.setTextColor(defaultColor)
+                phonesCard.tvPhonesCorp.setTextColor(defaultColor)
             }
             if (email.isBlank()) {
                 email = defaultValue
-                tvEmailCorp.setTextColor(defaultColor)
+                emailCard.tvEmailCorp.setTextColor(defaultColor)
             }
             if (website.isBlank()) {
                 website = defaultValue
-                tvWebsiteCorp.setTextColor(defaultColor)
+                websiteCard.tvWebsiteCorp.setTextColor(defaultColor)
             }
 
 
             nameCard.tvName.text = name
-            tvDescriptionCorp.text = description
+            descriptionCard.tvDescriptionCorp.text = description
             addressCard.tvAddressText.text = address
-            tvPhonesCorp.text = phones
-            tvEmailCorp.text = email
-            tvWebsiteCorp.text = website
+            phonesCard.tvPhonesCorp.text = phones
+            emailCard.tvEmailCorp.text = email
+            websiteCard.tvWebsiteCorp.text = website
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-      //  updateStateBottomMenu.enableBottomMenu()
         _binding = null
     }
 }

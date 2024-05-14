@@ -1,9 +1,6 @@
 package com.infocorp.di
 
 import android.content.Context
-import com.google.firebase.Firebase
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.database
 import com.infocorp.data.datastorage.CorporationDao
 import com.infocorp.data.datastorage.CorporationDataBase
 import com.infocorp.data.datastorage.FavouriteDao

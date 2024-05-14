@@ -21,6 +21,7 @@ class ListCorporationsFragment : Fragment() {
         get() = _binding ?: throw Exception()
 
     private val fragmentViewModel: ListCorporationsViewModel by viewModels()
+
     private val myAdapter: CorporationAdapter by lazy {
         CorporationAdapter()
     }
@@ -55,7 +56,9 @@ class ListCorporationsFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+
                 fragmentViewModel.listFromLocalSource.observe(viewLifecycleOwner) {
+
                     val newList = fragmentViewModel.searchCorporation(it, newText ?: "")
                     myAdapter.submitList(newList)
                 }
@@ -107,7 +110,7 @@ class ListCorporationsFragment : Fragment() {
             }
         }
         fragmentViewModel.disableBottomNavigation.observe(viewLifecycleOwner) {
-           if (!it) updateStateBottomMenu.enableBottomMenu()
+           if (it) updateStateBottomMenu.enableBottomMenu()
         }
 
         fragmentViewModel.listFromLocalSource.observe(viewLifecycleOwner) {
@@ -122,6 +125,5 @@ class ListCorporationsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        //  updateStateBottomMenu.enableBottomMenu()
     }
 }

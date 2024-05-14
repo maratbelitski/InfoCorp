@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.infocorp.data.corporationdto.CorporationDto
+import androidx.navigation.fragment.navArgs
 import com.infocorp.data.corporationdto.UserCorporationDto
 import com.infocorp.databinding.FragmentCreateUserCorporationBinding
 import com.infocorp.presentation.MainActivity
@@ -18,13 +18,14 @@ import dagger.hilt.android.AndroidEntryPoint
 class CreateUserCorporationFragment : Fragment() {
 
     companion object {
-        private const val FIRE_BASE_USER = "USER_CORPORATION"
+        private const val FIRE_BASE_USER = "USER_IT_CORPORATION"
     }
 
     private var _binding: FragmentCreateUserCorporationBinding? = null
     private val binding: FragmentCreateUserCorporationBinding
         get() = _binding ?: throw Exception()
 
+    private val arguments: CreateUserCorporationFragmentArgs by navArgs()
     private val fragmentViewModel: CreateUserCorporationFragmentViewModel by viewModels()
 
     private val updateStateBottomMenu by lazy {
@@ -37,7 +38,7 @@ class CreateUserCorporationFragment : Fragment() {
     ): View {
         _binding = FragmentCreateUserCorporationBinding.inflate(layoutInflater)
 
-        updateStateBottomMenu.disableBottomMenu()
+        initArgs()
 
         return binding.root
     }
@@ -46,8 +47,27 @@ class CreateUserCorporationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         onListeners()
+
+        onObservers()
     }
 
+    private fun onObservers() {
+        fragmentViewModel.disableBottomNavigation.observe(viewLifecycleOwner) {
+            if (it) updateStateBottomMenu.disableBottomMenu()
+        }
+    }
+
+    private fun initArgs(){
+        with(binding){
+            etPosterInput.setText(arguments.corporation.poster)
+            etTittleInput.setText(arguments.corporation.name)
+            etDescriptionInput.setText(arguments.corporation.description)
+            etAddressInput.setText(arguments.corporation.address)
+            etPhonesInput.setText(arguments.corporation.phones)
+            etEmailInput.setText(arguments.corporation.email)
+            etWebsiteInput.setText(arguments.corporation.website)
+        }
+    }
     private fun onListeners() {
         binding.btnSend.setOnClickListener {
             sendUserCorporation()

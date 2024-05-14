@@ -17,7 +17,11 @@
         tools:layout="@layout/fragment_list_corporations" >
         <action
             android:id="@+id/action_listCorporationsFragment_to_detailCorporationFragment"
-            app:destination="@id/detailCorporationFragment" />
+            app:destination="@id/detailCorporationFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/favouriteFragment"
@@ -26,7 +30,11 @@
         tools:layout="@layout/fragment_favourite" >
         <action
             android:id="@+id/action_favouriteFragment_to_detailCorporationFragment"
-            app:destination="@id/detailCorporationFragment" />
+            app:destination="@id/detailCorporationFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/detailCorporationFragment"
@@ -39,6 +47,13 @@
         <action
             android:id="@+id/action_detailCorporationFragment_to_additionallyFragment"
             app:destination="@id/additionallyFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_detailCorporationFragment_to_createUserCorporationFragment"
+            app:destination="@id/createUserCorporationFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -76,10 +91,21 @@
         tools:layout="@layout/fragment_user_corp_general" >
         <action
             android:id="@+id/action_userCorpGeneralFragment_to_listUserCorporationsFragment"
-            app:destination="@id/listUserCorporationsFragment" />
+            app:destination="@id/listUserCorporationsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_userCorpGeneralFragment_to_createUserCorporationFragment"
-            app:destination="@id/createUserCorporationFragment" />
+            app:destination="@id/createUserCorporationFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_userCorpGeneralFragment_to_listCorporationsFragment"
+            app:destination="@id/listCorporationsFragment" />
     </fragment>
     <fragment
         android:id="@+id/listUserCorporationsFragment"
@@ -88,7 +114,9 @@
         tools:layout="@layout/fragment_list_user_corporations" >
         <action
             android:id="@+id/action_listUserCorporationsFragment_to_detailCorporationFragment"
-            app:destination="@id/detailCorporationFragment" />
+            app:destination="@id/detailCorporationFragment"
+            app:launchSingleTop="false"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/createUserCorporationFragment"
@@ -97,6 +125,15 @@
         tools:layout="@layout/fragment_create_user_corporation" >
         <action
             android:id="@+id/action_createUserCorporationFragment_to_listUserCorporationsFragment"
-            app:destination="@id/listUserCorporationsFragment" />
+            app:destination="@id/listUserCorporationsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/userCorpGeneralFragment" />
+        <argument
+            android:name="corporation"
+            app:argType="com.infocorp.domain.model.Corporation" />
     </fragment>
 </navigation>

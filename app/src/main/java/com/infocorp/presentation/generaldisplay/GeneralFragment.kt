@@ -22,11 +22,8 @@ class GeneralFragment : Fragment() {
     private val binding: FragmentGeneralBinding
         get() = _binding ?: throw Exception()
 
-    private lateinit var updateStateBottomMenu: UpdateBottomMenu
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    private val updateStateBottomMenu by lazy {
+        activity as MainActivity
     }
 
     override fun onCreateView(
@@ -40,7 +37,6 @@ class GeneralFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        updateStateBottomMenu = activity as MainActivity
         updateStateBottomMenu.enableBottomMenu()
 
 

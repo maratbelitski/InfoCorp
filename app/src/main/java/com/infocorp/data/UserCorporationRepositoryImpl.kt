@@ -20,7 +20,7 @@ class UserCorporationRepositoryImpl @Inject constructor(
 ) : UserCorporationRepository {
 
     companion object {
-        private const val FIRE_BASE_USER = "USER_CORPORATION"
+        private const val FIRE_BASE_USER = "USER_IT_CORPORATION"
     }
 
     private val firebaseReference by  lazy {

@@ -8,7 +8,7 @@ import com.infocorp.presentation.egrdisplay.adapter.ResponseEgrHolder
 
 class CorporationAdapter : ListAdapter<Corporation, ViewHolder>(CorporationDiffUtils()) {
     companion object {
-        private const val USER_CORPORATION = "USER_CORPORATION"
+        private const val USER_CORPORATION = "USER_IT_CORPORATION"
         const val USER_CORP = 3
         const val NEW_CORP = 2
         const val FAVOURITE = 1

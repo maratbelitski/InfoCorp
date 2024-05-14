@@ -42,7 +42,7 @@
             android:id="@+id/byName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/MyTextInputLayoutStyle"
+            style="@style/MyStyle.TextInputLayout"
             android:layout_margin="8dp"
             app:startIconDrawable="@drawable/title"
             app:startIconTint="@color/hint_text_color"
@@ -54,7 +54,7 @@
                 android:id="@+id/etByTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/MyTextInputLayoutStyle"
+                style="@style/MyStyle.TextInputLayout"
                 android:hint="@string/hint_search_by_name" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,7 +76,7 @@
             android:id="@+id/byUnp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/MyTextInputLayoutStyle"
+            style="@style/MyStyle.TextInputLayout"
             android:layout_margin="8dp"
             app:startIconDrawable="@drawable/number"
             app:startIconTint="@color/hint_text_color"
@@ -88,7 +88,7 @@
                android:id="@+id/etByUnp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/MyTextInputLayoutStyle"
+                style="@style/MyStyle.TextInputLayout"
                 android:inputType="number"
                 android:hint="@string/hint_search_by_unp" />
         </com.google.android.material.textfield.TextInputLayout>

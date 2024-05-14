@@ -13,7 +13,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), UpdateBottomMenu {
-    //private lateinit var binding: ActivityMainBinding
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)

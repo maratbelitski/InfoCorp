@@ -52,7 +52,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/etPoster"
-                    style="@style/MyTextInputLayoutStyle"
+                    style="@style/MyStyle.TextInputLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/image"
@@ -63,7 +63,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etPosterInput"
-                        style="@style/MyTextInputLayoutStyle"
+                        style="@style/MyStyle.TextInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter url image"
@@ -100,7 +100,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/etTittle"
-                    style="@style/MyTextInputLayoutStyle"
+                    style="@style/MyStyle.TextInputLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/title"
@@ -111,7 +111,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etTittleInput"
-                        style="@style/MyTextInputLayoutStyle"
+                        style="@style/MyStyle.TextInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter title" />
@@ -132,7 +132,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/etDescription"
-                    style="@style/MyTextInputLayoutStyle"
+                    style="@style/MyStyle.TextInputLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/description"
@@ -143,7 +143,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etDescriptionInput"
-                        style="@style/MyTextInputLayoutStyle"
+                        style="@style/MyStyle.TextInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter description" />
@@ -165,7 +165,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/etAddress"
-                    style="@style/MyTextInputLayoutStyle"
+                    style="@style/MyStyle.TextInputLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/address"
@@ -176,7 +176,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etAddressInput"
-                        style="@style/MyTextInputLayoutStyle"
+                        style="@style/MyStyle.TextInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter address" />
@@ -197,7 +197,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/etPhones"
-                    style="@style/MyTextInputLayoutStyle"
+                    style="@style/MyStyle.TextInputLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/phone"
@@ -208,7 +208,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etPhonesInput"
-                        style="@style/MyTextInputLayoutStyle"
+                        style="@style/MyStyle.TextInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter phones"
@@ -230,7 +230,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/etEmail"
-                    style="@style/MyTextInputLayoutStyle"
+                    style="@style/MyStyle.TextInputLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/email"
@@ -241,7 +241,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etEmailInput"
-                        style="@style/MyTextInputLayoutStyle"
+                        style="@style/MyStyle.TextInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter email"
@@ -263,7 +263,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/etWebsite"
-                    style="@style/MyTextInputLayoutStyle"
+                    style="@style/MyStyle.TextInputLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/web"
@@ -274,7 +274,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etWebsiteInput"
-                        style="@style/MyTextInputLayoutStyle"
+                        style="@style/MyStyle.TextInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter url website"
