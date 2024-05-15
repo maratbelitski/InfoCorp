@@ -34,6 +34,11 @@ class UserCorporationRepositoryImpl @Inject constructor(
         userDao.addOneCorpInDataBase(userCorp)
     }
 
+    override fun removeCorpFromUserDataBase(userCorp: Corporation) {
+        val corpUserDto = mapper.corporationToUserCorporation(userCorp)
+        userDao.removeCorpFromDataBase(corpUserDto)
+    }
+
     override fun downloadAllCorporations(): LiveData<List<Corporation>> {
         val dataFromDB = userDao.downloadAllCorporations()
         return dataFromDB.map { dto -> dto.map { mapper.userCorporationDtoToCorporation(it) } }

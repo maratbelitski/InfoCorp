@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.infocorp.R
 import com.infocorp.databinding.FragmentListCorporationsBinding
 import com.infocorp.databinding.FragmentListUserCorporationsBinding
@@ -36,9 +38,6 @@ class ListUserCorporationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding =  FragmentListUserCorporationsBinding.inflate(layoutInflater)
-
-       // updateStateBottomMenu.disableBottomMenu()
-
         return binding.root
     }
 
@@ -46,10 +45,9 @@ class ListUserCorporationsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initViews()
-
         onObservers()
-
         onListeners()
+        removeBySwipe()
     }
 
     private fun onListeners() {
@@ -69,6 +67,27 @@ class ListUserCorporationsFragment : Fragment() {
         fragmentViewModel.disableBottomNavigation.observe(viewLifecycleOwner){
             if (it) updateStateBottomMenu.disableBottomMenu()
         }
+    }
+
+    private fun removeBySwipe() {
+        val callback = object :
+            ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val currentCorp = myAdapter.currentList[viewHolder.adapterPosition]
+                fragmentViewModel.removeCorpFromDataBase(currentCorp)
+            }
+        }
+
+        val touchHelper = ItemTouchHelper(callback)
+        touchHelper.attachToRecyclerView(binding.recycler)
     }
 
     private fun initViews() {

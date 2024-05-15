@@ -42,6 +42,22 @@ class CorporationMapper @Inject constructor() {
         )
     }
 
+    fun corporationToUserCorporation(userCorp: Corporation): UserCorporationDto {
+        return UserCorporationDto(
+            id = userCorp.id,
+            idFirebase = userCorp.idFirebase,
+            isFavourite = userCorp.isFavourite,
+            isNew = userCorp.isNew,
+            name = userCorp.name,
+            poster = userCorp.poster,
+            description = userCorp.description,
+            address = userCorp.address,
+            phones = userCorp.phones,
+            email = userCorp.email,
+            website = userCorp.website
+        )
+    }
+
     fun corporationToCorporationDto(corp: Corporation): CorporationDto {
         return CorporationDto(
             id = corp.id,
