@@ -44,7 +44,7 @@
                     android:layout_gravity="bottom"
                     android:layout_margin="8dp"
                     android:background="@color/second_background_color"
-                    android:text="Poster"
+                    android:text="@string/poster"
                     android:textColor="@color/links_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +66,7 @@
                         style="@style/MyStyle.TextInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter url image"
+                        android:hint="@string/enter_url_image"
                         android:inputType="textUri" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,8 +76,8 @@
                     android:layout_height="wrap_content"
                     android:background="@color/second_background_color"
                     android:padding="8dp"
-                    android:text="Create new corporation"
-                    android:textColor="@color/white"
+                    android:text="@string/create_new_corporation"
+                    android:textColor="@color/text_color_normal"
                     android:textSize="@dimen/big_text_size"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -92,7 +92,7 @@
                     android:background="@color/second_background_color"
 
                     android:paddingTop="8dp"
-                    android:text="Tittle"
+                    android:text="@string/tittle"
                     android:textColor="@color/links_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/etPoster"
@@ -114,7 +114,7 @@
                         style="@style/MyStyle.TextInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter title" />
+                        android:hint="@string/enter_title" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -124,7 +124,7 @@
                     android:layout_gravity="bottom"
                     android:background="@color/second_background_color"
                     android:paddingTop="8dp"
-                    android:text="Description"
+                    android:text="@string/description_search"
                     android:textColor="@color/links_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/etTittle"
@@ -146,7 +146,7 @@
                         style="@style/MyStyle.TextInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter description" />
+                        android:hint="@string/enter_description" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -157,7 +157,7 @@
 
                     android:background="@color/second_background_color"
                     android:paddingTop="8dp"
-                    android:text="Address"
+                    android:text="@string/address_search"
                     android:textColor="@color/links_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/etDescription"
@@ -179,7 +179,7 @@
                         style="@style/MyStyle.TextInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter address" />
+                        android:hint="@string/enter_address" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -189,7 +189,7 @@
                     android:layout_gravity="bottom"
                     android:background="@color/second_background_color"
                     android:paddingTop="8dp"
-                    android:text="Phones"
+                    android:text="@string/phones_search"
                     android:textColor="@color/links_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/etAddress"
@@ -211,7 +211,7 @@
                         style="@style/MyStyle.TextInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter phones"
+                        android:hint="@string/enter_phones"
                         android:inputType="phone" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -222,7 +222,7 @@
                     android:layout_gravity="bottom"
                     android:background="@color/second_background_color"
                     android:paddingTop="8dp"
-                    android:text="Email"
+                    android:text="@string/email_search"
                     android:textColor="@color/links_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/etPhones"
@@ -244,7 +244,7 @@
                         style="@style/MyStyle.TextInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter email"
+                        android:hint="@string/enter_email"
                         android:inputType="textEmailAddress" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -255,7 +255,7 @@
                     android:layout_gravity="bottom"
                     android:background="@color/second_background_color"
                     android:paddingTop="8dp"
-                    android:text="Website"
+                    android:text="@string/website_search"
                     android:textColor="@color/links_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/etEmail"
@@ -277,7 +277,7 @@
                         style="@style/MyStyle.TextInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter url website"
+                        android:hint="@string/enter_url_website"
                         android:inputType="textUri" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -287,7 +287,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:backgroundTint="@color/red"
-                    android:text="Create"
+                    android:text="@string/create_btn"
                     android:textSize="11sp"
                     android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="@+id/etWebsite"
@@ -312,7 +312,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/red"
-                    android:text="Send to developer"
+                    android:text="@string/send_to_developer_btn"
                     android:textColor="@color/white"
                     android:textSize="11sp"
                     app:layout_constraintEnd_toEndOf="@+id/btnCreate"
@@ -327,7 +327,7 @@
                     android:background="@drawable/background_button_black"
                     android:foreground="?attr/selectableItemBackground"
                     android:text="@string/your_list"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_color_button_custom"
                     android:textSize="11sp"
                     app:layout_constraintEnd_toStartOf="@+id/guideline"
                     app:layout_constraintStart_toStartOf="@id/btnCreate"
@@ -341,7 +341,7 @@
                     android:background="@drawable/background_button_black"
                     android:foreground="?attr/selectableItemBackground"
                     android:text="@string/clear_fields"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_color_button_custom"
                     android:textSize="11sp"
                     app:layout_constraintEnd_toEndOf="@id/btnCreate"
                     app:layout_constraintStart_toEndOf="@+id/guideline"

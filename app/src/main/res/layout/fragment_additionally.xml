@@ -35,5 +35,5 @@
             android:backgroundTint="@color/red"
             android:drawableStart="@drawable/arrow_back_general"
             android:text="@string/to_general"
-            android:textColor="@color/white" />
+            android:textColor="@color/text_color_button" />
     </LinearLayout>

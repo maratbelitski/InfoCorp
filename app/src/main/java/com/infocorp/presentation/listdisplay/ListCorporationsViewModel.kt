@@ -47,6 +47,9 @@ class ListCorporationsViewModel @Inject constructor(
         downloadDataFromRemoteSource()
     }
 
+    fun changeStateBottomMenu(){
+        _disableBottomNavigation.value = false
+    }
 
     private fun clearCorporationTable() {
         viewModelScope.launch(Dispatchers.IO) {

@@ -32,7 +32,7 @@
             android:background="@color/second_background_color"
             android:padding="8dp"
             android:text="@string/show_location"
-            android:textColor="@color/white"
+            android:textColor="@color/text_color_normal"
             android:textSize="@dimen/big_text_size"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +48,7 @@
             android:padding="8dp"
             android:paddingBottom="8dp"
             android:text="@string/search__location_by_address"
-            android:textColor="@color/white"
+            android:textColor="@color/text_color_normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tvResponseTitle"
             app:layout_constraintTop_toBottomOf="@+id/tvResponseTitle" />

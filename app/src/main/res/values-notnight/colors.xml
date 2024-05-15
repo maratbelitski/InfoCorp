@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="second_background_color">@color/white</color>
+    <color name="first_background_color">@color/white_light</color>
+
+    <color name="bottom_menu_item_color_enable">#D50000</color>
+    <color name="bottom_menu_item_color_disable">@color/black</color>
+
+    <color name="text_color_normal">@color/black</color>
+
+    <color name="image_placeholder_color_normal">@color/black</color>
+
+    <color name="background_color_button_custom">@color/white</color>
+    <color name="text_color_button_custom">@color/black</color>
+
+    <color name="shimmer_parent_color">#D6D6D6</color>
+    <color name="shimmer_child_color">#A6A6A6</color>
+</resources>

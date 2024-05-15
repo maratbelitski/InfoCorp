@@ -8,6 +8,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.infocorp.databinding.FragmentListCorporationsBinding
 import com.infocorp.presentation.MainActivity
 import com.infocorp.presentation.listdisplay.adapter.CorporationAdapter
@@ -21,6 +22,7 @@ class ListCorporationsFragment : Fragment() {
         get() = _binding ?: throw Exception()
 
     private val fragmentViewModel: ListCorporationsViewModel by viewModels()
+    private val arguments: ListCorporationsFragmentArgs by navArgs()
 
     private val myAdapter: CorporationAdapter by lazy {
         CorporationAdapter()
@@ -34,6 +36,7 @@ class ListCorporationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentListCorporationsBinding.inflate(layoutInflater)
+        initArgs()
         return binding.root
     }
 
@@ -41,14 +44,13 @@ class ListCorporationsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initViews()
-
         onObservers()
-
         onListeners()
-
         searchCorporation()
     }
-
+    private fun initArgs() {
+        if (!arguments.enableMenu) fragmentViewModel.changeStateBottomMenu()
+    }
     private fun searchCorporation() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -110,7 +112,11 @@ class ListCorporationsFragment : Fragment() {
             }
         }
         fragmentViewModel.disableBottomNavigation.observe(viewLifecycleOwner) {
-           if (it) updateStateBottomMenu.enableBottomMenu()
+           if (it) {
+               updateStateBottomMenu.enableBottomMenu()
+           } else {
+               updateStateBottomMenu.disableBottomMenu()
+           }
         }
 
         fragmentViewModel.listFromLocalSource.observe(viewLifecycleOwner) {

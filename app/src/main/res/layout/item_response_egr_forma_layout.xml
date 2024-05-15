@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:text="@string/response_from_usr_egr"
-                android:textColor="@color/white"
+                android:textColor="@color/text_color_normal"
                 android:textSize="@dimen/big_text_size"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -49,7 +49,7 @@
                 android:minLines="3"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
-                android:textColor="@color/white"
+                android:textColor="@color/text_color_normal"
                 android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -64,7 +64,7 @@
                 android:textIsSelectable="true"
                 android:paddingStart="8dp"
 
-                android:textColor="@color/white"
+                android:textColor="@color/text_color_normal"
                 android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvEgrName"
@@ -76,7 +76,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingStart="8dp"
-                android:textColor="@color/white"
+                android:textColor="@color/text_color_normal"
                 android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvEgrFio"
@@ -92,7 +92,7 @@
                 android:minLines="2"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
-                android:textColor="@color/white"
+                android:textColor="@color/text_color_normal"
                 android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvEgrType"
@@ -106,7 +106,7 @@
                 android:textIsSelectable="true"
                 android:paddingStart="8dp"
 
-                android:textColor="@color/white"
+                android:textColor="@color/text_color_normal"
                 android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvEgrDirection"
@@ -121,7 +121,7 @@
                 android:minLines="2"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
-                android:textColor="@color/white"
+                android:textColor="@color/text_color_normal"
                 android:textIsSelectable="true"
                 android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -135,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="8dp"
                 android:paddingBottom="8dp"
-                android:textColor="@color/white"
+                android:textColor="@color/text_color_normal"
 
                 android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -152,7 +152,7 @@
                 android:paddingTop="8dp"
                 android:paddingStart="8dp"
                 android:textColor="@color/links_color"
-                android:text="Title"
+                android:text="@string/title"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/line" />
 
@@ -164,7 +164,7 @@
                 android:paddingStart="8dp"
                 android:paddingTop="8dp"
                 android:textColor="@color/links_color"
-                android:text="Personal information"
+                android:text="@string/personal_information"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvEgrName" />
 
@@ -176,7 +176,7 @@
                 android:paddingStart="8dp"
                 android:paddingTop="8dp"
                 android:textColor="@color/links_color"
-                android:text="Individual or Legal"
+                android:text="@string/individual_or_legal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvEgrFio" />
 
@@ -188,7 +188,7 @@
                 android:paddingStart="8dp"
                 android:paddingTop="8dp"
                 android:textColor="@color/links_color"
-                android:text="Direction of activity"
+                android:text="@string/direction_of_activity"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvEgrType" />
 
@@ -200,7 +200,7 @@
                 android:paddingStart="8dp"
                 android:paddingTop="8dp"
                 android:textColor="@color/links_color"
-                android:text="Personal number (UNP)"
+                android:text="@string/personal_number_unp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvEgrDirection" />
 
@@ -212,7 +212,7 @@
                 android:paddingStart="8dp"
                 android:paddingTop="8dp"
                 android:textColor="@color/links_color"
-                android:text="Address of company"
+                android:text="@string/address_of_company"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvEgrUnp" />
 
@@ -224,7 +224,7 @@
                 android:paddingStart="8dp"
                 android:paddingTop="8dp"
                 android:textColor="@color/links_color"
-                android:text="Status: Active, Liquidated, etc. "
+                android:text="@string/status_active_liquidated_etc"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvEgrAddress" />
         </androidx.constraintlayout.widget.ConstraintLayout>

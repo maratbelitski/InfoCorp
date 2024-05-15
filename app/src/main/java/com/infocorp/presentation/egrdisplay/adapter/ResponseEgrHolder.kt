@@ -25,7 +25,7 @@ class ResponseEgrHolder(private val binding: ItemResponseEgrFormaLayoutBinding) 
 
             val defaultValue = itemView.resources.getString(R.string.not_specified)
             val defaultColor = ContextCompat.getColor(itemView.context, R.color.unknown_text_color)
-            val normalColor = ContextCompat.getColor(itemView.context, R.color.white)
+            val normalColor = ContextCompat.getColor(itemView.context, R.color.text_color_normal)
 
             val name = responseEgr.titleCorp
             val fio = responseEgr.fioPerson

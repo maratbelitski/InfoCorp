@@ -37,10 +37,6 @@ class EgrViewModel @Inject constructor(
     val listDataEgr: LiveData<List<Data>>
         get() = _listDataEgr
 
-//    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
-//        throwable.printStackTrace()
-//    }
-
     fun getInfoEgrByName(titleCorp: String) {
         viewModelScope.launch(Dispatchers.IO) {
 

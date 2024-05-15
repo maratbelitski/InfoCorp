@@ -2,10 +2,22 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="white_light">#EEEFF3</color>
     <color name="red">#D50000</color>
     <color name="green">#1C9700</color>
     <color name="yellow">#FFD600</color>
     <color name="blue">#0183C8</color>
+
+    <color name="text_color_normal">#FFFFFFFF</color>
+
+    <color name="text_color_button">#FFFFFFFF</color>
+    <color name="text_color_button_custom">#FFFFFFFF</color>
+    <color name="background_color_button_custom">@color/black</color>
+
+    <color name="image_placeholder_color_normal">#FFFFFFFF</color>
+
+    <color name="bottom_menu_item_color_enable">#D50000</color>
+    <color name="bottom_menu_item_color_disable">#FFFFFFFF</color>
 
     <color name="shimmer_parent_color">#494949</color>
     <color name="shimmer_child_color">#8E8E8E</color>
