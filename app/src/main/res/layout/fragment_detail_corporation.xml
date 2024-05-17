@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/first_background_color"
-    android:padding="8dp"
+    android:padding="@dimen/normal_padding_size"
     tools:context=".presentation.detaildisplay.DetailCorporationFragment">
 
     <ScrollView
@@ -77,12 +77,9 @@
                 android:id="@+id/btnGoToAdditionally"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:backgroundTint="@color/red"
+                style="@style/MyStyle.ButtonNormal"
                 android:drawableEnd="@drawable/arrow_forward_additionally"
                 android:text="@string/to_additionally"
-                android:textColor="@color/text_color_button"
-                android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
         </LinearLayout>

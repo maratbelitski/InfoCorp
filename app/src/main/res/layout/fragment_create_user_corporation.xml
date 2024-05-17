@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:padding="@dimen/normal_padding_size">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,9 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:foreground="?attr/selectableItemBackground"
-            android:padding="8dp"
+            android:padding="@dimen/normal_padding_size"
             app:cardBackgroundColor="@color/second_background_color"
-            app:cardCornerRadius="12dp"
+            app:cardCornerRadius="@dimen/card_corners_radius"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/DescriptionCard"
@@ -28,7 +28,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingBottom="8dp">
+                android:paddingBottom="@dimen/normal_padding_size">
 
                 <View
                     android:id="@+id/view"
@@ -41,20 +41,17 @@
                     android:id="@+id/tvPosterText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_margin="8dp"
-                    android:background="@color/second_background_color"
+                    style="@style/MyStyle.TextViewEditTextTittle"
                     android:text="@string/poster"
-                    android:textColor="@color/links_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvResponseTitle" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/etPoster"
-                    style="@style/MyStyle.TextInputLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    style="@style/MyStyle.TextInputLayout"
                     app:startIconDrawable="@drawable/image"
                     app:startIconTint="@color/hint_text_color"
                     app:layout_constraintEnd_toEndOf="@+id/tvPosterText"
@@ -74,12 +71,8 @@
                     android:id="@+id/tvResponseTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/second_background_color"
-                    android:padding="8dp"
+                    style="@style/MyStyle.TextViewBig"
                     android:text="@string/create_new_corporation"
-                    android:textColor="@color/text_color_normal"
-                    android:textSize="@dimen/big_text_size"
-                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -87,15 +80,10 @@
                     android:id="@+id/tvTittleText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginTop="1dp"
-                    android:background="@color/second_background_color"
-
-                    android:paddingTop="8dp"
+                    style="@style/MyStyle.TextViewEditTextTittle"
                     android:text="@string/tittle"
-                    android:textColor="@color/links_color"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/etPoster"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/etPoster" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -121,13 +109,10 @@
                     android:id="@+id/tvDescriptionText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:background="@color/second_background_color"
-                    android:paddingTop="8dp"
+                    style="@style/MyStyle.TextViewEditTextTittle"
                     android:text="@string/description_search"
-                    android:textColor="@color/links_color"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/etTittle"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/etTittle" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -153,14 +138,10 @@
                     android:id="@+id/tvAddressText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-
-                    android:background="@color/second_background_color"
-                    android:paddingTop="8dp"
+                    style="@style/MyStyle.TextViewEditTextTittle"
                     android:text="@string/address_search"
-                    android:textColor="@color/links_color"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/etDescription"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/etDescription" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -186,13 +167,10 @@
                     android:id="@+id/tvPhonesText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:background="@color/second_background_color"
-                    android:paddingTop="8dp"
+                    style="@style/MyStyle.TextViewEditTextTittle"
                     android:text="@string/phones_search"
-                    android:textColor="@color/links_color"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/etAddress"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/etAddress" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -219,13 +197,10 @@
                     android:id="@+id/tvEmailText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:background="@color/second_background_color"
-                    android:paddingTop="8dp"
+                    style="@style/MyStyle.TextViewEditTextTittle"
                     android:text="@string/email_search"
-                    android:textColor="@color/links_color"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/etPhones"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/etPhones" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -252,13 +227,10 @@
                     android:id="@+id/tvWebsiteText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:background="@color/second_background_color"
-                    android:paddingTop="8dp"
+                    style="@style/MyStyle.TextViewEditTextTittle"
                     android:text="@string/website_search"
-                    android:textColor="@color/links_color"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/etEmail"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -285,11 +257,8 @@
                     android:id="@+id/btnCreate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:backgroundTint="@color/red"
+                    style="@style/MyStyle.ButtonNormal"
                     android:text="@string/create_btn"
-                    android:textSize="11sp"
-                    android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="@+id/etWebsite"
                     app:layout_constraintStart_toStartOf="@+id/etWebsite"
                     app:layout_constraintTop_toBottomOf="@+id/etWebsite" />
@@ -311,10 +280,9 @@
                     android:id="@+id/btnSend"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/red"
+                    android:layout_marginTop="0dp"
+                    style="@style/MyStyle.ButtonNormal"
                     android:text="@string/send_to_developer_btn"
-                    android:textColor="@color/white"
-                    android:textSize="11sp"
                     app:layout_constraintEnd_toEndOf="@+id/btnCreate"
                     app:layout_constraintStart_toStartOf="@+id/btnCreate"
                     app:layout_constraintTop_toBottomOf="@+id/tvSendText" />

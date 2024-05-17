@@ -1,6 +1,7 @@
 package com.infocorp.presentation.listdisplay
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -120,6 +121,7 @@ class ListCorporationsFragment : Fragment() {
         }
 
         fragmentViewModel.listFromLocalSource.observe(viewLifecycleOwner) {
+            Log.i("MyLog", "Количество фирм: ${it.size}")
             myAdapter.submitList(it)
         }
     }

@@ -14,7 +14,7 @@ import com.google.firebase.database.database
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.databinding.FragmentGeneralBinding
 import com.infocorp.presentation.MainActivity
-import com.infocorp.presentation.UpdateBottomMenu
+
 
 class GeneralFragment : Fragment() {
 
@@ -41,14 +41,18 @@ class GeneralFragment : Fragment() {
 
 
 
+        val databaseParent = Firebase.database.getReference("CORPORATION")
+//       пользовательская бд
+        val databaseChild = Firebase.database.getReference("USER_CORPORATION")
+
+//      удаление из пользовательской бд
+//     databaseParent.child("-Ny0Mf6qyYQ4PMnx6NDk").removeValue()
 
 
-//       val databaseChild = Firebase.database.getReference("USER_CORPORATION")
-//       val databaseParent = Firebase.database.getReference("CORPORATION")
-//      databaseParent.child("-NxdT6ZLh-traxEVFmK3").removeValue()
 
 
 
+//        сравнение из пользовательской бд  и добавление в основную
 //        databaseChild.addValueEventListener(object : ValueEventListener{
 //            override fun onDataChange(snapshot: DataSnapshot) {
 //                val response = snapshot.children
@@ -67,104 +71,186 @@ class GeneralFragment : Fragment() {
 
 //        val corp1 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "ROBOOOOOOO",
-//            poster = "http://belorussia.su/com_logo/1371724587logo1_big.jpg",
-//            description = "Robosoft LLC - успешная транснациональная компания, на рынке 7 лет, занимаемся предоставлением услуг по разработке и поддержке комплексных IT решений. Деятельность компании осуществляется параллельно в двух направлениях - системы GPS мониторинга и решения для финансовых рынков. Robosoft — это сплоченная команда единомышленников, нацеленных на  качественный результат. Наши сильные стороны - высокий профессионализм, интересные проекты, корпоративная культура и материальная забота о своих сотрудниках.",
-//            phones = "(056) 788-91-62",
-//            email = "hr@robosoft.info",
-//            website = "http://www.robosoft.info"
+//            name = "Аксофтбел",
+//            poster = "",
+//            description = "Аксофтбел, ООО Общество с ограниченной ответственностью Год основания: 2006 Количество сотрудников: 6 УНП: 190675852",
+//            address = "220040, г. Минск, ул. М. Богдановича, 155-1217а",
+//            phones = "(017)290-77-93",
+//            email = "info@axoft.by",
+//            website = "www.axoft.by"
 //        )
 //        databaseParent.push().setValue(corp1)
-
-
-
+//
 //        val corp2 = CorporationDto(
-//            idFirebase = database.key.toString(),
-//            name = "SaM Solutions Belarus",
-//            description = "SaM Solutions Belarus, ИЧУНПП. Иностранное предприятие. Год основания: 2001. Количество сотрудников: 340. УНП: 800008653",
-//            address = "220037, г. Минск, ул. Филимонова, 15",
-//            phones = "(017)309-17-09",
-//            email = "info@sam-solutions.net",
-//            website = "www.sam-solutions.ru"
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Активные технологии",
+//            poster = "",
+//            description = "Активные технологии, ЧУП Частное предприятие Год основания: 2004",
+//            address = "220121, г. Минск, ул. Притыцкого, 39, помещение 1н",
+//            phones = "(017)209-43-88",
+//            email = "",
+//            website = ""
 //        )
+//        databaseParent.push().setValue(corp2)
+//
 //        val corp3 = CorporationDto(
-//            idFirebase = database.key.toString(),
-//            name = "Seodev.by",
-//            poster = "http://belorussia.su/com_logo/1582409817logo1_big.jpg",
-//            description = "SEODEV.by – рекламное агентство, специализирующееся на SEO продвижении сайтов, контекстной рекламе в интернете, разработке сайтов, SMM-продвижении. Наша команда находится в Беларуси (Минск), однако мы сотрудничаем с компаниями по всему миру. У нас более 5 лет опыта в продвижении бизнеса, более 100 проектов по SEO, контекстной рекламе, SMM. Наши клиенты доверяют нашей экспертности!",
-//            address = "Минск, ул. Карла Либкнехта 66А, 220004",
-//            phones = "+375257778177",
-//            email = "info@seodev.by",
-//            website = "https://seodev.by"
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Алгоритм",
+//            poster = "",
+//description = "Алгоритм, ОДООбщество с дополнительной ответственностью Год основания: 1990 Количество сотрудников: 30 УНП: 500019969",
+//            address = "230023, г. Гродно, ул. Ленина, 13 (3 этаж)",
+//            phones = "(0152)77-00-40, 72-14-50, (029)781-47-98,  (029)332-26-00",
+//            email = "algo@mail.grodno.by",
+//            website = "www.algo.grodno.by"
 //        )
+//        databaseParent.push().setValue(corp3)
+//
+//
 //        val corp4 = CorporationDto(
-//            idFirebase = database.key.toString(),
-//            name = "Site Developer",
-//            poster = "http://belorussia.su/com_logo/1470327290logo1_big.jpg",
-//            description = "Разработка, продвижение, техническая поддержка и контекстная реклама Вашего WEB-Сайта. Мы - команда профессиональных дизайнеров, веб-программистов, маркетологов и СЕО-специалистов. Всегда рады придти на помощь в продвижении Вашего бизнеса",
-//            address = "г. Минск, Мележа, 1",
-//            phones = "+375-29 11-55-010, +375-33 629-64-56",
-//            email = "ip.senkevich@gmail.com",
-//            website = "http://sitedeveloper.by"
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Алгоритмы и системы",
+//            poster = "",
+//description = "Алгоритмы и системы, ЗАО Закрытое акционерное общество Год основания: 1995 Количество сотрудников: 2 УНП: 100967226",
+//            address = "220113, г. Минск, ул. Я. Коласа, 73-702",
+//            phones = "(017)262-81-36",
+//            email = "office@alsy.by",
+//            website = "www.alsy.by"
 //        )
+//        databaseParent.push().setValue(corp4)
+//
 //        val corp5 = CorporationDto(
-//            idFirebase = database.key.toString(),
-//            name = "SkySoft",
-//            poster = "http://belorussia.su/com_logo/1607188026logo1_big.jpg",
-//            description = "Занимаемся разработкой сайтов с индивидуальным дизайном и внедрением CRM",
-//            address = "Лещинского 8/5,оф 401",
-//            phones = "+375297678871",
-//            email = "info@sky-soft.su",
-//            website = "http://sky-soft.su"
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Альтграфик",
+//            poster = "",
+//description = "Альтграфик, ОДО Общество с дополнительной ответственностью Год основания: 1996 Количество сотрудников: 10 УНП: 190722293",
+//            address = "220040, г. Минск, ул. М. Богдановича, 155/8-114",
+//            phones = "(029)750-50-57, (029)384-84-35",
+//            email = "info@altgraphic.com",
+//            website = "www.altgraphic.com"
 //        )
+//        databaseParent.push().setValue(corp5)
+//
 //        val corp6 = CorporationDto(
-//            idFirebase = database.key.toString(),
-//            name = "Straut & Skobelev",
-//            poster = "http://belorussia.su/com_logo/1583509477logo1_big.jpg",
-//            description = "Делаем сайты и интернет магазины своим любимым заказчикам уже 3 года. Вы тоже можете стать нашим заказчиком, мы заказчиков любим, ценим и следим за их здоровьем в интернете&#128522.",
-//            address = "Минск, Куйбышева 22",
-//            phones = "+375 (25) 731-72-92",
-//            email = "connect@straut-skobelev.com",
-//            website = "https://straut-skobelev.com"
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Альфета системс",
+//            poster = "",
+//            description = "Альфета системс, ООООбщество с ограниченной ответственностью Год основания: 2007 Количество сотрудников: 10 УНП: 190804696",
+//            address = "220073, г. Минск, пер. 4-й Загородный, 58/б-24",
+//            phones = "(017)228-29-97, (029)635-80-34",
+//            email = "",
+//            website = ""
 //        )
+//        databaseParent.push().setValue(corp6)
+//
 //        val corp7 = CorporationDto(
-//            idFirebase = database.key.toString(),
-//            name = "VISUTECH SYSTEM LTD",
-//            phones = "+375445811316",
-//            email = "info@kksdc.com",
-//            website = "http://kksdc.com"
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Аналитик-Сервис",
+//            poster = "",
+//            description = "Аналитик-Сервис, УП Частное предприятие Год основания: 1991 Количество сотрудников: 11 УНП: 100041294",
+//            address = "220053, г. Минск, ул. Зацень, 27/а, а/я 163",
+//            phones = "(017)310-17-64, 310-17-65, (029)652-54-23, (029)767-86-49,  (029)368-30-50",
+//            email = "analitiks@mail.ru",
+//            website = ""
 //        )
+//        databaseParent.push().setValue(corp7)
+//
 //        val corp8 = CorporationDto(
-//            idFirebase = database.key.toString(),
-//            name = "Line-Landing",
-//            poster = "http://belorussia.su/com_logo/1528747232logo1_big.jpg",
-//            description = "Компания Line-Landing предлагает вам разработку и продвижение сайта.",
-//            address = "г. Гродно, ул. Мостовая 31, 3 этаж",
-//            phones = "+375 29 285 84 46",
-//            email = "line-xweb@gmail.com",
-//            website = "http://line-landing.by"
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Ананенко В. А.",
+//            poster = "",
+//description = "Ананенко В. А., ИП Предприниматель Год основания: 2007 Количество сотрудников: 1 УНП: 700194255",
+//            address = "212000, г. Могилев, ул. Бонч-Бруевича, 4/4",
+//            phones = "(0222)28-75-17",
+//            email = "",
+//            website = ""
 //        )
+//        databaseParent.push().setValue(corp8)
+//
 //        val corp9 = CorporationDto(
-//            idFirebase = database.key.toString(),
-//            name = "NEW LEVEL",
-//            poster = "http://belorussia.su/com_logo/1456847900logo1_big.jpg",
-//            description = "Студия продающих сайтов. Веб-студия  «NEW LEVEL» оказывает услуги по созданию и продвижению продающих сайтов. Превращая интернет – ресурс в эффективный бизнес-инструмент, наша команда создает уникальный адаптивный дизайн сайта, максимально удобный для пользователя функционал, а также проводит полную оптимизацию веб-ресурса. Мы работаем над созданием сайтов любой тематики, сложности и оптимизируем их под  различный формат экрана. Хотите получить быстрый  продающий веб-ресурс? Обращайтесь к нам. Мы знаем все секреты продающих сайтов.",
-//            address = "г. Брест ул. Ясеневая 8/1",
-//            phones = "+375295208595",
-//            email = "info@new-level.by",
-//            website = "http://new-level.by"
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Андерсан",
+//            poster = "",
+//description = "Андерсан, ООО Общество с ограниченной ответственностью Год основания: 2007 Количество сотрудников: 15",
+//            address = "220030, г. Минск, ул. Первомайская, 14-316",
+//            phones = "(029)755-21-23",
+//            email = "info@andersensoft.by",
+//            website = "http://andersensoft.com"
 //        )
+//        databaseParent.push().setValue(corp9)
+//
 //        val corp10 = CorporationDto(
-//            idFirebase = database.key.toString(),
-//            name = "OmegaSoftware (Омегасофтвер)",
-//            description = "OmegaSoftware GmbH (Омегасофтвер), ИПИностранное предприятие. Год основания: 1992. Количество сотрудников: 72. УНП: 101179436",
-//            address = "220123, г. Минск, ул. В. Хоружей, 29-55",
-//            phones = "(017)334-42-62-рук., 334-41-21, 334-42-73",
-//            email = "omega@omegasoftware.eu",
-//            website = "www.omegasoftware.ru"
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Анкуда Д. О.",
+//            poster = "",
+//description = "Анкуда Д. О., ИП Предприниматель Год основания: 2009 Количество сотрудников: 1 УНП: 690573792",
+//            address = "220104, г. Минск, ул. Глебки, 58-165",
+//            phones = "(017)255-65-71",
+//            email = "",
+//            website = ""
 //        )
+//        databaseParent.push().setValue(corp10)
+//
+//        val corp11 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Антерра",
+//            poster = "",
+//description = "Антерра, ООО Общество с дополнительной ответственностью Год основания: 2010 Количество сотрудников: 2 УНП: 690798998",
+//            address = "222160, Минская обл., г. Жодино, ул. Кузнечная, 16",
+//            phones = "(044)797-14-24",
+//            email = "manager@inrb.by",
+//            website = ""
+//        )
+//        databaseParent.push().setValue(corp11)
+//
+//        val corp12 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Аргеон",
+//            poster = "",
+//description = "Аргеон, НП ООО Общество с ограниченной ответственностью Год основания: 1994 Количество сотрудников: 12 УНП: 100694744",
+//            address = "220012, г. Минск, ул. Сурганова, 2/в-24",
+//            phones = "",
+//            email = "argeon@tut.by",
+//            website = "www.argeon.org"
+//        )
+//        databaseParent.push().setValue(corp12)
+//
+//        val corp13 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "АРЛЕС",
+//            poster = "http://belorussia.su/com_logo/1374255452logo1_big.jpg",
+//description = "АРЛЕС – это белорусское Интернет-агентство сделавшее свой первый проект еще в 2005 году, которое само того не ожидая, в один прекрасный день, стало международным. Мы начали создавать проекты для Российского рынка для Европы и для Америки. Мы открытый и надежный партнер в океане бизнеса. За правило мы взяли следующие слова: НАШ собственный успех прямопропорционален (напрямую зависит от) Успеху наших клиентов",
+//            address = "Республика Беларусь, 220034, г. Минск, ул. Зм. Бядули, д. 15, комн. 107",
+//            phones = "+375 (29) 2993993, +375 (44) 7993993",
+//            email = "",
+//            website = "http://www.arles.by"
+//        )
+//        databaseParent.push().setValue(corp13)
+//
+//        val corp14 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Атлас Софт",
+//            poster = "",
+//description = "Атлас Софт, ООО Общество с ограниченной ответственностью Год основания: 2008 Количество сотрудников: 13 УНП: 191052841",
+//            address = "220004, г. Минск, ул. Мельникайте, 4-406",
+//            phones = "",
+//            email = "j.masay@atlassoft.by",
+//            website = ""
+//        )
+//        databaseParent.push().setValue(corp14)
+//
+//        val corp15 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Б Софт Лаборатория",
+//            poster = "",
+//description = "Б Софт Лаборатория, ЗАО Закрытое акционерное общество Год основания: 2003 УНП: 190491117",
+//            address = "220007, г. Минск, ул. Московская, 18-327",
+//            phones = "",
+//            email = "amir@belsoft.by",
+//            website = ""
+//        )
+//        databaseParent.push().setValue(corp15)
+  }
 
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

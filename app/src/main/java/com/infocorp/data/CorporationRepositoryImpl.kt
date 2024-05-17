@@ -22,6 +22,8 @@ import com.infocorp.domain.model.Data
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -38,13 +40,15 @@ class CorporationRepositoryImpl @Inject constructor(
         private const val FIRE_BASE_GENERAL = "CORPORATION"
     }
 
-    private val firebaseReference by  lazy {
+    private val firebaseReference by lazy {
         firebase.database.getReference(FIRE_BASE_GENERAL)
     }
 
     private fun insertDataInLocalDataBase(corpDto: CorporationDto) {
         daoCorp.addOneCorpInDataBase(corpDto)
+
     }
+
     fun clearLocalDataBase() {
         daoCorp.clearCorporationsTable()
     }
@@ -92,10 +96,11 @@ class CorporationRepositoryImpl @Inject constructor(
                             for (value in listIdOldCorps) {
                                 if (value == corpDtoWithChildId.id) {
                                     corpDtoWithChildId.isNew = false
-                                   // corpDtoWithChildId.isFavourite = false
                                 }
                             }
+
                             insertDataInLocalDataBase(corpDtoWithChildId)
+
                         }
                     }
                 }

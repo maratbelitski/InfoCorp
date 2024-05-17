@@ -10,9 +10,9 @@
     <string name="tools_description">Компания «Альфа» предлагает Вашему вниманию весь , </string>
     <string name="not_specified">Не указано</string>
     <string name="to_additionally">Дополнительно</string>
-    <string name="search_by_name_text">Выполняйте поиск информации о компании по названию в Интернете с помощью вашего браузера</string>
+    <string name="search_by_name_text">Выполняйте поиск информации по названию компании в интернете с помощью вашего браузера</string>
     <string name="go">Перейти</string>
-    <string name="search__location_by_address">Найдите местоположение корпорации по ее адресу с помощью Google Maps</string>
+    <string name="search__location_by_address">Найдите местоположение компании по ее адресу с помощью Google Maps</string>
     <string name="to_general">Главное</string>
     <string name="search_on_the_egr">Поиск в ЕГР</string>
     <string name="egr_text">Единый государственный реестр юридических лиц и индивидуальных предпринимателей - это общенациональная система, созданная для регистрации юридических лиц и индивидуальных предпринимателей, зарегистрированных в Беларуси, и обеспечения доступа к информации о них.</string>
@@ -27,9 +27,9 @@
     <string name="response_usr_egr">Ответ из ЕГР</string>
     <string name="input_name_corp">Введите название</string>
     <string name="user_corporations">Организации пользователя</string>
-    <string name="a_list_of_your_custom">Список ваших пользовательских корпораций. Корпорации, которые вы создали, и информация о корпорациях, которые вы изменили.</string>
-    <string name="create_your_corporation">Здесь вы можете создать свою собственную корпорацию и отправить информацию в общую базу данных.</string>
-    <string name="change_info_corporation">Здесь вы можете отредактировать/изменить информацию о корпорации и отправить ее в общую базу данных.</string>
+    <string name="a_list_of_your_custom">Список ваших пользовательских компаний. Компании, которые вы создали, и информация о компаниях, которые вы изменили.</string>
+    <string name="create_your_corporation">Здесь вы можете создать свою собственную компанию и отправить информацию в общую базу данных.</string>
+    <string name="change_info_corporation">Здесь вы можете отредактировать/изменить информацию о компании и отправить ее в общую базу данных.</string>
     <string name="create">Создайте свою организацию</string>
     <string name="edit_information">Отредактировать данные</string>
     <string name="send_the_data">Если вы хотите, чтобы данные об этой компании были включены в общую базу данных, отправьте их разработчику</string>

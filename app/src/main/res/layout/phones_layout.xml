@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView android:id="@+id/phonesCard"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="24dp"
-    app:cardBackgroundColor="@color/second_background_color"
-    app:cardCornerRadius="12dp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
+<androidx.cardview.widget.CardView
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/phonesCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/big_margin_size"
+    app:cardBackgroundColor="@color/second_background_color"
+    app:cardCornerRadius="@dimen/card_corners_radius"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,7 +19,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="@dimen/normal_margin_size"
             android:src="@drawable/phone"
             app:layout_constraintBottom_toBottomOf="@+id/phones"
             app:layout_constraintEnd_toEndOf="parent"
@@ -35,12 +36,8 @@
             android:id="@+id/phones"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/second_background_color"
-            android:padding="8dp"
+            style="@style/MyStyle.TextViewBig"
             android:text="@string/phones"
-            android:textColor="@color/text_color_normal"
-            android:textSize="@dimen/big_text_size"
-            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,13 +45,9 @@
             android:id="@+id/tvPhonesCorp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            style="@style/MyStyle.TextViewNormal"
             android:layout_marginTop="1dp"
             android:autoLink="phone"
-            android:background="@color/second_background_color"
-            android:padding="8dp"
-            android:paddingBottom="8dp"
-            android:textColor="@color/text_color_normal"
             android:textColorLink="@color/links_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/phones"

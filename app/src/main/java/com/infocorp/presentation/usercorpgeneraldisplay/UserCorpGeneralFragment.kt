@@ -1,5 +1,6 @@
 package com.infocorp.presentation.usercorpgeneraldisplay
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -25,12 +26,19 @@ class UserCorpGeneralFragment : Fragment() {
 
     private val fragmentViewModel: UserCorpGeneralFragmentViewModel by viewModels()
 
-    private val updateStateBottomMenu by lazy {
-        activity as MainActivity
-    }
+//    private val updateStateBottomMenu by lazy {
+//        activity as MainActivity
+//    }
 
     private val defaultCorp by lazy {
         Corporation()
+    }
+
+    private var updateStateBottomMenu: (() -> Unit)? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        updateStateBottomMenu = { (activity as MainActivity).disableBottomMenu() }
     }
 
     override fun onCreateView(
@@ -52,7 +60,8 @@ class UserCorpGeneralFragment : Fragment() {
     private fun onObservers() {
         fragmentViewModel.disableBottomNavigation.observe(viewLifecycleOwner) {
             if (it) {
-                updateStateBottomMenu.disableBottomMenu()
+                // updateStateBottomMenu.disableBottomMenu()
+                updateStateBottomMenu?.invoke()
             }
         }
     }

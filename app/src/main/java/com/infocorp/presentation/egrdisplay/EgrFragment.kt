@@ -33,6 +33,9 @@ class EgrFragment : Fragment() {
     private val myAdapter by lazy {
         ResponseEgrAdapter()
     }
+    private val myHelper by lazy {
+        PagerSnapHelper()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,7 +63,12 @@ class EgrFragment : Fragment() {
 
     private fun onObservers() {
         fragmentViewModel.listDataEgr.observe(viewLifecycleOwner) {
-            if (it.isEmpty()) { Toast.makeText(requireContext(), "Response is empty. Check your enter data", Toast.LENGTH_SHORT).show()
+            if (it.isEmpty()) {
+                Toast.makeText(
+                    requireContext(),
+                    "Response is empty. Check your enter data",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
             myAdapter.submitList(it)
         }
@@ -106,8 +114,7 @@ class EgrFragment : Fragment() {
 
     private fun initViews() {
         binding.recycler.adapter = myAdapter
-        // val helper = PagerSnapHelper()
-        // helper.attachToRecyclerView(binding.recycler)
+        myHelper.attachToRecyclerView(binding.recycler)
     }
 
     override fun onDestroy() {

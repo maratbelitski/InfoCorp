@@ -1,11 +1,13 @@
 package com.infocorp.presentation.listusercorporations
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -17,11 +19,13 @@ import com.infocorp.presentation.MainActivity
 import com.infocorp.presentation.listdisplay.ListCorporationsFragmentDirections
 import com.infocorp.presentation.listdisplay.adapter.CorporationAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ListUserCorporationsFragment : Fragment() {
     private var _binding: FragmentListUserCorporationsBinding? = null
-    private val binding:  FragmentListUserCorporationsBinding
+    private val binding: FragmentListUserCorporationsBinding
         get() = _binding ?: throw Exception()
 
     private val fragmentViewModel: ListUserCorporationsFragmentViewModel by viewModels()
@@ -37,7 +41,7 @@ class ListUserCorporationsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding =  FragmentListUserCorporationsBinding.inflate(layoutInflater)
+        _binding = FragmentListUserCorporationsBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -64,7 +68,8 @@ class ListUserCorporationsFragment : Fragment() {
             myAdapter.submitList(it)
         }
 
-        fragmentViewModel.disableBottomNavigation.observe(viewLifecycleOwner){
+
+        fragmentViewModel.disableBottomNavigation.observe(viewLifecycleOwner) {
             if (it) updateStateBottomMenu.disableBottomMenu()
         }
     }
@@ -93,6 +98,7 @@ class ListUserCorporationsFragment : Fragment() {
     private fun initViews() {
         binding.recycler.adapter = myAdapter
     }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

@@ -11,6 +11,7 @@ import com.infocorp.domain.usecases.usercorporation.RemoveCorpFromUserDataBaseUs
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -18,9 +19,10 @@ class ListUserCorporationsFragmentViewModel @Inject constructor(
     private val downloadDataFromDatabase: DownloadDataFromDataBaseUseCase,
     private val removeCorpFromUserDataBase: RemoveCorpFromUserDataBaseUseCase
 ):ViewModel() {
-    val listFromLocalSource by lazy {
+    val listFromLocalSource  by lazy {
         downloadDataFromDatabase.invoke()
     }
+
 
     private var _disableBottomNavigation = MutableLiveData(true)
     val disableBottomNavigation: LiveData<Boolean>

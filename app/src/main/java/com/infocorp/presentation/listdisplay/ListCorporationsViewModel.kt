@@ -71,7 +71,7 @@ class ListCorporationsViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
 
             downloadDataFromFirebase.invoke()
-            delay(1000)
+            delay(1500)
             showShimmer.postValue(false)
         }
     }

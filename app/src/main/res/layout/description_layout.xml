@@ -3,9 +3,9 @@
     android:id="@+id/DescriptionCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="24dp"
-    app:cardBackgroundColor="@color/red"
-    app:cardCornerRadius="12dp"
+    android:layout_marginTop="@dimen/big_margin_size"
+    app:cardCornerRadius="@dimen/card_corners_radius"
+    app:cardBackgroundColor="@color/second_background_color"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     xmlns:tools="http://schemas.android.com/tools"
@@ -16,17 +16,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/description"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/second_background_color"
-            android:padding="8dp"
+            style="@style/MyStyle.TextViewBig"
             android:text="@string/description"
-            android:textColor="@color/text_color_normal"
-            android:textSize="@dimen/big_text_size"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,20 +34,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/description" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/red"
+            app:layout_constraintTop_toBottomOf="@+id/description" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvDescriptionCorp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
             android:layout_marginTop="1dp"
-            android:background="@color/second_background_color"
-            android:padding="8dp"
-            android:paddingBottom="8dp"
-            android:textColor="@color/text_color_normal"
-            android:textIsSelectable="true"
+            style="@style/MyStyle.TextViewNormal"
+            tools:text="@string/tools_description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/description"
-            app:layout_constraintTop_toBottomOf="@+id/description"
-            tools:text="@string/tools_description" />
+            app:layout_constraintTop_toBottomOf="@+id/description"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

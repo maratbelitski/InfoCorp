@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="big_text_size">16sp</dimen>
+    <dimen name="normal_text_size">14sp</dimen>
+    <dimen name="min_text_size">11sp</dimen>
 
     <dimen name="normal_padding_size">8dp</dimen>
+    <dimen name="min_padding_size">4dp</dimen>
+
+    <dimen name="big_margin_size">24dp</dimen>
+    <dimen name="normal_margin_size">8dp</dimen>
+    <dimen name="normal_extra_margin_size">16dp</dimen>
+    <dimen name="min_margin_size">4dp</dimen>
+
+
+    <dimen name="card_corners_radius">12dp</dimen>
+
+
 </resources>

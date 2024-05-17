@@ -10,20 +10,20 @@
         android:layout_height="wrap_content"
         android:foreground="?attr/selectableItemBackground"
         app:cardBackgroundColor="@color/second_background_color"
-        app:cardCornerRadius="12dp"
+        app:cardCornerRadius="@dimen/card_corners_radius"
         app:cardElevation="1dp"
         app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="4dp">
+            android:padding="@dimen/min_padding_size">
 
             <ImageView
                 android:id="@+id/ivPoster"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
+                android:layout_margin="@dimen/min_margin_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -33,7 +33,7 @@
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="@dimen/normal_extra_margin_size"
                 android:textColor="@color/text_color_normal"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/tvDirection"

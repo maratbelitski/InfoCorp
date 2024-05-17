@@ -14,7 +14,6 @@ import com.infocorp.R
 import com.infocorp.databinding.FragmentAdditionallyBinding
 import com.infocorp.domain.model.Corporation
 import com.infocorp.presentation.MainActivity
-import com.infocorp.presentation.UpdateBottomMenu
 
 
 class AdditionallyFragment : Fragment() {

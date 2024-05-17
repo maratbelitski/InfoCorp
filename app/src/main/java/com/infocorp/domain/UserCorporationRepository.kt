@@ -9,5 +9,5 @@ interface UserCorporationRepository {
     fun sendUserCorporation(userCorp:UserCorporationDto)
     fun addUserCorporationToDataBase(userCorp: UserCorporationDto)
     fun removeCorpFromUserDataBase(userCorp: Corporation)
-    fun downloadAllCorporations(): LiveData<List<Corporation>>
+   fun downloadAllCorporations(): LiveData<List<Corporation>>
 }

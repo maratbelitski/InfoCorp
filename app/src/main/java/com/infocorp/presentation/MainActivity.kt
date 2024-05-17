@@ -9,10 +9,11 @@ import androidx.navigation.ui.setupWithNavController
 
 import com.infocorp.R
 import com.infocorp.databinding.ActivityMainBinding
+import com.infocorp.presentation.usercorpgeneraldisplay.UserCorpGeneralFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), UpdateBottomMenu {
+class MainActivity : AppCompatActivity(){
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -46,11 +47,11 @@ class MainActivity : AppCompatActivity(), UpdateBottomMenu {
         binding.bottomMenu.setupWithNavController(navController)
     }
 
-    override fun disableBottomMenu() {
+    fun disableBottomMenu() {
         binding.coordinatorLayout.visibility = View.GONE
     }
 
-    override fun enableBottomMenu() {
+    fun enableBottomMenu() {
         binding.coordinatorLayout.visibility = View.VISIBLE
         //binding.bottomMenu.menu.getItem(0).isChecked = true
     }

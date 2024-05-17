@@ -22,12 +22,4 @@ interface UserCorporationDao {
 
     @Delete
     fun removeCorpFromDataBase(corporation: UserCorporationDto)
-//    @Query("UPDATE corporationsTable SET isFavourite=:isFavourite WHERE id =:id")
-//    fun updateFavorite(id: String, isFavourite: Boolean)
-//
-//    @Query("UPDATE corporationsTable SET isNew=:isNew WHERE id =:id")
-//    fun updateNew(id: String, isNew: Boolean)
-//
-//    @Query("DELETE FROM corporationsTable")
-//    fun clearCorporationsTable()
 }
