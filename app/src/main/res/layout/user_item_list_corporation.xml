@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:foreground="?attr/selectableItemBackground"
         app:cardBackgroundColor="@color/second_background_color"
-        app:cardCornerRadius="12dp"
+        app:cardCornerRadius="@dimen/card_corners_radius"
         app:cardElevation="1dp"
         app:cardUseCompatPadding="true">
 
@@ -37,12 +37,12 @@
 
             <TextView
                 android:id="@+id/tvName"
-                android:layout_width="wrap_content"
+                style="@style/MyStyle.TextViewItemTittle"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:textColor="@color/text_color_normal"
-                android:textStyle="bold"
+                android:maxLines="2"
                 app:layout_constraintBottom_toTopOf="@+id/tvDirection"
+                app:layout_constraintEnd_toStartOf="@+id/ivArrow"
                 app:layout_constraintStart_toEndOf="@+id/ivPoster"
                 app:layout_constraintTop_toTopOf="@id/ivPoster"
                 app:layout_constraintVertical_chainStyle="packed"
@@ -62,7 +62,7 @@
                 android:id="@+id/ivArrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="@dimen/normal_margin_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -80,13 +80,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingStart="4dp"
-                    android:paddingEnd="4dp"
-                    android:paddingBottom="4dp"
-                    android:text="@string/user_corp"
-                    android:textColor="@color/white"
-                    android:textSize="11sp" />
+                    style="@style/MyStyle.TextViewBanner"
+                    android:text="@string/user_corp" />
             </androidx.cardview.widget.CardView>
 
             <View

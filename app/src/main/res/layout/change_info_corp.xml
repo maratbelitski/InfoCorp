@@ -37,6 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
+            android:textIsSelectable="false"
             style="@style/MyStyle.TextViewNormal"
             android:text="@string/change_info_corporation"
             app:layout_constraintEnd_toEndOf="parent"

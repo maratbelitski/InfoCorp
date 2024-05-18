@@ -31,12 +31,12 @@
 
             <TextView
                 android:id="@+id/tvName"
-                android:layout_width="wrap_content"
+                style="@style/MyStyle.TextViewItemTittle"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/normal_extra_margin_size"
-                android:textColor="@color/text_color_normal"
-                android:textStyle="bold"
+                android:maxLines="2"
                 app:layout_constraintBottom_toTopOf="@+id/tvDirection"
+                app:layout_constraintEnd_toStartOf="@+id/ivArrow"
                 app:layout_constraintStart_toEndOf="@+id/ivPoster"
                 app:layout_constraintTop_toTopOf="@+id/ivPoster"
                 app:layout_constraintVertical_chainStyle="spread"

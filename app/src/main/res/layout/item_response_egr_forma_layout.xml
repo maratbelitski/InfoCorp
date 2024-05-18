@@ -10,9 +10,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/egr"
         android:layout_width="match_parent"
+        android:layout_height="400dp"
         android:minWidth="300dp"
-        android:layout_height="wrap_content"
-        android:foregroundGravity="center"
         app:cardBackgroundColor="@color/second_background_color"
         app:cardCornerRadius="@dimen/card_corners_radius"
         app:cardUseCompatPadding="true">
@@ -44,7 +43,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textIsSelectable="true"
-                android:minLines="3"
+                android:maxLines="3"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 android:textColor="@color/text_color_normal"
@@ -86,7 +85,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textIsSelectable="true"
-                android:minLines="3"
+                android:maxLines="3"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 android:textColor="@color/text_color_normal"
@@ -114,8 +113,7 @@
                 android:id="@+id/tvEgrAddress"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-
-                android:minLines="3"
+                android:maxLines="3"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 android:textColor="@color/text_color_normal"
@@ -134,9 +132,8 @@
                 android:paddingBottom="8dp"
                 android:textColor="@color/text_color_normal"
                 android:textSize="11sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/status"
                 app:layout_constraintTop_toBottomOf="@+id/status"
                 tools:text="Status" />
 
@@ -216,11 +213,11 @@
                 android:id="@+id/status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="11sp"
                 android:paddingStart="8dp"
                 android:paddingTop="8dp"
-                android:textColor="@color/links_color"
                 android:text="@string/status_active_liquidated_etc"
+                android:textColor="@color/links_color"
+                android:textSize="11sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvEgrAddress" />
         </androidx.constraintlayout.widget.ConstraintLayout>

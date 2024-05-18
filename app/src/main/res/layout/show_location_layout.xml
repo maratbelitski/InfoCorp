@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/location"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="24dp"
+    android:layout_marginTop="@dimen/big_margin_size"
     android:foreground="?attr/selectableItemBackground"
     app:cardBackgroundColor="@color/second_background_color"
-    app:cardCornerRadius="12dp"
+    app:cardCornerRadius="@dimen/card_corners_radius"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/DescriptionCard">
@@ -29,12 +30,8 @@
             android:id="@+id/tvResponseTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/second_background_color"
-            android:padding="8dp"
+            style="@style/MyStyle.TextViewBig"
             android:text="@string/show_location"
-            android:textColor="@color/text_color_normal"
-            android:textSize="@dimen/big_text_size"
-            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,13 +39,10 @@
             android:id="@+id/tvLocationText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
             android:layout_marginTop="1dp"
-            android:background="@color/second_background_color"
-            android:padding="8dp"
-            android:paddingBottom="8dp"
+            android:textIsSelectable="false"
+            style="@style/MyStyle.TextViewNormal"
             android:text="@string/search__location_by_address"
-            android:textColor="@color/text_color_normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tvResponseTitle"
             app:layout_constraintTop_toBottomOf="@+id/tvResponseTitle" />

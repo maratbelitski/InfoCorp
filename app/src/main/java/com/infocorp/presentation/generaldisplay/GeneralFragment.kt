@@ -67,27 +67,27 @@ class GeneralFragment : Fragment() {
 //            override fun onCancelled(error: DatabaseError) { TODO() }
 //        })
 
-
-
+//
+//
 //        val corp1 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Аксофтбел",
+//            name = "Балашов Ю.В",
 //            poster = "",
-//            description = "Аксофтбел, ООО Общество с ограниченной ответственностью Год основания: 2006 Количество сотрудников: 6 УНП: 190675852",
-//            address = "220040, г. Минск, ул. М. Богдановича, 155-1217а",
-//            phones = "(017)290-77-93",
-//            email = "info@axoft.by",
-//            website = "www.axoft.by"
+//description = "Балашов Ю. В., ИП Предприниматель Год основания: 2005 Количество сотрудников: 1",
+//            address = "231400, Гродненская обл., г. Новогрудок, ул. Булгака, 21",
+//            phones = "(029)634-11-60",
+//            email = "",
+//            website = ""
 //        )
 //        databaseParent.push().setValue(corp1)
-//
+////
 //        val corp2 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Активные технологии",
+//            name = "Белабат",
 //            poster = "",
-//            description = "Активные технологии, ЧУП Частное предприятие Год основания: 2004",
-//            address = "220121, г. Минск, ул. Притыцкого, 39, помещение 1н",
-//            phones = "(017)209-43-88",
+//            description = "Белабат, СООО Общество с ограниченной ответственностью Год основания: 2004 Количество сотрудников: 21 УНП: 190549007",
+//            address = "220012, г. Минск, пер. Калининградский, 8-2",
+//            phones = "",
 //            email = "",
 //            website = ""
 //        )
@@ -95,72 +95,72 @@ class GeneralFragment : Fragment() {
 //
 //        val corp3 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Алгоритм",
+//            name = "Белаис",
 //            poster = "",
-//description = "Алгоритм, ОДООбщество с дополнительной ответственностью Год основания: 1990 Количество сотрудников: 30 УНП: 500019969",
-//            address = "230023, г. Гродно, ул. Ленина, 13 (3 этаж)",
-//            phones = "(0152)77-00-40, 72-14-50, (029)781-47-98,  (029)332-26-00",
-//            email = "algo@mail.grodno.by",
-//            website = "www.algo.grodno.by"
+//description = "Белаис, ООО Общество с ограниченной ответственностью Год основания: 2008 Количество сотрудников: 8 УНП: 190851152",
+//            address = "220090, г. Минск, Логойский тракт, 22-2303",
+//            phones = "",
+//            email = "vi@belais.by",
+//            website = ""
 //        )
 //        databaseParent.push().setValue(corp3)
 //
 //
 //        val corp4 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Алгоритмы и системы",
+//            name = "БелАсусИнК",
 //            poster = "",
-//description = "Алгоритмы и системы, ЗАО Закрытое акционерное общество Год основания: 1995 Количество сотрудников: 2 УНП: 100967226",
-//            address = "220113, г. Минск, ул. Я. Коласа, 73-702",
-//            phones = "(017)262-81-36",
-//            email = "office@alsy.by",
-//            website = "www.alsy.by"
+//description = "БелАсусИнК, СООО Общество с ограниченной ответственностью Год основания: 2005 Количество сотрудников: 4 УНП: 390353758",
+//            address = "211440, Витебская обл., г. Новополоцк, ул. Юбилейная, 2/а-323",
+//            phones = "(0214)59-43-91, (029)397-39-73",
+//            email = "office@belasusinc.com",
+//            website = "www.belasusinc.com"
 //        )
 //        databaseParent.push().setValue(corp4)
 //
 //        val corp5 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Альтграфик",
+//            name = "БелДТС",
 //            poster = "",
-//description = "Альтграфик, ОДО Общество с дополнительной ответственностью Год основания: 1996 Количество сотрудников: 10 УНП: 190722293",
-//            address = "220040, г. Минск, ул. М. Богдановича, 155/8-114",
-//            phones = "(029)750-50-57, (029)384-84-35",
-//            email = "info@altgraphic.com",
-//            website = "www.altgraphic.com"
+//description = "БелДТС, СООО Общество с ограниченной ответственностью Год основания: 2000 Количество сотрудников: 15 УНП: 800002099",
+//            address = "220073, г. Минск, ул. Ольшевского, 22-15",
+//            phones = "",
+//            email = "contact@beldts.de",
+//            website = ""
 //        )
 //        databaseParent.push().setValue(corp5)
 //
 //        val corp6 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Альфета системс",
+//            name = "Белинвестлес",
 //            poster = "",
-//            description = "Альфета системс, ООООбщество с ограниченной ответственностью Год основания: 2007 Количество сотрудников: 10 УНП: 190804696",
-//            address = "220073, г. Минск, пер. 4-й Загородный, 58/б-24",
-//            phones = "(017)228-29-97, (029)635-80-34",
-//            email = "",
+//            description = "Белинвестлес, ОДО Общество с дополнительной ответственностью Год основания: 2000 Количество сотрудников: 10 УНП: 100133857",
+//            address = "220015, г. Минск, ул. Гурского, 32-410",
+//            phones = "",
+//            email = "belinvestles@tut.by",
 //            website = ""
 //        )
 //        databaseParent.push().setValue(corp6)
 //
 //        val corp7 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Аналитик-Сервис",
+//            name = "БелИнфоСфера",
 //            poster = "",
-//            description = "Аналитик-Сервис, УП Частное предприятие Год основания: 1991 Количество сотрудников: 11 УНП: 100041294",
-//            address = "220053, г. Минск, ул. Зацень, 27/а, а/я 163",
-//            phones = "(017)310-17-64, 310-17-65, (029)652-54-23, (029)767-86-49,  (029)368-30-50",
-//            email = "analitiks@mail.ru",
+//            description = "БелИнфоСфера, ЧУП Частное предприятие Год основания: 2007 Количество сотрудников: 5",
+//            address = "213809, Могилевская обл., г. Бобруйск, ул. Чонгарская, 98-33",
+//            phones = "(0225)44-55-40",
+//            email = "belinfosfera@tut.by",
 //            website = ""
 //        )
 //        databaseParent.push().setValue(corp7)
 //
 //        val corp8 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Ананенко В. А.",
+//            name = "Белитсофт",
 //            poster = "",
-//description = "Ананенко В. А., ИП Предприниматель Год основания: 2007 Количество сотрудников: 1 УНП: 700194255",
-//            address = "212000, г. Могилев, ул. Бонч-Бруевича, 4/4",
-//            phones = "(0222)28-75-17",
+//description = "Белитсофт, ООО Общество с ограниченной ответственностью Год основания: 2008 Количество сотрудников: 60",
+//            address = "220037, г. Минск, пер. Козлова, 7, помещение 18",
+//            phones = "(029)875-55-85",
 //            email = "",
 //            website = ""
 //        )
@@ -168,28 +168,28 @@ class GeneralFragment : Fragment() {
 //
 //        val corp9 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Андерсан",
+//            name = "Белорусский дорожный инженерно-технический центр",
 //            poster = "",
-//description = "Андерсан, ООО Общество с ограниченной ответственностью Год основания: 2007 Количество сотрудников: 15",
-//            address = "220030, г. Минск, ул. Первомайская, 14-316",
-//            phones = "(029)755-21-23",
-//            email = "info@andersensoft.by",
-//            website = "http://andersensoft.com"
+//description = "Белорусский дорожный инженерно-технический центр, РУП Государственное предприятие Год основания: 1987 Количество сотрудников: 600 УНП: 190638734",
+//            address = "220036, г. Минск, пер. Домашевский, 11",
+//            phones = "(017)208-67-78, 208-80-00, 259-76-02,  259-76-25, 259-78-25,  259-76-18",
+//            email = "office@bdcmtk.by",
+//            website = "www.beldor.centr.by"
 //        )
 //        databaseParent.push().setValue(corp9)
-//
+////
 //        val corp10 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Анкуда Д. О.",
+//            name = "Белприминвест",
 //            poster = "",
-//description = "Анкуда Д. О., ИП Предприниматель Год основания: 2009 Количество сотрудников: 1 УНП: 690573792",
-//            address = "220104, г. Минск, ул. Глебки, 58-165",
-//            phones = "(017)255-65-71",
-//            email = "",
+//description = "Белприминвест, ООО Общество с ограниченной ответственностью Год основания: 2008 Количество сотрудников: 12 УНП: 191040331",
+//            address = "220113, Минск, ул. Мележа 1-718",
+//            phones = "",
+//            email = "shop@bigshop.by",
 //            website = ""
 //        )
 //        databaseParent.push().setValue(corp10)
-//
+////
 //        val corp11 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
 //            name = "Антерра",
@@ -201,51 +201,51 @@ class GeneralFragment : Fragment() {
 //            website = ""
 //        )
 //        databaseParent.push().setValue(corp11)
-//
+////
 //        val corp12 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Аргеон",
+//            name = "Белсек",
 //            poster = "",
-//description = "Аргеон, НП ООО Общество с ограниченной ответственностью Год основания: 1994 Количество сотрудников: 12 УНП: 100694744",
-//            address = "220012, г. Минск, ул. Сурганова, 2/в-24",
-//            phones = "",
-//            email = "argeon@tut.by",
-//            website = "www.argeon.org"
-//        )
-//        databaseParent.push().setValue(corp12)
-//
-//        val corp13 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "АРЛЕС",
-//            poster = "http://belorussia.su/com_logo/1374255452logo1_big.jpg",
-//description = "АРЛЕС – это белорусское Интернет-агентство сделавшее свой первый проект еще в 2005 году, которое само того не ожидая, в один прекрасный день, стало международным. Мы начали создавать проекты для Российского рынка для Европы и для Америки. Мы открытый и надежный партнер в океане бизнеса. За правило мы взяли следующие слова: НАШ собственный успех прямопропорционален (напрямую зависит от) Успеху наших клиентов",
-//            address = "Республика Беларусь, 220034, г. Минск, ул. Зм. Бядули, д. 15, комн. 107",
-//            phones = "+375 (29) 2993993, +375 (44) 7993993",
-//            email = "",
-//            website = "http://www.arles.by"
-//        )
-//        databaseParent.push().setValue(corp13)
-//
-//        val corp14 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Атлас Софт",
-//            poster = "",
-//description = "Атлас Софт, ООО Общество с ограниченной ответственностью Год основания: 2008 Количество сотрудников: 13 УНП: 191052841",
-//            address = "220004, г. Минск, ул. Мельникайте, 4-406",
-//            phones = "",
-//            email = "j.masay@atlassoft.by",
+//description = "Белсек, СООО Общество с ограниченной ответственностью Год основания: 2006 Количество сотрудников: 10 УНП: 190764436",
+//            address = "220082, г. Минск, ул. Притыцкого, 34-4 (3 подъезд, 2 этаж)",
+//            phones = "(017)216-91-18",
+//            email = "info@zadvinie.com",
 //            website = ""
 //        )
+//        databaseParent.push().setValue(corp12)
+////
+//        val corp13 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Белсофт-Борлас Групп",
+//            poster = "http://belorussia.su/com_logo/1374255452logo1_big.jpg",
+//description = "Белсофт-Борлас Групп, СЗАО Закрытое акционерное обществоГод основания: 2006 Количество сотрудников: 55 УНП: 190726789",
+//            address = "220004, г. Минск, пр-т Победителей, 23/1-322",
+//            phones = "(017)204-85-36",
+//            email = "",
+//            website = ""
+//        )
+//        databaseParent.push().setValue(corp13)
+////
+//        val corp14 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Белстипф",
+//            poster = "http://belorussia.su/com_logo/1416316286logo1_big.jpg",
+//description = "Разработка программных решений для автоматизации розничной торговли сети магазинов в Республике Беларусь. Разработка программного обеспечения для систем безопасности: контроль доступа и видео.",
+//            address = "220113 г.Минск, ул.Мележа 5/2, ком.1503",
+//            phones = "+375-17-2684561",
+//            email = "office@stiepf.net",
+//            website = "http://www.stiepf.net"
+//        )
 //        databaseParent.push().setValue(corp14)
-//
+////
 //        val corp15 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Б Софт Лаборатория",
+//            name = "БелТехноСофт",
 //            poster = "",
-//description = "Б Софт Лаборатория, ЗАО Закрытое акционерное общество Год основания: 2003 УНП: 190491117",
-//            address = "220007, г. Минск, ул. Московская, 18-327",
-//            phones = "",
-//            email = "amir@belsoft.by",
+//description = "БелТехноСофт, ЧУП Частное предприятие Год основания: 2000 Количество сотрудников: 30 УНП: 590647166",
+//            address = "230023, г. Гродно, ул. Буденного, 48/а-66, 63, 65, 67, 68",
+//            phones = "(0152)72-30-81, (029)782-71-27",
+//            email = "",
 //            website = ""
 //        )
 //        databaseParent.push().setValue(corp15)
