@@ -38,6 +38,7 @@ class ListCorporationsViewModel @Inject constructor(
     val listFromLocalSource by lazy {
         downloadDataFromLocalStorage.invoke()
     }
+
     private var _disableBottomNavigation = MutableLiveData(true)
     val disableBottomNavigation: LiveData<Boolean>
         get() = _disableBottomNavigation

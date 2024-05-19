@@ -14,6 +14,9 @@ interface CorporationDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addOneCorpInDataBase(corporation: CorporationDto)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun addAllCorpInDataBase(list: List<CorporationDto>)
+
     @Query("SELECT * FROM corporationsTable ORDER BY name")
     fun downloadAllCorporations(): LiveData<List<CorporationDto>>
 

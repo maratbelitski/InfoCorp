@@ -19,8 +19,10 @@ import com.infocorp.data.network.CorporationService
 import com.infocorp.domain.CorporationRepository
 import com.infocorp.domain.model.Corporation
 import com.infocorp.domain.model.Data
+import kotlinx.coroutines.CompletableJob
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
@@ -69,14 +71,18 @@ class CorporationRepositoryImpl @Inject constructor(
         return listId
     }
 
-    override fun downloadDataFromFirebase() {
+    override suspend fun downloadDataFromFirebase() {
         val listIdFavourite = giveIdOfFavourite()
         val listIdOldCorps = giveIdOfOldCorps()
+
+        val list = mutableListOf<CorporationDto>()
+
+
+
 
         firebaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val myScope = CoroutineScope(Dispatchers.IO)
-
                 val responseFirebase = snapshot.children
 
                 responseFirebase.forEach { child ->
@@ -84,7 +90,6 @@ class CorporationRepositoryImpl @Inject constructor(
                     val corpDtoWithChildId = corpDto?.copy(id = child.key.toString())
 
                     if (corpDtoWithChildId != null) {
-                        myScope.launch {
 
                             for (value in listIdFavourite) {
                                 if (value == corpDtoWithChildId.id) {
@@ -99,18 +104,23 @@ class CorporationRepositoryImpl @Inject constructor(
                                 }
                             }
 
-                            insertDataInLocalDataBase(corpDtoWithChildId)
+                        list.add(corpDtoWithChildId)
+                            //insertDataInLocalDataBase(corpDtoWithChildId)
 
-                        }
                     }
                 }
-                myScope.cancel()
+                myScope.launch {
+                    daoCorp.addAllCorpInDataBase(list)
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
                 Log.e("MyLog", "Error message ${error.message}")
             }
+
         })
+        //job.join()
+
     }
 
     override fun downloadDataFromLocalStorage(): LiveData<List<Corporation>> {
@@ -165,7 +175,6 @@ class CorporationRepositoryImpl @Inject constructor(
         val response = retrofitService.getCorporationsByTittle(titleCorp)
 
         if (response.isSuccessful) {
-            // Log.i("MyLog","IMPL CODE:${response.code()} response - ${response.body()?.suggestionDto}")
             val list = response.body()?.suggestionDto ?: emptyList()
             return list.map { sug -> mapper.dataDtoToData(sug.dataDto) }
         } else {

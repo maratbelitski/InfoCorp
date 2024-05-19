@@ -4,8 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import com.google.firebase.Firebase
 import com.google.firebase.database.database
-import com.google.firebase.database.ktx.database
-import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.corporationdto.UserCorporationDto
 import com.infocorp.data.datastorage.UserCorporationDao
 import com.infocorp.data.mapper.CorporationMapper
@@ -40,7 +38,7 @@ class UserCorporationRepositoryImpl @Inject constructor(
     }
 
    override fun downloadAllCorporations(): LiveData<List<Corporation>> {
-        val dataFromDB = userDao.downloadAllCorporations()
+        val dataFromDB = userDao.downloadAllUserCorporations()
         return dataFromDB.map { dto -> dto.map { mapper.userCorporationDtoToCorporation(it) } }
     }
 }

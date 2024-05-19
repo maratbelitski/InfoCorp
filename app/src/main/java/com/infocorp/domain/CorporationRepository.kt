@@ -5,7 +5,7 @@ import com.infocorp.domain.model.Corporation
 import com.infocorp.domain.model.Data
 
 interface CorporationRepository {
-    fun downloadDataFromFirebase()
+    suspend fun downloadDataFromFirebase()
     fun downloadDataFromLocalStorage(): LiveData<List<Corporation>>
     fun downloadFavouriteFromLocalStorage(): LiveData<List<Corporation>>
     fun changeStateCorp(corporation: Corporation)

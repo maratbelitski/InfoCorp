@@ -6,7 +6,7 @@ import com.infocorp.domain.model.Corporation
 import javax.inject.Inject
 
 class DownloadDataFromLocalStorageUseCase @Inject constructor(private val repository: CorporationRepository) {
-    operator fun invoke(): LiveData<List<Corporation>> {
+   operator fun invoke(): LiveData<List<Corporation>> {
         return repository.downloadDataFromLocalStorage()
     }
 }

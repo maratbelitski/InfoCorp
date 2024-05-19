@@ -47,17 +47,24 @@
                 android:id="@+id/websiteCard"
                 layout="@layout/website_layout" />
 
-
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnGoToAdditionally"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/MyStyle.ButtonNormal"
+                android:drawableEnd="@drawable/arrow_forward_additionally"
+                android:text="@string/to_additionally"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:paddingTop="24dp"
+                android:paddingTop="@dimen/big_margin_size"
                 android:text="@string/change_info_corporation"
                 android:textColor="@color/unknown_text_color"
-                android:textSize="11sp"
+                android:textSize="@dimen/min_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -69,17 +76,7 @@
                 android:background="@drawable/background_button_black"
                 android:text="@string/edit_information"
                 android:textColor="@color/text_color_button_custom"
-                android:textSize="11sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnGoToAdditionally"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/MyStyle.ButtonNormal"
-                android:drawableEnd="@drawable/arrow_forward_additionally"
-                android:text="@string/to_additionally"
+                android:textSize="@dimen/min_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
         </LinearLayout>

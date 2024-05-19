@@ -6,6 +6,7 @@ plugins {
     id("kotlin-parcelize")
     id("com.google.dagger.hilt.android")
     kotlin("kapt")
+
 }
 
 android {
@@ -73,6 +74,7 @@ dependencies {
     //firebase data
     implementation("com.google.firebase:firebase-core:21.1.1")
     implementation("com.google.firebase:firebase-database:21.0.0")
+    implementation("com.google.firebase:firebase-messaging:24.0.0")
 
     //hilt
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
