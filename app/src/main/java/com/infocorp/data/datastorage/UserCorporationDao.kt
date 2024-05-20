@@ -7,6 +7,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.infocorp.data.corporationdto.UserCorporationDto
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UserCorporationDao {
@@ -19,4 +20,7 @@ interface UserCorporationDao {
 
     @Delete
     fun removeCorpFromDataBase(corporation: UserCorporationDto)
+
+    @Query("SELECT COUNT(name) FROM userCorporationsTable")
+    fun getRowCountUser(): Flow<Int>
 }

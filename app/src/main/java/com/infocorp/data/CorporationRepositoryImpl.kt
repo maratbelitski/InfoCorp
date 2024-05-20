@@ -2,13 +2,13 @@ package com.infocorp.data
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
-import com.google.firebase.database.ktx.database
 import com.google.firebase.Firebase
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.datastorage.CorporationDao
@@ -19,13 +19,14 @@ import com.infocorp.data.network.CorporationService
 import com.infocorp.domain.CorporationRepository
 import com.infocorp.domain.model.Corporation
 import com.infocorp.domain.model.Data
-import kotlinx.coroutines.CompletableJob
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.count
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -51,7 +52,7 @@ class CorporationRepositoryImpl @Inject constructor(
 
     }
 
-    fun clearLocalDataBase() {
+    private fun clearLocalDataBase() {
         daoCorp.clearCorporationsTable()
     }
 
@@ -74,11 +75,9 @@ class CorporationRepositoryImpl @Inject constructor(
     override suspend fun downloadDataFromFirebase() {
         val listIdFavourite = giveIdOfFavourite()
         val listIdOldCorps = giveIdOfOldCorps()
+        val listFromFirebase = mutableListOf<CorporationDto>()
 
-        val list = mutableListOf<CorporationDto>()
-
-
-
+        clearLocalDataBase()
 
         firebaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -91,26 +90,26 @@ class CorporationRepositoryImpl @Inject constructor(
 
                     if (corpDtoWithChildId != null) {
 
-                            for (value in listIdFavourite) {
-                                if (value == corpDtoWithChildId.id) {
-                                    corpDtoWithChildId.isFavourite = true
-                                    corpDtoWithChildId.isNew = false
-                                }
+                        for (value in listIdFavourite) {
+                            if (value == corpDtoWithChildId.id) {
+                                corpDtoWithChildId.isFavourite = true
+                                corpDtoWithChildId.isNew = false
                             }
+                        }
 
-                            for (value in listIdOldCorps) {
-                                if (value == corpDtoWithChildId.id) {
-                                    corpDtoWithChildId.isNew = false
-                                }
+                        for (value in listIdOldCorps) {
+                            if (value == corpDtoWithChildId.id) {
+                                corpDtoWithChildId.isNew = false
                             }
+                        }
 
-                        list.add(corpDtoWithChildId)
-                            //insertDataInLocalDataBase(corpDtoWithChildId)
+                        listFromFirebase.add(corpDtoWithChildId)
+                        //insertDataInLocalDataBase(corpDtoWithChildId)
 
                     }
                 }
                 myScope.launch {
-                    daoCorp.addAllCorpInDataBase(list)
+                    daoCorp.addAllCorpInDataBase(listFromFirebase)
                 }
             }
 
@@ -119,8 +118,6 @@ class CorporationRepositoryImpl @Inject constructor(
             }
 
         })
-        //job.join()
-
     }
 
     override fun downloadDataFromLocalStorage(): LiveData<List<Corporation>> {
@@ -191,5 +188,13 @@ class CorporationRepositoryImpl @Inject constructor(
         } else {
             throw RuntimeException("Exception in fun getInfoEgrByTitle, code: ${response.code()}")
         }
+    }
+
+    override suspend fun getRowCount(): Flow<Int> {
+        return daoCorp.getRowCount()
+    }
+
+    override suspend fun getRowCountOld(): Flow<Int> {
+       return daoOldCorps.getRowCountOld()
     }
 }

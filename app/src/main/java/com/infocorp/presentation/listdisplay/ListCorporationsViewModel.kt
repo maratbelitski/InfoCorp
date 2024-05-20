@@ -1,5 +1,6 @@
 package com.infocorp.presentation.listdisplay
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -44,7 +45,6 @@ class ListCorporationsViewModel @Inject constructor(
         get() = _disableBottomNavigation
 
     init {
-        clearCorporationTable()
         downloadDataFromRemoteSource()
     }
 
@@ -52,11 +52,7 @@ class ListCorporationsViewModel @Inject constructor(
         _disableBottomNavigation.value = false
     }
 
-    private fun clearCorporationTable() {
-        viewModelScope.launch(Dispatchers.IO) {
-            repositoryImpl.clearLocalDataBase()
-        }
-    }
+
 
     fun addInOldCorps(corp: Corporation) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -71,8 +67,8 @@ class ListCorporationsViewModel @Inject constructor(
     private fun downloadDataFromRemoteSource() {
         viewModelScope.launch(Dispatchers.IO) {
 
-            downloadDataFromFirebase.invoke()
-            delay(1500)
+           // downloadDataFromFirebase.invoke()
+            delay(1000)
             showShimmer.postValue(false)
         }
     }

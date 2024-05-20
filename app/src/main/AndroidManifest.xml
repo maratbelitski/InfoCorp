@@ -17,6 +17,14 @@
         android:theme="@style/Theme.InfoCorp"
         tools:targetApi="31"
         android:usesCleartextTraffic="true">
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/infocorp_logo_round" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/red" />
+
         <activity
             android:name=".presentation.MainActivity"
             android:exported="true">

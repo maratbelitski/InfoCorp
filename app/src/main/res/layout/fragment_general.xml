@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent">
-
-<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/first_background_color"
-    tools:context=".presentation.generaldisplay.GeneralFragment">
+    android:layout_height="wrap_content">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/first_background_color"
+        android:layout_margin="@dimen/normal_padding_size"
+        tools:context=".presentation.generaldisplay.GeneralFragment">
 
+        <include
+            android:id="@+id/statisticCard"
+            layout="@layout/statistic_layout" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <include
+            android:id="@+id/shimmerLayout"
+            layout="@layout/shimmer_statistic_layout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

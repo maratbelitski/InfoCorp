@@ -66,4 +66,8 @@
     <string name="personal_number_unp">Personal number (UNP)</string>
     <string name="address_of_company">Address of company</string>
     <string name="status_active_liquidated_etc">Status: Active, Liquidated, etc.</string>
+    <string name="statistic">Statistic</string>
+    <string name="total_unseen">Total unseen in the database: </string>
+    <string name="total_companies">Total companies in the database: </string>
+    <string name="total_in_your">Total companies in your database: </string>
 </resources>

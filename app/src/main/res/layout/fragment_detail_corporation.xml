@@ -72,6 +72,7 @@
                 android:id="@+id/btnEditInfo"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:layout_marginBottom="@dimen/normal_margin_size"
                 android:foreground="?attr/selectableItemBackground"
                 android:background="@drawable/background_button_black"
                 android:text="@string/edit_information"

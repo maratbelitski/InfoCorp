@@ -64,4 +64,9 @@
     <string name="personal_number_unp">Номер налогоплательщика</string>
     <string name="address_of_company">Адрес организации</string>
     <string name="status_active_liquidated_etc">Действующее, леквидированное и др.</string>
+    <string name="statistic">Статистика</string>
+    <string name="total_unseen">Всего непросмотренных: </string>
+    <string name="total_companies">Всего компаний в базе данных: </string>
+    <string name="total_in_your">Всего компаний в вашей базе: </string>
+
 </resources>

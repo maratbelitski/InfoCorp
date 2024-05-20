@@ -1,10 +1,12 @@
 package com.infocorp.data.datastorage
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.infocorp.data.corporationdto.OldCorporationsDto
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface OldCorpDao {
@@ -12,11 +14,6 @@ interface OldCorpDao {
     fun loadAllOldCorps(): List<OldCorporationsDto>
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addInOldCorps(corpId: OldCorporationsDto)
-//
-//    @Delete
-//    fun removeCorpInnFavourite(favouriteId: FavouriteCorporationsDto)
-//
-//    @Query("SELECT * FROM corporationsTable " +
-//            "INNER JOIN favouriteTable ON favouriteTable.id = corporationsTable.id ORDER BY name")
-//    fun downloadAllFavouriteCorporations(): LiveData<List<CorporationDto>>
+    @Query("SELECT COUNT(id) FROM oldCorpsTable")
+    fun getRowCountOld(): Flow<Int>
 }

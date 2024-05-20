@@ -6,25 +6,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.google.firebase.Firebase
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.databinding.FragmentGeneralBinding
 import com.infocorp.presentation.MainActivity
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.launch
 
 
+@AndroidEntryPoint
 class GeneralFragment : Fragment() {
 
     private var _binding: FragmentGeneralBinding? = null
+
     private val binding: FragmentGeneralBinding
-        get() = _binding ?: throw Exception()
+        get() = _binding ?: throw NullPointerException()
 
     private val updateStateBottomMenu by lazy {
         activity as MainActivity
     }
+    private val fragmentViewModel: GeneralFragmentViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,9 +46,9 @@ class GeneralFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        updateStateBottomMenu.enableBottomMenu()
 
-
+        initViews()
+        onObservers()
 
         val databaseParent = Firebase.database.getReference("CORPORATION")
 //       пользовательская бд
@@ -46,9 +56,6 @@ class GeneralFragment : Fragment() {
 
 //      удаление из пользовательской бд
 //     databaseParent.child("-Ny0Mf6qyYQ4PMnx6NDk").removeValue()
-
-
-
 
 
 //        сравнение из пользовательской бд  и добавление в основную
@@ -239,7 +246,7 @@ class GeneralFragment : Fragment() {
 //////
 //        val corp15 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Веб-студия Галиор",
+//            name = "ddddddddddddddddddddddd",
 //            poster = "http://belorussia.su/com_logo/1436961247logo1_big.jpg",
 //description = "Разработка, создание и продвижение веб-сайтов и мобильных приложений, а также оказание услуг копирайтинга, перевод сайта на иностранные языки, разработка мультимедиа проектов.",
 //            address = "г. Брест, ул. Советская, 80, (офис 11) и Минск",
@@ -248,7 +255,60 @@ class GeneralFragment : Fragment() {
 //            website = "https://galior.com"
 //        )
 //        databaseParent.push().setValue(corp15)
-  }
+
+
+
+    }
+
+    private fun onObservers() {
+        lifecycleScope.launch {
+            fragmentViewModel.showShimmer
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {
+                    with(binding) {
+                        when (it) {
+                            true -> {
+                                shimmerLayout.shimmer.visibility = View.VISIBLE
+                                statisticCard.statisticCardForView.visibility = View.GONE
+                            }
+
+                            false -> {
+                                statisticCard.statisticCardForView.visibility = View.VISIBLE
+                                shimmerLayout.shimmer.visibility = View.GONE
+                            }
+                        }
+                    }
+                }
+        }
+
+        lifecycleScope.launch {
+            fragmentViewModel.allCorporation
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {
+                    binding.statisticCard.countAllInBase.text = it.toString()
+                }
+        }
+
+        lifecycleScope.launch {
+            fragmentViewModel.userCorporation
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {
+                    binding.statisticCard.countInUserBase.text = it.toString()
+                }
+        }
+
+        lifecycleScope.launch {
+            fragmentViewModel.oldCorporation
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {
+                    binding.statisticCard.countNewInBase.text = it.toString()
+                }
+        }
+    }
+
+    private fun initViews() {
+        updateStateBottomMenu.enableBottomMenu()
+    }
 
 
     override fun onDestroyView() {

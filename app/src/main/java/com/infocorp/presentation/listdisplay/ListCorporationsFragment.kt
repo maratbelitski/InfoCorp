@@ -121,7 +121,6 @@ class ListCorporationsFragment : Fragment() {
         }
 
         fragmentViewModel.listFromLocalSource.observe(viewLifecycleOwner) {
-            Log.i("MyLog", "Количество фирм: ${it.size}")
             myAdapter.submitList(it)
         }
     }
