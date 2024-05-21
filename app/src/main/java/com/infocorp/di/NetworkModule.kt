@@ -1,5 +1,6 @@
 package com.infocorp.di
 
+import com.google.android.gms.ads.AdRequest
 import com.google.firebase.Firebase
 import com.infocorp.data.network.CorporationFactory
 import com.infocorp.data.network.CorporationService
@@ -12,6 +13,12 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
+
+    @Provides
+    @Singleton
+    fun provideCommercialBanner(): AdRequest {
+        return AdRequest.Builder().build()
+    }
 
     @Provides
     @Singleton

@@ -21,6 +21,7 @@ import com.infocorp.domain.model.Corporation
 import com.infocorp.domain.model.Data
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.count
@@ -28,6 +29,8 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class CorporationRepositoryImpl @Inject constructor(
@@ -195,6 +198,6 @@ class CorporationRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getRowCountOld(): Flow<Int> {
-       return daoOldCorps.getRowCountOld()
+        return daoOldCorps.getRowCountOld()
     }
 }

@@ -1,7 +1,10 @@
 package com.infocorp.presentation.generaldisplay
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.android.gms.ads.AdRequest
 import com.infocorp.data.CorporationRepositoryImpl
 import com.infocorp.data.UserCorporationRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,6 +20,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.emitAll
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -30,12 +34,9 @@ class GeneralFragmentViewModel @Inject constructor(
     val showShimmer: StateFlow<Boolean>
         get() = _showShimmer.asStateFlow()
 
-    private var _allCorporation = MutableSharedFlow<Int>(
-        replay = 1,
-        onBufferOverflow = BufferOverflow.DROP_OLDEST
-    )
-    val allCorporation: SharedFlow<Int>
-        get() = _allCorporation.asSharedFlow()
+    private var _allCorporation = MutableStateFlow(0)
+    val allCorporation: StateFlow<Int>
+        get() = _allCorporation.asStateFlow()
 
     private var _userCorporation = MutableSharedFlow<Int>(
         replay = 1,
@@ -62,9 +63,10 @@ class GeneralFragmentViewModel @Inject constructor(
     private fun downloadDataFromRemoteSource() {
         viewModelScope.launch(Dispatchers.IO) {
             repository.downloadDataFromFirebase()
-            delay(1000)
+            delay(1500)
             _showShimmer.emit(false)
         }
+
     }
 
     private fun getRowCountAllCorp() {

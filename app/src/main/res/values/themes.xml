@@ -70,6 +70,9 @@
         <item name="android:backgroundTint">@color/red</item>
         <item name="android:textColor">@color/text_color_button</item>
         <item name="android:textSize">@dimen/min_text_size</item>
+    </style>
 
+    <style name="MyStyle.progressBar" parent="Base.Theme.InfoCorp">
+        <item name="colorAccent">@color/red</item>
     </style>
 </resources>

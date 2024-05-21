@@ -13,12 +13,27 @@
         android:layout_margin="@dimen/normal_padding_size"
         tools:context=".presentation.generaldisplay.GeneralFragment">
 
+
         <include
             android:id="@+id/statisticCard"
-            layout="@layout/statistic_layout" />
+            layout="@layout/statistic_layout"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/normal_margin_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
 
         <include
             android:id="@+id/shimmerLayout"
-            layout="@layout/shimmer_statistic_layout" />
+            layout="@layout/shimmer_statistic_layout"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/normal_margin_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

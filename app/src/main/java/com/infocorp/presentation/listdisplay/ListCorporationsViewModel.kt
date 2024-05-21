@@ -1,6 +1,5 @@
 package com.infocorp.presentation.listdisplay
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -45,7 +44,7 @@ class ListCorporationsViewModel @Inject constructor(
         get() = _disableBottomNavigation
 
     init {
-        downloadDataFromRemoteSource()
+        imitationLoaded()
     }
 
     fun changeStateBottomMenu(){
@@ -64,10 +63,8 @@ class ListCorporationsViewModel @Inject constructor(
         return searchCorp.invoke(listCorp, text)
     }
 
-    private fun downloadDataFromRemoteSource() {
+    private fun imitationLoaded() {
         viewModelScope.launch(Dispatchers.IO) {
-
-           // downloadDataFromFirebase.invoke()
             delay(1000)
             showShimmer.postValue(false)
         }

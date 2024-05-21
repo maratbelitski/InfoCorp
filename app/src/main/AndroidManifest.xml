@@ -4,7 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+
     <application
         android:name=".presentation.CorporationApp"
         android:allowBackup="true"
@@ -17,6 +18,7 @@
         android:theme="@style/Theme.InfoCorp"
         tools:targetApi="31"
         android:usesCleartextTraffic="true">
+
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
@@ -34,5 +36,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+<!--            android:name="com.google.android.gms.ads.APPLICATION_ID"-->
+<!--            android:value="ca-app-pub-1912940735550668~4019486421"/>-->
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
     </application>
 </manifest>

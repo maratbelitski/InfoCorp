@@ -1,21 +1,20 @@
 package com.infocorp.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.google.firebase.Firebase
-import com.google.firebase.FirebaseApp
-import com.google.firebase.initialize
-
+import com.google.android.gms.ads.AdListener
 import com.infocorp.R
 import com.infocorp.databinding.ActivityMainBinding
-import com.infocorp.presentation.usercorpgeneraldisplay.UserCorpGeneralFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -23,6 +22,11 @@ class MainActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
+
+//    private val adRequest by lazy {
+//        AdRequest.Builder().build()
+//    }
+
     private val viewModel: MainActivityViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +34,20 @@ class MainActivity : AppCompatActivity() {
 
         onBottomNavigation()
         onListeners()
+        // showCommercialBanner()
+
+        lifecycleScope.launch {
+            viewModel.showShimmer
+                .flowWithLifecycle(lifecycle, Lifecycle.State.CREATED)
+                .collect {
+                    binding.adView.loadAd(it)
+                }
+        }
     }
 
+    //    private fun showCommercialBanner() {
+//        binding.adView.loadAd(adRequest)
+//    }
     private fun onListeners() {
         binding.fab.setOnClickListener {
             val navHostFragment =
@@ -40,6 +56,18 @@ class MainActivity : AppCompatActivity() {
 
             navController.navigate(R.id.userCorpGeneralFragment)
         }
+
+        binding.adView.adListener = (object : AdListener() {
+            override fun onAdClosed() {
+                binding.adView.visibility = View.GONE
+                binding.progress.visibility = View.GONE
+            }
+
+            override fun onAdLoaded() {
+                binding.progress.visibility = View.INVISIBLE
+                binding.adView.visibility = View.VISIBLE
+            }
+        })
     }
 
     private fun onBottomNavigation() {
