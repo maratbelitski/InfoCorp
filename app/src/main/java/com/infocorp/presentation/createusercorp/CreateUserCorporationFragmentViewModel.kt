@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.android.material.textfield.TextInputLayout
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.corporationdto.UserCorporationDto
 import com.infocorp.domain.usecases.usercorporation.AddCorpToUserDtaBaseUseCase
@@ -33,5 +34,10 @@ private val addUserCorporation: AddCorpToUserDtaBaseUseCase,
         viewModelScope.launch(Dispatchers.IO) {
             addUserCorporation.invoke(userCorp)
         }
+    }
+
+    fun validationError(editText: String, inputLayout: TextInputLayout) {
+        val unpText = editText.trim()
+        inputLayout.isErrorEnabled = unpText.isEmpty()
     }
 }

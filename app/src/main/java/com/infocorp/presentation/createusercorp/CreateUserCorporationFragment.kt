@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.infocorp.R
 import com.infocorp.data.corporationdto.UserCorporationDto
 import com.infocorp.databinding.FragmentCreateUserCorporationBinding
 import com.infocorp.presentation.MainActivity
@@ -47,7 +48,6 @@ class CreateUserCorporationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         onListeners()
-
         onObservers()
     }
 
@@ -57,8 +57,8 @@ class CreateUserCorporationFragment : Fragment() {
         }
     }
 
-    private fun initArgs(){
-        with(binding){
+    private fun initArgs() {
+        with(binding) {
             etPosterInput.setText(arguments.corporation.poster)
             etTittleInput.setText(arguments.corporation.name)
             etDescriptionInput.setText(arguments.corporation.description)
@@ -68,20 +68,27 @@ class CreateUserCorporationFragment : Fragment() {
             etWebsiteInput.setText(arguments.corporation.website)
         }
     }
+
     private fun onListeners() {
         binding.btnSend.setOnClickListener {
-            sendUserCorporation()
-            Toast.makeText(requireContext(), "Information send to developer", Toast.LENGTH_SHORT)
-                .show()
+            val emptiesFields = onCheckEmptyFields()
+
+            if (!emptiesFields) {
+                sendUserCorporation()
+                Toast.makeText(
+                    requireContext(), "Information send to developer", Toast.LENGTH_SHORT
+                ).show()
+            }
         }
 
         binding.btnCreate.setOnClickListener {
-            addUserCorporation()
-            Toast.makeText(
-                requireContext(),
-                "Information saved to your database",
-                Toast.LENGTH_SHORT
-            ).show()
+            val emptiesFields = onCheckEmptyFields()
+            if (!emptiesFields) {
+                addUserCorporation()
+                Toast.makeText(
+                    requireContext(), "Information saved to your database", Toast.LENGTH_SHORT
+                ).show()
+            }
         }
 
         binding.btnYourList.setOnClickListener {
@@ -102,6 +109,22 @@ class CreateUserCorporationFragment : Fragment() {
 
                 etPoster.requestFocus()
             }
+        }
+    }
+
+    private fun onCheckError(title: String, description: String, email: String) {
+        with(binding) {
+            val titleLayout = etTittle
+            val descriptionLayout = etDescription
+            val emailLayout = etEmail
+
+            titleLayout.error = resources.getString(R.string.error_input_layout)
+            descriptionLayout.error = resources.getString(R.string.error_input_layout)
+            emailLayout.error = resources.getString(R.string.error_input_layout)
+
+            fragmentViewModel.validationError(title, titleLayout)
+            fragmentViewModel.validationError(description, descriptionLayout)
+            fragmentViewModel.validationError(email, emailLayout)
         }
     }
 
@@ -136,6 +159,18 @@ class CreateUserCorporationFragment : Fragment() {
                 email = email,
                 website = website
             )
+        }
+    }
+
+    private fun onCheckEmptyFields(): Boolean {
+        with(binding) {
+            val title = etTittleInput.text.toString()
+            val description = etDescriptionInput.text.toString()
+            val email = etEmailInput.text.toString()
+
+            onCheckError(title, description, email)
+
+            return !(title.isNotEmpty() && description.isNotEmpty() && email.isNotEmpty())
         }
     }
 

@@ -99,12 +99,20 @@ class EgrFragment : Fragment() {
     private fun onListeners() {
         binding.searchingForma.btnSearchByName.setOnClickListener {
             val title = binding.searchingForma.etByTitle.text.toString()
+            val titleLayout = binding.searchingForma.byName
+            titleLayout.error = resources.getString(R.string.error_input_layout)
+
+            fragmentViewModel.validationError(title,titleLayout)
             fragmentViewModel.getInfoEgrByName(title)
         }
 
         binding.searchingForma.btnSearchByUnp.setOnClickListener {
-            val unp = binding.searchingForma.etByUnp.text.toString()
-            fragmentViewModel.getInfoEgrByUnp(unp)
+            val unpText = binding.searchingForma.etByUnp.text.toString()
+            val unpLayout = binding.searchingForma.byUnp
+            unpLayout.error = resources.getString(R.string.error_input_layout)
+
+            fragmentViewModel.validationError(unpText,unpLayout)
+            fragmentViewModel.getInfoEgrByUnp(unpText)
         }
     }
 

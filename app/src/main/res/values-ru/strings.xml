@@ -44,15 +44,14 @@
     <string name="poster">Изображение</string>
     <string name="enter_url_image">Введите url  изображения</string>
     <string name="create_new_corporation">Создайте свою организацию</string>
-    <string name="tittle">Название</string>
-    <string name="enter_title">Введите название</string>
+    <string name="enter_title">Введите название. Обязательное поле</string>
     <string name="description_search">Описание</string>
-    <string name="enter_description">Введите описание</string>
+    <string name="enter_description">Введите описание. Обязательное поле</string>
     <string name="address_search">Адрес</string>
     <string name="enter_address">Введите адрес</string>
     <string name="phones_search">Телефоны</string>
     <string name="enter_phones">Введите телефоны</string>
-    <string name="enter_email">Введите email</string>
+    <string name="enter_email">Введите email. Обязательное поле</string>
     <string name="website_search">Сайт</string>
     <string name="enter_url_website">Введите url сайта</string>
     <string name="create_btn">Создать</string>
@@ -69,5 +68,6 @@
     <string name="total_companies">Всего компаний в базе данных: </string>
     <string name="total_in_your">Всего компаний в вашей базе: </string>
     <string name="send_resume">отправить резюме</string>
+    <string name="error_input_layout">Поле не должно быть пустым!</string>
 
 </resources>

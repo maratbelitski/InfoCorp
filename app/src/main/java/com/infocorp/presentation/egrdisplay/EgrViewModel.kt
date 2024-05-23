@@ -1,10 +1,16 @@
 package com.infocorp.presentation.egrdisplay
 
+import android.content.Context
 import android.util.Log
+import android.widget.EditText
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
+import com.infocorp.R
 import com.infocorp.domain.model.Data
 import com.infocorp.domain.usecases.corporation.GetInfoEgrByTitleUseCase
 import com.infocorp.domain.usecases.corporation.GetInfoEgrByUnpUseCase
@@ -66,5 +72,10 @@ class EgrViewModel @Inject constructor(
                 _showShimmer.postValue(false)
             }
         }
+    }
+
+    fun validationError(editText: String, inputLayout: TextInputLayout) {
+        val unpText = editText.trim()
+        inputLayout.isErrorEnabled = unpText.isEmpty()
     }
 }

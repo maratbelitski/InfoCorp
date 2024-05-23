@@ -45,16 +45,15 @@
     <string name="poster">Poster</string>
     <string name="enter_url_image">Enter url image</string>
     <string name="create_new_corporation">Create new corporation</string>
-    <string name="tittle">Tittle</string>
-    <string name="enter_title">Enter title</string>
+    <string name="enter_title">Enter title. Required field</string>
     <string name="description_search">Description</string>
-    <string name="enter_description">Enter description</string>
+    <string name="enter_description">Enter description. Required field</string>
     <string name="address_search">Address</string>
     <string name="enter_address">Enter address</string>
     <string name="phones_search">Phones</string>
     <string name="enter_phones">Enter phones</string>
     <string name="email_search" translatable="false">Email</string>
-    <string name="enter_email">Enter email</string>
+    <string name="enter_email">Enter email. Required field</string>
     <string name="website_search">Website</string>
     <string name="enter_url_website">Enter url website</string>
     <string name="create_btn">Create</string>
@@ -71,4 +70,5 @@
     <string name="total_companies">Total companies in the database: </string>
     <string name="total_in_your">Total companies in your database: </string>
     <string name="send_resume">send your resume</string>
+    <string name="error_input_layout">The field should not be empty!</string>
 </resources>
