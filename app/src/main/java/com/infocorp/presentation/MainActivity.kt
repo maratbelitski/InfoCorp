@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.MobileAds
 import com.infocorp.R
 import com.infocorp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,13 +32,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
+        MobileAds.initialize(this)
         onBottomNavigation()
         onListeners()
-        // showCommercialBanner()
 
         lifecycleScope.launch {
-            viewModel.showShimmer
+            viewModel.banner
                 .flowWithLifecycle(lifecycle, Lifecycle.State.CREATED)
                 .collect {
                     binding.adView.loadAd(it)

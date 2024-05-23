@@ -15,10 +15,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
-    private var adRequest: AdRequest
+    private val adRequest: AdRequest
 ) : ViewModel() {
     private var _banner = MutableStateFlow(adRequest)
-    val showShimmer: StateFlow<AdRequest>
+    val banner: StateFlow<AdRequest>
         get() = _banner.asStateFlow()
 
 

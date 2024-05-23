@@ -1,6 +1,7 @@
 package com.infocorp.di
 
 import android.content.Context
+import android.content.SharedPreferences
 import com.infocorp.data.datastorage.CorporationDao
 import com.infocorp.data.datastorage.CorporationDataBase
 import com.infocorp.data.datastorage.FavouriteDao
@@ -16,7 +17,13 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class DataModule {
-
+    companion object {
+        private const val USER_NAME_PREFERENCES = "user_cv_preferences"
+    }
+    @Provides
+    fun provideSharedPreference(@ApplicationContext context: Context): SharedPreferences{
+        return context.getSharedPreferences(USER_NAME_PREFERENCES, Context.MODE_PRIVATE)
+    }
 
     @Provides
     @Singleton

@@ -68,5 +68,6 @@
     <string name="total_unseen">Всего непросмотренных: </string>
     <string name="total_companies">Всего компаний в базе данных: </string>
     <string name="total_in_your">Всего компаний в вашей базе: </string>
+    <string name="send_resume">отправить резюме</string>
 
 </resources>

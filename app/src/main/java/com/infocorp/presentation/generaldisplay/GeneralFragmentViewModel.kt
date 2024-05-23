@@ -19,7 +19,9 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.count
 import kotlinx.coroutines.flow.emitAll
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -38,19 +40,13 @@ class GeneralFragmentViewModel @Inject constructor(
     val allCorporation: StateFlow<Int>
         get() = _allCorporation.asStateFlow()
 
-    private var _userCorporation = MutableSharedFlow<Int>(
-        replay = 1,
-        onBufferOverflow = BufferOverflow.DROP_OLDEST
-    )
-    val userCorporation: SharedFlow<Int>
-        get() = _userCorporation.asSharedFlow()
+    private var _userCorporation = MutableStateFlow(0)
+    val userCorporation: StateFlow<Int>
+        get() = _userCorporation.asStateFlow()
 
-    private var _oldCorporation = MutableSharedFlow<Int>(
-        replay = 1,
-        onBufferOverflow = BufferOverflow.DROP_OLDEST
-    )
-    val oldCorporation: SharedFlow<Int>
-        get() = _oldCorporation.asSharedFlow()
+    private var _oldCorporation = MutableStateFlow(0)
+    val oldCorporation: StateFlow<Int>
+        get() = _oldCorporation.asStateFlow()
 
     init {
         downloadDataFromRemoteSource()
@@ -85,11 +81,16 @@ class GeneralFragmentViewModel @Inject constructor(
 
     private fun getRowCountOldCorp() {
         viewModelScope.launch(Dispatchers.IO) {
-            val resultOld = repository.getRowCountOld()
             val resultAll = repository.getRowCount()
+            val resultOld = repository.getRowCountOld()
 
             combine(resultOld, resultAll) { old, all ->
-                _oldCorporation.emit(all - old)
+                if (all!=0){
+                    _oldCorporation.emit(all - old)
+                } else {
+                    _oldCorporation.emit(0)
+                }
+
             }.collect()
         }
     }

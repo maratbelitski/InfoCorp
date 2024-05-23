@@ -70,4 +70,5 @@
     <string name="total_unseen">Total unseen in the database: </string>
     <string name="total_companies">Total companies in the database: </string>
     <string name="total_in_your">Total companies in your database: </string>
+    <string name="send_resume">send your resume</string>
 </resources>

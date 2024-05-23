@@ -1,7 +1,8 @@
 package com.infocorp.presentation.detaildisplay
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,8 +46,16 @@ class DetailCorporationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         onListeners()
-
         onObservers()
+
+
+
+        binding.emailCard.btnSendResume.setOnClickListener {
+            val addresses = arguments.corporation.email.split(",").toTypedArray()
+            val tittleCv = fragmentViewModel.getTittleCvUser("titleCV")
+            val bodyCv = fragmentViewModel.getBodyCvUser("bodyCV")
+            sendEmailResume(addresses,tittleCv,bodyCv)
+        }
     }
 
     private fun onObservers() {
@@ -116,8 +125,18 @@ class DetailCorporationFragment : Fragment() {
             emailCard.tvEmailCorp.text = email
             websiteCard.tvWebsiteCorp.text = website
         }
-    }
 
+
+    }
+    private fun sendEmailResume(addresses: Array<String>, tittle: String, body: String) {
+        val intent = Intent(Intent.ACTION_SENDTO).apply {
+            data = Uri.parse("mailto:")
+            putExtra(Intent.EXTRA_EMAIL, addresses)
+            putExtra(Intent.EXTRA_SUBJECT, tittle)
+            putExtra(Intent.EXTRA_TEXT, body)
+        }
+        startActivity(intent)
+    }
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

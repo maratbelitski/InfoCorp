@@ -59,7 +59,7 @@ class CorporationRepositoryImpl @Inject constructor(
         daoCorp.clearCorporationsTable()
     }
 
-    private fun giveIdOfFavourite(): List<String> {
+    private suspend fun giveIdOfFavourite(): List<String> {
         val value = daoFavourite.loadAllFavorite()
         val listId = mutableListOf<String>()
 
@@ -67,7 +67,7 @@ class CorporationRepositoryImpl @Inject constructor(
         return listId
     }
 
-    private fun giveIdOfOldCorps(): List<String> {
+    private suspend fun giveIdOfOldCorps(): List<String> {
         val value = daoOldCorps.loadAllOldCorps()
         val listId = mutableListOf<String>()
 
@@ -107,7 +107,6 @@ class CorporationRepositoryImpl @Inject constructor(
                         }
 
                         listFromFirebase.add(corpDtoWithChildId)
-                        //insertDataInLocalDataBase(corpDtoWithChildId)
 
                     }
                 }

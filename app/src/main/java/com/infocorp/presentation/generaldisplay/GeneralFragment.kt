@@ -13,6 +13,7 @@ import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.firebase.Firebase
 import com.google.firebase.database.database
+import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.databinding.FragmentGeneralBinding
 import com.infocorp.presentation.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -52,11 +53,11 @@ class GeneralFragment : Fragment() {
 //       пользовательская бд
         val databaseChild = Firebase.database.getReference("USER_CORPORATION")
 
-//      удаление из пользовательской бд
-//     databaseParent.child("-Ny0Mf6qyYQ4PMnx6NDk").removeValue()
+//      удаление из пользовательской USER_CORPORATION бд
+//     databaseChild.child("-Ny0Mf6qyYQ4PMnx6NDk").removeValue()
 
 
-//        сравнение из пользовательской бд  и добавление в основную
+//        сравнение из пользовательской бд и добавление в основную
 //        databaseChild.addValueEventListener(object : ValueEventListener{
 //            override fun onDataChange(snapshot: DataSnapshot) {
 //                val response = snapshot.children
@@ -75,242 +76,242 @@ class GeneralFragment : Fragment() {
 //
 //        val corp1 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Визутех Систем",
-//            poster = "http://belorussia.su/com_logo/1417699742logo1_big.jpg",
-//description = "Компания «Визутех Систем» занимается разработкой, поддержкой и сопровождением программного обеспечения для управления производственными процессами. Приоритетным направлением в деятельности нашего предприятия является разработка программных продуктов на основе технологии EtherCAT, которая занимает лидирующее положение среди промышленных высокоскоростных систем передачи данных в режиме реального времени. Также компания разрабатывает собственную библиотеку управления движением Motion Control и комплекс программных продуктов Automation для сбора, обработки, отображения и архивирования информации по объекту управления. За более чем 20 лет работы специалисты компании приняли участие в разработке проектов для таких компаний как BMW, Siemens, Volkswagen, Hypertherm и др., а также внедрили ПО на производственных линиях LG, Samsung, Foxconn, Hitachi, Intel, Mitsubishi и других ведущих производителей электроники. Обновление разрабатываемого ПО в соответствии с современными трендами",
-//            address = "Республика Беларусь, 220004 г. Минск, ул. Клары Цеткин, 24-9",
-//            phones = "+375 17 348 37 02",
-//            email = "info@visutechsystem.by",
-//            website = "www.visutechsystem.by"
+//            name = "Датаскан",
+//            poster = "",
+//description = "Датаскан, ЧП Частное предприятие Год основания: 1996 Количество сотрудников: 8 УНП: 101180244",
+//            address = "220131, г. Минск, ул. Хмаринская, 13",
+//            phones = "+(017)266-44-55",
+//            email = "office@datascan.by",
+//            website = ""
 //        )
 //        databaseParent.push().setValue(corp1)
-////////
+//////////
 //        val corp2 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "ВирусБлокАда",
+//            name = "Дельта-1",
 //            poster = "",
-//description = "ВирусБлокАда, ОДО Общество с дополнительной ответственностью Год основания: 1997 Количество сотрудников: 30 УНП: 101294617",
-//            address = "220004, г. Минск, ул. Кальварийская, 17-611",
-//            phones = "(017)226-85-55",
-//            email = "support@anti-virus.by",
-//            website = "www.anti-virus.by"
+//description = "Дельта-1, ООО ПК Общество с ограниченной ответственностью Год основания: 1995 Количество сотрудников: 10 УНП: 400323181",
+//            address = "246031, г. Гомель, ул. Рощинская, 2 (1 этаж)",
+//            phones = "(0232)63-10-88",
+//            email = "delta1@mail.gomel.by",
+//            website = ""
 //        )
 //        databaseParent.push().setValue(corp2)
-//////
+////////
 //        val corp3 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Витебский информационный центр",
+//            name = "ДжейТорг",
 //            poster = "",
-//description = "Витебский информационно-производственный центр, ОАО Открытое акционерное общество Год основания: 1975 Количество сотрудников: 12 УНП: 300125159",
-//            address = "210001, г. Витебск, ул. Димитрова, 4",
-//            phones = "(0212)36-04-12, 36-33-62",
+//description = "ДжейТорг, ООООбщество с ограниченной ответственностью Год основания: 1997 Количество сотрудников: 5 УНП: 101385803",
+//            address = "220012, г. Минск, ул. Сурганова, 7-202",
+//            phones = "",
 //            email = "",
 //            website = ""
 //        )
 //        databaseParent.push().setValue(corp3)
-//////
-//////
+////////
+////////
 //        val corp4 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Виэм солюшенс",
+//            name = "Джи 2 экс",
 //            poster = "",
-//description = "Виэм солюшенс, ЧТСУП Частное предприятие Год основания: 2009 Количество сотрудников: 4",
-//            address = "223051, Минская обл., Минский р-н, в/г Колодищи, 228-71",
-//            phones = "(029)773-37-30",
+//description = "Джи 2 экс Девелопмент Сервисис, ИП Иностранное предприятие Год основания: 2003 Количество сотрудников: 60 УНП: 800019013",
+//            address = "220113, г. Минск, ул. Восточная, 133-801, 804",
+//            phones = "",
 //            email = "",
-//            website = ""
+//            website = "www.j2x.com"
 //        )
 //        databaseParent.push().setValue(corp4)
-//////
+////////
 //        val corp5 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Влавас",
+//            name = "Диалог-ПРО",
 //            poster = "",
-//description = "О компании Влавас, ПЧУП Влавас, ПЧУП Частное предприятие Год основания: 1995 Количество сотрудников: 30 УНП: 100121071",
-//            address = "пр. газ. Звезда, д. 46, (оф. 45)",
+//description = "Диалог-ПРО, ЗАО Закрытое акционерное общество Год основания: 1991 Количество сотрудников: 12 УНП: 300237332",
+//            address = "210026, г. Витебск, ул. Суворова, 36",
 //            phones = "8 017 277 28 50, 8 029 671 51 83",
-//            email = "info@vlavas.by",
-//            website = "www.vlavas.by"
+//            email = "odialog@vitebsk.by",
+//            website = ""
 //        )
 //        databaseParent.push().setValue(corp5)
-//////
+////////
 //        val corp6 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Центр Белкоопсоюз",
+//            name = "Дисплей Нетворкc",
 //            poster = "",
-//description = "Вычислительный центр ЧУП \"Белкоопсоюз\" Гродненский отдел Частное предприятие Год основания: 2001 Количество сотрудников: 3 УНП: 100105017",
-//            address = "230025, г. Гродно, ул. Комсомольская, 4 (2 этаж)",
-//            phones = "(0152)75-17-18",
-//            email = "grodno@vc.bks.by",
+//description = "Дисплей Нетворкc, ЧУП Частное предприятие Год основания: 2004 Количество сотрудников: 10 УНП: 190579638",
+//            address = "220037, г. Минск, пер. Козлова, 7-15",
+//            phones = "(017)227-70-08",
+//            email = "",
 //            website = ""
 //        )
 //        databaseParent.push().setValue(corp6)
-//////
+////////
 //        val corp7 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "ВэбСити",
+//            name = "Ждан",
 //            poster = "",
-//description = "ВэбСити, ЧП Частное предприятие Год основания: 2009 УНП: 690577680",
-//            address = "222810, Минская обл., г. Марьина Горка, ул. Элеваторная, 2/а-7",
-//            phones = "(01713)4-18-04, (029)777-47-30",
+//description = "Ждан, ЧП Частное предприятие Год основания: 2007 Количество сотрудников: 5 УНП: 190882019",
+//            address = "220102, г. Минск, ул. Алтайская, 64/1-02",
+//            phones = "(017)297-45-72, (029)401-21-69",
+//            email = "po@po.by",
+//            website = "www.po.by"
+//        )
+//        databaseParent.push().setValue(corp7)
+////////
+//        val corp8 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Живые программы",
+//            poster = "",
+//description = "Живые программы, ОДО Общество с дополнительной ответственностью Год основания: 2008 Количество сотрудников: 6 УНП: 290493818",
+//            address = "225051, Брестская обл., г. Каменец, ул. Пограничная, 6",
+//            phones = "(01631)6-84-08, (029)202-00-62",
 //            email = "",
 //            website = ""
 //        )
-//        databaseParent.push().setValue(corp7)
-//////
-//        val corp8 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Гелионтрайнсолюшинс",
-//            poster = "",
-//description = "Гелионтрайнсолюшинс, ООО Общество с ограниченной ответственностью Год основания: 2004",
-//            address = "246061, г. Гомель, ул. Федюнинского, 17-26",
-//            phones = "",
-//            email = "mail@helion-prime.com",
-//            website = "www.helion-prime.com"
-//        )
 //        databaseParent.push().setValue(corp8)
-//////
+////////
 //        val corp9 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Геоинформационные системы",
+//            name = "Золотые программы",
 //            poster = "",
-//description = "Геоинформационные системы, УП Государственное предприятие Год основания: 1997 Количество сотрудников: 60 УНП: 101151656",
-//            address = "220012, г. Минск, ул. Сурганова, 6-511/а",
-//            phones = "(017)284-28-60",
-//            email = "zolotoy@itk2.bas-net.by",
-//            website = ""
+//description = "Золотые программы, ОДО Общество с дополнительной ответственностью Год основания: 1994 Количество сотрудников: 30 УНП: 101106383",
+//            address = "220073, г. Минск, ул. Скрыганова 6, оф. 2-204",
+//            phones = "(017)256-17-59, 256-27-82, 256-27-83, (029)775-85-70,  (044)718-37-87",
+//            email = "support@gsbelarus.com",
+//            website = "www.gsbelarus.com"
 //        )
 //        databaseParent.push().setValue(corp9)
-////////
+//////////
 //        val corp10 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Геокомпьютер",
+//            name = "ИВЦ-Молодечно",
 //            poster = "",
-//description = "Геокомпьютер, ООО Общество с ограниченной ответственностью Год основания: 1998 Количество сотрудников: 6 УНП: 400549368",
-//            address = "246050, г. Гомель, ул. Тельмана, 44-203",
-//            phones = "(0232)71-35-79",
-//            email = "belvit@rambler.ru",
+//description = "ИВЦ-Молодечно, ЧУП Частное предприятие Год основания: 1976 Количество сотрудников: 38 УНП: 600078148",
+//            address = "222310, Минская обл., г. Молодечно, ул. Металлистов, 1 (5 этаж)",
+//            phones = "(0176)75-38-72, 76-34-14",
+//            email = "ivc_molodechno@tut.by",
 //            website = ""
 //        )
 //        databaseParent.push().setValue(corp10)
-////////
+//////////
 //        val corp11 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Гечанский А. А.",
+//            name = "ИГ Копейка",
 //            poster = "",
-//description = "Гечанский А. А., ИП Предприниматель Год основания: 2005 Количество сотрудников: 1 УНП: 690335253",
-//            address = "222140, Минская обл., Борисовский р-н, д. Демидовка, ул. Центральная, 1",
-//            phones = "(029)501-46-06",
-//            email = "",
-//            website = ""
+//description = "ИГ Копейка, ООО Общество с ограниченной ответственностью Год основания: 2007 Количество сотрудников: 5 УНП: 190877856",
+//            address = "220072, г. Минск, ул. Одоевского, 52-312",
+//            phones = "(017)256-29-14, (029)656-21-21",
+//            email = "sales@kopeyka.by",
+//            website = "http://kopeyka.by"
 //        )
 //        databaseParent.push().setValue(corp11)
-////////
+//////////
 //        val corp12 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Главбух",
+//            name = "Игроматик",
 //            poster = "",
-//description = "Главбух, ООО Общество с ограниченной ответственностью Год основания: 2003 Количество сотрудников: 20 УНП: 190496320",
-//            address = "220002, г. Минск, ул. В. Хоружей, 33/а",
-//            phones = "(017)200-99-66",
-//            email = "info@gbsoft.by",
-//            website = "www.gbsoft.by"
-//        )
-//        databaseParent.push().setValue(corp12)
-////////
-//        val corp13 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Главбух-Гомель",
-//            poster = "",
-//description = "Главбух-Гомель, ООО Общество с ограниченной ответственностью Год основания: 2007 Количество сотрудников: 6 УНП: 190789934",
-//            address = "246050, г. Гомель, ул. Подгорная, 10",
-//            phones = "",
+//description = "Игроматик, СООО Общество с ограниченной ответственностью Год основания: 2007 Количество сотрудников: 30 УНП: 190835366",
+//            address = "220086, г. Минск, ул. Славинского, 12-512",
+//            phones = "(017)263-25-50",
 //            email = "",
 //            website = ""
 //        )
+//        databaseParent.push().setValue(corp12)
+//////////
+//        val corp13 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Импет",
+//            poster = "",
+//description = "Импет, СЗАО Закрытое акционерное общество Год основания: 1991 Количество сотрудников: 23 УНП: 100003261",
+//            address = "220108, г. Минск, ул. Казинца, 90/3",
+//            phones = "(017)278-43-10, 212-09-50",
+//            email = "mail@impet.com",
+//            website = "www.impet.com"
+//        )
 //        databaseParent.push().setValue(corp13)
-////////
+//////////
 //        val corp14 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Гомельский вычислительный центр",
+//            name = "Инвеншион машин",
 //            poster = "",
-//description = "Гомельский вычислительный центр строителей, ОАО Открытое акционерное общество Год основания: 1970 Количество сотрудников: 13 УНП: 400010845",
-//            address = "246044, г. Гомель, ул. Барыкина, 230",
-//            phones = "(0232)42-79-61, 42-67-97, 42-69-12",
+//description = "Инвеншион машин, ИП Иностранное предприятие Год основания: 2004 Количество сотрудников: 75 УНП: 190591204",
+//            address = "220123, г. Минск, ул. Старовиленская, 131-407",
+//            phones = "(017)293-14-99",
 //            email = "",
 //            website = ""
 //        )
 //        databaseParent.push().setValue(corp14)
-////////
+//////////
 //        val corp15 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Грамотный PR",
-//            poster = "http://belorussia.su/com_logo/1568588985logo1_big.jpg",
-//description = "Компания «Грамотный PR» занимается разработкой с 2009 года, что позволило компании добиться различных достижений в области разработки web-сайтов, мобильных приложений и различного рода программных решений. Наша команда всегда рада помочь Вам, воплотить в жизнь нестандартное решение или же идею для Вашего бизнеса. Свяжитесь с нашими менеджерами и мы обязательно поможем Вам.",
-//            address = "Минск, переулок Бехтерева 8",
-//            phones = "+375 25 936-71-57, +375 25 953 91 80",
-//            email = "info@g-pr.dev",
-//            website = "https://g-pr.dev"
-//        )
-//        databaseParent.push().setValue(corp15)
-//
-//        val corp16 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Гращенко С. В.",
+//            name = "Индсофтсистем",
 //            poster = "",
-//description = "Гращенко С. В., ИП Предприниматель Год основания: 2007 Количество сотрудников: 1 УНП: 790401680",
-//            address = "212029, г. Могилев, пр-т Пушкинский, 75-128",
-//            phones = "(0222)41-52-28",
+//description = "Индсофтсистем, НПУП Частное предприятие Год основания: 1995 Количество сотрудников: 10",
+//            address = "220141, г. Минск, ул. Ф. Скорины, 51-609",
+//            phones = "",
 //            email = "",
 //            website = ""
 //        )
+//        databaseParent.push().setValue(corp15)
+////
+//        val corp16 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Инис-софт",
+//            poster = "",
+//description = "Инис-софт, НП ООО Общество с ограниченной ответственностью Год основания: 1994 Количество сотрудников: 15 УНП: 100434847",
+//            address = "220004, г. Минск, ул. Короля, 51, помещение 10, офис 3 (5 этаж)",
+//            phones = "(017)200-29-16",
+//            email = "market@inissoft.by",
+//            website = "www.inissoft.by"
+//        )
 //        databaseParent.push().setValue(corp16)
-//
+////
 //        val corp17 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Гросс-Домен",
-//            poster = "",
-//            description = "Гросс-Домен, ООО Общество с ограниченной ответственностью Год основания: 2001 УНП: 190212692",
-//            address = "220017, г. Минск, а/я 75",
-//            phones = "(029)755-14-63",
-//            email = "support@gd.by",
-//            website = "www.gd.by"
+//            name = "Инсайтика",
+//            poster = "http://belorussia.su/com_logo/1645516074logo1_big.jpg",
+//description = "Маркетинговое агентство Инсайтика предлагает широкий спектр услуг по продвижению бизнеса в интернете. От создания продающего и живого сайта, рекламы, дизайна до комплексного продвижения компаний. Мы оказываем услуги: Разработка веб-сайтов Продвижение (SEO, SMM, Контекстная реклама)",
+//            address = "230025, г. Гродно, ул. Ленина 5, офис 74.",
+//            phones = "+375 (33) 637-30-79",
+//            email = "info@insaitika.com",
+//            website = "https://insaitika.com"
 //        )
 //        databaseParent.push().setValue(corp17)
-//
+////
 //        val corp18 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Группа Айтек",
+//            name = "Институт программных систем",
 //            poster = "",
-//            description = "Группа Айтек, ООО Общество с ограниченной ответственностью Год основания: 2006 Количество сотрудников: 10",
-//            address = "220039, г. Минск, ул. Куйбышева, 22-2",
-//            phones = "",
-//            email = "info@itecgp.com",
-//            website = "www.itecgroup.by"
+//description = "Институт прикладных программных систем, НИ РУП Государственное предприятиеГод основания: 1965 Количество сотрудников: 120УНП: 100059271",
+//            address = "220013, г. Минск, ул. Беломорская, 18-209",
+//            phones = "(017)290-07-63, 290-07-76, (029)649-44-21",
+//            email = "info@ipps.by",
+//            website = ""
 //        )
 //        databaseParent.push().setValue(corp18)
-//
+////
 //        val corp19 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Гуртсофт",
+//            name = "Институт системного анализа",
 //            poster = "",
-//            description = "Гуртсофт, ООО Общество с ограниченной ответственностью Год основания: 2007 Количество сотрудников: 14 УНП: 190871674",
-//            address = "220140, г. Минск, ул. Лещинского, 10-2",
-//            phones = "",
-//            email = "info@gurtam.com",
-//            website = ""
+//description = "Институт системного анализа и информационного обеспечения научно-технической сферы Белорусский (БелИСА) Государственное предприятие Год основания: 1997 Количество сотрудников: 83 УНП: 101179888",
+//            address = "220004, г. Минск, пр-т Победителей, 7-1213 (12-й этаж)",
+//            phones = "(017)203-14-87",
+//            email = "isa@belisa.org.by",
+//            website = "www.belisa.org.by"
 //        )
 //        databaseParent.push().setValue(corp19)
-////
+//////
 //        val corp20 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Далис",
+//            name = "Инструментальные технологии",
 //            poster = "",
-//            description = "Далис, УП Частное предприятие Год основания: 1997 Количество сотрудников: 2 УНП: 101311080",
-//            address = "220012, г. Минск, пер. Калининградский, 8-9",
-//            phones = "",
-//            email = "soft-ad@tut.by",
-//            website = ""
+//description = "Инструментальные технологии, ЗАО Закрытое акционерное общество Год основания: 1997 Количество сотрудников: 21 УНП: 101269853",
+//            address = "220141, г. Минск, ул. Купревича, 1/3-404",
+//            phones = "(017)265-91-51",
+//            email = "intech@belsonet.net",
+//            website = "www.intech.belsonet.net"
 //        )
 //        databaseParent.push().setValue(corp20)
     }
