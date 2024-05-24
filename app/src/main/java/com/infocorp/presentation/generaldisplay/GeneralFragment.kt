@@ -76,235 +76,6 @@ class GeneralFragment : Fragment() {
 //
 //        val corp1 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Датаскан",
-//            poster = "",
-//description = "Датаскан, ЧП Частное предприятие Год основания: 1996 Количество сотрудников: 8 УНП: 101180244",
-//            address = "220131, г. Минск, ул. Хмаринская, 13",
-//            phones = "+(017)266-44-55",
-//            email = "office@datascan.by",
-//            website = ""
-//        )
-//        databaseParent.push().setValue(corp1)
-//////////
-//        val corp2 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Дельта-1",
-//            poster = "",
-//description = "Дельта-1, ООО ПК Общество с ограниченной ответственностью Год основания: 1995 Количество сотрудников: 10 УНП: 400323181",
-//            address = "246031, г. Гомель, ул. Рощинская, 2 (1 этаж)",
-//            phones = "(0232)63-10-88",
-//            email = "delta1@mail.gomel.by",
-//            website = ""
-//        )
-//        databaseParent.push().setValue(corp2)
-////////
-//        val corp3 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "ДжейТорг",
-//            poster = "",
-//description = "ДжейТорг, ООООбщество с ограниченной ответственностью Год основания: 1997 Количество сотрудников: 5 УНП: 101385803",
-//            address = "220012, г. Минск, ул. Сурганова, 7-202",
-//            phones = "",
-//            email = "",
-//            website = ""
-//        )
-//        databaseParent.push().setValue(corp3)
-////////
-////////
-//        val corp4 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Джи 2 экс",
-//            poster = "",
-//description = "Джи 2 экс Девелопмент Сервисис, ИП Иностранное предприятие Год основания: 2003 Количество сотрудников: 60 УНП: 800019013",
-//            address = "220113, г. Минск, ул. Восточная, 133-801, 804",
-//            phones = "",
-//            email = "",
-//            website = "www.j2x.com"
-//        )
-//        databaseParent.push().setValue(corp4)
-////////
-//        val corp5 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Диалог-ПРО",
-//            poster = "",
-//description = "Диалог-ПРО, ЗАО Закрытое акционерное общество Год основания: 1991 Количество сотрудников: 12 УНП: 300237332",
-//            address = "210026, г. Витебск, ул. Суворова, 36",
-//            phones = "8 017 277 28 50, 8 029 671 51 83",
-//            email = "odialog@vitebsk.by",
-//            website = ""
-//        )
-//        databaseParent.push().setValue(corp5)
-////////
-//        val corp6 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Дисплей Нетворкc",
-//            poster = "",
-//description = "Дисплей Нетворкc, ЧУП Частное предприятие Год основания: 2004 Количество сотрудников: 10 УНП: 190579638",
-//            address = "220037, г. Минск, пер. Козлова, 7-15",
-//            phones = "(017)227-70-08",
-//            email = "",
-//            website = ""
-//        )
-//        databaseParent.push().setValue(corp6)
-////////
-//        val corp7 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Ждан",
-//            poster = "",
-//description = "Ждан, ЧП Частное предприятие Год основания: 2007 Количество сотрудников: 5 УНП: 190882019",
-//            address = "220102, г. Минск, ул. Алтайская, 64/1-02",
-//            phones = "(017)297-45-72, (029)401-21-69",
-//            email = "po@po.by",
-//            website = "www.po.by"
-//        )
-//        databaseParent.push().setValue(corp7)
-////////
-//        val corp8 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Живые программы",
-//            poster = "",
-//description = "Живые программы, ОДО Общество с дополнительной ответственностью Год основания: 2008 Количество сотрудников: 6 УНП: 290493818",
-//            address = "225051, Брестская обл., г. Каменец, ул. Пограничная, 6",
-//            phones = "(01631)6-84-08, (029)202-00-62",
-//            email = "",
-//            website = ""
-//        )
-//        databaseParent.push().setValue(corp8)
-////////
-//        val corp9 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Золотые программы",
-//            poster = "",
-//description = "Золотые программы, ОДО Общество с дополнительной ответственностью Год основания: 1994 Количество сотрудников: 30 УНП: 101106383",
-//            address = "220073, г. Минск, ул. Скрыганова 6, оф. 2-204",
-//            phones = "(017)256-17-59, 256-27-82, 256-27-83, (029)775-85-70,  (044)718-37-87",
-//            email = "support@gsbelarus.com",
-//            website = "www.gsbelarus.com"
-//        )
-//        databaseParent.push().setValue(corp9)
-//////////
-//        val corp10 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "ИВЦ-Молодечно",
-//            poster = "",
-//description = "ИВЦ-Молодечно, ЧУП Частное предприятие Год основания: 1976 Количество сотрудников: 38 УНП: 600078148",
-//            address = "222310, Минская обл., г. Молодечно, ул. Металлистов, 1 (5 этаж)",
-//            phones = "(0176)75-38-72, 76-34-14",
-//            email = "ivc_molodechno@tut.by",
-//            website = ""
-//        )
-//        databaseParent.push().setValue(corp10)
-//////////
-//        val corp11 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "ИГ Копейка",
-//            poster = "",
-//description = "ИГ Копейка, ООО Общество с ограниченной ответственностью Год основания: 2007 Количество сотрудников: 5 УНП: 190877856",
-//            address = "220072, г. Минск, ул. Одоевского, 52-312",
-//            phones = "(017)256-29-14, (029)656-21-21",
-//            email = "sales@kopeyka.by",
-//            website = "http://kopeyka.by"
-//        )
-//        databaseParent.push().setValue(corp11)
-//////////
-//        val corp12 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Игроматик",
-//            poster = "",
-//description = "Игроматик, СООО Общество с ограниченной ответственностью Год основания: 2007 Количество сотрудников: 30 УНП: 190835366",
-//            address = "220086, г. Минск, ул. Славинского, 12-512",
-//            phones = "(017)263-25-50",
-//            email = "",
-//            website = ""
-//        )
-//        databaseParent.push().setValue(corp12)
-//////////
-//        val corp13 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Импет",
-//            poster = "",
-//description = "Импет, СЗАО Закрытое акционерное общество Год основания: 1991 Количество сотрудников: 23 УНП: 100003261",
-//            address = "220108, г. Минск, ул. Казинца, 90/3",
-//            phones = "(017)278-43-10, 212-09-50",
-//            email = "mail@impet.com",
-//            website = "www.impet.com"
-//        )
-//        databaseParent.push().setValue(corp13)
-//////////
-//        val corp14 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Инвеншион машин",
-//            poster = "",
-//description = "Инвеншион машин, ИП Иностранное предприятие Год основания: 2004 Количество сотрудников: 75 УНП: 190591204",
-//            address = "220123, г. Минск, ул. Старовиленская, 131-407",
-//            phones = "(017)293-14-99",
-//            email = "",
-//            website = ""
-//        )
-//        databaseParent.push().setValue(corp14)
-//////////
-//        val corp15 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Индсофтсистем",
-//            poster = "",
-//description = "Индсофтсистем, НПУП Частное предприятие Год основания: 1995 Количество сотрудников: 10",
-//            address = "220141, г. Минск, ул. Ф. Скорины, 51-609",
-//            phones = "",
-//            email = "",
-//            website = ""
-//        )
-//        databaseParent.push().setValue(corp15)
-////
-//        val corp16 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Инис-софт",
-//            poster = "",
-//description = "Инис-софт, НП ООО Общество с ограниченной ответственностью Год основания: 1994 Количество сотрудников: 15 УНП: 100434847",
-//            address = "220004, г. Минск, ул. Короля, 51, помещение 10, офис 3 (5 этаж)",
-//            phones = "(017)200-29-16",
-//            email = "market@inissoft.by",
-//            website = "www.inissoft.by"
-//        )
-//        databaseParent.push().setValue(corp16)
-////
-//        val corp17 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Инсайтика",
-//            poster = "http://belorussia.su/com_logo/1645516074logo1_big.jpg",
-//description = "Маркетинговое агентство Инсайтика предлагает широкий спектр услуг по продвижению бизнеса в интернете. От создания продающего и живого сайта, рекламы, дизайна до комплексного продвижения компаний. Мы оказываем услуги: Разработка веб-сайтов Продвижение (SEO, SMM, Контекстная реклама)",
-//            address = "230025, г. Гродно, ул. Ленина 5, офис 74.",
-//            phones = "+375 (33) 637-30-79",
-//            email = "info@insaitika.com",
-//            website = "https://insaitika.com"
-//        )
-//        databaseParent.push().setValue(corp17)
-////
-//        val corp18 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Институт программных систем",
-//            poster = "",
-//description = "Институт прикладных программных систем, НИ РУП Государственное предприятиеГод основания: 1965 Количество сотрудников: 120УНП: 100059271",
-//            address = "220013, г. Минск, ул. Беломорская, 18-209",
-//            phones = "(017)290-07-63, 290-07-76, (029)649-44-21",
-//            email = "info@ipps.by",
-//            website = ""
-//        )
-//        databaseParent.push().setValue(corp18)
-////
-//        val corp19 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Институт системного анализа",
-//            poster = "",
-//description = "Институт системного анализа и информационного обеспечения научно-технической сферы Белорусский (БелИСА) Государственное предприятие Год основания: 1997 Количество сотрудников: 83 УНП: 101179888",
-//            address = "220004, г. Минск, пр-т Победителей, 7-1213 (12-й этаж)",
-//            phones = "(017)203-14-87",
-//            email = "isa@belisa.org.by",
-//            website = "www.belisa.org.by"
-//        )
-//        databaseParent.push().setValue(corp19)
-//////
-//        val corp20 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
 //            name = "Инструментальные технологии",
 //            poster = "",
 //description = "Инструментальные технологии, ЗАО Закрытое акционерное общество Год основания: 1997 Количество сотрудников: 21 УНП: 101269853",
@@ -313,8 +84,243 @@ class GeneralFragment : Fragment() {
 //            email = "intech@belsonet.net",
 //            website = "www.intech.belsonet.net"
 //        )
+//        databaseParent.push().setValue(corp1)
+////////////
+//        val corp2 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Интеграционные технологии",
+//            poster = "http://belorussia.su/com_logo/1406723327logo1_big.jpg",
+//description = "Интеграционные технологии (ИНТЕК) – компания - системный интегратор, занимающаяся созданием и внедрением автоматизированных информационных систем для организаций, ориентированных на управление складскими территориями, логистикой и торговлей. ИНТЕК как юридическое лицо образовался в 2014 года в городе Минске как совместная инициатива ключевых ИТ специалистов крупной компании дистрибьютора, создать высокопрофессиональную команду способную ставить перед собой высокие и амбициозные цели и эффективно достигать их. Отличительной чертой нашего подхода к делу перед конкурентами является высокая степень автоматизации бизнес-процессов и проектный подход с использованием передовых проектных технологий. Наша компания также выделяется наличием большого числа профессионалов в штате, которые имеют богатый опыт внедрения, разработки и управления проектами в самых крупных торговых и логистических компаниях Беларуси. Наша команда на данный момент уже разработала решение по управлению дистрибуцией для Беларуси на базе типовой конфигурации Управление торговлей 11 компании 1C. Также нами ведутся работы по адаптации и доработке принципиально нового по масштабу решения по управлению предприятием ERP 2.0.",
+//            address = "220007, г. Минск, ул. Могилевская, д. 18, пом. 4Н",
+//            phones = "+37517 219 00 85",
+//            email = "info@intec.by",
+//            website = "http://www.intec.by"
+//        )
+//        databaseParent.push().setValue(corp2)
+//////////
+//        val corp3 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Интелико Системс",
+//            poster = "http://belorussia.su/com_logo/1338807548logo1_big.jpg",
+//description = "Дизайн. Разработка интернет-ориентированного программного обеспечения.",
+//            address = "ул. Филимонова 53-715",
+//            phones = "+375172118046",
+//            email = "connect@intelico.su",
+//            website = "http://www.intelico.su"
+//        )
+//        databaseParent.push().setValue(corp3)
+//////////
+//////////
+//        val corp4 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Интеллектсофт",
+//            poster = "",
+//description = "Интеллектсофт, ООО Общество с ограниченной ответственностью Год основания: 2007 Количество сотрудников: 50 УНП: 190890707",
+//            address = "г. Минск, пр. Держинского, 57, 14-1",
+//            phones = "",
+//            email = "hr@intellectsoft.net",
+//            website = "www.intellectsoft.net"
+//        )
+//        databaseParent.push().setValue(corp4)
+//////////
+//        val corp5 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Интермех",
+//            poster = "",
+//description = "Интермех, ОДО Общество с дополнительной ответственностью Год основания: 1990 Количество сотрудников: 35 УНП: 100176519",
+//            address = "220004, г. Минск, ул. Короля, 51 (3 этаж)",
+//            phones = "(017)306-21-30",
+//            email = "cad@intermech.ru",
+//            website = "www.intermech.ru"
+//        )
+//        databaseParent.push().setValue(corp5)
+//////////
+//        val corp6 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "ИнтернетСоздатели",
+//            poster = "http://belorussia.su/com_logo/1592385670logo1_big.jpg",
+//description = "Профессионально занимаемся разработкой и продвижение сайтов уже 11 лет. Можем помочь решить данную задачу. Работаем официально, по договору. Гарантия 12 мес. Всегда на связи! +375297139003 Viber, WhatsApp.",
+//            address = "ул. Советская, д. 68, офис 402",
+//            phones = "+375 (29) 743-19-05",
+//            email = "internetsozdateli1@gmail.com",
+//            website = "https://internetsozdateli.by"
+//        )
+//        databaseParent.push().setValue(corp6)
+//////////
+//        val corp7 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Инфо-Сервис",
+//            poster = "http://belorussia.su/com_logo/1362811456logo1_big.jpg",
+//description = "Наша компания оказывает комплекс услуг, связанных с сбором и обработкой информации, а также разрабатывает программное обеспечение, необходимое в ходе деятельности организаций, таких риэлторские, юридические и бухгалтерские компании. Специалисты компании грамотно и оперативно проводят работы по всем важнейшим направлениям. Информационные услуги занимают прочное место в сфере нашей работы. Мы обеспечиваем информационную и физическую защиту носителей. Сотрудничество с нами гарантирует высокий уровень безопасности.",
+//            address = "Ул. Сурганова, 28",
+//            phones = "8-929-698-09-61",
+//            email = "it-service-company@mail.ru",
+//            website = ""
+//        )
+//        databaseParent.push().setValue(corp7)
+//////////
+//        val corp8 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Инфокард",
+//            poster = "",
+//description = "Инфокард, ООООбщество с ограниченной ответственностью Год основания: 2000Количество сотрудников: 10УНП: 190378061",
+//            address = "220114, г. Минск, ул. Буйницкого, 21-21",
+//            phones = "(017)267-56-62",
+//            email = "info@infocard.by",
+//            website = "www.infocard.by"
+//        )
+//        databaseParent.push().setValue(corp8)
+//////////
+//        val corp9 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "ИВЦ Бел.ж.д",
+//            poster = "",
+//description = "Информационно-вычислительный центр УП «Витебское отделение Белорусской железной дороги» осуществляет следующие виды работ: техническое обслуживание, ремонт ПЭВМ и офисной техники; заправка картриджей для лазерных принтеров и МФУ; строительство и обслуживание локальных сетей; настройка и техническое обслуживание серверов и сетевого оборудования; выполнение работ по разработке программного обеспечения; оказание услуг по сопровождению программных продуктов.",
+//            address = "",
+//            phones = "+37529716-62-81",
+//            email = "ivc.vitebsk@gmail.com",
+//            website = ""
+//        )
+//        databaseParent.push().setValue(corp9)
+////////////
+//        val corp10 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "ИВЦ авиации",
+//            poster = "",
+//description = "Информационно-вычислительный центр авиации, РУП Государственное предприятие Год основания: 1979 Количество сотрудников: 17 УНП: 100035790",
+//            address = "220039, г. Минск, ул. Короткевича, 7",
+//            phones = "(017)222-54-17, 224-52-73",
+//            email = "ivc@ivcavia.com",
+//            website = ""
+//        )
+//        databaseParent.push().setValue(corp10)
+////////////
+//        val corp11 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Информационные компьютерные системы",
+//            poster = "",
+//description = "Информационные компьютерные системы, ООО Общество с ограниченной ответственностью Год основания: 1992 Количество сотрудников: 5УНП: 200082067",
+//            address = "224005, г. Брест, ул. Комсомольская, 40-304",
+//            phones = "",
+//            email = "",
+//            website = ""
+//        )
+//        databaseParent.push().setValue(corp11)
+////////////
+//        val corp12 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Информация",
+//            poster = "",
+//description = "Информация, НПП Частное предприятие Год основания: 1997 Количество сотрудников: 5",
+//            address = "220075, г. Минск, ул. Ротмистрова, 62-192",
+//            phones = "(017)344-18-15",
+//            email = "",
+//            website = ""
+//        )
+//        databaseParent.push().setValue(corp12)
+////////////
+//        val corp13 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Инфостар",
+//            poster = "",
+//description = "Инфостар, СООО Общество с ограниченной ответственностью Год основания: 2006 Количество сотрудников: 20УНП: 190682990",
+//            address = "220113, г. Минск, ул. Мележа, 5/2-211",
+//            phones = "(017)280-98-70",
+//            email = "",
+//            website = ""
+//        )
+//        databaseParent.push().setValue(corp13)
+////////////
+//        val corp14 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Инфотех",
+//            poster = "",
+//description = "Инфотех, УП Частное предприятие Год основания: 1991 Количество сотрудников: 15УНП: 100067268",
+//            address = "220073, г. Минск, пер. 4-й Загородный, 56/а",
+//            phones = "(017)228-25-57",
+//            email = "viktor_f@tut.by",
+//            website = "www.infotech.by"
+//        )
+//        databaseParent.push().setValue(corp14)
+////////////
+//        val corp15 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Инфотехсервис",
+//            poster = "",
+//description = "Инфотехсервис, УП Государственное предприятие Год основания: 1991 Количество сотрудников: 22 УНП: 500036830",
+//            address = "230010, г. Гродно, ул. Гая, 2 (9 этаж)",
+//            phones = "(0152)54-69-63, 54-94-58",
+//            email = "tex_info@mail.ru",
+//            website = ""
+//        )
+//        databaseParent.push().setValue(corp15)
+//////
+//        val corp16 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Инфотехсофтбел",
+//            poster = "",
+//description = "Инфотехсофтбел, ЧП Частное предприятие Год основания: 2008 Количество сотрудников: 7 УНП: 190853313",
+//            address = "220015, г. Минск, ул. Пономаренко, 35/а-726",
+//            phones = "po@infotech.by",
+//            email = "po@infotech.by",
+//            website = "http://infotech.by"
+//        )
+//        databaseParent.push().setValue(corp16)
+//////
+//        val corp17 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "СИБ софтвэр",
+//            poster = "http://belorussia.su/com_logo/1340871107logo1_big.jpg",
+//description = "СИБ софтвэр ГмбХ работает на рынке информационных технологий Германии уже более 20 лет. Компания разрабатывает DMS- и DLMS -системы, предназначенные для банковского и страхового сектора, а также для сектора госуправления. Белорусское представительство было открыто в 2007 году, а в 2009 преобразовано в ИООО  \"СИБ софтвэр\" . В мире используются более 2-х миллионов лицензий на продукты, разработанные ИООО  \"СИБ софтвэр\" совместно с СИБ софтвэр ГмбХ. Ключ к успеху компании – это ее сотрудники.  СИБ является призером конкурса «Лучшие ИТ-компании Беларуси глазами сотрудников 2012». Для каждого нового члена команды организуется образовательная поездка в Германию. В обширный соцпакет помимо прочего входит медицинское страхование. Цель компании: «Долгосрочное сотрудничество, основанное на доверии».",
+//            address = "Ул. Левкова, 24-7, Минск 220007",
+//            phones = "+375 17 298 59 03",
+//            email = "info@cib.by",
+//            website = "http://www.cib.by"
+//        )
+//        databaseParent.push().setValue(corp17)
+//////
+//        val corp18 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Головкин А.А.",
+//            poster = "http://belorussia.su/com_logo/1413283195logo1_big.jpg",
+//description = "ДИЗАЙН Полностью соответствующий Вашим требованиям и представлениям о вкусе. СРОКИ 10 - 21 календарных дней. РЕЗУЛЬТАТ Профессионально сделанный интернет-ресурс, повышающий вес Вашего бизнеса. От 100 посетителей в месяц, целенаправленно посещающих Ваш сайт, каждый из которых может стать Вашим клиентом. УНП 591161373, ИП Головкин Алексей Александрович",
+//            address = "230006, г.Гродно, м-н Фолюш, д.15/191, кв.13",
+//            phones = "+375298825577",
+//            email = "info@nextlevel.com",
+//            website = "http://nextlevel.by"
+//        )
+//       databaseParent.push().setValue(corp18)
+//////
+//        val corp19 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "ИП Костюк",
+//            poster = "http://belorussia.su/com_logo/1623856634logo1_big.jpg",
+//description = "Лечение сайта от вирусов за 24 часа. Оказываем полный комплекс услуг в области информационной безопасности сайтов. Оперативная помощь в очистке сайта от вирусов, диагностики сайта на предмет взлома и заражения, восстановление сайта после хакерского взлома. Вылечить сайт Мы разрабатали новые методики обнаружения вирусов, экстренного лечения, удаление вирусов с сайта, обнаружения уязвимостей CMS и восстановления работоспособности сайта",
+//            address = "Минск, ул.Сырокомли 38 офис 22",
+//            phones = "+375 (29) 934-43-08",
+//            email = "info@webster.by",
+//            website = "https://webster.by"
+//        )
+//        databaseParent.push().setValue(corp19)
+////////
+//        val corp20 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "ИП Лиcтpaтeнko",
+//            poster = "http://belorussia.su/com_logo/1559235263logo1_big.jpg",
+//description = "Разработка программного обеспечения для индивидуальных предпринимателей и малых фирм.",
+//            address = "220141, г. Минск, ул. Купревича, 1/3-404",
+//            phones = "+375 29 5612441",
+//            email = "",
+//            website = "http://ip-soft.by"
+//        )
 //        databaseParent.push().setValue(corp20)
-    }
+
+
+
+
+
+
+   }
 
 
 

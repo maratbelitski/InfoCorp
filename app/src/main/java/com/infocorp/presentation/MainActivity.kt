@@ -24,15 +24,13 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-//    private val adRequest by lazy {
-//        AdRequest.Builder().build()
-//    }
 
     private val viewModel: MainActivityViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         MobileAds.initialize(this)
+
         onBottomNavigation()
         onListeners()
 
@@ -45,9 +43,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //    private fun showCommercialBanner() {
-//        binding.adView.loadAd(adRequest)
-//    }
     private fun onListeners() {
         binding.fab.setOnClickListener {
             val navHostFragment =

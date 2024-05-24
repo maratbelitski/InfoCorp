@@ -69,5 +69,6 @@
     <string name="total_in_your">Всего компаний в вашей базе: </string>
     <string name="send_resume">отправить резюме</string>
     <string name="error_input_layout">Поле не должно быть пустым!</string>
+    <string name="settings">настройки</string>
 
 </resources>

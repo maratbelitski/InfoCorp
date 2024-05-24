@@ -26,10 +26,12 @@
 
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/shape_shimmer_child"
+                android:backgroundTint="@color/red"
                 android:layout_marginEnd="@dimen/normal_margin_size"
-                android:src="@drawable/statistic"
+                android:padding="@dimen/min_margin_size"
                 app:layout_constraintBottom_toBottomOf="@+id/statistic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/statistic" />
@@ -38,31 +40,29 @@
                 android:id="@+id/view2"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_marginTop="@dimen/normal_margin_size"
                 android:background="@color/red"
                 app:layout_constraintBottom_toTopOf="@id/tvAllInBase"
                 app:layout_constraintTop_toBottomOf="@+id/statistic" />
 
             <TextView
                 android:id="@+id/statistic"
-                style="@style/MyStyle.TextViewBig"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/statistic"
+                android:layout_width="200dp"
+                android:layout_height="18sp"
+                android:layout_marginTop="@dimen/normal_margin_size"
+                android:layout_marginStart="@dimen/normal_padding_size"
+                android:background="@drawable/shape_shimmer_child"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvAllInBase"
-                style="@style/MyStyle.TextViewNormal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/min_margin_size"
-                android:padding="@dimen/min_margin_size"
-                android:paddingStart="@dimen/normal_margin_size"
-                android:text="@string/total_companies"
-                android:textIsSelectable="false"
+                android:layout_width="250dp"
+                android:layout_height="12dp"
+                android:background="@drawable/shape_shimmer_child"
+                android:layout_marginTop="@dimen/normal_margin_size"
                 app:layout_constraintStart_toStartOf="@+id/statistic"
-                app:layout_constraintTop_toBottomOf="@+id/statistic" />
+                app:layout_constraintTop_toBottomOf="@+id/view2" />
 
             <TextView
                 android:id="@+id/countAllInBase"
@@ -79,14 +79,11 @@
 
             <TextView
                 android:id="@+id/tvNewInBase"
-                style="@style/MyStyle.TextViewNormal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/min_margin_size"
-                android:paddingStart="@dimen/normal_margin_size"
-                android:text="@string/total_unseen"
-                android:textIsSelectable="false"
-                app:layout_constraintStart_toStartOf="@+id/tvAllInBase"
+                android:layout_width="200dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="@dimen/normal_margin_size"
+                android:background="@drawable/shape_shimmer_child"
+                app:layout_constraintStart_toStartOf="@+id/statistic"
                 app:layout_constraintTop_toBottomOf="@+id/tvAllInBase" />
 
             <TextView
@@ -103,16 +100,13 @@
 
             <TextView
                 android:id="@+id/tvInUserBase"
-                style="@style/MyStyle.TextViewNormal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="12dp"
+                android:background="@drawable/shape_shimmer_child"
+                android:layout_marginTop="@dimen/normal_margin_size"
                 android:layout_marginBottom="@dimen/normal_margin_size"
-                android:padding="@dimen/min_margin_size"
-                android:paddingStart="@dimen/normal_margin_size"
-                android:text="@string/total_in_your"
-                android:textIsSelectable="false"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tvNewInBase"
+                app:layout_constraintStart_toStartOf="@+id/statistic"
                 app:layout_constraintTop_toBottomOf="@+id/tvNewInBase" />
 
             <TextView

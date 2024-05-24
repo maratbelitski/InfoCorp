@@ -154,4 +154,9 @@
             android:name="corporation"
             app:argType="com.infocorp.domain.model.Corporation" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.infocorp.presentation.settingsdisplay.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

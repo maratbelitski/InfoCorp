@@ -17,10 +17,16 @@
         android:id="@+id/favouriteFragment"
         android:icon="@drawable/grade"
         android:title="@string/favourites"
-        app:showAsAction="always"/>
+        app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/item4"
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/settings"
+        android:title="@string/settings"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/item5"
         android:title=""
         android:enabled="false"/>
 </menu>
