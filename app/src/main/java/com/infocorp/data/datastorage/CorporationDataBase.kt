@@ -8,6 +8,8 @@ import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.corporationdto.FavouriteCorporationsDto
 import com.infocorp.data.corporationdto.OldCorporationsDto
 import com.infocorp.data.corporationdto.UserCorporationDto
+import com.infocorp.presentation.Constants.DATABASE_NAME
+
 
 @Database(entities =
     [CorporationDto::class,
@@ -23,7 +25,7 @@ abstract class CorporationDataBase : RoomDatabase() {
 
 
     companion object {
-        private const val Database_NAME = "corporation.db"
+//        private const val DATABASE_NAME = "corporation.db"
 
         @Volatile
         private var INSTANCE: CorporationDataBase? = null
@@ -37,7 +39,7 @@ abstract class CorporationDataBase : RoomDatabase() {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         CorporationDataBase::class.java,
-                        Database_NAME
+                        DATABASE_NAME.value
                     )
                         .build()
 

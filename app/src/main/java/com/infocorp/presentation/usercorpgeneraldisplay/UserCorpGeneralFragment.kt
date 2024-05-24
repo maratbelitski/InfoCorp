@@ -26,9 +26,6 @@ class UserCorpGeneralFragment : Fragment() {
 
     private val fragmentViewModel: UserCorpGeneralFragmentViewModel by viewModels()
 
-//    private val updateStateBottomMenu by lazy {
-//        activity as MainActivity
-//    }
 
     private val defaultCorp by lazy {
         Corporation()

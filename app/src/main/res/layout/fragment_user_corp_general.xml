@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_vertical"
-    android:orientation="vertical"
     android:padding="@dimen/normal_padding_size"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".presentation.usercorpgeneraldisplay.UserCorpGeneralFragment">
 
-    <include
-        android:id="@+id/listUserCorpCard"
-        layout="@layout/list_user_corps" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
 
-    <include
-        android:id="@+id/createUserCorpCard"
-        layout="@layout/create_user_corps" />
+        <include
+            android:id="@+id/listUserCorpCard"
+            layout="@layout/list_user_corps" />
 
-    <include
-        android:id="@+id/changeInfoCorpCard"
-        layout="@layout/change_info_corp" />
-</LinearLayout>
+        <include
+            android:id="@+id/createUserCorpCard"
+            layout="@layout/create_user_corps" />
+
+        <include
+            android:id="@+id/changeInfoCorpCard"
+            layout="@layout/change_info_corp" />
+    </LinearLayout>
+</ScrollView>
