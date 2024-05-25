@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         MobileAds.initialize(this)
 
+        onInitThemeParams()
         onBottomNavigation()
         onListeners()
 
@@ -40,6 +42,13 @@ class MainActivity : AppCompatActivity() {
                 .collect {
                     binding.adView.loadAd(it)
                 }
+        }
+    }
+
+    fun onInitThemeParams() {
+        when (viewModel.getThemeParams()) {
+            Constants.LIGHT_MODE.value -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            Constants.NIGHT_MODE.value -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
     }
 

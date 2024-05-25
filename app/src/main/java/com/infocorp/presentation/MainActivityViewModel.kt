@@ -1,5 +1,6 @@
 package com.infocorp.presentation
 
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -15,12 +16,15 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
-    private val adRequest: AdRequest
+    private val adRequest: AdRequest,
+    private val sharedPref: SharedPreferences
 ) : ViewModel() {
     private var _banner = MutableStateFlow(adRequest)
     val banner: StateFlow<AdRequest>
         get() = _banner.asStateFlow()
 
-
+    fun getThemeParams(): String {
+        return sharedPref.getString("themeParams", "") ?: ""
+    }
 }
 

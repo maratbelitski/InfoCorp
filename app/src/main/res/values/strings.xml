@@ -72,4 +72,7 @@
     <string name="send_resume">send your resume</string>
     <string name="error_input_layout">The field should not be empty!</string>
     <string name="settings">settings</string>
+    <string name="theme">Theme</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
 </resources>

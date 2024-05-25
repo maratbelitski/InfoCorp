@@ -78,4 +78,8 @@
     <style name="MyStyle.progressBar" parent="Base.Theme.InfoCorp">
         <item name="colorAccent">@color/red</item>
     </style>
+
+    <style name="MyStyle.RadioButtons" parent="Widget.Material3.CompoundButton.RadioButton">
+        <item name="colorPrimary">@color/red</item>
+    </style>
 </resources>

@@ -70,5 +70,8 @@
     <string name="send_resume">отправить резюме</string>
     <string name="error_input_layout">Поле не должно быть пустым!</string>
     <string name="settings">настройки</string>
+    <string name="theme">Тема</string>
+    <string name="light">Светлая</string>
+    <string name="dark">Темная</string>
 
 </resources>
