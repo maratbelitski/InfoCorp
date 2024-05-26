@@ -5,15 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/first_background_color"
-    android:padding="8dp"
+    android:padding="@dimen/normal_padding_size"
     tools:context=".presentation.listdisplay.ListCorporationsFragment">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/min_margin_size"
-        android:layout_marginEnd="@dimen/min_margin_size"
+        android:layout_margin="@dimen/normal_padding_size"
         android:background="@drawable/shape_search_view"
         app:defaultQueryHint="@string/input_name_corp"
         android:theme="@style/MyStyle.SearchView"

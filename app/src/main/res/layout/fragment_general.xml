@@ -4,36 +4,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="@dimen/normal_padding_size"
+    tools:context=".presentation.generaldisplay.GeneralFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/first_background_color"
-        android:layout_margin="@dimen/normal_padding_size"
-        tools:context=".presentation.generaldisplay.GeneralFragment">
-
+        android:background="@color/first_background_color">
 
         <include
             android:id="@+id/statisticCard"
-            layout="@layout/statistic_layout"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/normal_margin_size"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
+            layout="@layout/statistic_layout" />
 
         <include
             android:id="@+id/shimmerLayout"
-            layout="@layout/shimmer_statistic_layout"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/normal_margin_size"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            layout="@layout/shimmer_statistic_layout" />
 
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </ScrollView>

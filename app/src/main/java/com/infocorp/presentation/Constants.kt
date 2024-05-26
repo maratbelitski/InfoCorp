@@ -5,9 +5,16 @@ enum class Constants(val value:String) {
     BASE_URL("http://suggestions.dadata.ru/suggestions/api/4_1/rs/"),
     AUTHORIZATION_TOKEN("Authorization: Token 6ebaf8e334bac982c60b1ba2fae777febca0303f"),
 
+    INFO_CORP_PREFERENCES ("info_corp_preferences"),
+
+    THEME_PARAMS_PREFERENCES ("themeParams"),
     NIGHT_MODE("33"),
     LIGHT_MODE("17"),
 
-    INFO_CORP_PREFERENCES ("info_corp_preferences")
+    TITLE_CV("titleCV"),
+    BODY_CV("bodyCV"),
 
+    LANG_PARAMS_PREFERENCES ("language"),
+    LANG_RU ("ru"),
+    LANG_EN ("en")
 }

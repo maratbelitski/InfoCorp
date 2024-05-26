@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">InfoCorp</string>
+    <string name="app_name" translatable="false">InfoCorp</string>
 
     <string name="it_company">IT - company</string>
     <string name="it_query">\ IT - company in Republic of Belarus</string>
@@ -75,4 +75,7 @@
     <string name="theme">Theme</string>
     <string name="light">Light</string>
     <string name="dark">Dark</string>
+    <string name="language">Language</string>
+    <string name="russian">Russian</string>
+    <string name="english">English</string>
 </resources>

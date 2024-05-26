@@ -5,6 +5,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -34,8 +35,12 @@ class MainActivity : AppCompatActivity() {
 
         onInitThemeParams()
         onBottomNavigation()
-        onListeners()
 
+        onListeners()
+        onObservers()
+    }
+
+    private fun onObservers() {
         lifecycleScope.launch {
             viewModel.banner
                 .flowWithLifecycle(lifecycle, Lifecycle.State.CREATED)
@@ -50,6 +55,13 @@ class MainActivity : AppCompatActivity() {
             Constants.LIGHT_MODE.value -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             Constants.NIGHT_MODE.value -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
+    }
+
+    fun onInitLanguage() {
+        val lang = viewModel.getLanguageParams()
+        val localeListCompat = LocaleListCompat.forLanguageTags(lang)
+        AppCompatDelegate.setApplicationLocales(localeListCompat)
+       // recreate()
     }
 
     private fun onListeners() {

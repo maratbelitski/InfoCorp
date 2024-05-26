@@ -38,54 +38,54 @@
             style="@style/MyStyle.TextViewBig"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/theme"
+            android:text="@string/language"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvLight"
+            android:id="@+id/tvRus"
             style="@style/MyStyle.TextViewNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/min_margin_size"
             android:paddingStart="@dimen/normal_margin_size"
-            android:text="@string/light"
+            android:text="@string/russian"
             android:textIsSelectable="false"
             android:textStyle="bold"
-            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintEnd_toStartOf="@+id/radioGroup"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view2" />
 
         <TextView
-            android:id="@+id/tvDark"
+            android:id="@+id/tvEng"
             style="@style/MyStyle.TextViewNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/normal_margin_size"
-            android:text="@string/dark"
+            android:text="@string/english"
             android:textIsSelectable="false"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/tvLight"
-            app:layout_constraintTop_toBottomOf="@+id/tvLight" />
+            app:layout_constraintStart_toStartOf="@+id/tvRus"
+            app:layout_constraintTop_toBottomOf="@+id/tvRus" />
 
         <RadioGroup
             android:id="@+id/radioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:theme="@style/MyStyle.RadioButtons"
-            app:layout_constraintBottom_toBottomOf="@+id/tvDark"
+            app:layout_constraintBottom_toBottomOf="@+id/tvEng"
             app:layout_constraintStart_toEndOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/theme">
 
             <RadioButton
-                android:id="@+id/rbtn_light"
+                android:id="@+id/rbtn_rus"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center" />
 
             <RadioButton
-                android:id="@+id/rbtn_dark"
+                android:id="@+id/rbtn_eng"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center" />

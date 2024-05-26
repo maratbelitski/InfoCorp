@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">InfoCorp</string>
     <string name="it_company">IT - компания</string>
     <string name="it_query">\ IT - компания в Республике Беларусь</string>
     <string name="description">Описание</string>
@@ -73,5 +72,8 @@
     <string name="theme">Тема</string>
     <string name="light">Светлая</string>
     <string name="dark">Темная</string>
+    <string name="language">Язык</string>
+    <string name="russian">Русский</string>
+    <string name="english">Английский</string>
 
 </resources>

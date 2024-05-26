@@ -24,7 +24,11 @@ class MainActivityViewModel @Inject constructor(
         get() = _banner.asStateFlow()
 
     fun getThemeParams(): String {
-        return sharedPref.getString("themeParams", "") ?: ""
+        return sharedPref.getString(Constants.THEME_PARAMS_PREFERENCES.value , "") ?: ""
+    }
+
+    fun getLanguageParams(): String {
+        return sharedPref.getString(Constants.LANG_PARAMS_PREFERENCES.value, "") ?: ""
     }
 }
 
