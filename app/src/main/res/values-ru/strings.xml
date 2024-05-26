@@ -75,5 +75,5 @@
     <string name="language">Язык</string>
     <string name="russian">Русский</string>
     <string name="english">Английский</string>
-
+    <string name="list_is_empty">Лист избранного пуст</string>
 </resources>

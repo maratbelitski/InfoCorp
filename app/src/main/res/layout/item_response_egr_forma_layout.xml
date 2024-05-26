@@ -10,15 +10,14 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/egr"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:minWidth="300dp"
+        android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/second_background_color"
         app:cardCornerRadius="@dimen/card_corners_radius"
         app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvResponseTitle"

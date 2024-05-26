@@ -63,11 +63,6 @@ class ListCorporationsFragment : Fragment() {
 
     private fun initArgs() {
         if (!arguments.enableMenu) fragmentViewModel.changeStateBottomMenu()
-
-        if (!isNetworkAvailable.invoke()){
-            Toast.makeText(requireActivity(), "Check your internet connection", Toast.LENGTH_SHORT)
-                .show()
-        }
     }
 
     private fun searchCorporation() {
@@ -124,7 +119,7 @@ class ListCorporationsFragment : Fragment() {
 
         fragmentViewModel.listFromLocalSource.observe(viewLifecycleOwner) {
             lifecycleScope.launch{
-                if (it.isEmpty()) {
+                if (it.isEmpty() || !isNetworkAvailable.invoke()) {
                     binding.shimmerCardList.shimmer.visibility = View.VISIBLE
                     binding.recycler.visibility = View.GONE
                 } else {

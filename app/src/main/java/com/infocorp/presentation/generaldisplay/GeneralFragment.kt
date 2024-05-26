@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -29,33 +30,30 @@ class GeneralFragment : Fragment() {
     private val binding: FragmentGeneralBinding
         get() = _binding ?: throw NullPointerException()
 
-//    private val updateStateBottomMenu by lazy {
-//        activity as MainActivity
-//    }
 
     private val fragmentViewModel: GeneralFragmentViewModel by viewModels()
 
-    lateinit var isNetworkAvailable: ()->Boolean
-    lateinit var updateStateBottomMenu: ()->Unit
+    private lateinit var isNetworkAvailable: () -> Boolean
+    private lateinit var updateStateBottomMenu: () -> Unit
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is MainActivity) isNetworkAvailable ={context.isNetworkAvailable()}
-        if (context is MainActivity) updateStateBottomMenu ={context.enableBottomMenu()}
+        if (context is MainActivity) isNetworkAvailable = { context.isNetworkAvailable() }
+        if (context is MainActivity) updateStateBottomMenu = { context.enableBottomMenu() }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentGeneralBinding.inflate(layoutInflater)
-        isNetworkAvailable.invoke()
-        updateStateBottomMenu.invoke()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initViews()
         onObservers()
 
 
@@ -330,37 +328,21 @@ class GeneralFragment : Fragment() {
 
 
     private fun onObservers() {
-//        lifecycleScope.launch {
-//            fragmentViewModel.showShimmer
-//                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-//                .collect {
-//                    with(binding) {
-//                        when (it) {
-//                            true -> {
-//                                shimmerLayout.shimmer.visibility = View.VISIBLE
-//                                statisticCard.statisticCardForView.visibility = View.GONE
-//                            }
-//
-//                            false -> {
-//                                statisticCard.statisticCardForView.visibility = View.VISIBLE
-//                                shimmerLayout.shimmer.visibility = View.GONE
-//                            }
-//                        }
-//                    }
-//                }
-//        }
 
         lifecycleScope.launch {
             fragmentViewModel.allCorporation
-                .flowWithLifecycle(lifecycle, Lifecycle.State.RESUMED)
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collect {
-                    if (it == 0) {
-                        binding.shimmerLayout.shimmer.visibility = View.VISIBLE
-                        binding.statisticCard.statisticCardForView.visibility = View.GONE
-                    } else {
-                        binding.statisticCard.statisticCardForView.visibility = View.VISIBLE
-                        binding.shimmerLayout.shimmer.visibility = View.GONE
-                        binding.statisticCard.countAllInBase.text = it.toString()
+                    with(binding) {
+                        if (!isNetworkAvailable.invoke()) {
+                            shimmerLayout.shimmer.visibility = View.VISIBLE
+                            statisticCard.statistic.visibility = View.GONE
+//                            Toast.makeText(requireContext(), "Check your internet connection", Toast.LENGTH_SHORT).show()
+                        } else {
+                            statisticCard.statistic.visibility = View.VISIBLE
+                            shimmerLayout.shimmer.visibility = View.GONE
+                            statisticCard.countAllInBase.text = it.toString()
+                        }
                     }
                 }
         }
@@ -383,10 +365,9 @@ class GeneralFragment : Fragment() {
 
     }
 
-//    private fun initViews() {
-//        updateStateBottomMenu.enableBottomMenu()
-//    }
-
+    private fun initViews() {
+        updateStateBottomMenu.invoke()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -78,4 +78,5 @@
     <string name="language">Language</string>
     <string name="russian">Russian</string>
     <string name="english">English</string>
+    <string name="list_is_empty">Favourite list is empty</string>
 </resources>

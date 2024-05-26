@@ -33,9 +33,9 @@ class EgrFragment : Fragment() {
     private val myAdapter by lazy {
         ResponseEgrAdapter()
     }
-    private val myHelper by lazy {
-        PagerSnapHelper()
-    }
+//    private val myHelper by lazy {
+//        PagerSnapHelper()
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,9 +55,7 @@ class EgrFragment : Fragment() {
         updateStateBottomMenu.disableBottomMenu()
 
         onListeners()
-
         onObservers()
-
         initViews()
     }
 
@@ -122,7 +120,7 @@ class EgrFragment : Fragment() {
 
     private fun initViews() {
         binding.recycler.adapter = myAdapter
-        myHelper.attachToRecyclerView(binding.recycler)
+       // myHelper.attachToRecyclerView(binding.recycler)
     }
 
     override fun onDestroy() {

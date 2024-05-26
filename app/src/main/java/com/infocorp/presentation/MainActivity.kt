@@ -43,11 +43,6 @@ class MainActivity : AppCompatActivity() {
 
         onListeners()
         onObservers()
-
-        if (!isNetworkAvailable()){
-            Toast.makeText(this, "Check your internet connection", Toast.LENGTH_SHORT)
-                .show()
-        }
     }
 
     private fun onObservers() {
@@ -71,7 +66,6 @@ class MainActivity : AppCompatActivity() {
         val lang = viewModel.getLanguageParams()
         val localeListCompat = LocaleListCompat.forLanguageTags(lang)
         AppCompatDelegate.setApplicationLocales(localeListCompat)
-       // recreate()
     }
 
     private fun onListeners() {
@@ -121,8 +115,12 @@ class MainActivity : AppCompatActivity() {
         val network = connectivityManager.activeNetwork
         val capabilities =
             connectivityManager.getNetworkCapabilities(network)
-
-        return capabilities != null && (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+        val result = capabilities != null && (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
                 || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR))
+
+//        if (!result){
+//            Toast.makeText(this, "Check your internet connection", Toast.LENGTH_SHORT).show()
+//        }
+        return result
     }
 }

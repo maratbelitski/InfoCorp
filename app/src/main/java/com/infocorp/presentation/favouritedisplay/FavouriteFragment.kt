@@ -1,14 +1,12 @@
 package com.infocorp.presentation.favouritedisplay
 
 
-import android.content.Context.CONNECTIVITY_SERVICE
+import android.content.BroadcastReceiver
 import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -19,12 +17,15 @@ import com.infocorp.presentation.MainActivity
 import com.infocorp.presentation.listdisplay.adapter.CorporationAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import android.content.Context;
-import android.util.Log
+import android.content.Intent
+import android.content.IntentFilter
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.registerReceiver
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
@@ -56,17 +57,19 @@ class FavouriteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFavouriteBinding.inflate(layoutInflater)
-        updateStateBottomMenu.invoke()
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        checkConnection()
         initViews()
+
         onObservers()
         onListeners()
         removeBySwipe()
+
     }
 
     private fun onListeners() {
@@ -106,30 +109,21 @@ class FavouriteFragment : Fragment() {
 
     private fun onObservers() {
         lifecycleScope.launch {
+
             fragmentViewModel.listFavouriteCorp
-                .flowWithLifecycle(lifecycle, Lifecycle.State.RESUMED)
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collect {
-
-                    if (it.isEmpty() && isNetworkAvailable.invoke()) {
-                        Toast.makeText(
-                            requireActivity(),
-                            "Favourite list is empty",
-                            Toast.LENGTH_SHORT
-                        ).show()
-
-                        binding.shimmerCardList.shimmer.visibility = View.GONE
-
-                    } else if (!isNetworkAvailable.invoke()) {
-                        Toast.makeText(
-                            requireActivity(),
-                            "Check your internet connection",
-                            Toast.LENGTH_SHORT
-                        ).show()
-
+                    if (!isNetworkAvailable.invoke()) {
                         binding.shimmerCardList.shimmer.visibility = View.VISIBLE
                         binding.recycler.visibility = View.GONE
+                        binding.tvEmptyList.visibility = View.GONE
+
+                    } else if (it.isEmpty() && isNetworkAvailable.invoke()) {
+                        binding.tvEmptyList.visibility = View.VISIBLE
+                        binding.shimmerCardList.shimmer.visibility = View.GONE
 
                     } else {
+                        binding.tvEmptyList.visibility = View.GONE
                         binding.shimmerCardList.shimmer.visibility = View.GONE
                         binding.recycler.visibility = View.VISIBLE
 
@@ -142,6 +136,19 @@ class FavouriteFragment : Fragment() {
     private fun initViews() {
         binding.recycler.adapter = myAdapter
     }
+
+    private fun checkConnection() {
+        updateStateBottomMenu.invoke()
+
+//        if (!isNetworkAvailable.invoke()) {
+//            Toast.makeText(
+//                requireActivity(), "Check your internet connection", Toast.LENGTH_SHORT
+//            ).show()
+//            binding.shimmerCardList.shimmer.visibility = View.VISIBLE
+//            binding.recycler.visibility = View.GONE
+//        }
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()
