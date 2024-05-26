@@ -1,4 +1,4 @@
-package com.infocorp.presentation
+package com.infocorp.utils
 
 enum class Constants(val value:String) {
     DATABASE_NAME("corporation.db"),
@@ -16,5 +16,7 @@ enum class Constants(val value:String) {
 
     LANG_PARAMS_PREFERENCES ("language"),
     LANG_RU ("ru"),
-    LANG_EN ("en")
+    LANG_EN ("en"),
+
+    SLEEP("1000")
 }

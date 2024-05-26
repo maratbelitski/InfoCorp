@@ -42,6 +42,7 @@ class GeneralFragment : Fragment() {
 
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -76,121 +77,121 @@ class GeneralFragment : Fragment() {
 //
 //        val corp1 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Инструментальные технологии",
-//            poster = "",
-//description = "Инструментальные технологии, ЗАО Закрытое акционерное общество Год основания: 1997 Количество сотрудников: 21 УНП: 101269853",
-//            address = "220141, г. Минск, ул. Купревича, 1/3-404",
-//            phones = "(017)265-91-51",
-//            email = "intech@belsonet.net",
-//            website = "www.intech.belsonet.net"
+//            name = "ИП Менченя",
+//            poster = "http://belorussia.su/com_logo/1507299668logo1_big.jpg",
+//description = "В наших проектах профессиональный дизайн сочетается со сложными функциональными возможностями. Мы используем только самые современные инструменты веб-разработки для достижения максимальных результатов. ЧИСТЫЙ КОД  мы не используем в своих проектах конструкторы сайтов, а делаем профессиональные индивидуальные продукты высокого качества АДАПТИВНОСТЬ наши сайты отлично отображаются на любых устройствах (ПК, планшет, смартфон) СОВРЕМЕННОСТЬ мы используем самые последние технологии Web-разработки для достижения максимальных результатов",
+//            address = "г. Минск, Шугаево 171",
+//            phones = "",
+//            email = "mail@ilavista.by",
+//            website = "ilavista.by"
 //        )
 //        databaseParent.push().setValue(corp1)
-////////////
+//////////////
 //        val corp2 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Интеграционные технологии",
-//            poster = "http://belorussia.su/com_logo/1406723327logo1_big.jpg",
-//description = "Интеграционные технологии (ИНТЕК) – компания - системный интегратор, занимающаяся созданием и внедрением автоматизированных информационных систем для организаций, ориентированных на управление складскими территориями, логистикой и торговлей. ИНТЕК как юридическое лицо образовался в 2014 года в городе Минске как совместная инициатива ключевых ИТ специалистов крупной компании дистрибьютора, создать высокопрофессиональную команду способную ставить перед собой высокие и амбициозные цели и эффективно достигать их. Отличительной чертой нашего подхода к делу перед конкурентами является высокая степень автоматизации бизнес-процессов и проектный подход с использованием передовых проектных технологий. Наша компания также выделяется наличием большого числа профессионалов в штате, которые имеют богатый опыт внедрения, разработки и управления проектами в самых крупных торговых и логистических компаниях Беларуси. Наша команда на данный момент уже разработала решение по управлению дистрибуцией для Беларуси на базе типовой конфигурации Управление торговлей 11 компании 1C. Также нами ведутся работы по адаптации и доработке принципиально нового по масштабу решения по управлению предприятием ERP 2.0.",
-//            address = "220007, г. Минск, ул. Могилевская, д. 18, пом. 4Н",
-//            phones = "+37517 219 00 85",
-//            email = "info@intec.by",
-//            website = "http://www.intec.by"
+//            name = "ИП Прокопчик И.Л.",
+//            poster = "http://belorussia.su/com_logo/1577363654logo1_big.jpg",
+//description = "Увеличивайте продажи и автоматизируйте бизнес процессы с Битрикс24. Комплексное внедрение и сопровождение при интеграции в Битрикс24 в Вашу компанию.",
+//            address = "220007, г. Минск, Немига 5",
+//            phones = "",
+//            email = "info@proresult.by",
+//            website = "https://proresult.by"
 //        )
 //        databaseParent.push().setValue(corp2)
-//////////
+////////////
 //        val corp3 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Интелико Системс",
-//            poster = "http://belorussia.su/com_logo/1338807548logo1_big.jpg",
-//description = "Дизайн. Разработка интернет-ориентированного программного обеспечения.",
-//            address = "ул. Филимонова 53-715",
-//            phones = "+375172118046",
-//            email = "connect@intelico.su",
-//            website = "http://www.intelico.su"
+//            name = "Исида-Информатика",
+//            poster = "",
+//description = "Исида-Информатика, ООО Общество с ограниченной ответственностью Год основания: 1994 Количество сотрудников: 20 УНП: 300247505",
+//            address = "210015, г. Витебск, ул. Калинина, 4 (4 этаж)",
+//            phones = "(0212)23-61-94",
+//            email = "support@isida.by",
+//            website = "www.isida.by"
 //        )
 //        databaseParent.push().setValue(corp3)
-//////////
-//////////
+////////////
+////////////
 //        val corp4 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Интеллектсофт",
+//            name = "Испаер Системс",
 //            poster = "",
-//description = "Интеллектсофт, ООО Общество с ограниченной ответственностью Год основания: 2007 Количество сотрудников: 50 УНП: 190890707",
-//            address = "г. Минск, пр. Держинского, 57, 14-1",
-//            phones = "",
-//            email = "hr@intellectsoft.net",
-//            website = "www.intellectsoft.net"
+//description = "Испаер Системс, ООО Общество с ограниченной ответственностью Год основания: 2003 Количество сотрудников: 10 УНП: 190482272",
+//            address = "220013, г. Минск, ул. Кульман, 2-431",
+//            phones = "(017)292-61-61",
+//            email = "ispirer@ispirer.com",
+//            website = "www.ispirer.com"
 //        )
 //        databaseParent.push().setValue(corp4)
-//////////
+////////////
 //        val corp5 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Интермех",
+//            name = "ИТ Парк",
 //            poster = "",
-//description = "Интермех, ОДО Общество с дополнительной ответственностью Год основания: 1990 Количество сотрудников: 35 УНП: 100176519",
-//            address = "220004, г. Минск, ул. Короля, 51 (3 этаж)",
-//            phones = "(017)306-21-30",
-//            email = "cad@intermech.ru",
-//            website = "www.intermech.ru"
+//description = "ИТ Парк, ИЧПУП Иностранное предприятие Год основания: 2006 Количество сотрудников: 300 УНП: 190743344",
+//            address = "220040, г. Минск, ул. М. Богдановича, 155-809",
+//            phones = "(017)334-96-86",
+//            email = "it.park@park.iba.by",
+//            website = "www.iba.by"
 //        )
 //        databaseParent.push().setValue(corp5)
-//////////
+////////////
 //        val corp6 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "ИнтернетСоздатели",
-//            poster = "http://belorussia.su/com_logo/1592385670logo1_big.jpg",
-//description = "Профессионально занимаемся разработкой и продвижение сайтов уже 11 лет. Можем помочь решить данную задачу. Работаем официально, по договору. Гарантия 12 мес. Всегда на связи! +375297139003 Viber, WhatsApp.",
-//            address = "ул. Советская, д. 68, офис 402",
-//            phones = "+375 (29) 743-19-05",
-//            email = "internetsozdateli1@gmail.com",
-//            website = "https://internetsozdateli.by"
-//        )
-//        databaseParent.push().setValue(corp6)
-//////////
-//        val corp7 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Инфо-Сервис",
-//            poster = "http://belorussia.su/com_logo/1362811456logo1_big.jpg",
-//description = "Наша компания оказывает комплекс услуг, связанных с сбором и обработкой информации, а также разрабатывает программное обеспечение, необходимое в ходе деятельности организаций, таких риэлторские, юридические и бухгалтерские компании. Специалисты компании грамотно и оперативно проводят работы по всем важнейшим направлениям. Информационные услуги занимают прочное место в сфере нашей работы. Мы обеспечиваем информационную и физическую защиту носителей. Сотрудничество с нами гарантирует высокий уровень безопасности.",
-//            address = "Ул. Сурганова, 28",
-//            phones = "8-929-698-09-61",
-//            email = "it-service-company@mail.ru",
+//            name = "Итворкс",
+//            poster = "",
+//description = "Итворкс, ООО Общество с ограниченной ответственностью Год основания: 2008 Количество сотрудников: 19 УНП: 290489791",
+//            address = "224016, г. Брест, ул. Куйбышева, 13-7",
+//            phones = "",
+//            email = "",
 //            website = ""
 //        )
+//        databaseParent.push().setValue(corp6)
+////////////
+//        val corp7 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "ИТ Навис",
+//            poster = "http://belorussia.su/com_logo/1413286696logo1_big.jpg",
+//description = "Имея богатый опыт в сфере интеграции программных комплексов мы можем с увереностью сказать, что Ваш бизнес может работать эффективнее. Мы знаем как задействовать Вашу ИТ инфраструктуру на 100% используя такие платформы как Amazon AWS, IBM Websphere MessageBroker, SAP, Mule, Apache Camel, Lucene. Наша главная цель - вывести вашу компанию на новый уровень путем анализа данных и интеграции программного обеспечения на единой корпоративной шине.",
+//            address = "",
+//            phones = "",
+//            email = "info@itnavis.com",
+//            website = "http://itnavis.by"
+//        )
 //        databaseParent.push().setValue(corp7)
-//////////
+////////////
 //        val corp8 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Инфокард",
-//            poster = "",
-//description = "Инфокард, ООООбщество с ограниченной ответственностью Год основания: 2000Количество сотрудников: 10УНП: 190378061",
-//            address = "220114, г. Минск, ул. Буйницкого, 21-21",
-//            phones = "(017)267-56-62",
-//            email = "info@infocard.by",
-//            website = "www.infocard.by"
+//            name = "ИТТАС",
+//            poster = "http://belorussia.su/com_logo/1453199087logo1_big.jpg",
+//description = "Ittas.by  - Разработка программных и программно-аппаратных средств криптографической защиты информации. Оказание услуг в области защиты информации. Наличие собственной аккредитованной испытательной лаборатории.\"\n",
+//            address = "г. Минск, Короля 51",
+//            phones = "",
+//            email = "info@ittas.by",
+//            website = "http://ittas.by"
 //        )
 //        databaseParent.push().setValue(corp8)
-//////////
+////////////
 //        val corp9 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "ИВЦ Бел.ж.д",
+//            name = "Квазитекс",
 //            poster = "",
-//description = "Информационно-вычислительный центр УП «Витебское отделение Белорусской железной дороги» осуществляет следующие виды работ: техническое обслуживание, ремонт ПЭВМ и офисной техники; заправка картриджей для лазерных принтеров и МФУ; строительство и обслуживание локальных сетей; настройка и техническое обслуживание серверов и сетевого оборудования; выполнение работ по разработке программного обеспечения; оказание услуг по сопровождению программных продуктов.",
-//            address = "",
-//            phones = "+37529716-62-81",
-//            email = "ivc.vitebsk@gmail.com",
+//description = "Квазитекс, ЧСУП Частное предприятие Год основания: 2007 Количество сотрудников: 1УНП: 590710225",
+//            address = "230020, г. Гродно, ул. Кабяка, 8/1-20",
+//            phones = "(029)785-21-39",
+//            email = "",
 //            website = ""
 //        )
 //        databaseParent.push().setValue(corp9)
-////////////
+//////////////
 //        val corp10 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "ИВЦ авиации",
+//            name = "КИМ",
 //            poster = "",
-//description = "Информационно-вычислительный центр авиации, РУП Государственное предприятие Год основания: 1979 Количество сотрудников: 17 УНП: 100035790",
-//            address = "220039, г. Минск, ул. Короткевича, 7",
-//            phones = "(017)222-54-17, 224-52-73",
-//            email = "ivc@ivcavia.com",
+//description = "КИМ, ООО Общество с ограниченной ответственностью Год основания: 1994 Количество сотрудников: 10 УНП: 700217931",
+//            address = "212030, г. Могилев, ул. Ленинская, 63-202, 203",
+//            phones = "(0222)29-99-92",
+//            email = "kim.mogilev@gmail.com",
 //            website = ""
 //        )
 //        databaseParent.push().setValue(corp10)
@@ -316,40 +317,42 @@ class GeneralFragment : Fragment() {
 //        databaseParent.push().setValue(corp20)
 
 
-
-
-
-
-   }
-
+    }
 
 
     private fun onObservers() {
-        lifecycleScope.launch {
-            fragmentViewModel.showShimmer
-                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-                .collect {
-                    with(binding) {
-                        when (it) {
-                            true -> {
-                                shimmerLayout.shimmer.visibility = View.VISIBLE
-                                statisticCard.statisticCardForView.visibility = View.GONE
-                            }
-
-                            false -> {
-                                statisticCard.statisticCardForView.visibility = View.VISIBLE
-                                shimmerLayout.shimmer.visibility = View.GONE
-                            }
-                        }
-                    }
-                }
-        }
+//        lifecycleScope.launch {
+//            fragmentViewModel.showShimmer
+//                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+//                .collect {
+//                    with(binding) {
+//                        when (it) {
+//                            true -> {
+//                                shimmerLayout.shimmer.visibility = View.VISIBLE
+//                                statisticCard.statisticCardForView.visibility = View.GONE
+//                            }
+//
+//                            false -> {
+//                                statisticCard.statisticCardForView.visibility = View.VISIBLE
+//                                shimmerLayout.shimmer.visibility = View.GONE
+//                            }
+//                        }
+//                    }
+//                }
+//        }
 
         lifecycleScope.launch {
             fragmentViewModel.allCorporation
                 .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collect {
-                    binding.statisticCard.countAllInBase.text = it.toString()
+                    if (it == 0) {
+                        binding.shimmerLayout.shimmer.visibility = View.VISIBLE
+                        binding.statisticCard.statisticCardForView.visibility = View.GONE
+                    } else {
+                        binding.statisticCard.statisticCardForView.visibility = View.VISIBLE
+                        binding.shimmerLayout.shimmer.visibility = View.GONE
+                        binding.statisticCard.countAllInBase.text = it.toString()
+                    }
                 }
         }
 

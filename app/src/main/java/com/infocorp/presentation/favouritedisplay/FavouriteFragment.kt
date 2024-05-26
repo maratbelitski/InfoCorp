@@ -86,7 +86,15 @@ class FavouriteFragment : Fragment() {
 
     private fun onObservers() {
         fragmentViewModel.listFavouriteCorp.observe(viewLifecycleOwner) {
-            myAdapter.submitList(it)
+            if (it.isEmpty()) {
+                binding.shimmerCardList.shimmer.visibility = View.VISIBLE
+                binding.recycler.visibility = View.GONE
+            } else {
+                binding.shimmerCardList.shimmer.visibility = View.GONE
+                binding.recycler.visibility = View.VISIBLE
+
+                myAdapter.submitList(it)
+            }
         }
 
         fragmentViewModel.disableBottomNavigation.observe(viewLifecycleOwner) {

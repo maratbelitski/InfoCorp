@@ -7,7 +7,7 @@ import com.infocorp.data.datastorage.CorporationDataBase
 import com.infocorp.data.datastorage.FavouriteDao
 import com.infocorp.data.datastorage.OldCorpDao
 import com.infocorp.data.datastorage.UserCorporationDao
-import com.infocorp.presentation.Constants
+import com.infocorp.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,5 +1,6 @@
 package com.infocorp.presentation.generaldisplay
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -32,9 +33,9 @@ class GeneralFragmentViewModel @Inject constructor(
     private val repositoryUser: UserCorporationRepositoryImpl
 ) : ViewModel() {
 
-    private var _showShimmer = MutableStateFlow(true)
-    val showShimmer: StateFlow<Boolean>
-        get() = _showShimmer.asStateFlow()
+//    private var _showShimmer = MutableStateFlow(true)
+//    val showShimmer: StateFlow<Boolean>
+//        get() = _showShimmer.asStateFlow()
 
     private var _allCorporation = MutableStateFlow(0)
     val allCorporation: StateFlow<Int>
@@ -53,16 +54,19 @@ class GeneralFragmentViewModel @Inject constructor(
         getRowCountAllCorp()
         getRowCountUserCorp()
         getRowCountOldCorp()
-
     }
 
     private fun downloadDataFromRemoteSource() {
         viewModelScope.launch(Dispatchers.IO) {
             repository.downloadDataFromFirebase()
-            delay(1500)
-            _showShimmer.emit(false)
+//            Log.e("MyLog", "LIST - ${allCorporation.value}")
+//            if (allCorporation.value != 0) {
+//
+//                _showShimmer.emit(false)
+//            } else {
+//                _showShimmer.emit(true)
+//            }
         }
-
     }
 
     private fun getRowCountAllCorp() {
@@ -85,12 +89,11 @@ class GeneralFragmentViewModel @Inject constructor(
             val resultOld = repository.getRowCountOld()
 
             combine(resultOld, resultAll) { old, all ->
-                if (all!=0){
+                if (all != 0) {
                     _oldCorporation.emit(all - old)
                 } else {
                     _oldCorporation.emit(0)
                 }
-
             }.collect()
         }
     }

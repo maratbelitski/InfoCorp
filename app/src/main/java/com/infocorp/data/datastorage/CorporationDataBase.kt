@@ -8,7 +8,7 @@ import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.corporationdto.FavouriteCorporationsDto
 import com.infocorp.data.corporationdto.OldCorporationsDto
 import com.infocorp.data.corporationdto.UserCorporationDto
-import com.infocorp.presentation.Constants.DATABASE_NAME
+import com.infocorp.utils.Constants.DATABASE_NAME
 
 
 @Database(entities =

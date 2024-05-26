@@ -33,7 +33,7 @@ class ListCorporationsViewModel @Inject constructor(
     private val repositoryImpl: CorporationRepositoryImpl
 
 ) : ViewModel() {
-    val showShimmer = MutableLiveData(true)
+    //val showShimmer = MutableLiveData(true)
 
     val listFromLocalSource by lazy {
         downloadDataFromLocalStorage.invoke()
@@ -44,7 +44,7 @@ class ListCorporationsViewModel @Inject constructor(
         get() = _disableBottomNavigation
 
     init {
-        imitationLoaded()
+       // imitationLoaded()
     }
 
     fun changeStateBottomMenu(){
@@ -63,12 +63,12 @@ class ListCorporationsViewModel @Inject constructor(
         return searchCorp.invoke(listCorp, text)
     }
 
-    private fun imitationLoaded() {
-        viewModelScope.launch(Dispatchers.IO) {
-            delay(1000)
-            showShimmer.postValue(false)
-        }
-    }
+//    private fun imitationLoaded() {
+//        viewModelScope.launch(Dispatchers.IO) {
+//            delay(1000)
+//           // showShimmer.postValue(false)
+//        }
+//    }
 
     fun changeStateFavoriteCorp(corporation: Corporation) {
         viewModelScope.launch(Dispatchers.IO) {

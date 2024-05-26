@@ -76,7 +76,7 @@
             android:theme="@style/MyStyle.RadioButtons"
             app:layout_constraintBottom_toBottomOf="@+id/tvDark"
             app:layout_constraintStart_toEndOf="@+id/guideline3"
-            app:layout_constraintTop_toBottomOf="@+id/theme">
+            app:layout_constraintTop_toTopOf="@+id/tvLight">
 
             <RadioButton
                 android:id="@+id/rbtn_light"

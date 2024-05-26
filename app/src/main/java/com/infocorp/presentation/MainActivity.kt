@@ -16,6 +16,7 @@ import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.MobileAds
 import com.infocorp.R
 import com.infocorp.databinding.ActivityMainBinding
+import com.infocorp.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -76,11 +77,11 @@ class MainActivity : AppCompatActivity() {
         binding.adView.adListener = (object : AdListener() {
             override fun onAdClosed() {
                 binding.adView.visibility = View.GONE
-                binding.progress.visibility = View.GONE
+                binding.progress.shimmer.visibility = View.GONE
             }
 
             override fun onAdLoaded() {
-                binding.progress.visibility = View.INVISIBLE
+                binding.progress.shimmer.visibility = View.INVISIBLE
                 binding.adView.visibility = View.VISIBLE
             }
         })

@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.viewModels
 import com.infocorp.databinding.FragmentSettingsBinding
-import com.infocorp.presentation.Constants
+import com.infocorp.utils.Constants
 import com.infocorp.presentation.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale

@@ -1,7 +1,6 @@
 package com.infocorp.data.network
 
-import com.infocorp.presentation.Constants
-import com.infocorp.presentation.Constants.*
+import com.infocorp.utils.Constants.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
