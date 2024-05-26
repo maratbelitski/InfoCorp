@@ -9,6 +9,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.corporationdto.FavouriteCorporationsDto
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FavouriteDao {
@@ -23,5 +24,5 @@ interface FavouriteDao {
 
     @Query("SELECT * FROM corporationsTable " +
             "INNER JOIN favouriteTable ON favouriteTable.id = corporationsTable.id ORDER BY name")
-    fun downloadAllFavouriteCorporations(): LiveData<List<CorporationDto>>
+    fun downloadAllFavouriteCorporations(): Flow<List<CorporationDto>>
 }

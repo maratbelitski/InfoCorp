@@ -1,5 +1,6 @@
 package com.infocorp.presentation.generaldisplay
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -28,25 +29,33 @@ class GeneralFragment : Fragment() {
     private val binding: FragmentGeneralBinding
         get() = _binding ?: throw NullPointerException()
 
-    private val updateStateBottomMenu by lazy {
-        activity as MainActivity
-    }
+//    private val updateStateBottomMenu by lazy {
+//        activity as MainActivity
+//    }
 
     private val fragmentViewModel: GeneralFragmentViewModel by viewModels()
 
+    lateinit var isNetworkAvailable: ()->Boolean
+    lateinit var updateStateBottomMenu: ()->Unit
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is MainActivity) isNetworkAvailable ={context.isNetworkAvailable()}
+        if (context is MainActivity) updateStateBottomMenu ={context.enableBottomMenu()}
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentGeneralBinding.inflate(layoutInflater)
-
+        isNetworkAvailable.invoke()
+        updateStateBottomMenu.invoke()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initViews()
         onObservers()
 
 
@@ -343,7 +352,7 @@ class GeneralFragment : Fragment() {
 
         lifecycleScope.launch {
             fragmentViewModel.allCorporation
-                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .flowWithLifecycle(lifecycle, Lifecycle.State.RESUMED)
                 .collect {
                     if (it == 0) {
                         binding.shimmerLayout.shimmer.visibility = View.VISIBLE
@@ -374,9 +383,9 @@ class GeneralFragment : Fragment() {
 
     }
 
-    private fun initViews() {
-        updateStateBottomMenu.enableBottomMenu()
-    }
+//    private fun initViews() {
+//        updateStateBottomMenu.enableBottomMenu()
+//    }
 
 
     override fun onDestroyView() {

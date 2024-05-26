@@ -10,6 +10,9 @@ import com.infocorp.domain.usecases.corporation.DownloadFavouriteFromLocalStorag
 import com.infocorp.domain.usecases.corporation.RemoveCorpFromFavouriteUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,13 +23,21 @@ class FavouriteFragmentViewModel @Inject constructor(
     private val changeStateCorporationToFavourite: ChangeStateCorporationToFavouriteUseCase,
 ) : ViewModel() {
 
-    val listFavouriteCorp by lazy {
-        downloadFavourite.invoke()
-    }
+//    val listFavouriteCorp by lazy {
+//
+//    }
 
-    private var _disableBottomNavigation = MutableLiveData(false)
-    val disableBottomNavigation: LiveData<Boolean>
-        get() = _disableBottomNavigation
+    private var _listFavouriteCorp = MutableStateFlow<List<Corporation>>(emptyList())
+    val listFavouriteCorp: StateFlow<List<Corporation>>
+        get() = _listFavouriteCorp
+
+//    private var _disableBottomNavigation = MutableLiveData(false)
+//    val disableBottomNavigation: LiveData<Boolean>
+//        get() = _disableBottomNavigation
+
+    init {
+        downloadData()
+    }
 
     fun removeCorpFromFavourite(corporation: Corporation) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -37,6 +48,12 @@ class FavouriteFragmentViewModel @Inject constructor(
     fun changeStateCorp(corporation: Corporation) {
         viewModelScope.launch(Dispatchers.IO) {
             changeStateCorporationToFavourite.invoke(corporation)
+        }
+    }
+
+    private fun downloadData() {
+        viewModelScope.launch(Dispatchers.IO) {
+            _listFavouriteCorp.emitAll(downloadFavourite.invoke())
         }
     }
 }

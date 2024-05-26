@@ -1,7 +1,10 @@
 package com.infocorp.presentation
 
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -32,6 +35,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
         MobileAds.initialize(this)
 
         onInitThemeParams()
@@ -39,6 +43,11 @@ class MainActivity : AppCompatActivity() {
 
         onListeners()
         onObservers()
+
+        if (!isNetworkAvailable()){
+            Toast.makeText(this, "Check your internet connection", Toast.LENGTH_SHORT)
+                .show()
+        }
     }
 
     private fun onObservers() {
@@ -103,5 +112,17 @@ class MainActivity : AppCompatActivity() {
 
     fun enableBottomMenu() {
         binding.coordinatorLayout.visibility = View.VISIBLE
+    }
+
+    fun isNetworkAvailable(): Boolean {
+        val connectivityManager =
+            getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        val network = connectivityManager.activeNetwork
+        val capabilities =
+            connectivityManager.getNetworkCapabilities(network)
+
+        return capabilities != null && (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+                || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR))
     }
 }

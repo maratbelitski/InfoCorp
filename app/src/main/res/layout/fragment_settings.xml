@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:scrollbars="none"
     android:padding="@dimen/normal_padding_size"
     android:background="@color/first_background_color"
     tools:context=".presentation.settingsdisplay.SettingsFragment">

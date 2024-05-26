@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 interface CorporationRepository {
     suspend fun downloadDataFromFirebase()
     fun downloadDataFromLocalStorage(): LiveData<List<Corporation>>
-    fun downloadFavouriteFromLocalStorage(): LiveData<List<Corporation>>
+    fun downloadFavouriteFromLocalStorage(): Flow<List<Corporation>>
     fun changeStateCorp(corporation: Corporation)
     fun changeStateCorpToOld(corporation: Corporation)
     fun addCorpToFavourite(corporation: Corporation)

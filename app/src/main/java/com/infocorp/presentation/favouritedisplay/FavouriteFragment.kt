@@ -1,19 +1,32 @@
 package com.infocorp.presentation.favouritedisplay
 
+
+import android.content.Context.CONNECTIVITY_SERVICE
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.infocorp.databinding.FragmentFavouriteBinding
 import com.infocorp.presentation.MainActivity
-import com.infocorp.presentation.egrdisplay.adapter.ResponseEgrAdapter
 import com.infocorp.presentation.listdisplay.adapter.CorporationAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import android.content.Context;
+import android.util.Log
+import android.widget.Toast
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+
 
 @AndroidEntryPoint
 class FavouriteFragment : Fragment() {
@@ -23,11 +36,19 @@ class FavouriteFragment : Fragment() {
         get() = _binding ?: throw Exception()
 
     private val fragmentViewModel: FavouriteFragmentViewModel by viewModels()
+
     private val myAdapter by lazy {
         CorporationAdapter()
     }
-    private val updateStateBottomMenu by lazy {
-        activity as MainActivity
+
+    private lateinit var updateStateBottomMenu: (() -> Unit)
+    private lateinit var isNetworkAvailable: (() -> Boolean)
+
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is MainActivity) updateStateBottomMenu = { context.enableBottomMenu() }
+        if (context is MainActivity) isNetworkAvailable = { context.isNetworkAvailable() }
     }
 
     override fun onCreateView(
@@ -35,6 +56,7 @@ class FavouriteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFavouriteBinding.inflate(layoutInflater)
+        updateStateBottomMenu.invoke()
         return binding.root
     }
 
@@ -42,9 +64,7 @@ class FavouriteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initViews()
-
         onObservers()
-
         onListeners()
         removeBySwipe()
     }
@@ -85,20 +105,37 @@ class FavouriteFragment : Fragment() {
     }
 
     private fun onObservers() {
-        fragmentViewModel.listFavouriteCorp.observe(viewLifecycleOwner) {
-            if (it.isEmpty()) {
-                binding.shimmerCardList.shimmer.visibility = View.VISIBLE
-                binding.recycler.visibility = View.GONE
-            } else {
-                binding.shimmerCardList.shimmer.visibility = View.GONE
-                binding.recycler.visibility = View.VISIBLE
+        lifecycleScope.launch {
+            fragmentViewModel.listFavouriteCorp
+                .flowWithLifecycle(lifecycle, Lifecycle.State.RESUMED)
+                .collect {
 
-                myAdapter.submitList(it)
-            }
-        }
+                    if (it.isEmpty() && isNetworkAvailable.invoke()) {
+                        Toast.makeText(
+                            requireActivity(),
+                            "Favourite list is empty",
+                            Toast.LENGTH_SHORT
+                        ).show()
 
-        fragmentViewModel.disableBottomNavigation.observe(viewLifecycleOwner) {
-            if (!it) updateStateBottomMenu.enableBottomMenu()
+                        binding.shimmerCardList.shimmer.visibility = View.GONE
+
+                    } else if (!isNetworkAvailable.invoke()) {
+                        Toast.makeText(
+                            requireActivity(),
+                            "Check your internet connection",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        binding.shimmerCardList.shimmer.visibility = View.VISIBLE
+                        binding.recycler.visibility = View.GONE
+
+                    } else {
+                        binding.shimmerCardList.shimmer.visibility = View.GONE
+                        binding.recycler.visibility = View.VISIBLE
+
+                        myAdapter.submitList(it)
+                    }
+                }
         }
     }
 

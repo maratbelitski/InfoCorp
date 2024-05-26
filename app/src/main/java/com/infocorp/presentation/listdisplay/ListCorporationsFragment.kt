@@ -1,10 +1,12 @@
 package com.infocorp.presentation.listdisplay
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -35,7 +37,12 @@ class ListCorporationsFragment : Fragment() {
     private val updateStateBottomMenu by lazy {
         activity as MainActivity
     }
+    lateinit var isNetworkAvailable: ()->Boolean
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is MainActivity) isNetworkAvailable ={context.isNetworkAvailable()}
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,6 +63,11 @@ class ListCorporationsFragment : Fragment() {
 
     private fun initArgs() {
         if (!arguments.enableMenu) fragmentViewModel.changeStateBottomMenu()
+
+        if (!isNetworkAvailable.invoke()){
+            Toast.makeText(requireActivity(), "Check your internet connection", Toast.LENGTH_SHORT)
+                .show()
+        }
     }
 
     private fun searchCorporation() {
@@ -102,22 +114,6 @@ class ListCorporationsFragment : Fragment() {
     }
 
     private fun onObservers() {
-//        fragmentViewModel.showShimmer.observe(viewLifecycleOwner) {
-//
-//            with(binding) {
-//                when (it) {
-//                    true -> {
-//                        shimmerCardList.shimmer.visibility = View.VISIBLE
-//                        recycler.visibility = View.GONE
-//                    }
-//
-//                    false -> {
-//                        recycler.visibility = View.VISIBLE
-//                        shimmerCardList.shimmer.visibility = View.GONE
-//                    }
-//                }
-//            }
-//        }
         fragmentViewModel.disableBottomNavigation.observe(viewLifecycleOwner) {
             if (it) {
                 updateStateBottomMenu.enableBottomMenu()
@@ -132,7 +128,6 @@ class ListCorporationsFragment : Fragment() {
                     binding.shimmerCardList.shimmer.visibility = View.VISIBLE
                     binding.recycler.visibility = View.GONE
                 } else {
-                   // delay(Constants.SLEEP.value.toLong())
                     binding.shimmerCardList.shimmer.visibility = View.GONE
                     binding.recycler.visibility = View.VISIBLE
 

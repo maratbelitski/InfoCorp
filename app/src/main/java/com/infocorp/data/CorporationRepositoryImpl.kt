@@ -26,6 +26,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.count
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
@@ -127,9 +128,9 @@ class CorporationRepositoryImpl @Inject constructor(
         return dataFromDB.map { dto -> dto.map { mapper.corporationDtoToCorporation(it) } }
     }
 
-    override fun downloadFavouriteFromLocalStorage(): LiveData<List<Corporation>> {
+    override fun downloadFavouriteFromLocalStorage(): Flow<List<Corporation>> {
         val dataFromDB = daoFavourite.downloadAllFavouriteCorporations()
-        return dataFromDB.map { dto -> dto.map { mapper.corporationDtoToCorporation(it) } }
+        return dataFromDB.map { list->list.map { mapper.corporationDtoToCorporation(it) }}
     }
 
     override fun changeStateCorp(corporation: Corporation) {
