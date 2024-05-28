@@ -76,4 +76,11 @@
     <string name="russian">Русский</string>
     <string name="english">Английский</string>
     <string name="list_is_empty">Лист избранного пуст</string>
+    <string name="data_for_email">Данные для email</string>
+    <string name="change_the_title">Изменить заголовок</string>
+    <string name="enter_the_email_header">Введите текст заголовка</string>
+    <string name="enter_the_email_content">Введите содержание</string>
+    <string name="change_the_content">Изменить содержание</string>
+    <string name="content">Содержание</string>
+    <string name="header">Заголовок</string>
 </resources>

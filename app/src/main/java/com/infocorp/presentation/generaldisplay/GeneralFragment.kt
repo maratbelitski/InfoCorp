@@ -334,7 +334,12 @@ class GeneralFragment : Fragment() {
                 .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collect {
                     with(binding) {
+
                         if (!isNetworkAvailable.invoke()) {
+                            shimmerLayout.shimmer.visibility = View.VISIBLE
+                            statisticCard.statistic.visibility = View.GONE
+
+                        } else if (isNetworkAvailable.invoke() && it == 0) {
                             shimmerLayout.shimmer.visibility = View.VISIBLE
                             statisticCard.statistic.visibility = View.GONE
 //                            Toast.makeText(requireContext(), "Check your internet connection", Toast.LENGTH_SHORT).show()

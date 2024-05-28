@@ -79,4 +79,11 @@
     <string name="russian">Russian</string>
     <string name="english">English</string>
     <string name="list_is_empty">Favourite list is empty</string>
+    <string name="data_for_email">Data for email</string>
+    <string name="change_the_title">Change the header</string>
+    <string name="enter_the_email_header">Enter the email header</string>
+    <string name="enter_the_email_content">Enter the email content</string>
+    <string name="change_the_content">Change the content</string>
+    <string name="content">Content</string>
+    <string name="header">Header</string>
 </resources>

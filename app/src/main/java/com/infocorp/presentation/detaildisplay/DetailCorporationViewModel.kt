@@ -17,17 +17,12 @@ private var _disableBottomNavigation = MutableLiveData(true)
 val disableBottomNavigation: LiveData<Boolean>
     get() = _disableBottomNavigation
 
-    init {
-        sharedPref.edit().putString(Constants.TITLE_CV.value,"Резюме Android разработчик. Белицкий").apply()
-        sharedPref.edit().putString(Constants.BODY_CV.value,"Приветствую. Я Android разработчик и хотел бы присоединиться к вашей команде").apply()
+    fun getTittleCvUser(): String{
+       return sharedPref.getString(Constants.TITLE_CV.value,"") ?:""
     }
 
-    fun getTittleCvUser(titleCV:String): String{
-       return sharedPref.getString(titleCV,"") ?:""
-    }
-
-    fun getBodyCvUser(bodyCV:String): String{
-        return sharedPref.getString(bodyCV,"") ?:""
+    fun getBodyCvUser(): String{
+        return sharedPref.getString(Constants.BODY_CV.value,"") ?:""
     }
 }
 

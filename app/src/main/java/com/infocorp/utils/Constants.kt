@@ -18,5 +18,7 @@ enum class Constants(val value:String) {
     LANG_RU ("ru"),
     LANG_EN ("en"),
 
-    SLEEP("1000")
+    SLEEP("1000"),
+
+    NOT_SPECIFIED("Not specified")
 }

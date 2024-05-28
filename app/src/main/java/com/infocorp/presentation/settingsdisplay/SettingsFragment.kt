@@ -8,10 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
+import com.infocorp.R
 import com.infocorp.databinding.FragmentSettingsBinding
 import com.infocorp.utils.Constants
 import com.infocorp.presentation.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import java.util.Locale
 
 @AndroidEntryPoint
@@ -23,15 +28,15 @@ class SettingsFragment : Fragment() {
 
     private val fragmentViewModel: SettingsFragmentViewModel by viewModels()
 
-     private lateinit var updateStateBottomMenu: (() -> Unit)
-     private lateinit var initThemParams: (() -> Unit)
-     private lateinit var initLanguageParams: (() -> Unit)
+    private lateinit var updateStateBottomMenu: (() -> Unit)
+    private lateinit var initThemParams: (() -> Unit)
+    private lateinit var initLanguageParams: (() -> Unit)
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is MainActivity) updateStateBottomMenu = { context.enableBottomMenu() }
         if (context is MainActivity) initThemParams = { context.onInitThemeParams() }
-        if (context is MainActivity) initLanguageParams = {context.onInitLanguage()}
+        if (context is MainActivity) initLanguageParams = { context.onInitLanguage() }
     }
 
     override fun onCreateView(
@@ -46,8 +51,27 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        onObservers()
         onCheckRadioButtons()
         onListeners()
+    }
+
+    private fun onObservers() {
+        lifecycleScope.launch {
+            fragmentViewModel.headerText
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {
+                    binding.cvCard.tvTitleCvText.text = it
+                }
+        }
+
+        lifecycleScope.launch {
+            fragmentViewModel.contentText
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {
+                    binding.cvCard.tvDescriptionCvText.text = it
+                }
+        }
     }
 
     private fun onCheckRadioButtons() {
@@ -83,7 +107,58 @@ class SettingsFragment : Fragment() {
                 fragmentViewModel.setLanguageParams(Constants.LANG_RU.value)
                 initLanguageParams.invoke()
             }
+
+            cvCard.btnCreate.setOnClickListener {
+                val header = cvCard.etDescriptionInput.text.toString()
+                val content = cvCard.etContentInput.text.toString()
+
+                val emptiesFields = onCheckEmptyFields()
+                if (!emptiesFields){
+                    fragmentViewModel.createUserCv(header, content)
+                    clearFields()
+                }
+            }
+
+            cvCard.tvTitleCvText.setOnClickListener {
+                cvCard.etDescriptionInput.setText(cvCard.tvTitleCvText.text.toString())
+            }
+
+            cvCard.tvDescriptionCvText.setOnClickListener {
+                cvCard.etContentInput.setText(cvCard.tvDescriptionCvText.text.toString())
+            }
         }
+    }
+
+    private fun onCheckError(header: String, content: String) {
+        with(binding) {
+            val headerLayout = cvCard.etCnangeHeaderCvText
+            val contentLayout = cvCard.etCnangeContentCvText
+
+            headerLayout.error = resources.getString(R.string.error_input_layout)
+            contentLayout.error = resources.getString(R.string.error_input_layout)
+
+            fragmentViewModel.validationError(header, headerLayout)
+            fragmentViewModel.validationError(content, contentLayout)
+        }
+    }
+    private fun onCheckEmptyFields(): Boolean {
+        with(binding) {
+            val header = cvCard.etDescriptionInput.text.toString()
+            val content = cvCard.etContentInput.text.toString()
+
+            onCheckError(header, content)
+
+            return !(header.isNotEmpty() && content.isNotEmpty())
+        }
+    }
+    private fun clearFields() {
+        binding.cvCard.etDescriptionInput.text?.clear()
+        binding.cvCard.etContentInput.text?.clear()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        clearFields()
     }
 
     override fun onDestroyView() {

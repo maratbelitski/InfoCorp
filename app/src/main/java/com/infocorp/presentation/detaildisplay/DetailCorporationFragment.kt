@@ -47,15 +47,6 @@ class DetailCorporationFragment : Fragment() {
 
         onListeners()
         onObservers()
-
-
-
-        binding.emailCard.btnSendResume.setOnClickListener {
-            val addresses = arguments.corporation.email.split(",").toTypedArray()
-            val tittleCv = fragmentViewModel.getTittleCvUser("titleCV")
-            val bodyCv = fragmentViewModel.getBodyCvUser("bodyCV")
-            sendEmailResume(addresses,tittleCv,bodyCv)
-        }
     }
 
     private fun onObservers() {
@@ -75,6 +66,13 @@ class DetailCorporationFragment : Fragment() {
             val action = DetailCorporationFragmentDirections
                 .actionDetailCorporationFragmentToCreateUserCorporationFragment(arguments.corporation)
             findNavController().navigate(action)
+        }
+
+        binding.emailCard.btnSendResume.setOnClickListener {
+            val addresses = arguments.corporation.email.split(",").toTypedArray()
+            val tittleCv = fragmentViewModel.getTittleCvUser()
+            val bodyCv = fragmentViewModel.getBodyCvUser()
+            sendEmailResume(addresses,tittleCv,bodyCv)
         }
     }
 

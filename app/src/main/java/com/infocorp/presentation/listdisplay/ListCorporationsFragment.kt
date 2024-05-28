@@ -119,9 +119,14 @@ class ListCorporationsFragment : Fragment() {
 
         fragmentViewModel.listFromLocalSource.observe(viewLifecycleOwner) {
             lifecycleScope.launch{
-                if (it.isEmpty() || !isNetworkAvailable.invoke()) {
+                if (!isNetworkAvailable.invoke()) {
                     binding.shimmerCardList.shimmer.visibility = View.VISIBLE
                     binding.recycler.visibility = View.GONE
+
+                } else if(isNetworkAvailable.invoke() && it.isEmpty()){
+                    binding.shimmerCardList.shimmer.visibility = View.VISIBLE
+                    binding.recycler.visibility = View.GONE
+
                 } else {
                     binding.shimmerCardList.shimmer.visibility = View.GONE
                     binding.recycler.visibility = View.VISIBLE

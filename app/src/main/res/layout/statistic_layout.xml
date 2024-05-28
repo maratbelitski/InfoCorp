@@ -20,9 +20,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/normal_margin_size"
             android:src="@drawable/statistic"
-            app:layout_constraintBottom_toBottomOf="@+id/statistic"
+            app:layout_constraintBottom_toBottomOf="@+id/tvStatistic"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/statistic" />
+            app:layout_constraintTop_toTopOf="@+id/tvStatistic" />
 
         <View
             android:id="@+id/view2"

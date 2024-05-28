@@ -135,7 +135,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvAddressText"
+                    android:id="@+id/tvCnangeContentCv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     style="@style/MyStyle.TextViewEditTextTittle"
@@ -152,8 +152,8 @@
                     app:startIconDrawable="@drawable/address"
                     app:startIconTint="@color/hint_text_color"
                     app:layout_constraintEnd_toEndOf="@+id/etPoster"
-                    app:layout_constraintStart_toStartOf="@+id/tvAddressText"
-                    app:layout_constraintTop_toBottomOf="@+id/tvAddressText">
+                    app:layout_constraintStart_toStartOf="@+id/tvCnangeContentCv"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCnangeContentCv">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etAddressInput"

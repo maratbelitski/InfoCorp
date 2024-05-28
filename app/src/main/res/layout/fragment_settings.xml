@@ -21,5 +21,9 @@
         <include
             android:id="@+id/languageCard"
             layout="@layout/language_layout" />
+
+        <include
+            android:id="@+id/cvCard"
+            layout="@layout/user_email_type" />
     </LinearLayout>
 </ScrollView>

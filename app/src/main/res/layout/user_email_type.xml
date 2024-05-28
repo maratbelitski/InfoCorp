@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/normal_padding_size">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/createUserCv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?attr/selectableItemBackground"
+            android:padding="@dimen/normal_padding_size"
+            app:cardBackgroundColor="@color/second_background_color"
+            app:cardCornerRadius="@dimen/card_corners_radius"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DescriptionCard"
+            tools:context=".presentation.createusercorp.CreateUserCorporationFragment">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/normal_padding_size">
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/red"
+                    app:layout_constraintTop_toBottomOf="@+id/tvEmailType" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTitleCv"
+                    style="@style/MyStyle.TextViewEditTextTittle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/header"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvEmailType" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTitleCvText"
+                    style="@style/MyStyle.TextViewNormal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="0dp"
+                    app:layout_constraintEnd_toEndOf="@+id/tvTitleCv"
+                    app:layout_constraintStart_toStartOf="@+id/tvTitleCv"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitleCv"
+                    tools:text="Android developer" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvEmailType"
+                    style="@style/MyStyle.TextViewBig"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/data_for_email"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDescriptionCv"
+                    style="@style/MyStyle.TextViewEditTextTittle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitleCvText" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDescriptionCvText"
+                    style="@style/MyStyle.TextViewNormal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="0dp"
+                    app:layout_constraintEnd_toEndOf="@+id/tvTitleCvText"
+                    app:layout_constraintStart_toStartOf="@+id/tvDescriptionCv"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDescriptionCv"
+                    tools:text="@string/change_info_corporation" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvInputDescription"
+                    style="@style/MyStyle.TextViewEditTextTittle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/change_the_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDescriptionCvText" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/etCnangeHeaderCvText"
+                    style="@style/MyStyle.TextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/tvTitleCvText"
+                    app:layout_constraintStart_toStartOf="@+id/tvInputDescription"
+                    app:layout_constraintTop_toBottomOf="@+id/tvInputDescription">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDescriptionInput"
+                        style="@style/MyStyle.TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_the_email_header" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvInputContentCv"
+                    style="@style/MyStyle.TextViewEditTextTittle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/change_the_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etCnangeHeaderCvText" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/etCnangeContentCvText"
+                    style="@style/MyStyle.TextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/tvTitleCvText"
+                    app:layout_constraintStart_toStartOf="@+id/tvInputContentCv"
+                    app:layout_constraintTop_toBottomOf="@+id/tvInputContentCv">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etContentInput"
+                        style="@style/MyStyle.TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_the_email_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnCreate"
+                    style="@style/MyStyle.ButtonNormal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/create_btn"
+                    app:layout_constraintEnd_toEndOf="@+id/etCnangeContentCvText"
+                    app:layout_constraintStart_toStartOf="@+id/etCnangeContentCvText"
+                    app:layout_constraintTop_toBottomOf="@+id/etCnangeContentCvText" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
+</FrameLayout>
