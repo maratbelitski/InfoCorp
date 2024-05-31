@@ -40,7 +40,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvEgrName"
-                android:layout_width="350dp"
+                android:layout_width="300dp"
                 android:layout_height="12dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginStart="8dp"
@@ -50,7 +50,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvEgrName2"
-                android:layout_width="350dp"
+                android:layout_width="300dp"
                 android:layout_height="12dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginStart="8dp"
@@ -81,7 +81,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvEgrDirection"
-                android:layout_width="300dp"
+                android:layout_width="250dp"
                 android:layout_height="12dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginStart="8dp"
@@ -91,7 +91,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvEgrDirection2"
-                android:layout_width="300dp"
+                android:layout_width="250dp"
                 android:layout_height="12dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginStart="8dp"
@@ -112,7 +112,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvEgrAddress"
-                android:layout_width="350dp"
+                android:layout_width="300dp"
                 android:layout_height="12dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginStart="8dp"
@@ -148,7 +148,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/shape_shimmer_child"
-                android:backgroundTint="@color/links_color"
+                android:backgroundTint="@color/shimmer_child_color"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/line" />
 
@@ -159,7 +159,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/shape_shimmer_child"
-                android:backgroundTint="@color/links_color"
+                android:backgroundTint="@color/shimmer_child_color"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvEgrName2" />
 
@@ -170,7 +170,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/shape_shimmer_child"
-                android:backgroundTint="@color/links_color"
+                android:backgroundTint="@color/shimmer_child_color"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvEgrFio" />
 
@@ -181,7 +181,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/shape_shimmer_child"
-                android:backgroundTint="@color/links_color"
+                android:backgroundTint="@color/shimmer_child_color"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvEgrType" />
 
@@ -192,7 +192,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/shape_shimmer_child"
-                android:backgroundTint="@color/links_color"
+                android:backgroundTint="@color/shimmer_child_color"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvEgrDirection2" />
 
@@ -203,7 +203,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/shape_shimmer_child"
-                android:backgroundTint="@color/links_color"
+                android:backgroundTint="@color/shimmer_child_color"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvEgrUnp" />
 
@@ -213,7 +213,7 @@
                 android:layout_height="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="8dp"
-                android:backgroundTint="@color/links_color"
+                android:backgroundTint="@color/shimmer_child_color"
                 android:background="@drawable/shape_shimmer_child"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvEgrAddress2" />

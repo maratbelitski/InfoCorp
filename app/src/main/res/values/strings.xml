@@ -86,4 +86,8 @@
     <string name="change_the_content">Change the content</string>
     <string name="content">Content</string>
     <string name="header">Header</string>
+    <string name="be_attached">The information will be attached to the email when sending</string>
+    <string name="link_to_the_resume">Link to the resume</string>
+    <string name="change_the_link">Change the link to the resume</string>
+    <string name="enter_the_link">Enter the link</string>
 </resources>

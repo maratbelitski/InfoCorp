@@ -83,4 +83,8 @@
     <string name="change_the_content">Изменить содержание</string>
     <string name="content">Содержание</string>
     <string name="header">Заголовок</string>
+    <string name="be_attached">Информация будет прикреплена к email при отправке</string>
+    <string name="link_to_the_resume">Ссылка на резюме</string>
+    <string name="change_the_link">Изменить ссылку на резюме</string>
+    <string name="enter_the_link">Введите ссылку</string>
 </resources>

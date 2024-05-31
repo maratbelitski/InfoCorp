@@ -72,6 +72,14 @@ class SettingsFragment : Fragment() {
                     binding.cvCard.tvDescriptionCvText.text = it
                 }
         }
+
+        lifecycleScope.launch {
+            fragmentViewModel.linkText
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {
+                    binding.cvCard.tvLinkCvText.text = it
+                }
+        }
     }
 
     private fun onCheckRadioButtons() {
@@ -111,10 +119,11 @@ class SettingsFragment : Fragment() {
             cvCard.btnCreate.setOnClickListener {
                 val header = cvCard.etDescriptionInput.text.toString()
                 val content = cvCard.etContentInput.text.toString()
+                val link = cvCard.etLinkCvInput.text.toString()
 
                 val emptiesFields = onCheckEmptyFields()
                 if (!emptiesFields){
-                    fragmentViewModel.createUserCv(header, content)
+                    fragmentViewModel.createUserCv(header, content, link)
                     clearFields()
                 }
             }
@@ -129,37 +138,40 @@ class SettingsFragment : Fragment() {
         }
     }
 
-    private fun onCheckError(header: String, content: String) {
+    private fun onCheckError(header: String, content: String, link:String) {
         with(binding) {
             val headerLayout = cvCard.etCnangeHeaderCvText
             val contentLayout = cvCard.etCnangeContentCvText
+            val linkLayout = cvCard.etCnangeLinkCvText
 
             headerLayout.error = resources.getString(R.string.error_input_layout)
             contentLayout.error = resources.getString(R.string.error_input_layout)
+            linkLayout.error = resources.getString(R.string.error_input_layout)
 
             fragmentViewModel.validationError(header, headerLayout)
             fragmentViewModel.validationError(content, contentLayout)
+            fragmentViewModel.validationError(link, linkLayout)
         }
     }
     private fun onCheckEmptyFields(): Boolean {
         with(binding) {
             val header = cvCard.etDescriptionInput.text.toString()
             val content = cvCard.etContentInput.text.toString()
+            val link = cvCard.etLinkCvInput.text.toString()
 
-            onCheckError(header, content)
+            onCheckError(header, content, link)
 
-            return !(header.isNotEmpty() && content.isNotEmpty())
+            return !(header.isNotEmpty() && content.isNotEmpty() && link.isNotEmpty())
         }
     }
     private fun clearFields() {
-        binding.cvCard.etDescriptionInput.text?.clear()
-        binding.cvCard.etContentInput.text?.clear()
+        with(binding){
+            cvCard.etDescriptionInput.text?.clear()
+            cvCard.etContentInput.text?.clear()
+            cvCard.etLinkCvInput.text?.clear()
+        }
     }
 
-    override fun onPause() {
-        super.onPause()
-        clearFields()
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

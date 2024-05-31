@@ -38,13 +38,13 @@ class DetailCorporationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentDetailCorporationBinding.inflate(layoutInflater)
-        initArgs()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initArgs()
         onListeners()
         onObservers()
     }
@@ -72,7 +72,8 @@ class DetailCorporationFragment : Fragment() {
             val addresses = arguments.corporation.email.split(",").toTypedArray()
             val tittleCv = fragmentViewModel.getTittleCvUser()
             val bodyCv = fragmentViewModel.getBodyCvUser()
-            sendEmailResume(addresses,tittleCv,bodyCv)
+            val linkCv = fragmentViewModel.getLinkCvUser()
+            sendEmailResume(addresses, tittleCv, bodyCv, linkCv)
         }
     }
 
@@ -84,7 +85,7 @@ class DetailCorporationFragment : Fragment() {
                 .into(posterCard.ivPoster)
 
             val defaultValue = getString(R.string.not_specified)
-            val defaultColor = ContextCompat.getColor(requireContext(),R.color.unknown_text_color)
+            val defaultColor = ContextCompat.getColor(requireContext(), R.color.unknown_text_color)
 
             val name = arguments.corporation.name
             var description = arguments.corporation.description
@@ -115,7 +116,6 @@ class DetailCorporationFragment : Fragment() {
                 websiteCard.tvWebsiteCorp.setTextColor(defaultColor)
             }
 
-
             nameCard.tvName.text = name
             descriptionCard.tvDescriptionCorp.text = description
             addressCard.tvAddressText.text = address
@@ -123,18 +123,25 @@ class DetailCorporationFragment : Fragment() {
             emailCard.tvEmailCorp.text = email
             websiteCard.tvWebsiteCorp.text = website
         }
-
-
     }
-    private fun sendEmailResume(addresses: Array<String>, tittle: String, body: String) {
+
+    private fun sendEmailResume(
+        addresses: Array<String>,
+        tittle: String,
+        body: String,
+        link: String
+    ) {
         val intent = Intent(Intent.ACTION_SENDTO).apply {
+
+            val bodyMessage = body + "\n\n" + link
             data = Uri.parse("mailto:")
             putExtra(Intent.EXTRA_EMAIL, addresses)
             putExtra(Intent.EXTRA_SUBJECT, tittle)
-            putExtra(Intent.EXTRA_TEXT, body)
+            putExtra(Intent.EXTRA_TEXT, bodyMessage)
         }
-        startActivity(intent)
+        startActivity(Intent.createChooser(intent, "Choose client"))
     }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

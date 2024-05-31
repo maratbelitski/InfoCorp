@@ -22,9 +22,14 @@ class SettingsFragmentViewModel @Inject constructor(
     val headerText: StateFlow<String>
         get() = _headerText
 
+    private val _linkText = MutableStateFlow("")
+    val linkText: StateFlow<String>
+        get() = _linkText
+
     init {
         getHeaderText()
         getContentText()
+        getLinkText()
     }
     private fun getHeaderText(){
         _headerText.value = sharedPref
@@ -36,11 +41,18 @@ class SettingsFragmentViewModel @Inject constructor(
             .getString(Constants.BODY_CV.value,Constants.NOT_SPECIFIED.value).toString()
     }
 
-    fun createUserCv(header:String, content:String){
+    private fun getLinkText(){
+        _linkText.value = sharedPref
+            .getString(Constants.LINK_CV.value,Constants.NOT_SPECIFIED.value).toString()
+    }
+
+    fun createUserCv(header:String, content:String, link:String){
         sharedPref.edit().putString(Constants.TITLE_CV.value,header).apply()
         sharedPref.edit().putString(Constants.BODY_CV.value,content).apply()
+        sharedPref.edit().putString(Constants.LINK_CV.value,link).apply()
         getHeaderText()
         getContentText()
+        getLinkText()
     }
     fun setThemeParams(themeParams: String) {
         sharedPref.edit().putString(Constants.THEME_PARAMS_PREFERENCES.value, themeParams).apply()

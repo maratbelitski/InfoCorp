@@ -11,6 +11,7 @@ import com.infocorp.domain.usecases.corporation.GetInfoEgrByTitleUseCase
 import com.infocorp.domain.usecases.corporation.GetInfoEgrByUnpUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.net.UnknownHostException
 import javax.inject.Inject
@@ -47,6 +48,7 @@ class EgrViewModel @Inject constructor(
                 _exceptionNetwork.postValue(NETWORK_EXCEPTION)
                 Log.i(MY_LOG,"$e")
             } finally {
+                delay(1000000)
                 _showShimmer.postValue(false)
             }
         }

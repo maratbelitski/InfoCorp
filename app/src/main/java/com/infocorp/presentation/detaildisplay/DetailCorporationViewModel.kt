@@ -24,5 +24,8 @@ val disableBottomNavigation: LiveData<Boolean>
     fun getBodyCvUser(): String{
         return sharedPref.getString(Constants.BODY_CV.value,"") ?:""
     }
+    fun getLinkCvUser(): String{
+        return sharedPref.getString(Constants.LINK_CV.value,"") ?:""
+    }
 }
 

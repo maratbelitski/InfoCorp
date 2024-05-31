@@ -5,6 +5,9 @@ enum class Constants(val value:String) {
     BASE_URL("http://suggestions.dadata.ru/suggestions/api/4_1/rs/"),
     AUTHORIZATION_TOKEN("Authorization: Token 6ebaf8e334bac982c60b1ba2fae777febca0303f"),
 
+    GENERAL_DB("CORPORATION"),
+    USER_DB("USER_CORPORATION"),
+
     INFO_CORP_PREFERENCES ("info_corp_preferences"),
 
     THEME_PARAMS_PREFERENCES ("themeParams"),
@@ -13,6 +16,7 @@ enum class Constants(val value:String) {
 
     TITLE_CV("titleCV"),
     BODY_CV("bodyCV"),
+    LINK_CV("linkCV"),
 
     LANG_PARAMS_PREFERENCES ("language"),
     LANG_RU ("ru"),
