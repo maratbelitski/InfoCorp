@@ -1,6 +1,7 @@
 package com.infocorp.presentation.settingsdisplay
 
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.google.android.material.textfield.TextInputLayout
 import com.infocorp.utils.Constants

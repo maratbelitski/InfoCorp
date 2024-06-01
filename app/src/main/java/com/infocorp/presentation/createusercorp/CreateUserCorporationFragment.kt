@@ -28,10 +28,10 @@ class CreateUserCorporationFragment : Fragment() {
     private val arguments: CreateUserCorporationFragmentArgs by navArgs()
     private val fragmentViewModel: CreateUserCorporationFragmentViewModel by viewModels()
 
-    private lateinit var updateStateBottomMenu: (() -> Unit)
+    private var updateStateBottomMenu: (() -> Unit)? = null
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is MainActivity) updateStateBottomMenu = { context.disableBottomMenu() }
+        updateStateBottomMenu = { (activity as MainActivity).disableBottomMenu() }
     }
 
     override fun onCreateView(
@@ -51,7 +51,7 @@ class CreateUserCorporationFragment : Fragment() {
     }
 
     private fun initViews() {
-        updateStateBottomMenu.invoke()
+        updateStateBottomMenu?.invoke()
     }
 
     private fun initArgs() {

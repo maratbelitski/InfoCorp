@@ -2,6 +2,7 @@ package com.infocorp.presentation.settingsdisplay
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -28,15 +29,13 @@ class SettingsFragment : Fragment() {
 
     private val fragmentViewModel: SettingsFragmentViewModel by viewModels()
 
-    private lateinit var updateStateBottomMenu: (() -> Unit)
-    private lateinit var initThemParams: (() -> Unit)
-    private lateinit var initLanguageParams: (() -> Unit)
+    private var updateStateBottomMenu: (() -> Unit)? = null
+    private var initLanguageParams: (() -> Unit)? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is MainActivity) updateStateBottomMenu = { context.enableBottomMenu() }
-        if (context is MainActivity) initThemParams = { context.onInitThemeParams() }
-        if (context is MainActivity) initLanguageParams = { context.onInitLanguage() }
+        updateStateBottomMenu = { (activity as MainActivity).enableBottomMenu() }
+        initLanguageParams = { (activity as MainActivity).onInitLanguage() }
     }
 
     override fun onCreateView(
@@ -57,7 +56,7 @@ class SettingsFragment : Fragment() {
     }
 
     private fun initViews() {
-        updateStateBottomMenu.invoke()
+        updateStateBottomMenu?.invoke()
     }
 
     private fun onObservers() {
@@ -112,12 +111,12 @@ class SettingsFragment : Fragment() {
 
             languageCard.rbtnEng.setOnClickListener {
                 fragmentViewModel.setLanguageParams(Constants.LANG_EN.value)
-                initLanguageParams.invoke()
+                initLanguageParams?.invoke()
             }
 
             languageCard.rbtnRus.setOnClickListener {
                 fragmentViewModel.setLanguageParams(Constants.LANG_RU.value)
-                initLanguageParams.invoke()
+                initLanguageParams?.invoke()
             }
 
             cvCard.btnCreate.setOnClickListener {

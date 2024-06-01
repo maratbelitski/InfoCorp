@@ -1,6 +1,7 @@
 package com.infocorp.presentation
 
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.google.android.gms.ads.AdRequest
 import com.infocorp.utils.Constants

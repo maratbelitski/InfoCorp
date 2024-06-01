@@ -5,15 +5,14 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.infocorp.R
 import com.infocorp.databinding.FragmentAdditionallyBinding
-import com.infocorp.domain.model.Corporation
 import com.infocorp.presentation.MainActivity
 import com.infocorp.utils.Constants
 
@@ -26,10 +25,10 @@ class AdditionallyFragment : Fragment() {
 
     private val arguments: AdditionallyFragmentArgs by navArgs()
 
-    private lateinit var updateStateBottomMenu: (() -> Unit)
+    private var updateStateBottomMenu: (() -> Unit)? = null
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is MainActivity) updateStateBottomMenu = { context.disableBottomMenu() }
+        updateStateBottomMenu = { (activity as MainActivity).disableBottomMenu() }
     }
 
     override fun onCreateView(
@@ -49,7 +48,7 @@ class AdditionallyFragment : Fragment() {
     }
 
     private fun initViews() {
-        updateStateBottomMenu.invoke()
+        updateStateBottomMenu?.invoke()
     }
 
     private fun onListeners() {

@@ -27,11 +27,10 @@ class ListUserCorporationsFragment : Fragment() {
         CorporationAdapter()
     }
 
-
-    private lateinit var updateStateBottomMenu: (() -> Unit)
+    private var updateStateBottomMenu: (() -> Unit)? = null
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is MainActivity) updateStateBottomMenu = { context.disableBottomMenu() }
+        updateStateBottomMenu = { (activity as MainActivity).disableBottomMenu() }
     }
 
     override fun onCreateView(
@@ -88,7 +87,7 @@ class ListUserCorporationsFragment : Fragment() {
     }
 
     private fun initViews() {
-        updateStateBottomMenu.invoke()
+        updateStateBottomMenu?.invoke()
         binding.recycler.adapter = myAdapter
     }
 

@@ -30,13 +30,13 @@ class GeneralFragment : Fragment() {
 
     private val fragmentViewModel: GeneralFragmentViewModel by viewModels()
 
-    private lateinit var isNetworkAvailable: () -> Boolean
-    private lateinit var updateStateBottomMenu: () -> Unit
+    private var isNetworkAvailable: (() -> Boolean)? = null
+    private var updateStateBottomMenu: (() -> Unit)? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is MainActivity) isNetworkAvailable = { context.isNetworkAvailable() }
-        if (context is MainActivity) updateStateBottomMenu = { context.enableBottomMenu() }
+        isNetworkAvailable = { (activity as MainActivity).isNetworkAvailable() }
+        updateStateBottomMenu = { (activity as MainActivity).enableBottomMenu() }
     }
 
     override fun onCreateView(
@@ -53,7 +53,7 @@ class GeneralFragment : Fragment() {
         initViews()
         onObservers()
 
-       // addCorps()
+        // addCorps()
     }
 
 
@@ -64,12 +64,11 @@ class GeneralFragment : Fragment() {
                 .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collect {
                     with(binding) {
-
-                        if (!isNetworkAvailable.invoke()) {
+                        if (isNetworkAvailable?.invoke() == false) {
                             shimmerLayout.shimmer.visibility = View.VISIBLE
                             statisticCard.statistic.visibility = View.GONE
 
-                        } else if (isNetworkAvailable.invoke() && it == 0) {
+                        } else if (isNetworkAvailable?.invoke() == true && it == 0) {
                             shimmerLayout.shimmer.visibility = View.VISIBLE
                             statisticCard.statistic.visibility = View.GONE
 
@@ -101,7 +100,7 @@ class GeneralFragment : Fragment() {
     }
 
     private fun initViews() {
-        updateStateBottomMenu.invoke()
+        updateStateBottomMenu?.invoke()
     }
 
     override fun onDestroyView() {
@@ -109,11 +108,11 @@ class GeneralFragment : Fragment() {
         _binding = null
     }
 
-   private fun addCorps(){
+    private fun addCorps() {
 //       основная бд
-       val databaseParent = Firebase.database.getReference(Constants.GENERAL_DB.value)
+        val databaseParent = Firebase.database.getReference(Constants.GENERAL_DB.value)
 //       пользовательская бд
-       val databaseChild = Firebase.database.getReference(Constants.USER_DB.value)
+        val databaseChild = Firebase.database.getReference(Constants.USER_DB.value)
 
 //      удаление из пользовательской USER_CORPORATION бд
 //     databaseChild.child("-Ny0Mf6qyYQ4PMnx6NDk").removeValue()

@@ -2,14 +2,12 @@ package com.infocorp.data
 
 import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
+import com.google.firebase.Firebase
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
-import com.google.firebase.Firebase
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.datastorage.CorporationDao
 import com.infocorp.data.datastorage.FavouriteDao
@@ -22,17 +20,9 @@ import com.infocorp.domain.model.Data
 import com.infocorp.utils.Constants
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.count
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.onCompletion
-import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class CorporationRepositoryImpl @Inject constructor(
@@ -111,7 +101,6 @@ class CorporationRepositoryImpl @Inject constructor(
             override fun onCancelled(error: DatabaseError) {
                 Log.e("MyLog", "Error message ${error.message}")
             }
-
         })
     }
 

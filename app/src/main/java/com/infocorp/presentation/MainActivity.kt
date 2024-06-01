@@ -3,6 +3,7 @@ package com.infocorp.presentation
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -38,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         MobileAds.initialize(this)
 
         onInitThemeParams()
+        onInitLanguage()
         onBottomNavigation()
 
         onListeners()
@@ -54,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun onInitThemeParams() {
+    private fun onInitThemeParams() {
         when (viewModel.getThemeParams()) {
             Constants.LIGHT_MODE.value -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             Constants.NIGHT_MODE.value -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -63,6 +65,7 @@ class MainActivity : AppCompatActivity() {
 
     fun onInitLanguage() {
         val lang = viewModel.getLanguageParams()
+        Log.i("MyLog", "lang1 - $lang")
         val localeListCompat = LocaleListCompat.forLanguageTags(lang)
         AppCompatDelegate.setApplicationLocales(localeListCompat)
     }

@@ -34,14 +34,13 @@ class FavouriteFragment : Fragment() {
         CorporationAdapter()
     }
 
-    private lateinit var updateStateBottomMenu: (() -> Unit)
-    private lateinit var isNetworkAvailable: (() -> Boolean)
-
+    private var updateStateBottomMenu: (() -> Unit)? = null
+    private var isNetworkAvailable: (() -> Boolean)? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is MainActivity) updateStateBottomMenu = { context.enableBottomMenu() }
-        if (context is MainActivity) isNetworkAvailable = { context.isNetworkAvailable() }
+        updateStateBottomMenu = { (activity as MainActivity).enableBottomMenu() }
+        isNetworkAvailable = { (activity as MainActivity).isNetworkAvailable() }
     }
 
     override fun onCreateView(
@@ -102,12 +101,12 @@ class FavouriteFragment : Fragment() {
             fragmentViewModel.listFavouriteCorp
                 .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collect {
-                    if (!isNetworkAvailable.invoke()) {
+                    if (isNetworkAvailable?.invoke() == false) {
                         binding.shimmerCardList.shimmer.visibility = View.VISIBLE
                         binding.recycler.visibility = View.GONE
                         binding.tvEmptyList.visibility = View.GONE
 
-                    } else if (it.isEmpty() && isNetworkAvailable.invoke()) {
+                    } else if (it.isEmpty() && isNetworkAvailable?.invoke() == true) {
                         binding.tvEmptyList.visibility = View.VISIBLE
                         binding.shimmerCardList.shimmer.visibility = View.GONE
 
@@ -123,7 +122,7 @@ class FavouriteFragment : Fragment() {
     }
 
     private fun initViews() {
-        updateStateBottomMenu.invoke()
+        updateStateBottomMenu?.invoke()
         binding.recycler.adapter = myAdapter
     }
 

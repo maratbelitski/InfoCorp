@@ -37,12 +37,13 @@ class ListCorporationsFragment : Fragment() {
         activity as MainActivity
     }
 
-    private lateinit var isNetworkAvailable: ()->Boolean
+    private var isNetworkAvailable: (() -> Boolean)? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is MainActivity) isNetworkAvailable ={context.isNetworkAvailable()}
+        isNetworkAvailable = { (activity as MainActivity).isNetworkAvailable() }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -114,21 +115,21 @@ class ListCorporationsFragment : Fragment() {
         lifecycleScope.launch {
             fragmentViewModel.disableBottomNavigation
                 .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-                .collect{
-                if (it) {
-                    updateStateBottomMenu.enableBottomMenu()
-                } else {
-                    updateStateBottomMenu.disableBottomMenu()
+                .collect {
+                    if (it) {
+                        updateStateBottomMenu.enableBottomMenu()
+                    } else {
+                        updateStateBottomMenu.disableBottomMenu()
+                    }
                 }
-            }
         }
         fragmentViewModel.listFromLocalSource.observe(viewLifecycleOwner) {
-            lifecycleScope.launch{
-                if (!isNetworkAvailable.invoke()) {
+            lifecycleScope.launch {
+                if (isNetworkAvailable?.invoke() == false) {
                     binding.shimmerCardList.shimmer.visibility = View.VISIBLE
                     binding.recycler.visibility = View.GONE
 
-                } else if(isNetworkAvailable.invoke() && it.isEmpty()){
+                } else if (isNetworkAvailable?.invoke() == true && it.isEmpty()) {
                     binding.shimmerCardList.shimmer.visibility = View.VISIBLE
                     binding.recycler.visibility = View.GONE
 

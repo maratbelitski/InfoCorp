@@ -2,7 +2,7 @@
 .gradle
 /local.properties
 .idea
-/Constants.kt
+com/infocorp/utils/Constants.kt
 .DS_Store
 /build
 /captures
