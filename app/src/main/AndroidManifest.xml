@@ -29,7 +29,9 @@
 
         <activity
             android:name=".presentation.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait"
+            tools:ignore="DiscouragedApi">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,9 +41,7 @@
             </intent-filter>
         </activity>
 
-<!--        <meta-data-->
-<!--            android:name="com.google.android.gms.ads.APPLICATION_ID"-->
-<!--            android:value="ca-app-pub-1912940735550668~4019486421" />-->
+
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

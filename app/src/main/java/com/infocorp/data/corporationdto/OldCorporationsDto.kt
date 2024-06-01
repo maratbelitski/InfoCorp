@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "oldCorpsTable")
-data class OldCorporationsDto (
+data class OldCorporationsDto(
     @PrimaryKey
-    val id: String =""
+    val id: String = ""
 )

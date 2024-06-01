@@ -1,8 +1,6 @@
 package com.infocorp.data
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import com.google.firebase.Firebase
 import com.google.firebase.database.database
@@ -11,6 +9,7 @@ import com.infocorp.data.datastorage.UserCorporationDao
 import com.infocorp.data.mapper.CorporationMapper
 import com.infocorp.domain.UserCorporationRepository
 import com.infocorp.domain.model.Corporation
+import com.infocorp.utils.Constants
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -20,12 +19,9 @@ class UserCorporationRepositoryImpl @Inject constructor(
     private val mapper: CorporationMapper
 ) : UserCorporationRepository {
 
-    companion object {
-        private const val FIRE_BASE_USER = "USER_IT_CORPORATION"
-    }
 
     private val firebaseReference by lazy {
-        firebase.database.getReference(FIRE_BASE_USER)
+        firebase.database.getReference(Constants.USER_DB.value)
     }
 
     override fun sendUserCorporation(userCorp: UserCorporationDto) {

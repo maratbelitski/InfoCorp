@@ -1,6 +1,5 @@
 package com.infocorp.domain.usecases.corporation
 
-import androidx.lifecycle.LiveData
 import com.infocorp.domain.CorporationRepository
 import com.infocorp.domain.model.Corporation
 import kotlinx.coroutines.flow.Flow

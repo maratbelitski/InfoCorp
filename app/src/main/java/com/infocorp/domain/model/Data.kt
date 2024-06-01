@@ -1,7 +1,5 @@
 package com.infocorp.domain.model
 
-import com.google.gson.annotations.SerializedName
-
 data class Data(
     val titleCorp: String = "",
     val fioPerson: String = "",

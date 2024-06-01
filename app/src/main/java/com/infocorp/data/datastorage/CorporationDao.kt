@@ -1,7 +1,6 @@
 package com.infocorp.data.datastorage
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -28,7 +27,7 @@ interface CorporationDao {
     fun updateNew(id: String, isNew: Boolean)
 
     @Query("DELETE FROM corporationsTable")
-   fun clearCorporationsTable()
+    fun clearCorporationsTable()
 
     @Query("SELECT COUNT(name) FROM corporationsTable")
     fun getRowCount(): Flow<Int>

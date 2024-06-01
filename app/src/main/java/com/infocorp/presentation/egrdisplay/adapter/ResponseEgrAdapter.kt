@@ -8,7 +8,6 @@ import com.infocorp.domain.model.Data
 class ResponseEgrAdapter : ListAdapter<Data, ViewHolder>(ResponseEgrDiffUtils()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
         return ResponseEgrHolder.from(parent)
     }
 

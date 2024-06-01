@@ -4,7 +4,6 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -115,12 +114,9 @@ class MainActivity : AppCompatActivity() {
         val network = connectivityManager.activeNetwork
         val capabilities =
             connectivityManager.getNetworkCapabilities(network)
-        val result = capabilities != null && (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
-                || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR))
-
-//        if (!result){
-//            Toast.makeText(this, "Check your internet connection", Toast.LENGTH_SHORT).show()
-//        }
+        val result =
+            capabilities != null && (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+                    || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR))
         return result
     }
 }

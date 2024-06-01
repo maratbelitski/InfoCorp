@@ -5,17 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdRequest
 import com.google.firebase.Firebase
 import com.google.firebase.database.database
-import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.databinding.FragmentGeneralBinding
 import com.infocorp.presentation.MainActivity
 import com.infocorp.utils.Constants

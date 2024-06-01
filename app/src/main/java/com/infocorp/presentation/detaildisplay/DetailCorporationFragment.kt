@@ -1,5 +1,6 @@
 package com.infocorp.presentation.detaildisplay
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -28,10 +29,11 @@ class DetailCorporationFragment : Fragment() {
     private val arguments: DetailCorporationFragmentArgs by navArgs()
     private val fragmentViewModel: DetailCorporationViewModel by viewModels()
 
-    private val updateStateBottomMenu by lazy {
-        activity as MainActivity
+    private lateinit var updateStateBottomMenu: (() -> Unit)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is MainActivity) updateStateBottomMenu = { context.disableBottomMenu() }
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,15 +46,13 @@ class DetailCorporationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initViews()
         initArgs()
         onListeners()
-        onObservers()
     }
 
-    private fun onObservers() {
-        fragmentViewModel.disableBottomNavigation.observe(viewLifecycleOwner) {
-            if (it) updateStateBottomMenu.disableBottomMenu()
-        }
+    private fun initViews() {
+        updateStateBottomMenu.invoke()
     }
 
     private fun onListeners() {

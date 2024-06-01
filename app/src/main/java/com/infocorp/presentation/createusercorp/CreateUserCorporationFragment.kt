@@ -1,11 +1,13 @@
 package com.infocorp.presentation.createusercorp
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -13,14 +15,11 @@ import com.infocorp.R
 import com.infocorp.data.corporationdto.UserCorporationDto
 import com.infocorp.databinding.FragmentCreateUserCorporationBinding
 import com.infocorp.presentation.MainActivity
+import com.infocorp.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CreateUserCorporationFragment : Fragment() {
-
-    companion object {
-        private const val FIRE_BASE_USER = "USER_IT_CORPORATION"
-    }
 
     private var _binding: FragmentCreateUserCorporationBinding? = null
     private val binding: FragmentCreateUserCorporationBinding
@@ -29,8 +28,10 @@ class CreateUserCorporationFragment : Fragment() {
     private val arguments: CreateUserCorporationFragmentArgs by navArgs()
     private val fragmentViewModel: CreateUserCorporationFragmentViewModel by viewModels()
 
-    private val updateStateBottomMenu by lazy {
-        activity as MainActivity
+    private lateinit var updateStateBottomMenu: (() -> Unit)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is MainActivity) updateStateBottomMenu = { context.disableBottomMenu() }
     }
 
     override fun onCreateView(
@@ -38,23 +39,19 @@ class CreateUserCorporationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCreateUserCorporationBinding.inflate(layoutInflater)
-
-        initArgs()
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initViews()
+        initArgs()
         onListeners()
-        onObservers()
     }
 
-    private fun onObservers() {
-        fragmentViewModel.disableBottomNavigation.observe(viewLifecycleOwner) {
-            if (it) updateStateBottomMenu.disableBottomMenu()
-        }
+    private fun initViews() {
+        updateStateBottomMenu.invoke()
     }
 
     private fun initArgs() {
@@ -76,7 +73,9 @@ class CreateUserCorporationFragment : Fragment() {
             if (!emptiesFields) {
                 sendUserCorporation()
                 Toast.makeText(
-                    requireContext(), "Information send to developer", Toast.LENGTH_SHORT
+                    requireContext(),
+                    ContextCompat.getString(requireActivity(), R.string.send_to_developer),
+                    Toast.LENGTH_SHORT
                 ).show()
             }
         }
@@ -86,7 +85,9 @@ class CreateUserCorporationFragment : Fragment() {
             if (!emptiesFields) {
                 addUserCorporation()
                 Toast.makeText(
-                    requireContext(), "Information saved to your database", Toast.LENGTH_SHORT
+                    requireContext(),
+                    ContextCompat.getString(requireActivity(), R.string.saved_to_database),
+                    Toast.LENGTH_SHORT
                 ).show()
             }
         }
@@ -148,9 +149,8 @@ class CreateUserCorporationFragment : Fragment() {
             val email = etEmailInput.text.toString()
             val website = etWebsiteInput.text.toString()
 
-
             return UserCorporationDto(
-                idFirebase = FIRE_BASE_USER,
+                idFirebase = Constants.USER_DB.value,
                 name = tittle,
                 address = address,
                 poster = poster,

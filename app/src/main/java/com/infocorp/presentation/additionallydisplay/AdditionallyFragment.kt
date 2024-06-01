@@ -1,6 +1,7 @@
 package com.infocorp.presentation.additionallydisplay
 
 import android.app.SearchManager
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -14,14 +15,10 @@ import com.infocorp.R
 import com.infocorp.databinding.FragmentAdditionallyBinding
 import com.infocorp.domain.model.Corporation
 import com.infocorp.presentation.MainActivity
+import com.infocorp.utils.Constants
 
 
 class AdditionallyFragment : Fragment() {
-
-    companion object {
-        private const val BELARUS_LOCATION = "geo:0,0?q= Беларусь"
-        private const val GOOGLE_PACKAGE = "com.google.android.apps.maps"
-    }
 
     private var _binding: FragmentAdditionallyBinding? = null
     private val binding: FragmentAdditionallyBinding
@@ -29,29 +26,30 @@ class AdditionallyFragment : Fragment() {
 
     private val arguments: AdditionallyFragmentArgs by navArgs()
 
-    private val updateStateBottomMenu by lazy {
-        activity as MainActivity
+    private lateinit var updateStateBottomMenu: (() -> Unit)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is MainActivity) updateStateBottomMenu = { context.disableBottomMenu() }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAdditionallyBinding.inflate(layoutInflater)
-
-        initArgs()
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initArgs()
         onListeners()
         initViews()
     }
 
     private fun initViews() {
-        updateStateBottomMenu.disableBottomMenu()
+        updateStateBottomMenu.invoke()
     }
 
     private fun onListeners() {
@@ -66,9 +64,10 @@ class AdditionallyFragment : Fragment() {
             val corporation = arguments.corporation.name
             val address = arguments.corporation.address
 
-            val gmmIntentUri = Uri.parse("$BELARUS_LOCATION + $corporation + $address")
+            val gmmIntentUri =
+                Uri.parse("${Constants.BELARUS_LOCATION.value} + $corporation + $address")
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-            mapIntent.setPackage(GOOGLE_PACKAGE)
+            mapIntent.setPackage(Constants.GOOGLE_PACKAGE.value)
             startActivity(mapIntent)
         }
 

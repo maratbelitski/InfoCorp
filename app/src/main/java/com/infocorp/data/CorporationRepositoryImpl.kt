@@ -19,6 +19,7 @@ import com.infocorp.data.network.CorporationService
 import com.infocorp.domain.CorporationRepository
 import com.infocorp.domain.model.Corporation
 import com.infocorp.domain.model.Data
+import com.infocorp.utils.Constants
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -43,24 +44,15 @@ class CorporationRepositoryImpl @Inject constructor(
     private val retrofitService: CorporationService
 ) : CorporationRepository {
 
-    companion object {
-        private const val FIRE_BASE_GENERAL = "CORPORATION"
-    }
-
     private val firebaseReference by lazy {
-        firebase.database.getReference(FIRE_BASE_GENERAL)
-    }
-
-    private fun insertDataInLocalDataBase(corpDto: CorporationDto) {
-        daoCorp.addOneCorpInDataBase(corpDto)
-
+        firebase.database.getReference(Constants.GENERAL_DB.value)
     }
 
     private fun clearLocalDataBase() {
         daoCorp.clearCorporationsTable()
     }
 
-    private suspend fun giveIdOfFavourite(): List<String> {
+    private fun giveIdOfFavourite(): List<String> {
         val value = daoFavourite.loadAllFavorite()
         val listId = mutableListOf<String>()
 
@@ -68,7 +60,7 @@ class CorporationRepositoryImpl @Inject constructor(
         return listId
     }
 
-    private suspend fun giveIdOfOldCorps(): List<String> {
+    private fun giveIdOfOldCorps(): List<String> {
         val value = daoOldCorps.loadAllOldCorps()
         val listId = mutableListOf<String>()
 
@@ -130,7 +122,7 @@ class CorporationRepositoryImpl @Inject constructor(
 
     override fun downloadFavouriteFromLocalStorage(): Flow<List<Corporation>> {
         val dataFromDB = daoFavourite.downloadAllFavouriteCorporations()
-        return dataFromDB.map { list->list.map { mapper.corporationDtoToCorporation(it) }}
+        return dataFromDB.map { list -> list.map { mapper.corporationDtoToCorporation(it) } }
     }
 
     override fun changeStateCorp(corporation: Corporation) {

@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "favouriteTable")
-data class FavouriteCorporationsDto (
+data class FavouriteCorporationsDto(
     @PrimaryKey
-    val id: String =""
+    val id: String = ""
 )

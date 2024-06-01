@@ -12,6 +12,8 @@ import com.infocorp.domain.usecases.corporation.GetInfoEgrByUnpUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import java.net.UnknownHostException
 import javax.inject.Inject
@@ -26,8 +28,8 @@ class EgrViewModel @Inject constructor(
         private const val NETWORK_EXCEPTION = "Error. Check your network"
     }
 
-    private var _showShimmer = MutableLiveData(false)
-    val showShimmer: LiveData<Boolean>
+    private var _showShimmer = MutableStateFlow(false)
+    val showShimmer: StateFlow<Boolean>
         get() = _showShimmer
 
     private var _exceptionNetwork = MutableLiveData("")
@@ -40,7 +42,7 @@ class EgrViewModel @Inject constructor(
 
     fun getInfoEgrByName(titleCorp: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            _showShimmer.postValue(true)
+            _showShimmer.emit(true)
 
             try {
                 _listDataEgr.postValue(getInfoByTitle.invoke(titleCorp))
@@ -48,15 +50,14 @@ class EgrViewModel @Inject constructor(
                 _exceptionNetwork.postValue(NETWORK_EXCEPTION)
                 Log.i(MY_LOG,"$e")
             } finally {
-                delay(1000000)
-                _showShimmer.postValue(false)
+                _showShimmer.emit(false)
             }
         }
     }
 
     fun getInfoEgrByUnp(unp: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            _showShimmer.postValue(true)
+            _showShimmer.emit(true)
 
             try {
                 _listDataEgr.postValue(getInfoByUnp.invoke(unp))
@@ -64,7 +65,7 @@ class EgrViewModel @Inject constructor(
                 _exceptionNetwork.postValue(NETWORK_EXCEPTION)
                 Log.i(MY_LOG,"$e")
             } finally {
-                _showShimmer.postValue(false)
+                _showShimmer.emit(false)
             }
         }
     }

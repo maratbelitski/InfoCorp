@@ -87,4 +87,7 @@
     <string name="link_to_the_resume">Ссылка на резюме</string>
     <string name="change_the_link">Изменить ссылку на резюме</string>
     <string name="enter_the_link">Введите ссылку</string>
+    <string name="send_to_developer">Информация отправлена разработчику</string>
+    <string name="saved_to_database">Сохранено в Вашу базу данных</string>
+    <string name="response_is_empty">Ответ пуст. Проверьте введенные данные</string>
 </resources>

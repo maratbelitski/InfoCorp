@@ -14,6 +14,8 @@ import com.infocorp.domain.usecases.corporation.RemoveCorpFromFavouriteUseCase
 import com.infocorp.domain.usecases.corporation.SearchCorpInListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -32,12 +34,12 @@ class ListCorporationsViewModel @Inject constructor(
         downloadDataFromLocalStorage.invoke()
     }
 
-    private var _disableBottomNavigation = MutableLiveData(true)
-    val disableBottomNavigation: LiveData<Boolean>
+    private var _disableBottomNavigation = MutableStateFlow(true)
+    val disableBottomNavigation: StateFlow<Boolean>
         get() = _disableBottomNavigation
 
-    fun changeStateBottomMenu() {
-        _disableBottomNavigation.value = false
+    suspend fun changeStateBottomMenu() {
+        _disableBottomNavigation.emit(false)
     }
 
     fun addInOldCorps(corp: Corporation) {

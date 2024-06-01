@@ -4,11 +4,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.infocorp.domain.model.Corporation
-import com.infocorp.presentation.egrdisplay.adapter.ResponseEgrHolder
+import com.infocorp.utils.Constants
 
 class CorporationAdapter : ListAdapter<Corporation, ViewHolder>(CorporationDiffUtils()) {
     companion object {
-        private const val USER_CORPORATION = "USER_IT_CORPORATION"
         const val USER_CORP = 3
         const val NEW_CORP = 2
         const val FAVOURITE = 1
@@ -21,12 +20,12 @@ class CorporationAdapter : ListAdapter<Corporation, ViewHolder>(CorporationDiffU
     override fun getItemViewType(position: Int): Int {
         val item = getItem(position)
 
-        return when (item.idFirebase == USER_CORPORATION) {
+        return when (item.idFirebase == Constants.USER_DB.value) {
             true -> USER_CORP
             false -> {
                 if (item.isFavourite) {
                     FAVOURITE
-                } else if (item.isNew){
+                } else if (item.isNew) {
                     NEW_CORP
                 } else {
                     NORMAL
@@ -55,7 +54,7 @@ class CorporationAdapter : ListAdapter<Corporation, ViewHolder>(CorporationDiffU
             holder.bind(corporation, onLongClick, onClick)
         } else if (corporation is Corporation && holder is CorporationNewHolder) {
             holder.bind(corporation, onLongClick, onClick)
-        }else if (corporation is Corporation && holder is UserCorporationHolder) {
+        } else if (corporation is Corporation && holder is UserCorporationHolder) {
             holder.bind(corporation, onLongClick, onClick)
         }
     }

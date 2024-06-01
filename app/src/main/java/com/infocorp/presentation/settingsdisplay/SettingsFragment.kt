@@ -44,16 +44,20 @@ class SettingsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSettingsBinding.inflate(layoutInflater, container, false)
-        updateStateBottomMenu.invoke()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initViews()
         onObservers()
         onCheckRadioButtons()
         onListeners()
+    }
+
+    private fun initViews() {
+        updateStateBottomMenu.invoke()
     }
 
     private fun onObservers() {
@@ -122,7 +126,7 @@ class SettingsFragment : Fragment() {
                 val link = cvCard.etLinkCvInput.text.toString()
 
                 val emptiesFields = onCheckEmptyFields()
-                if (!emptiesFields){
+                if (!emptiesFields) {
                     fragmentViewModel.createUserCv(header, content, link)
                     clearFields()
                 }
@@ -138,7 +142,7 @@ class SettingsFragment : Fragment() {
         }
     }
 
-    private fun onCheckError(header: String, content: String, link:String) {
+    private fun onCheckError(header: String, content: String, link: String) {
         with(binding) {
             val headerLayout = cvCard.etCnangeHeaderCvText
             val contentLayout = cvCard.etCnangeContentCvText
@@ -153,6 +157,7 @@ class SettingsFragment : Fragment() {
             fragmentViewModel.validationError(link, linkLayout)
         }
     }
+
     private fun onCheckEmptyFields(): Boolean {
         with(binding) {
             val header = cvCard.etDescriptionInput.text.toString()
@@ -164,14 +169,14 @@ class SettingsFragment : Fragment() {
             return !(header.isNotEmpty() && content.isNotEmpty() && link.isNotEmpty())
         }
     }
+
     private fun clearFields() {
-        with(binding){
+        with(binding) {
             cvCard.etDescriptionInput.text?.clear()
             cvCard.etContentInput.text?.clear()
             cvCard.etLinkCvInput.text?.clear()
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

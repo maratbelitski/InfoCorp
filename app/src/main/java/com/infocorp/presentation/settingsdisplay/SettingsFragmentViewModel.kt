@@ -50,6 +50,7 @@ class SettingsFragmentViewModel @Inject constructor(
         sharedPref.edit().putString(Constants.TITLE_CV.value,header).apply()
         sharedPref.edit().putString(Constants.BODY_CV.value,content).apply()
         sharedPref.edit().putString(Constants.LINK_CV.value,link).apply()
+
         getHeaderText()
         getContentText()
         getLinkText()

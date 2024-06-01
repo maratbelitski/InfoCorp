@@ -11,12 +11,14 @@ import com.infocorp.data.corporationdto.UserCorporationDto
 import com.infocorp.utils.Constants.DATABASE_NAME
 
 
-@Database(entities =
+@Database(
+    entities =
     [CorporationDto::class,
-    FavouriteCorporationsDto::class,
-    OldCorporationsDto::class,
-    UserCorporationDto::class],
-    version = 1, exportSchema = true)
+        FavouriteCorporationsDto::class,
+        OldCorporationsDto::class,
+        UserCorporationDto::class],
+    version = 1, exportSchema = true
+)
 abstract class CorporationDataBase : RoomDatabase() {
     abstract fun getDaoCorp(): CorporationDao
     abstract fun getDaoUserCorp(): UserCorporationDao
@@ -25,7 +27,6 @@ abstract class CorporationDataBase : RoomDatabase() {
 
 
     companion object {
-//        private const val DATABASE_NAME = "corporation.db"
 
         @Volatile
         private var INSTANCE: CorporationDataBase? = null

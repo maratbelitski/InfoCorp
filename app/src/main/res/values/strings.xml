@@ -90,4 +90,7 @@
     <string name="link_to_the_resume">Link to the resume</string>
     <string name="change_the_link">Change the link to the resume</string>
     <string name="enter_the_link">Enter the link</string>
+    <string name="send_to_developer">Information send to developer</string>
+    <string name="saved_to_database">Information saved to your database</string>
+    <string name="response_is_empty">Response is empty. Check your enter data</string>
 </resources>

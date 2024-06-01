@@ -1,5 +1,6 @@
 package com.infocorp.presentation.egrdisplay
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.infocorp.R
@@ -15,6 +19,7 @@ import com.infocorp.databinding.FragmentEgrBinding
 import com.infocorp.presentation.MainActivity
 import com.infocorp.presentation.egrdisplay.adapter.ResponseEgrAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class EgrFragment : Fragment() {
@@ -26,25 +31,21 @@ class EgrFragment : Fragment() {
     private val arguments: EgrFragmentArgs by navArgs()
     private val fragmentViewModel: EgrViewModel by viewModels()
 
-    private val updateStateBottomMenu by lazy {
-        activity as MainActivity
-    }
-
     private val myAdapter by lazy {
         ResponseEgrAdapter()
     }
-//    private val myHelper by lazy {
-//        PagerSnapHelper()
-//    }
+
+    private lateinit var updateStateBottomMenu: (() -> Unit)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is MainActivity) updateStateBottomMenu = { context.disableBottomMenu() }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentEgrBinding.inflate(layoutInflater)
-
-        initArgs()
-
         return binding.root
     }
 
@@ -52,8 +53,7 @@ class EgrFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        updateStateBottomMenu.disableBottomMenu()
-
+        initArgs()
         onListeners()
         onObservers()
         initViews()
@@ -64,27 +64,31 @@ class EgrFragment : Fragment() {
             if (it.isEmpty()) {
                 Toast.makeText(
                     requireContext(),
-                    "Response is empty. Check your enter data",
+                    ContextCompat.getString(requireActivity(), R.string.response_is_empty),
                     Toast.LENGTH_SHORT
                 ).show()
             }
             myAdapter.submitList(it)
         }
 
-        fragmentViewModel.showShimmer.observe(viewLifecycleOwner) {
-            with(binding) {
-                when (it) {
-                    true -> {
-                        shimmerCardResponse.visibility = View.VISIBLE
-                        recycler.visibility = View.GONE
-                    }
+        lifecycleScope.launch {
+            fragmentViewModel.showShimmer
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {
+                    with(binding) {
+                        when (it) {
+                            true -> {
+                                shimmerCardResponse.visibility = View.VISIBLE
+                                recycler.visibility = View.GONE
+                            }
 
-                    false -> {
-                        recycler.visibility = View.VISIBLE
-                        shimmerCardResponse.visibility = View.GONE
+                            false -> {
+                                recycler.visibility = View.VISIBLE
+                                shimmerCardResponse.visibility = View.GONE
+                            }
+                        }
                     }
                 }
-            }
         }
 
         fragmentViewModel.exceptionNetwork.observe(viewLifecycleOwner) {
@@ -100,7 +104,7 @@ class EgrFragment : Fragment() {
             val titleLayout = binding.searchingForma.byName
             titleLayout.error = resources.getString(R.string.error_input_layout)
 
-            fragmentViewModel.validationError(title,titleLayout)
+            fragmentViewModel.validationError(title, titleLayout)
             fragmentViewModel.getInfoEgrByName(title)
         }
 
@@ -109,7 +113,7 @@ class EgrFragment : Fragment() {
             val unpLayout = binding.searchingForma.byUnp
             unpLayout.error = resources.getString(R.string.error_input_layout)
 
-            fragmentViewModel.validationError(unpText,unpLayout)
+            fragmentViewModel.validationError(unpText, unpLayout)
             fragmentViewModel.getInfoEgrByUnp(unpText)
         }
     }
@@ -119,8 +123,8 @@ class EgrFragment : Fragment() {
     }
 
     private fun initViews() {
+        updateStateBottomMenu.invoke()
         binding.recycler.adapter = myAdapter
-       // myHelper.attachToRecyclerView(binding.recycler)
     }
 
     override fun onDestroy() {

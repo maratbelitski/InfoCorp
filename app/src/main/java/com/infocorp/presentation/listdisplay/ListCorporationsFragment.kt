@@ -2,23 +2,21 @@ package com.infocorp.presentation.listdisplay
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.infocorp.databinding.FragmentListCorporationsBinding
 import com.infocorp.presentation.MainActivity
 import com.infocorp.presentation.listdisplay.adapter.CorporationAdapter
-import com.infocorp.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -34,10 +32,12 @@ class ListCorporationsFragment : Fragment() {
     private val myAdapter: CorporationAdapter by lazy {
         CorporationAdapter()
     }
+
     private val updateStateBottomMenu by lazy {
         activity as MainActivity
     }
-    lateinit var isNetworkAvailable: ()->Boolean
+
+    private lateinit var isNetworkAvailable: ()->Boolean
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -48,13 +48,13 @@ class ListCorporationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentListCorporationsBinding.inflate(layoutInflater)
-        initArgs()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initArgs()
         initViews()
         onObservers()
         onListeners()
@@ -62,7 +62,9 @@ class ListCorporationsFragment : Fragment() {
     }
 
     private fun initArgs() {
-        if (!arguments.enableMenu) fragmentViewModel.changeStateBottomMenu()
+        lifecycleScope.launch {
+            if (!arguments.enableMenu) fragmentViewModel.changeStateBottomMenu()
+        }
     }
 
     private fun searchCorporation() {
@@ -109,14 +111,17 @@ class ListCorporationsFragment : Fragment() {
     }
 
     private fun onObservers() {
-        fragmentViewModel.disableBottomNavigation.observe(viewLifecycleOwner) {
-            if (it) {
-                updateStateBottomMenu.enableBottomMenu()
-            } else {
-                updateStateBottomMenu.disableBottomMenu()
+        lifecycleScope.launch {
+            fragmentViewModel.disableBottomNavigation
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect{
+                if (it) {
+                    updateStateBottomMenu.enableBottomMenu()
+                } else {
+                    updateStateBottomMenu.disableBottomMenu()
+                }
             }
         }
-
         fragmentViewModel.listFromLocalSource.observe(viewLifecycleOwner) {
             lifecycleScope.launch{
                 if (!isNetworkAvailable.invoke()) {

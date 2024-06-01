@@ -1,7 +1,5 @@
 package com.infocorp.presentation.favouritedisplay
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.infocorp.domain.model.Corporation
@@ -23,17 +21,9 @@ class FavouriteFragmentViewModel @Inject constructor(
     private val changeStateCorporationToFavourite: ChangeStateCorporationToFavouriteUseCase,
 ) : ViewModel() {
 
-//    val listFavouriteCorp by lazy {
-//
-//    }
-
     private var _listFavouriteCorp = MutableStateFlow<List<Corporation>>(emptyList())
     val listFavouriteCorp: StateFlow<List<Corporation>>
         get() = _listFavouriteCorp
-
-//    private var _disableBottomNavigation = MutableLiveData(false)
-//    val disableBottomNavigation: LiveData<Boolean>
-//        get() = _disableBottomNavigation
 
     init {
         downloadData()

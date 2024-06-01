@@ -3,7 +3,6 @@ package com.infocorp.presentation.listdisplay.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.infocorp.databinding.FavouriteItemListCorporationBinding
 import com.infocorp.databinding.NewItemListCorporationBinding
 import com.infocorp.domain.model.Corporation
 

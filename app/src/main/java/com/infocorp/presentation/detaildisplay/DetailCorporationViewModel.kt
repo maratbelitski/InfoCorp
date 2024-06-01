@@ -11,21 +11,17 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailCorporationViewModel @Inject constructor(
     private val sharedPref: SharedPreferences
-): ViewModel() {
-
-private var _disableBottomNavigation = MutableLiveData(true)
-val disableBottomNavigation: LiveData<Boolean>
-    get() = _disableBottomNavigation
-
-    fun getTittleCvUser(): String{
-       return sharedPref.getString(Constants.TITLE_CV.value,"") ?:""
+) : ViewModel() {
+    fun getTittleCvUser(): String {
+        return sharedPref.getString(Constants.TITLE_CV.value, "") ?: ""
     }
 
-    fun getBodyCvUser(): String{
-        return sharedPref.getString(Constants.BODY_CV.value,"") ?:""
+    fun getBodyCvUser(): String {
+        return sharedPref.getString(Constants.BODY_CV.value, "") ?: ""
     }
-    fun getLinkCvUser(): String{
-        return sharedPref.getString(Constants.LINK_CV.value,"") ?:""
+
+    fun getLinkCvUser(): String {
+        return sharedPref.getString(Constants.LINK_CV.value, "") ?: ""
     }
 }
 

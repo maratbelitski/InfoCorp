@@ -80,12 +80,6 @@ class CorporationMapper @Inject constructor() {
         )
     }
 
-    fun corporationDtoToNewCorp(corp: CorporationDto): OldCorporationsDto {
-        return OldCorporationsDto(
-            id = corp.id
-        )
-    }
-
     fun corporationToOldCorp(corp: Corporation): OldCorporationsDto {
         return OldCorporationsDto(
             id = corp.id

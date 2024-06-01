@@ -1,6 +1,5 @@
 package com.infocorp.domain.usecases.usercorporation
 
-import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.corporationdto.UserCorporationDto
 import com.infocorp.domain.UserCorporationRepository
 import javax.inject.Inject
