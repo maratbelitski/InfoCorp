@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.infocorp.databinding.FragmentUserCorpGeneralBinding
 import com.infocorp.domain.model.Corporation
-import com.infocorp.presentation.MainActivity
+import com.infocorp.presentation.mainactivity.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

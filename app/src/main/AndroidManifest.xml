@@ -28,7 +28,7 @@
             android:resource="@color/red" />
 
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".presentation.mainactivity.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="DiscouragedApi">

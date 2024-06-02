@@ -15,7 +15,7 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.infocorp.R
 import com.infocorp.databinding.FragmentDetailCorporationBinding
-import com.infocorp.presentation.MainActivity
+import com.infocorp.presentation.mainactivity.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 

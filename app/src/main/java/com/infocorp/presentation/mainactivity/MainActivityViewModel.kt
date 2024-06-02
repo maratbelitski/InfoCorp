@@ -1,4 +1,4 @@
-package com.infocorp.presentation
+package com.infocorp.presentation.mainactivity
 
 import android.content.SharedPreferences
 import android.util.Log

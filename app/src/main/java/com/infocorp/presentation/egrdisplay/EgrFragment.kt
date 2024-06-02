@@ -13,10 +13,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.PagerSnapHelper
 import com.infocorp.R
 import com.infocorp.databinding.FragmentEgrBinding
-import com.infocorp.presentation.MainActivity
+import com.infocorp.presentation.mainactivity.MainActivity
 import com.infocorp.presentation.egrdisplay.adapter.ResponseEgrAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

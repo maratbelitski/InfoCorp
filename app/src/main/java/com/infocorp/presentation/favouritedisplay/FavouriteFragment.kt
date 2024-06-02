@@ -15,7 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.infocorp.databinding.FragmentFavouriteBinding
-import com.infocorp.presentation.MainActivity
+import com.infocorp.presentation.mainactivity.MainActivity
 import com.infocorp.presentation.listdisplay.adapter.CorporationAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

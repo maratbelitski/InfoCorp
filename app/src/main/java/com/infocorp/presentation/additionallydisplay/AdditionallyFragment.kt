@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.infocorp.R
 import com.infocorp.databinding.FragmentAdditionallyBinding
-import com.infocorp.presentation.MainActivity
+import com.infocorp.presentation.mainactivity.MainActivity
 import com.infocorp.utils.Constants
 
 

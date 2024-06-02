@@ -14,7 +14,7 @@ import androidx.navigation.fragment.navArgs
 import com.infocorp.R
 import com.infocorp.data.corporationdto.UserCorporationDto
 import com.infocorp.databinding.FragmentCreateUserCorporationBinding
-import com.infocorp.presentation.MainActivity
+import com.infocorp.presentation.mainactivity.MainActivity
 import com.infocorp.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -3,6 +3,7 @@ package com.infocorp.data
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
+import androidx.lifecycle.viewModelScope
 import com.google.firebase.Firebase
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -27,22 +28,22 @@ import javax.inject.Inject
 
 class CorporationRepositoryImpl @Inject constructor(
     private val mapper: CorporationMapper,
-    private val firebase: Firebase,
+  //  private val firebase: Firebase,
     private val daoCorp: CorporationDao,
     private val daoFavourite: FavouriteDao,
     private val daoOldCorps: OldCorpDao,
     private val retrofitService: CorporationService
 ) : CorporationRepository {
 
-    private val firebaseReference by lazy {
-        firebase.database.getReference(Constants.GENERAL_DB.value)
-    }
+//    private val firebaseReference by lazy {
+//        firebase.database.getReference(Constants.GENERAL_DB.value)
+//    }
 
-    private fun clearLocalDataBase() {
+    fun clearLocalDataBase() {
         daoCorp.clearCorporationsTable()
     }
 
-    private fun giveIdOfFavourite(): List<String> {
+    fun giveIdOfFavourite(): List<String> {
         val value = daoFavourite.loadAllFavorite()
         val listId = mutableListOf<String>()
 
@@ -50,7 +51,7 @@ class CorporationRepositoryImpl @Inject constructor(
         return listId
     }
 
-    private fun giveIdOfOldCorps(): List<String> {
+    fun giveIdOfOldCorps(): List<String> {
         val value = daoOldCorps.loadAllOldCorps()
         val listId = mutableListOf<String>()
 
@@ -59,49 +60,49 @@ class CorporationRepositoryImpl @Inject constructor(
     }
 
     override suspend fun downloadDataFromFirebase() {
-        val listIdFavourite = giveIdOfFavourite()
-        val listIdOldCorps = giveIdOfOldCorps()
-        val listFromFirebase = mutableListOf<CorporationDto>()
-
-        clearLocalDataBase()
-
-        firebaseReference.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val myScope = CoroutineScope(Dispatchers.IO)
-                val responseFirebase = snapshot.children
-
-                responseFirebase.forEach { child ->
-                    val corpDto = child.getValue(CorporationDto::class.java)
-                    val corpDtoWithChildId = corpDto?.copy(id = child.key.toString())
-
-                    if (corpDtoWithChildId != null) {
-
-                        for (value in listIdFavourite) {
-                            if (value == corpDtoWithChildId.id) {
-                                corpDtoWithChildId.isFavourite = true
-                                corpDtoWithChildId.isNew = false
-                            }
-                        }
-
-                        for (value in listIdOldCorps) {
-                            if (value == corpDtoWithChildId.id) {
-                                corpDtoWithChildId.isNew = false
-                            }
-                        }
-
-                        listFromFirebase.add(corpDtoWithChildId)
-
-                    }
-                }
-                myScope.launch {
-                    daoCorp.addAllCorpInDataBase(listFromFirebase)
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.e("MyLog", "Error message ${error.message}")
-            }
-        })
+//        val listIdFavourite = giveIdOfFavourite()
+//        val listIdOldCorps = giveIdOfOldCorps()
+//        val listFromFirebase = mutableListOf<CorporationDto>()
+//
+//        clearLocalDataBase()
+//
+//        firebaseReference.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                val myScope = CoroutineScope(Dispatchers.IO)
+//                val responseFirebase = snapshot.children
+//
+//                responseFirebase.forEach { child ->
+//                    val corpDto = child.getValue(CorporationDto::class.java)
+//                    val corpDtoWithChildId = corpDto?.copy(id = child.key.toString())
+//
+//                    if (corpDtoWithChildId != null) {
+//
+//                        for (value in listIdFavourite) {
+//                            if (value == corpDtoWithChildId.id) {
+//                                corpDtoWithChildId.isFavourite = true
+//                                corpDtoWithChildId.isNew = false
+//                            }
+//                        }
+//
+//                        for (value in listIdOldCorps) {
+//                            if (value == corpDtoWithChildId.id) {
+//                                corpDtoWithChildId.isNew = false
+//                            }
+//                        }
+//
+//                        listFromFirebase.add(corpDtoWithChildId)
+//
+//                    }
+//                }
+//                myScope.launch {
+//                    daoCorp.addAllCorpInDataBase(listFromFirebase)
+//                }
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                Log.e("MyLog", "Error message ${error.message}")
+//            }
+//        })
     }
 
     override fun downloadDataFromLocalStorage(): LiveData<List<Corporation>> {
@@ -180,5 +181,9 @@ class CorporationRepositoryImpl @Inject constructor(
 
     override suspend fun getRowCountOld(): Flow<Int> {
         return daoOldCorps.getRowCountOld()
+    }
+
+    fun addAllCorpInDataBase(list:List<CorporationDto>) {
+        daoCorp.addAllCorpInDataBase(list)
     }
 }

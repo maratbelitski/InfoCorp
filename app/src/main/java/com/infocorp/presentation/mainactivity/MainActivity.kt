@@ -1,13 +1,13 @@
-package com.infocorp.presentation
+package com.infocorp.presentation.mainactivity
 
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
@@ -29,6 +29,11 @@ class MainActivity : AppCompatActivity() {
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
+    }
+
+    private val navHostFragment by lazy {
+        supportFragmentManager
+            .findFragmentById(R.id.fragment_container) as NavHostFragment
     }
 
     private val viewModel: MainActivityViewModel by viewModels()
@@ -56,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-     fun onInitThemeParams() {
+    fun onInitThemeParams() {
         when (viewModel.getThemeParams()) {
             Constants.LIGHT_MODE.value -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             Constants.NIGHT_MODE.value -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -73,10 +78,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun onListeners() {
         binding.fab.setOnClickListener {
-            val navHostFragment =
-                supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
-            val navController = navHostFragment.navController
 
+            val navController = navHostFragment.navController
             navController.navigate(R.id.userCorpGeneralFragment)
         }
 
@@ -91,15 +94,24 @@ class MainActivity : AppCompatActivity() {
                 binding.adView.visibility = View.VISIBLE
             }
         })
+
+        binding.refreshLayout.setOnRefreshListener {
+            refreshActivity()
+        }
+    }
+
+    private fun refreshActivity() {
+        with(binding){
+            refreshLayout.isRefreshing = true
+            recreate()
+            refreshLayout.isRefreshing = false
+        }
     }
 
     private fun onBottomNavigation() {
         binding.bottomMenu.background = null
 
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
         val navController: NavController = navHostFragment.navController
-
         binding.bottomMenu.setupWithNavController(navController)
     }
 

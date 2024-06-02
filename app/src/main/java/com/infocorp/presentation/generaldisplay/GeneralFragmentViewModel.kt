@@ -4,8 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.infocorp.data.CorporationRepositoryImpl
 import com.infocorp.data.UserCorporationRepositoryImpl
+import com.infocorp.data.corporationdto.CorporationDto
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -34,17 +36,18 @@ class GeneralFragmentViewModel @Inject constructor(
         get() = _oldCorporation.asStateFlow()
 
     init {
-        downloadDataFromRemoteSource()
+
+        //downloadDataFromRemoteSource()
         getRowCountAllCorp()
         getRowCountUserCorp()
         getRowCountOldCorp()
     }
 
-    private fun downloadDataFromRemoteSource() {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.downloadDataFromFirebase()
-        }
-    }
+//    private fun downloadDataFromRemoteSource() {
+//        viewModelScope.launch(Dispatchers.IO) {
+//            repository.downloadDataFromFirebase()
+//        }
+//    }
 
     private fun getRowCountAllCorp() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -73,5 +76,29 @@ class GeneralFragmentViewModel @Inject constructor(
                 }
             }.collect()
         }
+    }
+
+    fun clearLocalDataBase() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.clearLocalDataBase()
+        }
+    }
+
+    fun addAllCorpInDataBase(listDto:List<CorporationDto>) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.addAllCorpInDataBase(listDto)
+        }
+    }
+
+    suspend fun  downloadListIdFavourite():List<String> {
+        return  viewModelScope.async (Dispatchers.IO) {
+             repository.giveIdOfFavourite()
+        }.await()
+    }
+
+    suspend fun  downloadListIdOldCorps():List<String> {
+        return  viewModelScope.async (Dispatchers.IO) {
+            repository.giveIdOfOldCorps()
+        }.await()
     }
 }
