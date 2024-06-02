@@ -22,6 +22,7 @@ import com.infocorp.databinding.ActivityMainBinding
 import com.infocorp.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -30,18 +31,17 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-
     private val viewModel: MainActivityViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel.firstTimeLangInit { onInitLanguage() }
         setContentView(binding.root)
 
         MobileAds.initialize(this)
 
         onInitThemeParams()
-        onInitLanguage()
         onBottomNavigation()
-
         onListeners()
         onObservers()
     }
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun onInitThemeParams() {
+     fun onInitThemeParams() {
         when (viewModel.getThemeParams()) {
             Constants.LIGHT_MODE.value -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             Constants.NIGHT_MODE.value -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -65,9 +65,10 @@ class MainActivity : AppCompatActivity() {
 
     fun onInitLanguage() {
         val lang = viewModel.getLanguageParams()
-        Log.i("MyLog", "lang1 - $lang")
         val localeListCompat = LocaleListCompat.forLanguageTags(lang)
         AppCompatDelegate.setApplicationLocales(localeListCompat)
+        Locale.setDefault(Locale(lang))
+        Locale.forLanguageTag(lang)
     }
 
     private fun onListeners() {

@@ -2,20 +2,19 @@ package com.infocorp.presentation.settingsdisplay
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.infocorp.R
 import com.infocorp.databinding.FragmentSettingsBinding
-import com.infocorp.utils.Constants
 import com.infocorp.presentation.MainActivity
+import com.infocorp.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.Locale
@@ -31,11 +30,13 @@ class SettingsFragment : Fragment() {
 
     private var updateStateBottomMenu: (() -> Unit)? = null
     private var initLanguageParams: (() -> Unit)? = null
+    private var initThemeParams: (() -> Unit)? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         updateStateBottomMenu = { (activity as MainActivity).enableBottomMenu() }
         initLanguageParams = { (activity as MainActivity).onInitLanguage() }
+        initThemeParams = { (activity as MainActivity).onInitThemeParams()}
     }
 
     override fun onCreateView(
@@ -51,7 +52,8 @@ class SettingsFragment : Fragment() {
 
         initViews()
         onObservers()
-        onCheckRadioButtons()
+        onCheckRadioButtonsTheme()
+        onCheckRadioButtonsLang()
         onListeners()
     }
 
@@ -85,12 +87,14 @@ class SettingsFragment : Fragment() {
         }
     }
 
-    private fun onCheckRadioButtons() {
+    private fun onCheckRadioButtonsTheme() {
         when (resources.configuration.uiMode) {
             Constants.LIGHT_MODE.value.toInt() -> binding.themeCard.rbtnLight.isChecked = true
             Constants.NIGHT_MODE.value.toInt() -> binding.themeCard.rbtnDark.isChecked = true
         }
+    }
 
+    private fun onCheckRadioButtonsLang() {
         when (Locale.getDefault().language.toString()) {
             Constants.LANG_RU.value -> binding.languageCard.rbtnRus.isChecked = true
             Constants.LANG_EN.value -> binding.languageCard.rbtnEng.isChecked = true
@@ -102,11 +106,13 @@ class SettingsFragment : Fragment() {
             themeCard.rbtnDark.setOnClickListener {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 fragmentViewModel.setThemeParams(Constants.NIGHT_MODE.value)
+                initThemeParams?.invoke()
             }
 
             themeCard.rbtnLight.setOnClickListener {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 fragmentViewModel.setThemeParams(Constants.LIGHT_MODE.value)
+                initThemeParams?.invoke()
             }
 
             languageCard.rbtnEng.setOnClickListener {
