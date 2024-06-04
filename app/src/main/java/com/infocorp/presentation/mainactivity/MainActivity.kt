@@ -7,7 +7,6 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.ContextCompat
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
