@@ -90,4 +90,11 @@
     <string name="send_to_developer">Информация отправлена разработчику</string>
     <string name="saved_to_database">Сохранено в Вашу базу данных</string>
     <string name="response_is_empty">Ответ пуст. Проверьте введенные данны</string>
+    <string name="registration">Регистрация</string>
+    <string name="log_in">Войти</string>
+    <string name="enter_email_login">Введите email</string>
+    <string name="enter_username">Введите пароль</string>
+    <string name="username">Пароль</string>
+    <string name="authorisation">Авторизация</string>
+    <string name="account">аккаунт</string>
 </resources>

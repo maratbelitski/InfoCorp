@@ -93,4 +93,11 @@
     <string name="send_to_developer">Information send to developer</string>
     <string name="saved_to_database">Information saved to your database</string>
     <string name="response_is_empty">Response is empty. Check your enter data</string>
+    <string name="registration">Registration</string>
+    <string name="log_in">Log in</string>
+    <string name="enter_email_login">Enter email</string>
+    <string name="enter_username">Enter password</string>
+    <string name="username">Password</string>
+    <string name="authorisation">Authorisation</string>
+    <string name="account">account</string>
 </resources>

@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--        ads:adUnitId="ca-app-pub-1912940735550668/9032974106"-->
+<?xml version="1.0" encoding="utf-8"?><!--
+ ads:adUnitId="ca-app-pub-1912940735550668/9032974106"-->
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,17 +9,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/first_background_color">
+        android:layout_height="match_parent">
 
         <com.google.android.gms.ads.AdView
-            xmlns:ads="http://schemas.android.com/apk/res-auto"
             android:id="@+id/adView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:visibility="visible"
-            ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-3940256099942544/9214589741"
+            app:adSize="BANNER"
+            app:adUnitId="ca-app-pub-3940256099942544/9214589741"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,69 +27,54 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/normal_margin_size"
-            android:layout_marginEnd="@dimen/normal_margin_size" />
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragment_container"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:defaultNavHost="true"
-            app:layout_constraintBottom_toTopOf="@id/coordinatorLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/progress"
-            app:navGraph="@navigation/nav_graph"
-            tools:context=".presentation.mainactivity.MainActivity" />
+            android:layout_marginEnd="@dimen/normal_margin_size"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:id="@+id/coordinatorLayout"
             android:layout_width="match_parent"
-            android:layout_height="110dp"
+            android:layout_height="0dp"
             android:background="@color/first_background_color"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progress">
 
-
-            <com.google.android.material.bottomappbar.BottomAppBar
-                android:id="@+id/bottom_app_bar"
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragment_container"
+                android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:backgroundTint="@color/second_background_color"
-                app:fabAlignmentMode="end"
-                app:fabAlignmentModeEndMargin="16dp"
-                app:fabAnchorMode="cradle"
-                app:fabAnimationMode="scale"
-                app:fabCradleMargin="20dp"
-                app:fabCradleRoundedCornerRadius="16dp"
-                app:fabCradleVerticalOffset="0dp" />
+                android:layout_height="match_parent"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/nav_graph"
+                tools:context=".presentation.mainactivity.MainActivity" />
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_menu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
+                android:background="@drawable/shape_bottom_menu"
+                app:backgroundTint="@color/second_background_color"
                 app:itemActiveIndicatorStyle="@android:color/transparent"
                 app:itemIconTint="@drawable/bottom_menu_selector"
-                app:itemRippleColor="@android:color/transparent"
                 app:itemTextColor="@drawable/bottom_menu_selector"
                 app:labelVisibilityMode="labeled"
-                app:layout_anchor="@+id/bottom_app_bar"
-                app:layout_anchorGravity="center"
+                app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
                 app:menu="@menu/bottom_menu" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="@dimen/normal_margin_size"
+                android:layout_marginBottom="100dp"
                 android:backgroundTint="@color/red"
                 android:src="@drawable/user_corp"
                 app:fabSize="normal"
-                app:layout_anchor="@+id/bottom_app_bar"
-                app:layout_anchorGravity="center"
+                app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
                 app:rippleColor="@color/ripple_color"
                 app:tint="@color/white" />
         </androidx.coordinatorlayout.widget.CoordinatorLayout>

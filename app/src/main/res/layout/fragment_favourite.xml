@@ -8,8 +8,6 @@
     android:padding="@dimen/normal_padding_size"
     tools:context=".presentation.favouritedisplay.FavouriteFragment">
 
-
-
     <include
         android:id="@+id/shimmerCardList"
         layout="@layout/shimmer_list_layout" />

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:scrollbars="none"
@@ -39,4 +39,4 @@
             android:drawableStart="@drawable/arrow_back_general"
             android:text="@string/to_general"/>
     </LinearLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

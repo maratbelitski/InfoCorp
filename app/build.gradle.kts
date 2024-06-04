@@ -76,6 +76,7 @@ dependencies {
     implementation("com.google.firebase:firebase-database:21.0.0")
     implementation("com.google.firebase:firebase-messaging:24.0.0")
     implementation("com.google.firebase:firebase-crashlytics:19.0.0")
+    implementation("com.google.firebase:firebase-auth:23.0.0")
 
     //hilt
     implementation("androidx.legacy:legacy-support-v4:1.0.0")

@@ -3,11 +3,13 @@ package com.infocorp.presentation.mainactivity
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -15,7 +17,11 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
+import com.google.firebase.database.database
 import com.infocorp.R
 import com.infocorp.databinding.ActivityMainBinding
 import com.infocorp.utils.Constants
@@ -77,9 +83,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun onListeners() {
         binding.fab.setOnClickListener {
-
             val navController = navHostFragment.navController
             navController.navigate(R.id.userCorpGeneralFragment)
+        }
+
+        //удалить!!!
+        binding.fab.setOnLongClickListener {
+          Firebase.auth.signOut()
+
+          val navController = navHostFragment.navController
+          navController.navigate(R.id.loginFragment)
+            true
         }
 
         binding.adView.adListener = (object : AdListener() {
@@ -91,6 +105,11 @@ class MainActivity : AppCompatActivity() {
             override fun onAdLoaded() {
                 binding.progress.shimmer.visibility = View.INVISIBLE
                 binding.adView.visibility = View.VISIBLE
+            }
+
+            override fun onAdFailedToLoad(p0: LoadAdError) {
+                super.onAdFailedToLoad(p0)
+                binding.progress.shimmer.visibility = View.VISIBLE
             }
         })
 
@@ -108,18 +127,29 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onBottomNavigation() {
-        binding.bottomMenu.background = null
-
         val navController: NavController = navHostFragment.navController
         binding.bottomMenu.setupWithNavController(navController)
     }
 
     fun disableBottomMenu() {
-        binding.coordinatorLayout.visibility = View.GONE
+        with(binding){
+            bottomMenu.visibility = View.GONE
+            fab.visibility = View.GONE
+        }
     }
 
     fun enableBottomMenu() {
-        binding.coordinatorLayout.visibility = View.VISIBLE
+        with(binding) {
+            bottomMenu.visibility = View.VISIBLE
+            fab.visibility = View.VISIBLE
+        }
+    }
+
+    fun disableBanner() {
+        with(binding){
+            adView.visibility = View.GONE
+            progress.shimmer.visibility = View.GONE
+        }
     }
 
     fun isNetworkAvailable(): Boolean {
