@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?><!--
  ads:adUnitId="ca-app-pub-1912940735550668/9032974106"-->
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/refreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -26,10 +25,10 @@
             layout="@layout/shimmer_commercial_banner_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/normal_margin_size"
-            android:layout_marginEnd="@dimen/normal_margin_size"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginStart="@dimen/normal_extra_margin_size"
+            android:layout_marginEnd="@dimen/normal_extra_margin_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -37,18 +36,28 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@color/first_background_color"
+            android:nestedScrollingEnabled="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/progress">
 
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fragment_container"
-                android:name="androidx.navigation.fragment.NavHostFragment"
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/refreshLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:defaultNavHost="true"
-                app:navGraph="@navigation/nav_graph"
-                tools:context=".presentation.mainactivity.MainActivity" />
+                app:layout_constraintBottom_toBottomOf="@+id/coordinatorLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/fragment_container"
+                    android:name="androidx.navigation.fragment.NavHostFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:defaultNavHost="true"
+                    app:navGraph="@navigation/nav_graph"
+                    tools:context=".presentation.mainactivity.MainActivity" />
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_menu"
@@ -79,4 +88,4 @@
                 app:tint="@color/white" />
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</LinearLayout>

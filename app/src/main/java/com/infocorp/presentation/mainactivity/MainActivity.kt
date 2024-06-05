@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.userCorpGeneralFragment)
         }
 
-        //удалить!!!
+        //удалить!!!////////////////////////////////////////////////////////////
         binding.fab.setOnLongClickListener {
           Firebase.auth.signOut()
 
@@ -120,7 +120,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun refreshActivity() {
         with(binding){
-            refreshLayout.isRefreshing = true
             recreate()
             refreshLayout.isRefreshing = false
         }

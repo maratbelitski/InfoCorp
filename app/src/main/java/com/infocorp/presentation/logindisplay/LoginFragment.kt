@@ -49,9 +49,7 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initViews()
-        checkCurrentUser()
         onListeners()
     }
 
@@ -94,13 +92,6 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun checkCurrentUser() {
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            goToGeneralFrag()
-        }
-    }
-
     private fun getInputText(): Pair<String, String> {
         val email = binding.etEmailUserInput.text.toString()
         val password = binding.etPasswordInput.text.toString()
@@ -118,17 +109,6 @@ class LoginFragment : Fragment() {
             etPasswordInput.text?.clear()
         }
     }
-
-//    override fun onStart() {
-//        super.onStart()
-//
-//        val currentUser = firebase.auth.currentUser
-//        if (currentUser !=null) {
-////            val action = LoginFragmentDirections.actionLoginFragmentToGeneralFragment()
-////            findNavController().navigate(action)
-//            Log.i("MyLog", "${currentUser.email}")
-//        }
-//    }
 
     private fun initViews() {
         updateStateBottomMenu?.invoke()

@@ -13,6 +13,7 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -21,6 +22,7 @@ import com.infocorp.R
 import com.infocorp.data.CorporationRepositoryImpl
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.databinding.FragmentGeneralBinding
+import com.infocorp.presentation.logindisplay.LoginFragmentDirections
 import com.infocorp.presentation.mainactivity.MainActivity
 import com.infocorp.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,6 +46,10 @@ class GeneralFragment : Fragment() {
 
     @Inject
     lateinit var repo: CorporationRepositoryImpl
+
+    private val auth by lazy {
+        firebase.auth
+    }
 
     private val firebaseDB by lazy {
         firebase.database.getReference(Constants.GENERAL_DB.value)
@@ -73,7 +79,7 @@ class GeneralFragment : Fragment() {
 
         initViews()
         onObservers()
-
+        checkCurrentUser()
         downloadData()
         // addCorps()
     }
@@ -124,7 +130,6 @@ class GeneralFragment : Fragment() {
                 override fun onCancelled(error: DatabaseError) {
                     Log.e("MyLog", "Error message ${error.message}")
                 }
-
             })
         }
     }
@@ -174,6 +179,17 @@ class GeneralFragment : Fragment() {
 
     private fun initViews() {
         updateStateBottomMenu?.invoke()
+    }
+
+    private fun checkCurrentUser() {
+        val currentUser = auth.currentUser
+        if (currentUser == null) {
+
+            val action = GeneralFragmentDirections.actionGeneralFragmentToLoginFragment()
+            findNavController().navigate(action)
+        } else {
+            findNavController().popBackStack(R.id.loginFragment, true)
+        }
     }
 
     override fun onDestroyView() {
