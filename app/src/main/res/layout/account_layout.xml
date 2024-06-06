@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/normal_padding_size"
+    app:cardBackgroundColor="@color/second_background_color"
+    app:cardCornerRadius="@dimen/card_corners_radius"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/person"
+            app:layout_constraintBottom_toBottomOf="@+id/account"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/account" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/red"
+            app:layout_constraintTop_toBottomOf="@+id/account" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/MyStyle.TextViewBig"
+            android:text="@string/account_card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCurrentAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            style="@style/MyStyle.TextViewNormal"
+            android:textColorLink="@color/links_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/account"
+            app:layout_constraintTop_toBottomOf="@+id/account"
+            tools:text="office@1c-minsk.by" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogOut"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/MyStyle.ButtonNormal"
+            android:layout_marginTop="@dimen/min_margin_size"
+            android:layout_marginStart="@dimen/min_margin_size"
+            android:text="@string/log_out"
+            app:layout_constraintStart_toStartOf="@+id/tvCurrentAccount"
+            app:layout_constraintTop_toBottomOf="@+id/tvCurrentAccount" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -87,15 +87,6 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.userCorpGeneralFragment)
         }
 
-        //удалить!!!////////////////////////////////////////////////////////////
-        binding.fab.setOnLongClickListener {
-          Firebase.auth.signOut()
-
-          val navController = navHostFragment.navController
-          navController.navigate(R.id.loginFragment)
-            true
-        }
-
         binding.adView.adListener = (object : AdListener() {
             override fun onAdClosed() {
                 binding.adView.visibility = View.GONE

@@ -100,4 +100,6 @@
     <string name="username">Password</string>
     <string name="authorisation">Authorisation</string>
     <string name="account">account</string>
+    <string name="account_card">Account</string>
+    <string name="log_out">Log out</string>
 </resources>

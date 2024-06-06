@@ -97,4 +97,6 @@
     <string name="username">Пароль</string>
     <string name="authorisation">Авторизация</string>
     <string name="account">аккаунт</string>
+    <string name="account_card">Аккаунт</string>
+    <string name="log_out">Выйти</string>
 </resources>

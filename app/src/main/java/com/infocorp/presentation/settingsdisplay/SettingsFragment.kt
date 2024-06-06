@@ -8,15 +8,10 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.flowWithLifecycle
-import androidx.lifecycle.lifecycleScope
-import com.infocorp.R
 import com.infocorp.databinding.FragmentSettingsBinding
 import com.infocorp.presentation.mainactivity.MainActivity
 import com.infocorp.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import java.util.Locale
 
 @AndroidEntryPoint
@@ -51,7 +46,6 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initViews()
-        onObservers()
         onCheckRadioButtonsTheme()
         onCheckRadioButtonsLang()
         onListeners()
@@ -59,32 +53,6 @@ class SettingsFragment : Fragment() {
 
     private fun initViews() {
         updateStateBottomMenu?.invoke()
-    }
-
-    private fun onObservers() {
-        lifecycleScope.launch {
-            fragmentViewModel.headerText
-                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-                .collect {
-                    binding.cvCard.tvTitleCvText.text = it
-                }
-        }
-
-        lifecycleScope.launch {
-            fragmentViewModel.contentText
-                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-                .collect {
-                    binding.cvCard.tvDescriptionCvText.text = it
-                }
-        }
-
-        lifecycleScope.launch {
-            fragmentViewModel.linkText
-                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-                .collect {
-                    binding.cvCard.tvLinkCvText.text = it
-                }
-        }
     }
 
     private fun onCheckRadioButtonsTheme() {
@@ -124,62 +92,6 @@ class SettingsFragment : Fragment() {
                 fragmentViewModel.setLanguageParams(Constants.LANG_RU.value)
                 initLanguageParams?.invoke()
             }
-
-            cvCard.btnCreate.setOnClickListener {
-                val header = cvCard.etDescriptionInput.text.toString()
-                val content = cvCard.etContentInput.text.toString()
-                val link = cvCard.etLinkCvInput.text.toString()
-
-                val emptiesFields = onCheckEmptyFields()
-                if (!emptiesFields) {
-                    fragmentViewModel.createUserCv(header, content, link)
-                    clearFields()
-                }
-            }
-
-            cvCard.tvTitleCvText.setOnClickListener {
-                cvCard.etDescriptionInput.setText(cvCard.tvTitleCvText.text.toString())
-            }
-
-            cvCard.tvDescriptionCvText.setOnClickListener {
-                cvCard.etContentInput.setText(cvCard.tvDescriptionCvText.text.toString())
-            }
-        }
-    }
-
-    private fun onCheckError(header: String, content: String, link: String) {
-        with(binding) {
-            val headerLayout = cvCard.etCnangeHeaderCvText
-            val contentLayout = cvCard.etCnangeContentCvText
-            val linkLayout = cvCard.etCnangeLinkCvText
-
-            headerLayout.error = resources.getString(R.string.error_input_layout)
-            contentLayout.error = resources.getString(R.string.error_input_layout)
-            linkLayout.error = resources.getString(R.string.error_input_layout)
-
-            fragmentViewModel.validationError(header, headerLayout)
-            fragmentViewModel.validationError(content, contentLayout)
-            fragmentViewModel.validationError(link, linkLayout)
-        }
-    }
-
-    private fun onCheckEmptyFields(): Boolean {
-        with(binding) {
-            val header = cvCard.etDescriptionInput.text.toString()
-            val content = cvCard.etContentInput.text.toString()
-            val link = cvCard.etLinkCvInput.text.toString()
-
-            onCheckError(header, content, link)
-
-            return !(header.isNotEmpty() && content.isNotEmpty() && link.isNotEmpty())
-        }
-    }
-
-    private fun clearFields() {
-        with(binding) {
-            cvCard.etDescriptionInput.text?.clear()
-            cvCard.etContentInput.text?.clear()
-            cvCard.etLinkCvInput.text?.clear()
         }
     }
 

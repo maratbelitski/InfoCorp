@@ -2,6 +2,7 @@ package com.infocorp.presentation.generaldisplay
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.Firebase
 import com.infocorp.data.CorporationRepositoryImpl
 import com.infocorp.data.UserCorporationRepositoryImpl
 import com.infocorp.data.corporationdto.CorporationDto
@@ -20,7 +21,8 @@ import javax.inject.Inject
 @HiltViewModel
 class GeneralFragmentViewModel @Inject constructor(
     private val repository: CorporationRepositoryImpl,
-    private val repositoryUser: UserCorporationRepositoryImpl
+    private val repositoryUser: UserCorporationRepositoryImpl,
+    private val firebase: Firebase,
 ) : ViewModel() {
 
     private var _allCorporation = MutableStateFlow(0)
@@ -36,18 +38,10 @@ class GeneralFragmentViewModel @Inject constructor(
         get() = _oldCorporation.asStateFlow()
 
     init {
-
-        //downloadDataFromRemoteSource()
         getRowCountAllCorp()
         getRowCountUserCorp()
         getRowCountOldCorp()
     }
-
-//    private fun downloadDataFromRemoteSource() {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            repository.downloadDataFromFirebase()
-//        }
-//    }
 
     private fun getRowCountAllCorp() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -100,5 +94,9 @@ class GeneralFragmentViewModel @Inject constructor(
         return  viewModelScope.async (Dispatchers.IO) {
             repository.giveIdOfOldCorps()
         }.await()
+    }
+
+    fun getFirebase(): Firebase{
+        return firebase
     }
 }

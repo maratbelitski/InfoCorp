@@ -40,12 +40,9 @@ class GeneralFragment : Fragment() {
     private val binding: FragmentGeneralBinding
         get() = _binding ?: throw NullPointerException()
 
-
-    @Inject
-    lateinit var firebase: Firebase
-
-    @Inject
-    lateinit var repo: CorporationRepositoryImpl
+    private val firebase by lazy {
+        fragmentViewModel.getFirebase()
+    }
 
     private val auth by lazy {
         firebase.auth
@@ -78,9 +75,10 @@ class GeneralFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initViews()
-        onObservers()
         checkCurrentUser()
         downloadData()
+        onObservers()
+
         // addCorps()
     }
 

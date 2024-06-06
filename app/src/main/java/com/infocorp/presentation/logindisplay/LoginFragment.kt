@@ -6,14 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.infocorp.databinding.FragmentLoginBinding
 import com.infocorp.presentation.mainactivity.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
@@ -22,11 +22,15 @@ class LoginFragment : Fragment() {
     private val binding: FragmentLoginBinding
         get() = _binding ?: throw NullPointerException()
 
+    private val fragmentViewModel: LoginViewModel by viewModels()
+
     private var updateStateBottomMenu: (() -> Unit)? = null
     private var updateStateBanner: (() -> Unit)? = null
 
-    @Inject
-    lateinit var firebase: Firebase
+
+    private val firebase by lazy {
+        fragmentViewModel.getFirebase()
+    }
 
     private val auth by lazy {
         firebase.auth
@@ -49,8 +53,10 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         initViews()
         onListeners()
+        onBackPressed()
     }
 
     private fun onListeners() {
@@ -61,14 +67,22 @@ class LoginFragment : Fragment() {
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        Toast.makeText(requireActivity(), "Registration is completed", Toast.LENGTH_SHORT)
+                        Toast.makeText(
+                            requireActivity(),
+                            "Registration is completed",
+                            Toast.LENGTH_SHORT
+                        )
                             .show()
 
                         clearFields()
                         goToGeneralFrag()
 
                     } else {
-                        Toast.makeText(requireActivity(), "Registration is failure ", Toast.LENGTH_SHORT)
+                        Toast.makeText(
+                            requireActivity(),
+                            "Registration is failure ",
+                            Toast.LENGTH_SHORT
+                        )
                             .show()
                     }
                 }
@@ -95,7 +109,7 @@ class LoginFragment : Fragment() {
     private fun getInputText(): Pair<String, String> {
         val email = binding.etEmailUserInput.text.toString()
         val password = binding.etPasswordInput.text.toString()
-        return Pair(email, password)
+        return fragmentViewModel.getEmailPassword(email, password)
     }
 
     private fun goToGeneralFrag() {
@@ -104,7 +118,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun clearFields() {
-        with(binding){
+        with(binding) {
             etEmailUserInput.text?.clear()
             etPasswordInput.text?.clear()
         }
@@ -113,6 +127,12 @@ class LoginFragment : Fragment() {
     private fun initViews() {
         updateStateBottomMenu?.invoke()
         updateStateBanner?.invoke()
+    }
+
+    private fun onBackPressed() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            requireActivity().finish()
+        }
     }
 
     override fun onDestroyView() {
