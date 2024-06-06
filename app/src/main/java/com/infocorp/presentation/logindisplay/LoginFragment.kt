@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.auth
+import com.infocorp.R
 import com.infocorp.databinding.FragmentLoginBinding
 import com.infocorp.presentation.mainactivity.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -113,7 +114,8 @@ class LoginFragment : Fragment() {
     }
 
     private fun goToGeneralFrag() {
-        val action = LoginFragmentDirections.actionLoginFragmentToGeneralFragment()
+        val action = LoginFragmentDirections
+            .actionLoginFragmentToGeneralFragment()
         findNavController().navigate(action)
     }
 

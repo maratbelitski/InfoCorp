@@ -80,6 +80,7 @@ class AccountFragment : Fragment() {
 
                 val action = AccountFragmentDirections
                     .actionAccountFragmentToLoginFragment()
+
                 findNavController().navigate(action)
             }
         }
