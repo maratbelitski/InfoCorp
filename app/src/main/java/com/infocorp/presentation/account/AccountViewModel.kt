@@ -65,7 +65,11 @@ class AccountViewModel @Inject constructor(
 
     fun validationError(editText: String, inputLayout: TextInputLayout) {
         val unpText = editText.trim()
-        inputLayout.isErrorEnabled = unpText.isEmpty()
+        if (unpText.isEmpty()){
+            inputLayout.isErrorEnabled = true
+        } else{
+            inputLayout.isErrorEnabled = false
+        }
     }
     fun getFirebase(): Firebase {
         return firebase

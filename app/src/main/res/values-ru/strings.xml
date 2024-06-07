@@ -99,4 +99,9 @@
     <string name="account">аккаунт</string>
     <string name="account_card">Аккаунт</string>
     <string name="log_out">Выйти</string>
+    <string name="registration_is_completed">Регистрация выполнена</string>
+    <string name="unknown_user">Неизвестный пользователь</string>
+    <string name="password_error">Введите не менее 6 символов</string>
+    <string name="email_error">Неверный формат email</string>
+    <string name="login_error">Указанный email уже используется</string>
 </resources>

@@ -7,9 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.auth.auth
 import com.infocorp.R
 import com.infocorp.databinding.FragmentLoginBinding
@@ -67,26 +73,22 @@ class LoginFragment : Fragment() {
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        Toast.makeText(
-                            requireActivity(),
-                            "Registration is completed",
-                            Toast.LENGTH_SHORT
-                        )
-                            .show()
 
+                    if (it.isSuccessful) {
+                        Toast.makeText(requireActivity(),
+                            ContextCompat.getString(requireActivity(),
+                                R.string.registration_is_completed), Toast.LENGTH_SHORT).show()
                         clearFields()
                         goToGeneralFrag()
 
                     } else {
-                        Toast.makeText(
-                            requireActivity(),
-                            "Registration is failure ",
-                            Toast.LENGTH_SHORT
-                        )
-                            .show()
+                        exceptionRegistration(it)
                     }
                 }
+            } else {
+                Toast.makeText(requireActivity(),
+                    ContextCompat.getString(requireActivity(),
+                        R.string.error_input_layout), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -95,14 +97,42 @@ class LoginFragment : Fragment() {
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+
                     if (it.isSuccessful) {
                         clearFields()
                         goToGeneralFrag()
                     } else {
-                        Toast.makeText(requireActivity(), "Unknown user", Toast.LENGTH_SHORT)
-                            .show()
+                        Toast.makeText(requireActivity(),
+                            ContextCompat.getString(requireActivity(),
+                                R.string.unknown_user), Toast.LENGTH_SHORT).show()
                     }
                 }
+            } else {
+                Toast.makeText(requireActivity(),
+                    ContextCompat.getString(requireActivity(),
+                        R.string.error_input_layout), Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun exceptionRegistration(it: Task<AuthResult>) {
+        when (it.exception) {
+            is FirebaseAuthWeakPasswordException -> {
+                Toast.makeText(requireActivity(),
+                    ContextCompat.getString(requireActivity(),
+                        R.string.password_error), Toast.LENGTH_SHORT).show()
+            }
+
+            is FirebaseAuthInvalidCredentialsException -> {
+                Toast.makeText(requireActivity(),
+                    ContextCompat.getString(requireActivity(),
+                        R.string.email_error), Toast.LENGTH_SHORT).show()
+            }
+
+            is FirebaseAuthUserCollisionException -> {
+                Toast.makeText(requireActivity(),
+                   ContextCompat.getString(requireActivity(),
+                       R.string.login_error), Toast.LENGTH_SHORT).show()
             }
         }
     }

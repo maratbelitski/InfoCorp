@@ -17,6 +17,7 @@ import com.infocorp.databinding.FragmentListCorporationsBinding
 import com.infocorp.presentation.mainactivity.MainActivity
 import com.infocorp.presentation.listdisplay.adapter.CorporationAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -75,7 +76,6 @@ class ListCorporationsFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-
                 fragmentViewModel.listFromLocalSource.observe(viewLifecycleOwner) {
 
                     val newList = fragmentViewModel.searchCorporation(it, newText ?: "")

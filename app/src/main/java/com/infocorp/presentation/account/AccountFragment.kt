@@ -68,11 +68,13 @@ class AccountFragment : Fragment() {
             }
 
             userEmailTypeCard.tvTitleCvText.setOnClickListener {
-                userEmailTypeCard.etDescriptionInput.setText(userEmailTypeCard.tvTitleCvText.text.toString())
+                val title = userEmailTypeCard.tvTitleCvText.text.toString()
+                userEmailTypeCard.etDescriptionInput.setText(title)
             }
 
             userEmailTypeCard.tvDescriptionCvText.setOnClickListener {
-                userEmailTypeCard.etContentInput.setText(userEmailTypeCard.tvDescriptionCvText.text.toString())
+                val description = userEmailTypeCard.tvDescriptionCvText.text.toString()
+                userEmailTypeCard.etContentInput.setText(description)
             }
 
             accountCard.btnLogOut.setOnClickListener {
@@ -80,7 +82,6 @@ class AccountFragment : Fragment() {
 
                 val action = AccountFragmentDirections
                     .actionAccountFragmentToLoginFragment()
-
                 findNavController().navigate(action)
             }
         }

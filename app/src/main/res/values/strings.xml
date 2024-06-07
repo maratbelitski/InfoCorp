@@ -102,4 +102,9 @@
     <string name="account">account</string>
     <string name="account_card">Account</string>
     <string name="log_out">Log out</string>
+    <string name="registration_is_completed">Registration is completed</string>
+    <string name="unknown_user">Unknown user</string>
+    <string name="password_error">Password should be at least 6 characters</string>
+    <string name="email_error">The email address is badly formatted</string>
+    <string name="login_error">The email address is already in use by another account</string>
 </resources>

@@ -2,6 +2,7 @@ package com.infocorp.presentation.settingsdisplay
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -66,6 +67,7 @@ class SettingsFragment : Fragment() {
         when (Locale.getDefault().language.toString()) {
             Constants.LANG_RU.value -> binding.languageCard.rbtnRus.isChecked = true
             Constants.LANG_EN.value -> binding.languageCard.rbtnEng.isChecked = true
+            else -> binding.languageCard.rbtnEng.isChecked = true
         }
     }
 
