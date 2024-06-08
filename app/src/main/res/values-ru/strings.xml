@@ -75,7 +75,7 @@
     <string name="language">Язык</string>
     <string name="russian">Русский</string>
     <string name="english">Английский</string>
-    <string name="list_is_empty">Лист избранного пуст</string>
+    <string name="list_is_empty">Список избранного пуст</string>
     <string name="data_for_email">Данные для email</string>
     <string name="change_the_title">Изменить заголовок</string>
     <string name="enter_the_email_header">Введите текст заголовка</string>
@@ -104,4 +104,5 @@
     <string name="password_error">Введите не менее 6 символов</string>
     <string name="email_error">Неверный формат email</string>
     <string name="login_error">Указанный email уже используется</string>
+    <string name="your_list_is_empty">Ваш список пуст</string>
 </resources>

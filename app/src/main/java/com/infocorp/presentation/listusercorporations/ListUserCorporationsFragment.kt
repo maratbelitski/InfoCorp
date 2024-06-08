@@ -61,7 +61,15 @@ class ListUserCorporationsFragment : Fragment() {
 
     private fun onObservers() {
         fragmentViewModel.listFromLocalSource.observe(viewLifecycleOwner) {
-            myAdapter.submitList(it)
+
+            if (it.isEmpty()){
+                binding.tvEmptyList.visibility = View.VISIBLE
+                binding.recycler.visibility = View.GONE
+            } else {
+                binding.tvEmptyList.visibility = View.GONE
+                binding.recycler.visibility = View.VISIBLE
+                myAdapter.submitList(it)
+            }
         }
     }
 

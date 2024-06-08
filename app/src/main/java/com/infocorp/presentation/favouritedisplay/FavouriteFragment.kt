@@ -61,11 +61,7 @@ class FavouriteFragment : Fragment() {
     }
 
     private fun onListeners() {
-        myAdapter.onLongClick = {
-            fragmentViewModel.removeCorpFromFavourite(it)
-            fragmentViewModel.changeStateCorp(it)
-        }
-
+     
         myAdapter.onClick = {
             val action = FavouriteFragmentDirections
                 .actionFavouriteFragmentToDetailCorporationFragment(it)
