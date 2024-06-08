@@ -3,13 +3,11 @@ package com.infocorp.presentation.mainactivity
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -19,9 +17,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
-import com.google.firebase.Firebase
-import com.google.firebase.auth.auth
-import com.google.firebase.database.database
 import com.infocorp.R
 import com.infocorp.databinding.ActivityMainBinding
 import com.infocorp.utils.Constants
@@ -110,7 +105,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun refreshActivity() {
-        with(binding){
+        with(binding) {
             recreate()
             refreshLayout.isRefreshing = false
         }
@@ -122,7 +117,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun disableBottomMenu() {
-        with(binding){
+        with(binding) {
             bottomMenu.visibility = View.GONE
             fab.visibility = View.GONE
         }
@@ -136,7 +131,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun disableBanner() {
-        with(binding){
+        with(binding) {
             adView.visibility = View.GONE
             progress.shimmer.visibility = View.GONE
         }

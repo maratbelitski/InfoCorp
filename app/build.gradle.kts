@@ -3,9 +3,9 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs")
     id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
     id("kotlin-parcelize")
     id("com.google.dagger.hilt.android")
-    id("com.google.firebase.crashlytics")
     kotlin("kapt")
 }
 

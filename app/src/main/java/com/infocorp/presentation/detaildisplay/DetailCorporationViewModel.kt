@@ -1,8 +1,6 @@
 package com.infocorp.presentation.detaildisplay
 
 import android.content.SharedPreferences
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.infocorp.utils.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel

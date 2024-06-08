@@ -25,7 +25,6 @@ abstract class CorporationDataBase : RoomDatabase() {
     abstract fun getDaoNewCorps(): OldCorpDao
     abstract fun getDaoFavourite(): FavouriteDao
 
-
     companion object {
 
         @Volatile

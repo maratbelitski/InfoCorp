@@ -1,14 +1,7 @@
 package com.infocorp.data
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
-import androidx.lifecycle.viewModelScope
-import com.google.firebase.Firebase
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.database
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.datastorage.CorporationDao
 import com.infocorp.data.datastorage.FavouriteDao
@@ -18,12 +11,8 @@ import com.infocorp.data.network.CorporationService
 import com.infocorp.domain.CorporationRepository
 import com.infocorp.domain.model.Corporation
 import com.infocorp.domain.model.Data
-import com.infocorp.utils.Constants
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CorporationRepositoryImpl @Inject constructor(
@@ -53,7 +42,6 @@ class CorporationRepositoryImpl @Inject constructor(
         if (value.isNotEmpty()) value.forEach { listId.add(it.id) }
         return listId
     }
-
 
     override fun downloadDataFromLocalStorage(): LiveData<List<Corporation>> {
         val dataFromDB = daoCorp.downloadAllCorporations()

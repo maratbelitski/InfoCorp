@@ -15,7 +15,6 @@ import com.infocorp.R
 import com.infocorp.databinding.FragmentAccountBinding
 import com.infocorp.presentation.mainactivity.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -27,10 +26,6 @@ class AccountFragment : Fragment() {
     private val fragmentViewModel: AccountViewModel by viewModels()
 
     private var updateStateBottomMenu: (() -> Unit)? = null
-
-    private val firebase by lazy {
-        fragmentViewModel.getFirebase()
-    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -160,7 +155,6 @@ class AccountFragment : Fragment() {
             userEmailTypeCard.etLinkCvInput.text?.clear()
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

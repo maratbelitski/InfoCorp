@@ -11,7 +11,6 @@ import com.infocorp.domain.usecases.corporation.GetInfoEgrByTitleUseCase
 import com.infocorp.domain.usecases.corporation.GetInfoEgrByUnpUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -24,7 +23,6 @@ class EgrViewModel @Inject constructor(
     private val getInfoByUnp: GetInfoEgrByUnpUseCase
 ) : ViewModel() {
     companion object{
-        private const val MY_LOG = "MyLog"
         private const val NETWORK_EXCEPTION = "Error. Check your network"
     }
 
@@ -48,7 +46,7 @@ class EgrViewModel @Inject constructor(
                 _listDataEgr.postValue(getInfoByTitle.invoke(titleCorp))
             } catch (e: UnknownHostException) {
                 _exceptionNetwork.postValue(NETWORK_EXCEPTION)
-                Log.i(MY_LOG,"$e")
+                Log.i("MyLog", e.toString())
             } finally {
                 _showShimmer.emit(false)
             }
@@ -63,7 +61,7 @@ class EgrViewModel @Inject constructor(
                 _listDataEgr.postValue(getInfoByUnp.invoke(unp))
             } catch (e: UnknownHostException) {
                 _exceptionNetwork.postValue(NETWORK_EXCEPTION)
-                Log.i(MY_LOG,"$e")
+                Log.i("MyLog", e.toString())
             } finally {
                 _showShimmer.emit(false)
             }

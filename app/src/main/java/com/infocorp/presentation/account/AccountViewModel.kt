@@ -71,9 +71,6 @@ class AccountViewModel @Inject constructor(
             inputLayout.isErrorEnabled = false
         }
     }
-    fun getFirebase(): Firebase {
-        return firebase
-    }
 
     private fun getCurrentAccount(){
        _currentAccount.value = firebase.auth.currentUser?.email.toString()
