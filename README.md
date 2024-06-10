@@ -31,6 +31,7 @@
 Компоненты  и библиотеки:
 - MVVM;
 - Kotlin coroutines;
+- Kotlin Flow;
 - Dagger Hilt;
 - Retrofit;
 - Room;
