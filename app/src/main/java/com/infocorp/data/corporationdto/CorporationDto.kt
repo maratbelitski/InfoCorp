@@ -1,6 +1,7 @@
 package com.infocorp.data.corporationdto
 
 import android.os.Parcelable
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
@@ -22,5 +23,8 @@ data class CorporationDto(
     @SerializedName("address") val address: String = "",
     @SerializedName("phones") val phones: String = "",
     @SerializedName("email") val email: String = "",
-    @SerializedName("website") val website: String = ""
+    @SerializedName("website") val website: String = "",
+    @SerializedName("notes")
+    @ColumnInfo(defaultValue = "")
+    val notes: String? = ""
 ) : Parcelable

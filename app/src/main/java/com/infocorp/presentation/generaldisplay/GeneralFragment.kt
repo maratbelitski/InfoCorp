@@ -229,13 +229,14 @@ class GeneralFragment : Fragment() {
 //
 //        val corp1 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Скайнетикс",
+//            name = "TECT",
 //            poster = "",
 //description = "Скайнетикс, ЧУП Частное предприятие Год основания: 2004 Количество сотрудников: 6",
 //            address = "220007, г. Минск, ул. Артиллеристов, 11-7",
 //            phones = "(017)226-34-34",
 //            email = "info@skynetix.com",
-//            website = "www.skynetixsoftware.com"
+//            website = "www.skynetixsoftware.com",
+//            notes = "ssssssssssssssss. sssssssssssssssss. sssssssssssssssssss. sssssssssssssssssssssssssss. ssssssssssssssssssssssssssssss.   sssssssssssssssssssssssssssssss"
 //        )
 //        databaseParent.push().setValue(corp1)
 //////////////////////

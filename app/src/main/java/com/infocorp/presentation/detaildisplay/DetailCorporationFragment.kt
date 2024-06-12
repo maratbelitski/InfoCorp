@@ -93,6 +93,7 @@ class DetailCorporationFragment : Fragment() {
             var phones = arguments.corporation.phones
             var email = arguments.corporation.email
             var website = arguments.corporation.website
+            var notes = arguments.corporation.notes
 
 
             if (description.isBlank()) {
@@ -115,6 +116,10 @@ class DetailCorporationFragment : Fragment() {
                 website = defaultValue
                 websiteCard.tvWebsiteCorp.setTextColor(defaultColor)
             }
+            if (notes.isBlank()) {
+                notes = defaultValue
+                notesCard.tvNotesCorp.setTextColor(defaultColor)
+            }
 
             nameCard.tvName.text = name
             descriptionCard.tvDescriptionCorp.text = description
@@ -122,6 +127,7 @@ class DetailCorporationFragment : Fragment() {
             phonesCard.tvPhonesCorp.text = phones
             emailCard.tvEmailCorp.text = email
             websiteCard.tvWebsiteCorp.text = website
+            notesCard.tvNotesCorp.text = notes
         }
     }
 

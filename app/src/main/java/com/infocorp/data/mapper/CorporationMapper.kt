@@ -22,7 +22,8 @@ class CorporationMapper @Inject constructor() {
             address = corpDto.address,
             phones = corpDto.phones,
             email = corpDto.email,
-            website = corpDto.website
+            website = corpDto.website,
+            notes = corpDto.notes ?: ""
         )
     }
 
@@ -38,7 +39,8 @@ class CorporationMapper @Inject constructor() {
             address = userCorpDto.address,
             phones = userCorpDto.phones,
             email = userCorpDto.email,
-            website = userCorpDto.website
+            website = userCorpDto.website,
+            notes = userCorpDto.notes
         )
     }
 
@@ -54,7 +56,8 @@ class CorporationMapper @Inject constructor() {
             address = userCorp.address,
             phones = userCorp.phones,
             email = userCorp.email,
-            website = userCorp.website
+            website = userCorp.website,
+            notes = userCorp.notes
         )
     }
 
@@ -70,7 +73,8 @@ class CorporationMapper @Inject constructor() {
             address = corp.address,
             phones = corp.phones,
             email = corp.email,
-            website = corp.website
+            website = corp.website,
+            notes = corp.notes
         )
     }
 

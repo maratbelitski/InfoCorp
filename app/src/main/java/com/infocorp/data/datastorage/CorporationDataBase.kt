@@ -1,6 +1,7 @@
 package com.infocorp.data.datastorage
 
 import android.content.Context
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -17,7 +18,14 @@ import com.infocorp.utils.Constants.DATABASE_NAME
         FavouriteCorporationsDto::class,
         OldCorporationsDto::class,
         UserCorporationDto::class],
-    version = 1, exportSchema = true
+    version = 2,
+    autoMigrations = [
+        AutoMigration(
+            from = 1,
+            to = 2
+        )
+    ],
+    exportSchema = true
 )
 abstract class CorporationDataBase : RoomDatabase() {
     abstract fun getDaoCorp(): CorporationDao

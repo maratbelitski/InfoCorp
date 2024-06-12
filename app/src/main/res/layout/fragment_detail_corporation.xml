@@ -47,6 +47,10 @@
                 android:id="@+id/websiteCard"
                 layout="@layout/website_layout" />
 
+            <include
+                android:id="@+id/notesCard"
+                layout="@layout/notes_layout" />
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnGoToAdditionally"
                 android:layout_width="match_parent"
