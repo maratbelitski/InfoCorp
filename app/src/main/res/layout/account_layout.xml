@@ -53,12 +53,14 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnLogOut"
+            style="@style/MyStyle.ButtonNormal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            style="@style/MyStyle.ButtonNormal"
-            android:layout_marginTop="@dimen/min_margin_size"
             android:layout_marginStart="@dimen/min_margin_size"
+            android:layout_marginTop="@dimen/min_margin_size"
+            android:layout_marginBottom="@dimen/min_margin_size"
             android:text="@string/log_out"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tvCurrentAccount"
             app:layout_constraintTop_toBottomOf="@+id/tvCurrentAccount" />
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -55,12 +55,14 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSendResume"
+            style="@style/MyStyle.ButtonNormal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            style="@style/MyStyle.ButtonNormal"
-            android:layout_marginTop="@dimen/min_margin_size"
             android:layout_marginStart="@dimen/min_margin_size"
+            android:layout_marginTop="@dimen/min_margin_size"
+            android:layout_marginBottom="@dimen/min_margin_size"
             android:text="@string/send_resume"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tvEmailCorp"
             app:layout_constraintTop_toBottomOf="@+id/tvEmailCorp" />
     </androidx.constraintlayout.widget.ConstraintLayout>

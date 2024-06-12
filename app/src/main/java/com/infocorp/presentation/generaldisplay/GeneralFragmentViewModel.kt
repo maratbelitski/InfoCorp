@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class GeneralFragmentViewModel @Inject constructor(
+class  GeneralFragmentViewModel @Inject constructor(
     private val repository: CorporationRepositoryImpl,
     private val repositoryUser: UserCorporationRepositoryImpl,
     private val firebase: Firebase,
