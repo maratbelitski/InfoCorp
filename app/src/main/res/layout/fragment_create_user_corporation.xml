@@ -251,15 +251,44 @@
                         android:inputType="textUri" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvNotesText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/MyStyle.TextViewEditTextTittle"
+                    android:text="@string/notes"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etWebsite" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/etNotes"
+                    style="@style/MyStyle.TextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:startIconDrawable="@drawable/notes"
+                    app:startIconTint="@color/hint_text_color"
+                    app:layout_constraintEnd_toEndOf="@+id/tvNotesText"
+                    app:layout_constraintStart_toStartOf="@+id/tvNotesText"
+                    app:layout_constraintTop_toBottomOf="@+id/tvNotesText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNotesInput"
+                        style="@style/MyStyle.TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/add_notes" />
+                </com.google.android.material.textfield.TextInputLayout>
+
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnCreate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     style="@style/MyStyle.ButtonNormal"
                     android:text="@string/create_btn"
-                    app:layout_constraintEnd_toEndOf="@+id/etWebsite"
-                    app:layout_constraintStart_toStartOf="@+id/etWebsite"
-                    app:layout_constraintTop_toBottomOf="@+id/etWebsite" />
+                    app:layout_constraintEnd_toEndOf="@+id/etNotes"
+                    app:layout_constraintStart_toStartOf="@+id/etNotes"
+                    app:layout_constraintTop_toBottomOf="@+id/etNotes" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvSendText"

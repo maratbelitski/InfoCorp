@@ -106,4 +106,5 @@
     <string name="login_error">Указанный email уже используется</string>
     <string name="your_list_is_empty">Ваш список пуст</string>
     <string name="notes">Заметки</string>
+    <string name="add_notes">Добавить заметки</string>
 </resources>

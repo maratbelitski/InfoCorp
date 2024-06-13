@@ -3,11 +3,9 @@ package com.infocorp.presentation.generaldisplay
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.Display
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -21,19 +19,15 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import com.infocorp.R
-import com.infocorp.data.CorporationRepositoryImpl
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.databinding.FragmentGeneralBinding
-import com.infocorp.presentation.logindisplay.LoginFragmentDirections
 import com.infocorp.presentation.mainactivity.MainActivity
 import com.infocorp.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -83,7 +77,11 @@ class GeneralFragment : Fragment() {
         downloadData()
         onObservers()
 
-         //addCorps()
+//        lifecycleScope.launch {
+//            delay(5000)
+//            addCorps()
+//        }
+
     }
 
     private fun downloadData() {
@@ -227,245 +225,244 @@ class GeneralFragment : Fragment() {
 
 //
 //
-//        val corp1 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "TECT",
-//            poster = "",
-//description = "Скайнетикс, ЧУП Частное предприятие Год основания: 2004 Количество сотрудников: 6",
-//            address = "220007, г. Минск, ул. Артиллеристов, 11-7",
-//            phones = "(017)226-34-34",
-//            email = "info@skynetix.com",
-//            website = "www.skynetixsoftware.com",
-//            notes = "ssssssssssssssss. sssssssssssssssss. sssssssssssssssssss. sssssssssssssssssssssssssss. ssssssssssssssssssssssssssssss.   sssssssssssssssssssssssssssssss"
-//        )
-//        databaseParent.push().setValue(corp1)
-//////////////////////
+        val corp1 = CorporationDto(
+            idFirebase = databaseParent.key.toString(),
+            name = "TEST222",
+            poster = "",
+description = "Количество сотрудников: 9 УНП: 190243574",
+            address = "220035, г. Минск, ул. Тарханова, 13-6а",
+            phones = "(029)766-90-05",
+            email = "ntv@vashsite.by",
+            website = "http://vashsite.by"
+        )
+        databaseParent.push().setValue(corp1)
+////////////////////////
 //        val corp2 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Сканвест",
-//            poster = "",
-//description = "ЗАО Закрытое акционерное общество Год основания: 1994 Количество сотрудников: 12 УНП: 100829693",
-//            address = "220024, г. Минск, ул. Кижеватова, 7/2 (офис 02)",
-//            phones = "(017)275-59-92",
-//            email = "office@scan-west.com",
-//            website = "www.scan-west.com"
+//            name = "SmartSite",
+//            poster = "http://belorussia.su/com_logo/1412768939logo1_big.jpg",
+//description = "Студия веб-дизайна SmartSite предлагает услуги по созданию, продвижению и сопровождению сайтов. Сайт - наиболее удобный и мощный инструментом маркетинговой компании любого бизнес-проекта. Он является универсальным каналом продаж и коммуникации с потребителем, который работает на Вас и днем, и ночью. Готовый сайт - результат решения цепочки задач: от анализа и постановки задания до запуска проекта и его развития.",
+//            address = "",
+//            phones = "+375 29 740-77-36",
+//            email = "mail@smartsite.by",
+//            website = "http://smartsite.by"
 //        )
 //        databaseParent.push().setValue(corp2)
-//////////////////////
+////////////////////////
 //        val corp3 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Скенд",
-//            poster = "",
-//description = "Скенд, ООО Общество с ограниченной ответственностью Год основания: 2000 Количество сотрудников: 90 УНП: 190149789",
-//            address = "220035, г. Минск, ул. Тимирязева, 46-26",
-//            phones = "",
-//            email = "",
-//            website = ""
+//            name = "СТХМ",
+//            poster = "http://belorussia.su/com_logo/1340713250logo1_big.jpg",
+//description = "Наша компания является одной из немногих на территории Беларуси, которая занимается разработкой собственного программного продукта – международной системы электронных платежей EcoCard. В отличии от наших конкурентов, мы мыслим и действуем не по шаблону.",
+//           address = "ул. Бирюзова, 10а",
+//            phones = "375291778737",
+//            email = "karina.nikulshina@minsk.ctxm.com",
+//            website = "www.ctxm.by"
 //        )
 //        databaseParent.push().setValue(corp3)
-//////////////////////
-//////////////////////
+////////////////////////
+////////////////////////
 //        val corp4 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Смарт Системз",
+//            name = "Cистемы экономического моделирования",
 //            poster = "",
-//description = "Смарт Системз, ООО Общество с ограниченной ответственностью Год основания: 2004 Количество сотрудников: 10 УНП: 190587359",
-//            address = "220072, г. Минск, ул. Академическая, 16-409",
-//            phones = "(017)284-24-19",
-//            email = "info@smart-systems.by",
-//            website = "www.smart-systems.by"
+//description = "Технологии и системы экономического моделирования, ООО Общество с ограниченной ответственностью Год основания: 2005 Количество сотрудников: 8 УНП: 190619341",
+//            address = "220013, г. Минск, ул. Кульман, 2-302",
+//            phones = "",
+//            email = "1cinfo@tut.by",
+//            website = ""
 //        )
 //        databaseParent.push().setValue(corp4)
-//////////////////////
+////////////////////////
 //        val corp5 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "СмартАртери",
-//            poster = "http://belorussia.su/com_logo/1542268306logo1_big.jpg",
-//description = "Компания ООО СмартАртери является системным интегратором RFID-решений на территории Беларуси. Поставляем RFID-метки и RFID-оборудование. Являемся партнерами LEAN.LT по внедрению технологии  Бережливого производства",
-//            address = "Минский район, район д.Боровая 1, Главный корпус, офис 310",
-//            phones = "+375293142667, +37525772875",
-//            email = "sartrfid@gmail.com",
-//            website = "http://sart.by"
+//            name = "Технология решений",
+//            poster = "",
+//description = "Технология решений, ОДО Общество с дополнительной ответственностью Год основания: 2007 Количество сотрудников: 9 УНП: 390466912",
+//            address = "210015, г. Витебск, пр-т Черняховского, 33, помещение 4, оф. 5",
+//            phones = "(0212)27-22-73, (029)717-09-24",
+//            email = "info@tehnologia.by",
+//            website = "www.tehnologia.by"
 //        )
 //        databaseParent.push().setValue(corp5)
-//////////////////////
+////////////////////////
 //        val corp6 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "СмартМьютекс",
-//            poster = "http://belorussia.su/com_logo/1416385439logo1_big.jpg",
-//description = "Клиентам ООО СмартМьютекс мы предлагаем частичную и комплексную автоматизацию малого и среднего бизнеса на базе разработанной нами платформы JSWP. На данной платформе нами уже были созданы и внедрены эффективные IT-решения по автоматизации бизнес-процессов в таких отраслях как страхование, торговля и техобслуживание транспорта. Полифункциональность созданной нами платформы позволяет автоматизировать бизнес-процессы в любой сфере деловой активности, а опыт существующих разработок экономит время и деньги наших клиентов.",
-//            address = "ул. Замковая, 33",
-//            phones = "+375 29 692 11 33",
-//            email = "marketing@mutex.by",
-//            website = "http://mutex.by"
+//            name = "Техносапр МАИТ",
+//            poster = "",
+//description = "Техносапр МАИТ, УП Частное предприятие Год основания: 1992 Количество сотрудников: 3 УНП: 100187532",
+//            address = "220049, г. Минск, ул. Новгородская, 4-204",
+//            phones = "(017)237-13-53",
+//            email = "info@wintecs.by",
+//            website = "www.wintecs.by"
 //        )
 //        databaseParent.push().setValue(corp6)
-//////////////////////
+////////////////////////
 //        val corp7 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Смеш",
+//            name = "Техносервисцентр",
 //            poster = "",
-//description = "Смеш, УП Частное предприятие Год основания: 1994 Количество сотрудников: 10 УНП: 100752247",
-//            address = "220121, г. Минск, ул. Притыцкого 60/1-132, а/я 4",
-//            phones = "(017)255-71-97",
-//            email = "office@smash.by",
-//            website = "www.smash.by"
+//description = "Техносервисцентр, СТ ООО Общество с ограниченной ответственностью Год основания: 1997 Количество сотрудников: 9 УНП: 500493701",
+//            address = "230029, г. Гродно, ул. Горького, 72/2 (4 этаж)",
+//            phones = "55-11-10,55-11-12",
+//            email = "technosc@tut.by",
+//            website = "http://www.plds.by"
 //        )
 //        databaseParent.push().setValue(corp7)
-//////////////////////
+////////////////////////
 //        val corp8 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "СОВРЕМЕННЫЕ ТЕХНОЛОГИИ СВЯЗИ",
-//            poster = "http://belorussia.su/com_logo/1338976350logo1_big.jpg",
-//description = "Разработка оборудования и электроники. Разработка программного обеспечения. Программное обеспечение для электронного оборудования, мобильных устройств, интерфейсов взаимодействия, под Windows, Linux. Web-приложения и разработка сайтов",
-//            address = "222307, Беларусь, г.Молодечно, ул.Строителей, 15а-303а",
+//            name = "Тиком",
+//            poster = "",
+//            address = "220086, г. Минск, а/я 102",
+//description = "Тиком, НТЧУП Частное предприятие Год основания: 1992 Количество сотрудников: 3",
 //            phones = "+37529 7635707, +37529 6252482",
-//            email = "dir@stsby.com",
-//            website = "http://stsby.com"
+//            email = "ticom@nsys.by",
+//            website = "http://chipstar.by"
 //        )
 //        databaseParent.push().setValue(corp8)
-//////////////////////
+////////////////////////
 //        val corp9 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Софт-Систем",
+//            name = "ТКП-Софт",
 //            poster = "",
-//description = "Софт-Систем, УП Частное предприятие Год основания: 1997 Количество сотрудников: 5 УНП: 101299606",
-//            address = "220039, г. Минск, пр-т Машерова, 20-404",
-//            phones = "(017)293-43-40",
-//            email = "info@softsys.by.com",
-//            website = "http://softsys.by.com"
+//description = "ТКП-Софт, ООО Общество с ограниченной ответственностью Год основания: 2004 Количество сотрудников: 15",
+//            address = "пр. Машерова, 78, 4-й этаж",
+//            phones = "",
+//            email = "info@tcp-soft.com",
+//            website = "www.tcp-soft.com"
 //        )
 //        databaseParent.push().setValue(corp9)
-////////////////////////
+//////////////////////////
 //        val corp10 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Софтех",
+//            name = "Тороид",
 //            poster = "",
-//description = "Софтех, ООО Общество с ограниченной ответственностью Год основания: 1994 Количество сотрудников: 30 УНП: 101020832",
-//            address = "220103, г. Минск, ул. Кнорина, 50",
-//            phones = "",
-//            email = "",
+//description = "Тороид, ОДО Общество с дополнительной ответственностью Год основания: 2009 Количество сотрудников: 6 УНП: 290503965",
+//            address = "224013, г. Брест, ул. Кирова, 161",
+//            phones = "(0162)97-40-40, (029)721-14-89",
+//            email = "toroid@mail.by",
 //            website = ""
 //        )
 //        databaseParent.push().setValue(corp10)
-//////////////////////
+////////////////////////
 //        val corp11 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Софтлайн",
+//            name = "Точка выбора",
 //            poster = "",
-//description = "Софтлайн, ООО Общество с ограниченной ответственностью Год основания: 1998 Количество сотрудников: 6",
-//            address = "224003, г. Брест, Аэропорт-Брест",
-//            phones = "(0162)20-38-71",
-//            email = "softline@brest.by",
+//description = "Кадровое агентство, ищем сотрудников для международной компании",
+//            address = "",
+//            phones = "+7 (495) 974-22-47",
+//            email = "ceb@tvbr.ru",
 //            website = ""
 //        )
 //        databaseParent.push().setValue(corp11)
-//////////////////////
+////////////////////////
 //        val corp12 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Софтсвисс (Softswiss)",
+//            name = "Транстэкс-НТ",
 //            poster = "",
-//description = "Софтсвисс, ООО (Softswiss) Общество с ограниченной ответственностью Год основания: 2010 Количество сотрудников: 5 УНП: 191303263",
-//            address = "220005, г. Минск, пр-т Независимости, 58-104",
-//            phones = "(029)750-86-23",
-//            email = "order@softswiss.com",
+//description = "Транстэкс-НТ, ООООбщество с ограниченной ответственностью Год основания: 2000 Количество сотрудников: 21 УНП: 100940705",
+//            address = "220034, г. Минск, ул. Чапаева, 5-209",
+//            phones = "(017)294-15-92",
+//            email = "transt@tut.by",
 //            website = ""
 //        )
 //        databaseParent.push().setValue(corp12)
-//////////////////////
+////////////////////////
 //        val corp13 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Софттеко",
+//            name = "Турникет инфо",
 //            poster = "",
-//description = "Софттеко, ООО Общество с ограниченной ответственностью Год основания: 2008 Количество сотрудников: 10 УНП: 191011692",
-//            address = "220108, г. Минск, ул. Казинца, 88-18",
-//            phones = "(029)753-19-48",
-//            email = "alex.kutsko@iteco.com",
-//            website = ""
+//description = "Турникет инфо, ООО Общество с ограниченной ответственностью Год основания: 2006 Количество сотрудников: 10 УНП: 191159826",
+//            address = "220014, г. Минск, ул. Малая, 1, помещение 1, оф. 1",
+//            phones = "(017)223-78-07",
+//            email = "mail@turniket.info",
+//            website = "www.turniket.info"
 //        )
 //        databaseParent.push().setValue(corp13)
-//////////////////////
+////////////////////////
 //        val corp14 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Спесифик-Груп",
+//            name = "Ультрасофт",
 //            poster = "",
-//description = "Спесифик-Груп, ИООО Общество с ограниченной ответственностью Год основания: 2006 Количество сотрудников: 30 УНП: 190726059",
-//            address = "220033, г. Минск, пр-т Партизанский, 2-512",
-//            phones = "(017)223-38-11, (029)651-18-03",
-//            email = "serge.gimburg@specific-group.by",
-//            website = "www.specific-group.by"
+//description = "Ультрасофт, ОДО Общество с дополнительной ответственностью Год основания: 1997 Количество сотрудников: 7 УНП: 101435733",
+//            address = "220090, г. Минск, Логойский тракт, 20-415г",
+//            phones = "(017)281-42-85, 283-99-55",
+//            email = "recepson@mail.ru",
+//            website = ""
 //        )
 //        databaseParent.push().setValue(corp14)
-//////////////////////
+////////////////////////
 //        val corp15 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "СпесификГруп",
+//            name = "Вычислительный центр БГУИР",
 //            poster = "",
-//description = "СпесификГруп, ИООО Гродненский ф-л Общество с ограниченной ответственностью Год основания: 2006 Количество сотрудников: 12 УНП: 190726059",
-//            address = "230029, г. Гродно, ул. Горького, 49-623, 624",
-//            phones = "(029)780-45-40",
-//            email = "",
+//description = "Учебно-вычислительный центр БГУИР, обособленное структурное подразделение Государственное предприятие Год основания: 2003 Количество сотрудников: 25",
+//            address = "220027, г. Минск, ул. Платонова, 39",
+//            phones = "",
+//            email = "pna@bsuir.by",
 //            website = ""
 //        )
 //        databaseParent.push().setValue(corp15)
-////////////////
+//////////////////
 //        val corp16 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Специальное конструкторское бюро",
+//            name = "Учетные системы",
 //            poster = "",
-//description = "Специальное конструкторское бюро Государственное предприятие Год основания: 1989 Количество сотрудников: 35 УНП: 600118742",
-//            address = "222120, Минская обл., г. Борисов, ул. Нормандия-Неман, 167/2",
-//            phones = "(0177)72-27-81, 70-60-32",
+//description = "Учетные системы, ООО Общество с ограниченной ответственностью Год основания: 2010 Количество сотрудников: 3 УНП: 691281287",
+//            address = "222120, Минская обл., г. Борисов, пр-т Революции, 4-60",
+//            phones = "(044)756-32-87",
 //            email = "",
 //            website = ""
 //        )
 //        databaseParent.push().setValue(corp16)
-////////////////
+//////////////////
 //        val corp17 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "СТ-Софт",
+//            name = "Фарисей",
 //            poster = "",
-//description = "СТ-Софт, ООО Общество с ограниченной ответственностью Год основания: 2008 Количество сотрудников: 4 УНП: 190508031",
-//            address = "220035, г. Минск, ул. Тимирязева, 65/а-607",
-//            phones = "",
-//            email = "info@stsoft.by",
-//            website = "www.stsoft.by"
-//        )
-//        databaseParent.push().setValue(corp17)
-////////////////
-//        val corp18 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Строитель",
-//            poster = "",
-//description = "Строитель, программный комплекс Частное предприятие Год основания: 1992 Количество сотрудников: 1 УНП: 100484080",
-//            address = "220007, г. Минск, ул. Могилевская, 34",
-//            phones = "(017)228-11-43, (029)750-80-63",
-//            email = "bogomolow@tut.by",
+//description = "Фарисей, ОДО Общество с дополнительной ответственностью Год основания: 2006 Количество сотрудников: 15 УНП: 490496649",
+//            address = "246001, г. Гомель, ул. Заслонова, 1-5",
+//            phones = "(0232)44-10-56, (029)349-97-67",
+//            email = "farisey@tut.by",
 //            website = ""
 //        )
+//        databaseParent.push().setValue(corp17)
+//////////////////
+//        val corp18 = CorporationDto(
+//            idFirebase = databaseParent.key.toString(),
+//            name = "Фоикс",
+//            poster = "",
+//description = "Фоикс, ООО Общество с ограниченной ответственностью Год основания: 1991 Количество сотрудников: 8 УНП: 100145757",
+//            address = "220005, г. Минск, ул. Красная, 17",
+//            phones = "(017)284-77-85, 288-10-76",
+//            email = "lis@foix.minsk.by",
+//            website = "www.minskfoix.com"
+//        )
 //       databaseParent.push().setValue(corp18)
-////////////////
+//////////////////
 //        val corp19 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Стройинтех-плюс",
+//            name = "Форте",
 //            poster = "",
-//description = "Стройинтех-плюс, ПК Кооперативное предприятие Год основания: 2001 Количество сотрудников: 12 УНП: 190196311",
-//            address = "220033, г. Минск, ул. Серафимовича, 11-206",
-//            phones = "(017)298-35-19, 298-35-71",
-//            email = "stroyp@inbox.ru",
+//description = "Форте, ИП Иностранное предприятие Год основания: 2011 Количество сотрудников: 20",
+//            address = "220113, г. Минск, ул. Мележа, 1-1101",
+//            phones = "(025)617-45-98",
+//            email = "",
 //            website = ""
 //        )
 //        databaseParent.push().setValue(corp19)
-//////////////////
+////////////////////
 //        val corp20 = CorporationDto(
 //            idFirebase = databaseParent.key.toString(),
-//            name = "Стройсервиссофт",
+//            name = "Фотопоинт",
 //            poster = "",
-//description = "Стройсервиссофт, ООО Общество с ограниченной ответственностью Год основания: 2006 Количество сотрудников: 2 УНП: 190704292",
-//            address = "220053, г. Минск, ул. Будславская, 2-13",
-//            phones = "(017)289-00-98",
-//            email = "",
-//            website = ""
+//description = "Фотопоинт, ООО Общество с ограниченной ответственностью Год основания: 2003 Количество сотрудников: 6",
+//            address = "213826, Могилевская обл., г. Бобруйск, ул. К. Маркса, 22/20-77",
+//            phones = "(0225)58-55-66",
+//            email = "contact@bobr.by",
+//            website = "www.bobr.by"
 //        )
 //        databaseParent.push().setValue(corp20)
    }

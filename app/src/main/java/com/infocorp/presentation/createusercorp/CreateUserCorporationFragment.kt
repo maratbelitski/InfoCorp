@@ -63,6 +63,7 @@ class CreateUserCorporationFragment : Fragment() {
             etPhonesInput.setText(arguments.corporation.phones)
             etEmailInput.setText(arguments.corporation.email)
             etWebsiteInput.setText(arguments.corporation.website)
+            etNotesInput.setText(arguments.corporation.notes)
         }
     }
 
@@ -107,6 +108,7 @@ class CreateUserCorporationFragment : Fragment() {
                 etPhonesInput.text?.clear()
                 etEmailInput.text?.clear()
                 etWebsiteInput.text?.clear()
+                etNotesInput.text?.clear()
 
                 etPoster.requestFocus()
             }
@@ -148,6 +150,7 @@ class CreateUserCorporationFragment : Fragment() {
             val phones = etPhonesInput.text.toString()
             val email = etEmailInput.text.toString()
             val website = etWebsiteInput.text.toString()
+            val notes = etNotesInput.text.toString()
 
             return UserCorporationDto(
                 idFirebase = Constants.USER_DB.value,
@@ -157,7 +160,8 @@ class CreateUserCorporationFragment : Fragment() {
                 description = descriptions,
                 phones = phones,
                 email = email,
-                website = website
+                website = website,
+                notes = notes
             )
         }
     }

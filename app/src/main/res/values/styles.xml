@@ -8,7 +8,7 @@
         <item name="boxStrokeColor">@color/text_color_normal</item>
         <item name="boxStrokeWidthFocused">1dp</item>
         <item name="boxStrokeWidth">1dp</item>
-        <item name="boxStrokeErrorColor">@color/white</item>
+        <item name="boxStrokeErrorColor">@color/text_color_normal</item>
         <item name="errorTextColor">@color/red</item>
         <item name="errorIconTint">@color/red</item>
     </style>
