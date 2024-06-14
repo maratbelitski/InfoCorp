@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/egr"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/big_margin_size"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/second_background_color"
+    app:cardCornerRadius="@dimen/card_corners_radius"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/DescriptionCard">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/red"
+            app:layout_constraintBottom_toTopOf="@id/tvEgrText"
+            app:layout_constraintTop_toBottomOf="@+id/tvResponseTitle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvResponseTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/MyStyle.TextViewBig"
+            android:text="@string/search_on_the_egr"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvEgrText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:textIsSelectable="false"
+            style="@style/MyStyle.TextViewNormal"
+            android:text="@string/egr_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvResponseTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvResponseTitle" />
+
+        <TextView
+            android:id="@+id/tvGo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/ripple_color"
+            android:gravity="center"
+            android:padding="4dp"
+            android:textStyle="bold"
+            android:text="@string/go"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvEgrText"
+            app:layout_constraintTop_toBottomOf="@+id/tvEgrText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/egr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/shimmer_parent_color"
+        android:padding="@dimen/normal_padding_size"
+        app:cardCornerRadius="@dimen/card_corners_radius"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/normal_margin_size">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvResponseTitle"
+                android:layout_width="200dp"
+                android:layout_height="18sp"
+                android:layout_margin="8dp"
+                android:background="@drawable/shape_shimmer_child"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:backgroundTint="@color/red"
+                android:background="@drawable/shape_shimmer_child"
+                android:layout_margin="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvResponseTitle" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEgrName"
+                android:layout_width="300dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/shape_shimmer_child"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEgrName2"
+                android:layout_width="300dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/shape_shimmer_child"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEgrName"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEgrFio"
+                android:layout_width="150dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/shape_shimmer_child"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fio"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEgrType"
+                android:layout_width="100dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/shape_shimmer_child"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/type"/>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEgrDirection"
+                android:layout_width="250dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/shape_shimmer_child"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/direction"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEgrDirection2"
+                android:layout_width="250dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/shape_shimmer_child"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEgrDirection"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEgrUnp"
+                android:layout_width="100dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/shape_shimmer_child"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/unp"/>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEgrAddress"
+                android:layout_width="300dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/shape_shimmer_child"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/address"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEgrAddress2"
+                android:layout_width="150dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/shape_shimmer_child"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEgrAddress"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEgrStatus"
+                android:layout_width="100dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/shape_shimmer_child"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/status"/>
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="50dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/shape_shimmer_child"
+                android:backgroundTint="@color/shimmer_child_color"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line" />
+
+            <TextView
+                android:id="@+id/fio"
+                android:layout_width="100dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/shape_shimmer_child"
+                android:backgroundTint="@color/shimmer_child_color"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEgrName2" />
+
+            <TextView
+                android:id="@+id/type"
+                android:layout_width="100dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/shape_shimmer_child"
+                android:backgroundTint="@color/shimmer_child_color"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEgrFio" />
+
+            <TextView
+                android:id="@+id/direction"
+                android:layout_width="100dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/shape_shimmer_child"
+                android:backgroundTint="@color/shimmer_child_color"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEgrType" />
+
+            <TextView
+                android:id="@+id/unp"
+                android:layout_width="150dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/shape_shimmer_child"
+                android:backgroundTint="@color/shimmer_child_color"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEgrDirection2" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="150dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/shape_shimmer_child"
+                android:backgroundTint="@color/shimmer_child_color"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEgrUnp" />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="150dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="@color/shimmer_child_color"
+                android:background="@drawable/shape_shimmer_child"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEgrAddress2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/phonesCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/big_margin_size"
+    app:cardBackgroundColor="@color/second_background_color"
+    app:cardCornerRadius="@dimen/card_corners_radius"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/normal_margin_size"
+            android:src="@drawable/phone"
+            app:layout_constraintBottom_toBottomOf="@+id/phones"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/phones" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/red"
+            app:layout_constraintBottom_toTopOf="@id/tvPhonesCorp"
+            app:layout_constraintTop_toBottomOf="@+id/phones" />
+
+        <TextView
+            android:id="@+id/phones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/MyStyle.TextViewBig"
+            android:text="@string/phones"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvPhonesCorp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/MyStyle.TextViewNormal"
+            android:layout_marginTop="1dp"
+            android:autoLink="phone"
+            android:textColorLink="@color/links_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/phones"
+            app:layout_constraintTop_toBottomOf="@+id/phones"
+            tools:text="+375 (232) 68-27-39, 68-26-44,+375(29)168-27-39, +375(33)682-74-97, +375(25)603-27-44" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

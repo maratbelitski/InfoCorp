@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:scrollbars="none"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".presentation.additionallydisplay.AdditionallyFragment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="@dimen/normal_padding_size">
+
+        <include
+            android:id="@+id/nameCard"
+            layout="@layout/name_layout" />
+
+        <include
+            android:id="@+id/searchCard"
+            layout="@layout/search_in_internet_layout" />
+
+        <include
+            android:id="@+id/locationCard"
+            layout="@layout/show_location_layout" />
+
+        <include
+            android:id="@+id/egrCard"
+            layout="@layout/search_on_egr_layout" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnGoToGeneral"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/MyStyle.ButtonNormal"
+            android:drawableStart="@drawable/arrow_back_general"
+            android:text="@string/to_general"/>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

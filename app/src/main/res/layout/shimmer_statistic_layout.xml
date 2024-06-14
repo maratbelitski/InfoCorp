@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/shimmer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/normal_padding_size"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/searchView">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/statisticCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:cardBackgroundColor="@color/shimmer_parent_color"
+        app:cardCornerRadius="@dimen/card_corners_radius"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/shape_shimmer_child"
+                android:backgroundTint="@color/shimmer_child_color"
+                android:layout_marginEnd="@dimen/normal_margin_size"
+                android:padding="@dimen/min_margin_size"
+                app:layout_constraintBottom_toBottomOf="@+id/statistic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/statistic" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/normal_margin_size"
+                android:background="@color/red"
+                app:layout_constraintBottom_toTopOf="@id/tvAllInBase"
+                app:layout_constraintTop_toBottomOf="@+id/statistic" />
+
+            <TextView
+                android:id="@+id/statistic"
+                android:layout_width="200dp"
+                android:layout_height="18sp"
+                android:layout_marginTop="@dimen/normal_margin_size"
+                android:layout_marginStart="@dimen/normal_padding_size"
+                android:background="@drawable/shape_shimmer_child"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvAllInBase"
+                android:layout_width="250dp"
+                android:layout_height="12dp"
+                android:background="@drawable/shape_shimmer_child"
+                android:layout_marginTop="@dimen/normal_extra_margin_size"
+                app:layout_constraintStart_toStartOf="@+id/statistic"
+                app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+            <TextView
+                android:id="@+id/countAllInBase"
+                style="@style/MyStyle.TextViewNormal"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:background="@drawable/shape_shimmer_child"
+                android:backgroundTint="@color/shimmer_child_color"
+                android:padding="@dimen/min_margin_size"
+                app:layout_constraintBottom_toBottomOf="@+id/tvAllInBase"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvAllInBase"
+                app:layout_constraintTop_toTopOf="@+id/tvAllInBase" />
+
+            <TextView
+                android:id="@+id/tvNewInBase"
+                android:layout_width="200dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="@dimen/normal_extra_margin_size"
+                android:background="@drawable/shape_shimmer_child"
+                app:layout_constraintStart_toStartOf="@+id/statistic"
+                app:layout_constraintTop_toBottomOf="@+id/tvAllInBase" />
+
+            <TextView
+                android:id="@+id/countNewInBase"
+                style="@style/MyStyle.TextViewNormal"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:background="@drawable/shape_shimmer_child"
+                android:backgroundTint="@color/shimmer_child_color"
+                android:padding="@dimen/min_margin_size"
+                app:layout_constraintBottom_toBottomOf="@+id/tvNewInBase"
+                app:layout_constraintStart_toStartOf="@+id/countAllInBase"
+                app:layout_constraintTop_toTopOf="@+id/tvNewInBase" />
+
+            <TextView
+                android:id="@+id/tvInUserBase"
+                android:layout_width="200dp"
+                android:layout_height="12dp"
+                android:background="@drawable/shape_shimmer_child"
+                android:layout_marginTop="@dimen/normal_extra_margin_size"
+                android:layout_marginBottom="@dimen/normal_margin_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/statistic"
+                app:layout_constraintTop_toBottomOf="@+id/tvNewInBase" />
+
+            <TextView
+                android:id="@+id/countInUserBase"
+                style="@style/MyStyle.TextViewNormal"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:background="@drawable/shape_shimmer_child"
+                android:backgroundTint="@color/shimmer_child_color"
+                android:padding="@dimen/min_margin_size"
+                app:layout_constraintBottom_toBottomOf="@+id/tvInUserBase"
+                app:layout_constraintStart_toStartOf="@+id/countAllInBase"
+                app:layout_constraintTop_toTopOf="@+id/tvInUserBase" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</com.facebook.shimmer.ShimmerFrameLayout>

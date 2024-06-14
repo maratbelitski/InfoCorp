@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/egr"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="@color/second_background_color"
+    app:cardCornerRadius="@dimen/card_corners_radius"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/DescriptionCard">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSearchByTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/MyStyle.TextViewBig"
+            android:text="@string/search_on_the_egr"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/red"
+            app:layout_constraintBottom_toTopOf="@id/byName"
+            app:layout_constraintTop_toBottomOf="@+id/tvSearchByTitle" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/byName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/MyStyle.TextInputLayout"
+            android:layout_margin="@dimen/normal_margin_size"
+            app:startIconDrawable="@drawable/title"
+            app:startIconTint="@color/hint_text_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etByTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/MyStyle.TextInputLayout"
+                android:hint="@string/hint_search_by_name" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSearchByName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/normal_margin_size"
+            android:text="@string/search_by_title"
+            style="@style/MyStyle.ButtonNormal"
+            app:layout_constraintEnd_toEndOf="@+id/byName"
+            app:layout_constraintStart_toStartOf="@id/byName"
+            app:layout_constraintTop_toBottomOf="@+id/byName" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/byUnp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/MyStyle.TextInputLayout"
+            android:layout_margin="@dimen/normal_margin_size"
+            app:startIconDrawable="@drawable/number"
+            app:startIconTint="@color/hint_text_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSearchByName">
+
+            <com.google.android.material.textfield.TextInputEditText
+               android:id="@+id/etByUnp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/MyStyle.TextInputLayout"
+                android:inputType="number"
+                android:hint="@string/hint_search_by_unp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSearchByUnp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/normal_margin_size"
+            android:layout_marginBottom="@dimen/normal_extra_margin_size"
+            style="@style/MyStyle.ButtonNormal"
+            android:text="@string/search_by_unp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/byUnp"
+            app:layout_constraintStart_toStartOf="@+id/byUnp"
+            app:layout_constraintTop_toBottomOf="@+id/byUnp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

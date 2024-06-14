@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/first_background_color"
+    android:padding="@dimen/normal_padding_size"
+    tools:context=".presentation.detaildisplay.DetailCorporationFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/posterCard"
+                layout="@layout/poster_layout" />
+
+            <include
+                android:id="@+id/nameCard"
+                layout="@layout/name_layout" />
+
+            <include
+                android:id="@+id/descriptionCard"
+                layout="@layout/description_layout" />
+
+            <include
+                android:id="@+id/addressCard"
+                layout="@layout/address_layout" />
+
+            <include
+                android:id="@+id/phonesCard"
+                layout="@layout/phones_layout" />
+
+            <include
+                android:id="@+id/emailCard"
+                layout="@layout/email_layout" />
+
+            <include
+                android:id="@+id/websiteCard"
+                layout="@layout/website_layout" />
+
+            <include
+                android:id="@+id/notesCard"
+                layout="@layout/notes_layout" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnGoToAdditionally"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/MyStyle.ButtonNormal"
+                android:drawableEnd="@drawable/arrow_forward_additionally"
+                android:text="@string/to_additionally"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/big_margin_size"
+                android:text="@string/change_info_corporation"
+                android:textColor="@color/unknown_text_color"
+                android:textSize="@dimen/min_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnEditInfo"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginBottom="@dimen/normal_margin_size"
+                android:foreground="?attr/selectableItemBackground"
+                android:background="@drawable/background_button_black"
+                android:text="@string/edit_information"
+                android:textColor="@color/text_color_button_custom"
+                android:textSize="@dimen/min_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

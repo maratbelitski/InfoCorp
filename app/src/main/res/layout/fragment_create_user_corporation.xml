@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/normal_padding_size">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/createUserCorp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/normal_padding_size"
+            app:cardBackgroundColor="@color/second_background_color"
+            app:cardCornerRadius="@dimen/card_corners_radius"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DescriptionCard">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/normal_padding_size">
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/red"
+                    app:layout_constraintTop_toBottomOf="@+id/tvResponseTitle" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvPosterText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/MyStyle.TextViewEditTextTittle"
+                    android:text="@string/poster"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvResponseTitle" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/etPoster"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/MyStyle.TextInputLayout"
+                    app:startIconDrawable="@drawable/image"
+                    app:startIconTint="@color/hint_text_color"
+                    app:layout_constraintEnd_toEndOf="@+id/tvPosterText"
+                    app:layout_constraintStart_toStartOf="@+id/tvPosterText"
+                    app:layout_constraintTop_toBottomOf="@+id/tvPosterText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPosterInput"
+                        style="@style/MyStyle.TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_url_image"
+                        android:inputType="textUri" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvResponseTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/MyStyle.TextViewBig"
+                    android:text="@string/create_new_corporation"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTittleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/MyStyle.TextViewEditTextTittle"
+                    android:text="@string/title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etPoster" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/etTittle"
+                    style="@style/MyStyle.TextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:startIconDrawable="@drawable/title"
+                    app:startIconTint="@color/hint_text_color"
+                    app:layout_constraintEnd_toEndOf="@+id/etPoster"
+                    app:layout_constraintStart_toStartOf="@+id/tvTittleText"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTittleText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etTittleInput"
+                        style="@style/MyStyle.TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_title" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDescriptionText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/MyStyle.TextViewEditTextTittle"
+                    android:text="@string/description_search"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etTittle" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/etDescription"
+                    style="@style/MyStyle.TextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:startIconDrawable="@drawable/description"
+                    app:startIconTint="@color/hint_text_color"
+                    app:layout_constraintEnd_toEndOf="@+id/etPoster"
+                    app:layout_constraintStart_toStartOf="@+id/tvDescriptionText"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDescriptionText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDescriptionInput"
+                        style="@style/MyStyle.TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_description" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvCnangeContentCv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/MyStyle.TextViewEditTextTittle"
+                    android:text="@string/address_search"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etDescription" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/etAddress"
+                    style="@style/MyStyle.TextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:startIconDrawable="@drawable/address"
+                    app:startIconTint="@color/hint_text_color"
+                    app:layout_constraintEnd_toEndOf="@+id/etPoster"
+                    app:layout_constraintStart_toStartOf="@+id/tvCnangeContentCv"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCnangeContentCv">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etAddressInput"
+                        style="@style/MyStyle.TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_address" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvPhonesText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/MyStyle.TextViewEditTextTittle"
+                    android:text="@string/phones_search"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etAddress" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/etPhones"
+                    style="@style/MyStyle.TextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:startIconDrawable="@drawable/phone"
+                    app:startIconTint="@color/hint_text_color"
+                    app:layout_constraintEnd_toEndOf="@+id/etPoster"
+                    app:layout_constraintStart_toStartOf="@+id/tvPhonesText"
+                    app:layout_constraintTop_toBottomOf="@+id/tvPhonesText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPhonesInput"
+                        style="@style/MyStyle.TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_phones"
+                        android:inputType="phone" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvEmailText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/MyStyle.TextViewEditTextTittle"
+                    android:text="@string/email_search"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etPhones" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/etEmail"
+                    style="@style/MyStyle.TextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:startIconDrawable="@drawable/email"
+                    app:startIconTint="@color/hint_text_color"
+                    app:layout_constraintEnd_toEndOf="@+id/etPoster"
+                    app:layout_constraintStart_toStartOf="@+id/tvEmailText"
+                    app:layout_constraintTop_toBottomOf="@+id/tvEmailText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEmailInput"
+                        style="@style/MyStyle.TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_email"
+                        android:inputType="textEmailAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvWebsiteText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/MyStyle.TextViewEditTextTittle"
+                    android:text="@string/website_search"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/etWebsite"
+                    style="@style/MyStyle.TextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:startIconDrawable="@drawable/web"
+                    app:startIconTint="@color/hint_text_color"
+                    app:layout_constraintEnd_toEndOf="@+id/etPoster"
+                    app:layout_constraintStart_toStartOf="@+id/tvWebsiteText"
+                    app:layout_constraintTop_toBottomOf="@+id/tvWebsiteText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etWebsiteInput"
+                        style="@style/MyStyle.TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_url_website"
+                        android:inputType="textUri" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvNotesText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/MyStyle.TextViewEditTextTittle"
+                    android:text="@string/notes"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etWebsite" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/etNotes"
+                    style="@style/MyStyle.TextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:startIconDrawable="@drawable/notes"
+                    app:startIconTint="@color/hint_text_color"
+                    app:layout_constraintEnd_toEndOf="@+id/tvNotesText"
+                    app:layout_constraintStart_toStartOf="@+id/tvNotesText"
+                    app:layout_constraintTop_toBottomOf="@+id/tvNotesText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNotesInput"
+                        style="@style/MyStyle.TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/add_notes" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnCreate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/MyStyle.ButtonNormal"
+                    android:text="@string/create_btn"
+                    app:layout_constraintEnd_toEndOf="@+id/etNotes"
+                    app:layout_constraintStart_toStartOf="@+id/etNotes"
+                    app:layout_constraintTop_toBottomOf="@+id/etNotes" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSendText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:paddingTop="24dp"
+                    android:text="@string/send_the_data"
+                    android:textColor="@color/unknown_text_color"
+                    android:textSize="11sp"
+                    app:layout_constraintEnd_toEndOf="@id/btnCreate"
+                    app:layout_constraintStart_toStartOf="@+id/btnCreate"
+                    app:layout_constraintTop_toBottomOf="@+id/btnYourList" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSend"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    style="@style/MyStyle.ButtonNormal"
+                    android:text="@string/send_to_developer_btn"
+                    app:layout_constraintEnd_toEndOf="@+id/btnCreate"
+                    app:layout_constraintStart_toStartOf="@+id/btnCreate"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSendText" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnYourList"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/background_button_black"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:text="@string/your_list"
+                    android:textColor="@color/text_color_button_custom"
+                    android:textSize="11sp"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline"
+                    app:layout_constraintStart_toStartOf="@id/btnCreate"
+                    app:layout_constraintTop_toBottomOf="@id/btnCreate" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnClearFields"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/background_button_black"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:text="@string/clear_fields"
+                    android:textColor="@color/text_color_button_custom"
+                    android:textSize="11sp"
+                    app:layout_constraintEnd_toEndOf="@id/btnCreate"
+                    app:layout_constraintStart_toEndOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@id/btnCreate" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>
