@@ -107,4 +107,11 @@
     <string name="your_list_is_empty">Ваш список пуст</string>
     <string name="notes">Заметки</string>
     <string name="add_notes">Добавить заметки</string>
+    <string name="status">Статус</string>
+    <string name="sent_text">Отправлено:</string>
+    <string name="response_text">Ответ:</string>
+    <string name="result">Результат</string>
+    <string name="invite_text">приглашение</string>
+    <string name="rejection_text">отказ</string>
+    <string name="not_responded_text">без ответа</string>
 </resources>

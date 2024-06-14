@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="@dimen/normal_padding_size">
+    android:layout_height="wrap_content">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:foreground="?attr/selectableItemBackground"
-            android:padding="@dimen/normal_padding_size"
+            app:cardUseCompatPadding="true"
             app:cardBackgroundColor="@color/second_background_color"
             app:cardCornerRadius="@dimen/card_corners_radius"
             app:layout_constraintEnd_toEndOf="parent"

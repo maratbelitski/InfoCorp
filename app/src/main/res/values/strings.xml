@@ -110,4 +110,11 @@
     <string name="your_list_is_empty">Your list is empty</string>
     <string name="notes">Notes</string>
     <string name="add_notes">Add notes</string>
+    <string name="status">Status</string>
+    <string name="sent_text">Sent:</string>
+    <string name="response_text">Response:</string>
+    <string name="result">Result</string>
+    <string name="invite_text">invite</string>
+    <string name="rejection_text">rejection</string>
+    <string name="not_responded_text">not responded</string>
 </resources>
