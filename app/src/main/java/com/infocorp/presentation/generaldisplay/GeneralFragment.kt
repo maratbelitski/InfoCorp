@@ -26,8 +26,8 @@ import com.infocorp.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -76,12 +76,6 @@ class GeneralFragment : Fragment() {
         initViews()
         downloadData()
         onObservers()
-
-//        lifecycleScope.launch {
-//            delay(5000)
-//            addCorps()
-//        }
-
     }
 
     private fun downloadData() {
@@ -131,9 +125,11 @@ class GeneralFragment : Fragment() {
                 override fun onCancelled(error: DatabaseError) {
                     Log.e("MyLog", "Error message ${error.message}")
                 }
+
             })
         }
     }
+
 
     private fun onObservers() {
 
@@ -196,94 +192,4 @@ class GeneralFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-    private fun addCorps() {
-//       основная бд
-        val databaseParent = Firebase.database.getReference(Constants.GENERAL_DB.value)
-//       пользовательская бд
-        val databaseChild = Firebase.database.getReference(Constants.USER_DB.value)
-
-//      удаление из пользовательской USER_CORPORATION бд
-//     databaseChild.child("-Ny0Mf6qyYQ4PMnx6NDk").removeValue()
-
-
-//        сравнение из пользовательской бд и добавление в основную
-
-//        databaseChild.addValueEventListener(object : ValueEventListener{
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                val response = snapshot.children
-//                response.forEach { child ->
-//                    val childValue = child.getValue(CorporationDto::class.java)
-//
-//                    if (child.key == "-NxdQoErgl8ch0S9XdSn" ){
-//                       databaseParent.push().setValue(childValue)
-//                   }
-//                }
-//            }
-//            override fun onCancelled(error: DatabaseError) { TODO() }
-//        })
-
-//
-//
-//        val corp1 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Центр разработки Тинькофф",
-//            poster = "http://belorussia.su/com_logo/1410431230logo1_big.jpg",
-//description = "Общество с ограниченной ответственностью Тинькофф Центр Разработки , деятельность в области компьютерного программирования, УНП: 193534138",
-//            address = "220062, Республика Беларусь, г. Минск, пр-т Победителей, 110",
-//            phones = "+375 447 07-49-07",
-//            email = "s.marinich@tinkoff.ru",
-//            website = "https://tinkoff-career.by/it"
-//        )
-//        databaseParent.push().setValue(corp1)
-////////////////////////////
-//        val corp2 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "ЮВГ",
-//            poster = "",
-//description = "ЮВГ, ООО Общество с ограниченной ответственностью Год основания: 1993 Количество сотрудников: 10 УНП: 100025306",
-//            address = "220114, г. Минск, пр-т Независимости, 157-212а, оф. 4",
-//            phones = "",
-//            email = "",
-//            website = ""
-//        )
-//        databaseParent.push().setValue(corp2)
-////////////////////////////
-//        val corp3 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Юкола-Инфо",
-//            poster = "",
-//description = "Юкола-Инфо, ОДО Общество с дополнительной ответственностью Год основания: 2000 Количество сотрудников: 62 УНП: 190126002",
-//           address = "220030, г. Минск, ул. Комсомольская, 12/а",
-//            phones = "",
-//            email = "office@jukola.info",
-//            website = "www.jukola.info"
-//        )
-//        databaseParent.push().setValue(corp3)
-////////////////////////////
-////////////////////////////
-//        val corp4 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Юкола-Инфо-Гомель",
-//            poster = "",
-//description = "Юкола-Инфо-Гомель, ОДО Общество с дополнительной ответственностью Год основания: 2005 Количество сотрудников: 6 УНП: 490323588",
-//            address = "246022, г. Гомель, ул. Артиллерийская, 6-220б",
-//            phones = "",
-//            email = "kurs_root@mail.ru",
-//            website = ""
-//        )
-//        databaseParent.push().setValue(corp4)
-////////////////////////////
-//        val corp5 = CorporationDto(
-//            idFirebase = databaseParent.key.toString(),
-//            name = "Юкола-Инфо-Орша",
-//            poster = "",
-//description = "Юкола-Инфо-Орша, ОДО Общество с дополнительной ответственностью Год основания: 2002 Количество сотрудников: 13 УНП: 390183660",
-//            address = "211030, Витебская обл., г. Орша, ул. Толстого, 7",
-//            phones = "(0216)26-17-70",
-//            email = "jukola@vtb.by",
-//            website = ""
-//        )
-//        databaseParent.push().setValue(corp5)
-   }
 }
