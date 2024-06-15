@@ -114,4 +114,5 @@
     <string name="invite_text">приглашение</string>
     <string name="rejection_text">отказ</string>
     <string name="not_responded_text">без ответа</string>
+    <string name="save_notes">сохранить заметки</string>
 </resources>

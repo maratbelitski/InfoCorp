@@ -193,4 +193,17 @@
             app:popUpTo="@id/accountFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/resumeStateFragment"
+        android:name="com.infocorp.presentation.resumestatedisplay.ResumeStateFragment"
+        android:label="fragment_resume_state"
+        tools:layout="@layout/fragment_resume_state" >
+        <action
+            android:id="@+id/action_resumeStateFragment_to_detailCorporationFragment"
+            app:destination="@id/detailCorporationFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
 </navigation>

@@ -117,4 +117,5 @@
     <string name="invite_text">invite</string>
     <string name="rejection_text">rejection</string>
     <string name="not_responded_text">not responded</string>
+    <string name="save_notes">save notes</string>
 </resources>
