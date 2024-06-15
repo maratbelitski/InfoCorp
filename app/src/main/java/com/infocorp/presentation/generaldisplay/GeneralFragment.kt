@@ -215,7 +215,7 @@ class GeneralFragment : Fragment() {
 ////                   }
 ////                }
 ////            }
-////            override fun onCancelled(error: DatabaseError) { TODO() }
+////            override fun onCancelled(error: DatabaseError) { }
 ////        })
 //
 ////
