@@ -6,6 +6,7 @@ import com.infocorp.data.datastorage.CorporationDao
 import com.infocorp.data.datastorage.CorporationDataBase
 import com.infocorp.data.datastorage.FavouriteDao
 import com.infocorp.data.datastorage.OldCorpDao
+import com.infocorp.data.datastorage.ResumeStateDao
 import com.infocorp.data.datastorage.UserCorporationDao
 import com.infocorp.utils.Constants
 import dagger.Module
@@ -52,5 +53,11 @@ class DataModule {
     @Singleton
     fun provideUserCorporationsDao(dataBase: CorporationDataBase): UserCorporationDao{
         return dataBase.getDaoUserCorp()
+    }
+
+    @Provides
+    @Singleton
+    fun provideResumeStateDao(dataBase: CorporationDataBase):ResumeStateDao{
+        return dataBase.getDaoResume()
     }
 }

@@ -31,6 +31,12 @@ class ResumeStateHolder(private val binding: ItemResumeBinding) :
             tvSentData.text = resumeState.dateSent
             tvResponseData.text = resumeState.dateResponse
             etNotesInput.setText(resumeState.notes)
+
+            when(resumeState.result){
+                0 -> radioButton3.isChecked = true
+                1 -> radioButton2.isChecked = true
+                2 -> radioButton.isChecked = true
+            }
         }
     }
 }

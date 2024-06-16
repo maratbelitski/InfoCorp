@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
     private fun onListeners() {
         binding.fab.setOnClickListener {
             val navController = navHostFragment.navController
-            navController.navigate(R.id.resumeStateFragment)
+            navController.navigate(R.id.userCorpGeneralFragment)
         }
 
         binding.adView.adListener = (object : AdListener() {

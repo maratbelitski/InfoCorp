@@ -4,9 +4,11 @@ import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.corporationdto.DataDto
 import com.infocorp.data.corporationdto.FavouriteCorporationsDto
 import com.infocorp.data.corporationdto.OldCorporationsDto
+import com.infocorp.data.corporationdto.ResumeStateDto
 import com.infocorp.data.corporationdto.UserCorporationDto
 import com.infocorp.domain.model.Corporation
 import com.infocorp.domain.model.Data
+import com.infocorp.domain.model.ResumeState
 import javax.inject.Inject
 
 class CorporationMapper @Inject constructor() {
@@ -99,6 +101,32 @@ class CorporationMapper @Inject constructor() {
             unp = dataDto.unp ?: "",
             address = dataDto.address ?: "",
             status = dataDto.status ?: ""
+        )
+    }
+
+    fun resumeStateDtoToResumeState(resumeDto: ResumeStateDto): ResumeState{
+        return ResumeState(
+            id = resumeDto.id,
+           idCorporation = resumeDto.idCorporation,
+            poster = resumeDto.poster,
+            title = resumeDto.title,
+            dateSent = resumeDto.dateSent,
+            dateResponse = resumeDto.dateResponse,
+            result = resumeDto.result,
+            notes = resumeDto.notes
+        )
+    }
+
+    fun resumeStateToResumeStateDto(resume: ResumeState): ResumeStateDto{
+        return ResumeStateDto(
+            id = resume.id,
+            idCorporation = resume.idCorporation,
+            poster = resume.poster,
+            title = resume.title,
+            dateSent = resume.dateSent,
+            dateResponse = resume.dateResponse,
+            result = resume.result,
+            notes = resume.notes
         )
     }
 }

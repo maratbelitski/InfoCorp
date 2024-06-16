@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.infocorp.R
 import com.infocorp.databinding.FragmentResumeStateBinding
@@ -16,6 +19,7 @@ import com.infocorp.presentation.listdisplay.adapter.CorporationAdapter
 import com.infocorp.presentation.mainactivity.MainActivity
 import com.infocorp.presentation.resumestatedisplay.adapter.ResumeStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ResumeStateFragment : Fragment() {
@@ -24,9 +28,9 @@ class ResumeStateFragment : Fragment() {
     private val binding: FragmentResumeStateBinding
         get() = _binding ?: throw NullPointerException()
 
-    private val viewModel: ResumeStateViewModel by viewModels()
+    private val fragmentViewModel: ResumeStateViewModel by viewModels()
 
-    private val myAdapter:  ResumeStateAdapter by lazy {
+    private val myAdapter: ResumeStateAdapter by lazy {
         ResumeStateAdapter()
     }
 
@@ -36,6 +40,7 @@ class ResumeStateFragment : Fragment() {
         super.onAttach(context)
         updateStateBottomMenu = { (activity as MainActivity).disableBottomMenu() }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,50 +53,37 @@ class ResumeStateFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initViews()
+        onObservers()
         onListeners()
-
-        val list = listOf(
-            ResumeState(
-                poster = "http://belorussia.su/com_logo/1422426178logo1_big.jpg",
-                title = "TEST",
-                dateSent = "11.12.2024",
-                dateResponse = "13.12.2024",
-                notes = "4Д, ОДООбщество с дополнительной ответственностью. Год основания: 2008. Количество сотрудников: 6. УНП: 590830939"
-            ),
-            ResumeState(
-                poster = "http://belorussia.su/com_logo/1422426178logo1_big.jpg",
-                title = "TEST 2",
-                dateSent = "11.12.2024",
-                dateResponse = "13.12.2024",
-                notes = "4Д, ОДООбщество с дополнительной ответственностью. Год основания: 2008. Количество сотрудников: 6. УНП: 590830939"
-            ),
-            ResumeState(
-                poster = "",
-                title = "TEST 3",
-                dateSent = "11.12.2024",
-                dateResponse = "13.12.2024",
-                notes = "4Д, ОДООбщество с дополнительной ответственностью. Год основания: 2008. Количество сотрудников: 6. УНП: 590830939"
-            )
-        )
-
-        myAdapter.submitList(list)
     }
 
     private fun onListeners() {
-//        with(binding) {
-//            myAdapter.onClick = {
-//
-//                val action = ResumeStateFragmentDirections
-//                    .actionResumeStateFragmentToDetailCorporationFragment()
-//                findNavController().navigate(action)
-//            }
-//        }
+
+    }
+
+    private fun onObservers() {
+        lifecycleScope.launch {
+            fragmentViewModel.allResume
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {
+                    if (it.isEmpty()) {
+                        binding.tvEmptyList.visibility = View.VISIBLE
+                        binding.recycler.visibility = View.GONE
+
+                    } else {
+                        binding.tvEmptyList.visibility = View.GONE
+                        binding.recycler.visibility = View.VISIBLE
+                        myAdapter.submitList(it)
+                    }
+                }
+        }
     }
 
     private fun initViews() {
         updateStateBottomMenu?.invoke()
         binding.recycler.adapter = myAdapter
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

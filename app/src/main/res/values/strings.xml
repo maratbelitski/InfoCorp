@@ -117,5 +117,8 @@
     <string name="invite_text">invite</string>
     <string name="rejection_text">rejection</string>
     <string name="not_responded_text">not responded</string>
-    <string name="save_notes">save notes</string>
+    <string name="save_notes">save changes</string>
+    <string name="submitted_resumes">Submitted resumes</string>
+    <string name="list_of_resumes">The list of resumes you have sent to the company</string>
+    <string name="total_resume_sent">Total resume sent:</string>
 </resources>

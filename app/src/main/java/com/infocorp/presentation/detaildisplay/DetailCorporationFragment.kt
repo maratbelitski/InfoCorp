@@ -10,13 +10,18 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.infocorp.R
 import com.infocorp.databinding.FragmentDetailCorporationBinding
+import com.infocorp.domain.model.ResumeState
 import com.infocorp.presentation.mainactivity.MainActivity
+import com.infocorp.utils.CurrentDate
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -74,6 +79,17 @@ class DetailCorporationFragment : Fragment() {
             val bodyCv = fragmentViewModel.getBodyCvUser()
             val linkCv = fragmentViewModel.getLinkCvUser()
             sendEmailResume(addresses, tittleCv, bodyCv, linkCv)
+
+            lifecycleScope.launch(Dispatchers.IO) {
+                val resume = ResumeState(
+                    idCorporation = arguments.corporation.id,
+                    poster = arguments.corporation.poster,
+                    title = arguments.corporation.name,
+                    dateSent = CurrentDate.getCurrentDate(),
+                    notes = arguments.corporation.notes
+                )
+                fragmentViewModel.addResumeToDatabase(resume)
+            }
         }
     }
 

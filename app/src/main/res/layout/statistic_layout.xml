@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/statistic"
     android:visibility="invisible"
+    tools:visibility="visible"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/normal_padding_size"
@@ -105,7 +106,6 @@
             android:paddingStart="@dimen/normal_margin_size"
             android:text="@string/total_in_your"
             android:textIsSelectable="false"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tvNewInBase"
             app:layout_constraintTop_toBottomOf="@+id/tvNewInBase" />
 
@@ -120,6 +120,33 @@
             app:layout_constraintBottom_toBottomOf="@+id/tvInUserBase"
             app:layout_constraintStart_toStartOf="@+id/countAllInBase"
             app:layout_constraintTop_toTopOf="@+id/tvInUserBase"
+            tools:text="10" />
+
+        <TextView
+            android:id="@+id/tvSubmittedResume"
+            style="@style/MyStyle.TextViewNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/normal_margin_size"
+            android:padding="@dimen/min_margin_size"
+            android:paddingStart="@dimen/normal_margin_size"
+            android:text="@string/total_resume_sent"
+            android:textIsSelectable="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvInUserBase" />
+
+        <TextView
+            android:id="@+id/countSubmittedResume"
+            style="@style/MyStyle.TextViewNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/min_margin_size"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tvSubmittedResume"
+            app:layout_constraintStart_toStartOf="@+id/countAllInBase"
+            app:layout_constraintTop_toTopOf="@+id/tvSubmittedResume"
             tools:text="10" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

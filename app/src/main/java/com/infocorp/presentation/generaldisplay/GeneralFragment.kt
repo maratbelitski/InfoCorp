@@ -23,6 +23,7 @@ import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.databinding.FragmentGeneralBinding
 import com.infocorp.presentation.mainactivity.MainActivity
 import com.infocorp.utils.Constants
+import com.infocorp.utils.CurrentDate
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -75,6 +76,17 @@ class GeneralFragment : Fragment() {
         initViews()
         downloadData()
         onObservers()
+        onListeners()
+    }
+
+    private fun onListeners() {
+        binding.resumeLayout.listResume.setOnClickListener {
+            val action = GeneralFragmentDirections
+                .actionGeneralFragmentToResumeStateFragment()
+            findNavController().navigate(action)
+
+            Log.i("MyLog", CurrentDate.getCurrentDate())
+        }
     }
 
     private fun downloadData() {
@@ -170,6 +182,13 @@ class GeneralFragment : Fragment() {
                 }
         }
 
+        lifecycleScope.launch {
+            fragmentViewModel.resumeSent
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {
+                    binding.statisticCard.countSubmittedResume.text = it.toString()
+                }
+        }
     }
 
     private fun initViews() {

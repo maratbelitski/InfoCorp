@@ -114,5 +114,8 @@
     <string name="invite_text">приглашение</string>
     <string name="rejection_text">отказ</string>
     <string name="not_responded_text">без ответа</string>
-    <string name="save_notes">сохранить заметки</string>
+    <string name="save_notes">сохранить изменения</string>
+    <string name="submitted_resumes">Отправленные резюме</string>
+    <string name="list_of_resumes">Список содержит резюме разосланные Вами в компании</string>
+    <string name="total_resume_sent">Всего отправлено резюме:</string>
 </resources>

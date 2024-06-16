@@ -5,9 +5,12 @@ import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.corporationdto.FavouriteCorporationsDto
 import com.infocorp.data.corporationdto.OldCorporationsDto
+import com.infocorp.data.corporationdto.ResumeStateDto
 import com.infocorp.data.corporationdto.UserCorporationDto
 import com.infocorp.utils.Constants.DATABASE_NAME
 
@@ -17,8 +20,9 @@ import com.infocorp.utils.Constants.DATABASE_NAME
     [CorporationDto::class,
         FavouriteCorporationsDto::class,
         OldCorporationsDto::class,
-        UserCorporationDto::class],
-    version = 2,
+        UserCorporationDto::class,
+        ResumeStateDto::class],
+    version = 3,
     autoMigrations = [
         AutoMigration(
             from = 1,
@@ -32,6 +36,7 @@ abstract class CorporationDataBase : RoomDatabase() {
     abstract fun getDaoUserCorp(): UserCorporationDao
     abstract fun getDaoNewCorps(): OldCorpDao
     abstract fun getDaoFavourite(): FavouriteDao
+    abstract fun getDaoResume(): ResumeStateDao
 
     companion object {
 
@@ -49,6 +54,7 @@ abstract class CorporationDataBase : RoomDatabase() {
                         CorporationDataBase::class.java,
                         DATABASE_NAME.value
                     )
+                        .addMigrations(MIGRATION_2_3)
                         .build()
 
                     INSTANCE = instance
@@ -56,5 +62,11 @@ abstract class CorporationDataBase : RoomDatabase() {
                 return instance
             }
         }
+    }
+}
+
+val MIGRATION_2_3 = object : Migration(2, 3) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL( "CREATE TABLE IF NOT EXISTS `resumeStateTable` (`id` TEXT NOT NULL, `idCorporation` TEXT NOT NULL, `poster` TEXT NOT NULL, `title` TEXT NOT NULL, `dateSent` TEXT NOT NULL, `dateResponse` TEXT NOT NULL, `result` INTEGER NOT NULL, `notes` TEXT NOT NULL, PRIMARY KEY(`id`))")
     }
 }

@@ -1,11 +1,15 @@
 package com.infocorp.data.corporationdto
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 import java.util.UUID
 
 @Parcelize
+@Entity(tableName = "resumeStateTable")
 data class ResumeStateDto(
+    @PrimaryKey
     val id: String = UUID.randomUUID().toString(),
     val idCorporation: String = "",
     val poster: String ="",

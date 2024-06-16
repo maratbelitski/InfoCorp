@@ -14,6 +14,9 @@
             android:id="@+id/action_generalFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_generalFragment_to_resumeStateFragment"
+            app:destination="@id/resumeStateFragment" />
     </fragment>
     <fragment
         android:id="@+id/listCorporationsFragment"

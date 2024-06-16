@@ -37,10 +37,15 @@ class  GeneralFragmentViewModel @Inject constructor(
     val oldCorporation: StateFlow<Int>
         get() = _oldCorporation.asStateFlow()
 
+    private var _resumeSent = MutableStateFlow(0)
+    val resumeSent: StateFlow<Int>
+        get() = _resumeSent.asStateFlow()
+
     init {
         getRowCountAllCorp()
         getRowCountUserCorp()
         getRowCountOldCorp()
+        getRowCountResume()
     }
 
     private fun getRowCountAllCorp() {
@@ -54,6 +59,13 @@ class  GeneralFragmentViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             val resultColdFlow = repositoryUser.getRowCountUser()
             _userCorporation.emitAll(resultColdFlow)
+        }
+    }
+
+    private fun getRowCountResume() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val resultColdFlow = repository.getRowCountResume()
+            _resumeSent.emitAll(resultColdFlow)
         }
     }
 
