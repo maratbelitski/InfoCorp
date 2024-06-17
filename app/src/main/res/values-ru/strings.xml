@@ -118,4 +118,5 @@
     <string name="submitted_resumes">Отправленные резюме</string>
     <string name="list_of_resumes">Список содержит резюме разосланные Вами в компании</string>
     <string name="total_resume_sent">Всего отправлено резюме:</string>
+    <string name="response_date">Дата</string>
 </resources>

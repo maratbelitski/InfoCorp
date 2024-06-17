@@ -4,6 +4,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -138,6 +139,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun isNetworkAvailable(): Boolean {
+        var count = 1
         val connectivityManager =
             getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
 
@@ -147,6 +149,7 @@ class MainActivity : AppCompatActivity() {
         val result =
             capabilities != null && (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
                     || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR))
+
         return result
     }
 }

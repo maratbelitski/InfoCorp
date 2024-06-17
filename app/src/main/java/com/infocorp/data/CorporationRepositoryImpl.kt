@@ -3,6 +3,7 @@ package com.infocorp.data
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import com.infocorp.data.corporationdto.CorporationDto
+import com.infocorp.data.corporationdto.ResumeStateDto
 import com.infocorp.data.datastorage.CorporationDao
 import com.infocorp.data.datastorage.FavouriteDao
 import com.infocorp.data.datastorage.OldCorpDao
@@ -63,7 +64,6 @@ class CorporationRepositoryImpl @Inject constructor(
 
     override fun changeStateCorp(corporation: Corporation) {
         val corpDto = mapper.corporationToCorporationDto(corporation)
-
         daoCorp.updateFavorite(corpDto.id, !corpDto.isFavourite)
     }
 
@@ -90,6 +90,16 @@ class CorporationRepositoryImpl @Inject constructor(
         val favouriteCorp = mapper.corporationDtoToFavouriteCorp(corpDto)
 
         daoFavourite.removeCorpInnFavourite(favouriteCorp)
+    }
+
+    override suspend fun removeResumeFromDatabase(resume: ResumeState) {
+        val resumeDto = mapper.resumeStateToResumeStateDto(resume)
+        daoResume.removeResumeFromDatabase(resumeDto)
+    }
+
+    override suspend fun updateResume(resume: ResumeState, result:Int, notes: String, dateResponse: String) {
+        val resumeDto = mapper.resumeStateToResumeStateDto(resume)
+        daoResume.updateResume(resumeDto.id, result, notes, dateResponse)
     }
 
     override fun searchCorporation(list: List<Corporation>, text: String): List<Corporation> {

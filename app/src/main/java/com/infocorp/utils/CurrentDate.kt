@@ -9,7 +9,7 @@ class CurrentDate {
         fun getCurrentDate(): String {
             val date = Date()
             val locale = Locale.getDefault()
-            val sdf: SimpleDateFormat = SimpleDateFormat("dd/MM/yyyy", locale)
+            val sdf: SimpleDateFormat = SimpleDateFormat("dd.MM.yyyy", locale)
             return sdf.format(date)
         }
     }

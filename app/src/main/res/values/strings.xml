@@ -121,4 +121,5 @@
     <string name="submitted_resumes">Submitted resumes</string>
     <string name="list_of_resumes">The list of resumes you have sent to the company</string>
     <string name="total_resume_sent">Total resume sent:</string>
+    <string name="response_date">Enter date</string>
 </resources>

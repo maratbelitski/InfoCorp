@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import com.infocorp.R
 import com.infocorp.databinding.ItemResumeBinding
 import com.infocorp.domain.model.ResumeState
+import com.infocorp.utils.Constants
 
 class ResumeStateHolder(private val binding: ItemResumeBinding) :
     RecyclerView.ViewHolder(binding.root) {
@@ -19,7 +20,10 @@ class ResumeStateHolder(private val binding: ItemResumeBinding) :
         }
     }
 
-    fun bind(resumeState: ResumeState) {
+    fun bind(
+        resumeState: ResumeState,
+        onClickButtonSave: ((ResumeState) -> Unit)?
+    ) {
 
         with(binding) {
             Glide.with(ivPosterResume)
@@ -29,13 +33,37 @@ class ResumeStateHolder(private val binding: ItemResumeBinding) :
 
             tvTitleText.text = resumeState.title
             tvSentData.text = resumeState.dateSent
-            tvResponseData.text = resumeState.dateResponse
+            etResponseData.setText(resumeState.dateResponse)
             etNotesInput.setText(resumeState.notes)
 
-            when(resumeState.result){
-                0 -> radioButton3.isChecked = true
-                1 -> radioButton2.isChecked = true
-                2 -> radioButton.isChecked = true
+            when (resumeState.result) {
+                Constants.NO_ANSWER.value.toInt() -> rbtnNoAnswer.isChecked = true
+                Constants.REJECT.value.toInt() -> rbtnReject.isChecked = true
+                Constants.INVITE.value.toInt() -> rbtnInvite.isChecked = true
+            }
+
+            var result = 0
+
+            rbtnNoAnswer.setOnClickListener {
+                result = Constants.NO_ANSWER.value.toInt()
+            }
+            rbtnReject.setOnClickListener {
+                result = Constants.REJECT.value.toInt()
+            }
+            rbtnInvite.setOnClickListener {
+                result = Constants.INVITE.value.toInt()
+            }
+
+            btnSaveNotes.setOnClickListener {
+                val notes = etNotesInput.text.toString()
+                val dateResponse = etResponseData.text.toString()
+
+                val resume = resumeState.copy(
+                    result = result,
+                    notes = notes,
+                    dateResponse = dateResponse)
+
+                onClickButtonSave?.invoke(resume)
             }
         }
     }

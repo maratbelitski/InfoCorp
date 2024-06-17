@@ -25,5 +25,9 @@ enum class Constants(val value: String) {
     BELARUS_LOCATION("geo:0,0?q= Беларусь"),
     GOOGLE_PACKAGE("com.google.android.apps.maps"),
 
-    NOT_SPECIFIED("Not specified")
+    NOT_SPECIFIED("Not specified"),
+
+    NO_ANSWER("0"),
+    REJECT("1"),
+    INVITE("2")
 }

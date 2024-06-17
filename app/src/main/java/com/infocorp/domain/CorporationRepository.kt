@@ -16,8 +16,10 @@ interface CorporationRepository {
     fun addCorpToFavourite(corporation: Corporation)
     fun addCorpToOldCorpsList(corporation: Corporation)
     fun removeCorpFromFavourite(corporation: Corporation)
+    suspend fun removeResumeFromDatabase(resume: ResumeState)
+    suspend fun updateResume(resume: ResumeState, result:Int, notes: String, dateResponse: String)
     fun searchCorporation(list: List<Corporation>, text: String): List<Corporation>
-    fun registrationUser(email:String, password:String):Pair<String,String>
+    fun registrationUser(email: String, password: String): Pair<String, String>
     suspend fun getInfoEgrByTitle(titleCorp: String): List<Data>
     suspend fun getInfoEgrByUnp(unp: String): List<Data>
     suspend fun getRowCount(): Flow<Int>

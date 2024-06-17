@@ -10,12 +10,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import com.infocorp.R
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.infocorp.databinding.FragmentResumeStateBinding
-import com.infocorp.domain.model.Corporation
-import com.infocorp.domain.model.ResumeState
-import com.infocorp.presentation.listdisplay.adapter.CorporationAdapter
 import com.infocorp.presentation.mainactivity.MainActivity
 import com.infocorp.presentation.resumestatedisplay.adapter.ResumeStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -55,10 +52,15 @@ class ResumeStateFragment : Fragment() {
         initViews()
         onObservers()
         onListeners()
+        removeBySwipe()
     }
 
     private fun onListeners() {
 
+        myAdapter.onClickButtonSave = {
+            fragmentViewModel.updateResume(it, it.result, it.notes, it.dateResponse)
+
+        }
     }
 
     private fun onObservers() {
@@ -66,17 +68,38 @@ class ResumeStateFragment : Fragment() {
             fragmentViewModel.allResume
                 .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collect {
-                    if (it.isEmpty()) {
-                        binding.tvEmptyList.visibility = View.VISIBLE
-                        binding.recycler.visibility = View.GONE
-
-                    } else {
+                    if (it.isNotEmpty()) {
                         binding.tvEmptyList.visibility = View.GONE
                         binding.recycler.visibility = View.VISIBLE
                         myAdapter.submitList(it)
+
+                    } else {
+                        binding.tvEmptyList.visibility = View.VISIBLE
+                        binding.recycler.visibility = View.GONE
                     }
                 }
         }
+    }
+
+    private fun removeBySwipe() {
+        val callback = object :
+            ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val currentResume = myAdapter.currentList[viewHolder.adapterPosition]
+                fragmentViewModel.removeResume(currentResume)
+            }
+        }
+
+        val touchHelper = ItemTouchHelper(callback)
+        touchHelper.attachToRecyclerView(binding.recycler)
     }
 
     private fun initViews() {
