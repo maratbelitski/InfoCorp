@@ -9,8 +9,9 @@ import java.util.UUID
 @Parcelize
 @Entity(tableName = "resumeStateTable")
 data class ResumeStateDto(
-    @PrimaryKey
+
     val id: String = UUID.randomUUID().toString(),
+    @PrimaryKey
     val idCorporation: String = "",
     val poster: String ="",
     val title: String = "",

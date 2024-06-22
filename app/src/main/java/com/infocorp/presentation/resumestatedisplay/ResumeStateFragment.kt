@@ -1,21 +1,28 @@
 package com.infocorp.presentation.resumestatedisplay
 
 import android.content.Context
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.infocorp.databinding.FragmentResumeStateBinding
+import com.infocorp.domain.model.Corporation
 import com.infocorp.presentation.mainactivity.MainActivity
 import com.infocorp.presentation.resumestatedisplay.adapter.ResumeStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -32,6 +39,8 @@ class ResumeStateFragment : Fragment() {
     }
 
     private var updateStateBottomMenu: (() -> Unit)? = null
+
+    private var hasNavigated = false
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -56,10 +65,29 @@ class ResumeStateFragment : Fragment() {
     }
 
     private fun onListeners() {
-
         myAdapter.onClickButtonSave = {
             fragmentViewModel.updateResume(it, it.result, it.notes, it.dateResponse)
+        }
 
+        myAdapter.onClick = { corp ->
+
+            lifecycleScope.launch {
+
+                fragmentViewModel.getCorporationFromResume(corp.idCorporation)
+
+                fragmentViewModel.corpFromResume
+                    .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                    .drop(1)
+                    .collect {
+                        if (!hasNavigated) {
+                            val action = ResumeStateFragmentDirections
+                                .actionResumeStateFragmentToDetailCorporationFragment(it)
+                            findNavController().navigate(action)
+
+                            hasNavigated = true
+                        }
+                    }
+            }
         }
     }
 
@@ -68,14 +96,45 @@ class ResumeStateFragment : Fragment() {
             fragmentViewModel.allResume
                 .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collect {
-                    if (it.isNotEmpty()) {
-                        binding.tvEmptyList.visibility = View.GONE
-                        binding.recycler.visibility = View.VISIBLE
-                        myAdapter.submitList(it)
+                    with(binding) {
+                        if (it.isNotEmpty()) {
+                            tvEmptyList.visibility = View.GONE
+                            recycler.visibility = View.VISIBLE
+                            myAdapter.submitList(it)
+                        }
+                    }
+                }
+        }
 
-                    } else {
-                        binding.tvEmptyList.visibility = View.VISIBLE
-                        binding.recycler.visibility = View.GONE
+        lifecycleScope.launch {
+            fragmentViewModel.isLoaded
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {
+                    with(binding) {
+                        if (it) {
+                            tvEmptyList.visibility = View.VISIBLE
+                            recycler.visibility = View.GONE
+                        }
+                    }
+                }
+        }
+
+        lifecycleScope.launch {
+            fragmentViewModel.shimmer
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {
+                    with(binding) {
+                        when (it) {
+                            true -> {
+                                recycler.visibility = View.GONE
+                                shimmer.visibility = View.VISIBLE
+                            }
+
+                            false -> {
+                                recycler.visibility = View.VISIBLE
+                                shimmer.visibility = View.GONE
+                            }
+                        }
                     }
                 }
         }
@@ -103,9 +162,17 @@ class ResumeStateFragment : Fragment() {
     }
 
     private fun initViews() {
+        fragmentViewModel.downloadResumes()
+
         updateStateBottomMenu?.invoke()
         binding.recycler.adapter = myAdapter
     }
+
+    override fun onResume() {
+        super.onResume()
+        hasNavigated = false
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

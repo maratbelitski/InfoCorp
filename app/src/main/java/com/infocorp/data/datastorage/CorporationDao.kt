@@ -20,6 +20,10 @@ interface CorporationDao {
     @Query("SELECT * FROM corporationsTable ORDER BY name")
     fun downloadAllCorporations(): LiveData<List<CorporationDto>>
 
+    @Query("SELECT * FROM corporationsTable WHERE id=:idCorporation LIMIT 1")
+    fun downloadOneCorporations(idCorporation: String): Flow<CorporationDto?>
+
+
     @Query("UPDATE corporationsTable SET isFavourite=:isFavourite WHERE id =:id")
     fun updateFavorite(id: String, isFavourite: Boolean)
 

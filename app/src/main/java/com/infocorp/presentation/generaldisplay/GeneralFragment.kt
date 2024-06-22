@@ -12,7 +12,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -20,6 +19,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import com.infocorp.R
 import com.infocorp.data.corporationdto.CorporationDto
+import com.infocorp.data.datastorage.CorporationDataBase
 import com.infocorp.databinding.FragmentGeneralBinding
 import com.infocorp.presentation.mainactivity.MainActivity
 import com.infocorp.utils.Constants
@@ -27,6 +27,7 @@ import com.infocorp.utils.CurrentDate
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 
@@ -84,8 +85,6 @@ class GeneralFragment : Fragment() {
             val action = GeneralFragmentDirections
                 .actionGeneralFragmentToResumeStateFragment()
             findNavController().navigate(action)
-
-            Log.i("MyLog", CurrentDate.getCurrentDate())
         }
     }
 
@@ -187,6 +186,28 @@ class GeneralFragment : Fragment() {
                 .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collect {
                     binding.statisticCard.countSubmittedResume.text = it.toString()
+                }
+        }
+
+        lifecycleScope.launch {
+            fragmentViewModel.notReceived
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {
+                    binding.statisticCard.countNotResponse.text = it.toString()
+                }
+        }
+        lifecycleScope.launch {
+            fragmentViewModel.reject
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {
+                    binding.statisticCard.countReject.text = it.toString()
+                }
+        }
+        lifecycleScope.launch {
+            fragmentViewModel.invite
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {
+                    binding.statisticCard.countInvite.text = it.toString()
                 }
         }
     }

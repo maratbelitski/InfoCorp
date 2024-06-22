@@ -20,9 +20,6 @@ interface FavouriteDao {
     @Delete
     fun removeCorpInnFavourite(favouriteId: FavouriteCorporationsDto)
 
-    @Query(
-        "SELECT * FROM corporationsTable " +
-                "INNER JOIN favouriteTable ON favouriteTable.id = corporationsTable.id ORDER BY name"
-    )
+    @Query("SELECT * FROM corporationsTable INNER JOIN favouriteTable ON favouriteTable.id = corporationsTable.id ORDER BY name")
     fun downloadAllFavouriteCorporations(): Flow<List<CorporationDto>>
 }

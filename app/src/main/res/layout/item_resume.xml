@@ -29,6 +29,7 @@
                 android:minWidth="100dp"
                 android:minHeight="100dp"
                 android:scaleType="centerCrop"
+               android:layout_marginTop="@dimen/normal_margin_size"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />

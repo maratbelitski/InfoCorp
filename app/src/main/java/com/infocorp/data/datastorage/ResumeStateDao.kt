@@ -14,6 +14,9 @@ interface ResumeStateDao {
     @Query("SELECT * FROM resumeStateTable")
     fun loadAllResumes(): Flow<List<ResumeStateDto>>
 
+    @Query("SELECT COUNT(id) FROM resumeStateTable WHERE result=:state")
+    fun loadAllStates(state:Int): Flow<Int>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addResumeInDatabase(resume: ResumeStateDto)
 

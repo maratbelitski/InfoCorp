@@ -11,6 +11,7 @@ import com.infocorp.domain.UserCorporationRepository
 import com.infocorp.domain.model.Corporation
 import com.infocorp.utils.Constants
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class UserCorporationRepositoryImpl @Inject constructor(
@@ -22,6 +23,12 @@ class UserCorporationRepositoryImpl @Inject constructor(
 
     private val firebaseReference by lazy {
         firebase.database.getReference(Constants.USER_DB.value)
+    }
+
+    override suspend fun downloadOneUserCorporations(idCorporation: String):Flow<Corporation?> {
+        val corpUserDto = userDao.downloadOneUserCorporations(idCorporation)
+
+        return corpUserDto.map { mapper.userCorporationDtoToCorporation(it) }
     }
 
     override fun sendUserCorporation(userCorp: UserCorporationDto) {

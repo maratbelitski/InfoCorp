@@ -22,11 +22,19 @@ import com.infocorp.utils.Constants.DATABASE_NAME
         OldCorporationsDto::class,
         UserCorporationDto::class,
         ResumeStateDto::class],
-    version = 3,
+    version = 5,
     autoMigrations = [
         AutoMigration(
             from = 1,
             to = 2
+        ),
+        AutoMigration(
+            from = 3,
+            to = 4
+        ),
+        AutoMigration(
+            from = 4,
+            to = 5
         )
     ],
     exportSchema = true
@@ -70,3 +78,4 @@ val MIGRATION_2_3 = object : Migration(2, 3) {
         db.execSQL( "CREATE TABLE IF NOT EXISTS `resumeStateTable` (`id` TEXT NOT NULL, `idCorporation` TEXT NOT NULL, `poster` TEXT NOT NULL, `title` TEXT NOT NULL, `dateSent` TEXT NOT NULL, `dateResponse` TEXT NOT NULL, `result` INTEGER NOT NULL, `notes` TEXT NOT NULL, PRIMARY KEY(`id`))")
     }
 }
+

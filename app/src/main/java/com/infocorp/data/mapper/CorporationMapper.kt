@@ -12,37 +12,37 @@ import com.infocorp.domain.model.ResumeState
 import javax.inject.Inject
 
 class CorporationMapper @Inject constructor() {
-    fun corporationDtoToCorporation(corpDto: CorporationDto): Corporation {
+    fun corporationDtoToCorporation(corpDto: CorporationDto?): Corporation {
         return Corporation(
-            id = corpDto.id,
-            idFirebase = corpDto.idFirebase,
-            isFavourite = corpDto.isFavourite,
-            isNew = corpDto.isNew,
-            name = corpDto.name,
-            poster = corpDto.poster,
-            description = corpDto.description,
-            address = corpDto.address,
-            phones = corpDto.phones,
-            email = corpDto.email,
-            website = corpDto.website,
-            notes = corpDto.notes ?: ""
+            id = corpDto?.id?: "",
+            idFirebase = corpDto?.idFirebase?: "",
+            isFavourite = corpDto?.isFavourite?: false,
+            isNew = corpDto?.isNew?: false,
+            name = corpDto?.name?: "",
+            poster = corpDto?.poster?: "",
+            description = corpDto?.description?: "",
+            address = corpDto?.address?: "",
+            phones = corpDto?.phones?: "",
+            email = corpDto?.email?: "",
+            website = corpDto?.website?: "",
+            notes = corpDto?.notes ?: ""
         )
     }
 
-    fun userCorporationDtoToCorporation(userCorpDto: UserCorporationDto): Corporation {
+    fun userCorporationDtoToCorporation(userCorpDto: UserCorporationDto?): Corporation {
         return Corporation(
-            id = userCorpDto.id,
-            idFirebase = userCorpDto.idFirebase,
-            isFavourite = userCorpDto.isFavourite,
-            isNew = userCorpDto.isNew,
-            name = userCorpDto.name,
-            poster = userCorpDto.poster,
-            description = userCorpDto.description,
-            address = userCorpDto.address,
-            phones = userCorpDto.phones,
-            email = userCorpDto.email,
-            website = userCorpDto.website,
-            notes = userCorpDto.notes
+            id = userCorpDto?.id?: "",
+            idFirebase = userCorpDto?.idFirebase?: "",
+            isFavourite = userCorpDto?.isFavourite?: false,
+            isNew = userCorpDto?.isNew?: false,
+            name = userCorpDto?.name?: "",
+            poster = userCorpDto?.poster?: "",
+            description = userCorpDto?.description?: "",
+            address = userCorpDto?.address?: "",
+            phones = userCorpDto?.phones?: "",
+            email = userCorpDto?.email?: "",
+            website = userCorpDto?.website?: "",
+            notes = userCorpDto?.notes ?: ""
         )
     }
 

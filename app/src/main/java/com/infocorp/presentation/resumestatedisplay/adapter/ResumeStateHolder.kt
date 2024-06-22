@@ -22,7 +22,8 @@ class ResumeStateHolder(private val binding: ItemResumeBinding) :
 
     fun bind(
         resumeState: ResumeState,
-        onClickButtonSave: ((ResumeState) -> Unit)?
+        onClickButtonSave: ((ResumeState) -> Unit)?,
+        onClick: ((ResumeState) -> Unit)?
     ) {
 
         with(binding) {
@@ -64,6 +65,12 @@ class ResumeStateHolder(private val binding: ItemResumeBinding) :
                     dateResponse = dateResponse)
 
                 onClickButtonSave?.invoke(resume)
+
+
+            }
+
+            itemView.setOnClickListener {
+                onClick?.invoke(resumeState)
             }
         }
     }

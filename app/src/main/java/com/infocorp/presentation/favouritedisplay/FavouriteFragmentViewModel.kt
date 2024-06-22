@@ -8,6 +8,7 @@ import com.infocorp.domain.usecases.corporation.DownloadFavouriteFromLocalStorag
 import com.infocorp.domain.usecases.corporation.RemoveCorpFromFavouriteUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.emitAll

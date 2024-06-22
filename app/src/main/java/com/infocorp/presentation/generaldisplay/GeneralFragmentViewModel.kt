@@ -6,9 +6,11 @@ import com.google.firebase.Firebase
 import com.infocorp.data.CorporationRepositoryImpl
 import com.infocorp.data.UserCorporationRepositoryImpl
 import com.infocorp.data.corporationdto.CorporationDto
+import com.infocorp.utils.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -41,11 +43,21 @@ class  GeneralFragmentViewModel @Inject constructor(
     val resumeSent: StateFlow<Int>
         get() = _resumeSent.asStateFlow()
 
+    private var _notReceived = MutableStateFlow(0)
+    val notReceived: StateFlow<Int> = _notReceived.asStateFlow()
+
+    private var _reject = MutableStateFlow(0)
+    val reject: StateFlow<Int> = _reject.asStateFlow()
+
+    private var _invite = MutableStateFlow(0)
+    val invite: StateFlow<Int> = _invite.asStateFlow()
+
     init {
         getRowCountAllCorp()
         getRowCountUserCorp()
         getRowCountOldCorp()
         getRowCountResume()
+        getAllStateResume()
     }
 
     private fun getRowCountAllCorp() {
@@ -110,5 +122,22 @@ class  GeneralFragmentViewModel @Inject constructor(
 
     fun getFirebase(): Firebase{
         return firebase
+    }
+
+    private fun getAllStateResume(){
+        viewModelScope.launch(Dispatchers.IO) {
+          val notResp =repository.downloadAllStateResume(Constants.NO_ANSWER.value.toInt())
+            notResp.collect{ _notReceived.emit(it) }
+        }
+
+        viewModelScope.launch(Dispatchers.IO) {
+            val reject = repository.downloadAllStateResume(Constants.REJECT.value.toInt())
+            reject.collect{ _reject.emit(it) }
+        }
+
+        viewModelScope.launch(Dispatchers.IO) {
+            val invite = repository.downloadAllStateResume(Constants.INVITE.value.toInt())
+            invite.collect{ _invite.emit(it) }
+        }
     }
 }

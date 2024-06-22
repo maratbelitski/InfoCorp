@@ -7,6 +7,7 @@ import com.infocorp.domain.model.ResumeState
 
 class ResumeStateAdapter : ListAdapter<ResumeState, ViewHolder>(ResumeStateDiffUtils()) {
     var onClickButtonSave: ((ResumeState) -> Unit)? = null
+    var onClick: ((ResumeState) -> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ResumeStateHolder.from(parent)
     }
@@ -15,7 +16,7 @@ class ResumeStateAdapter : ListAdapter<ResumeState, ViewHolder>(ResumeStateDiffU
         val resumeState = getItem(position)
 
         if (resumeState is ResumeState && holder is ResumeStateHolder) {
-            holder.bind(resumeState, onClickButtonSave)
+            holder.bind(resumeState, onClickButtonSave, onClick)
         }
     }
 }

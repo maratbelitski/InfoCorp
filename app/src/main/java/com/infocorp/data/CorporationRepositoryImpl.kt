@@ -3,11 +3,11 @@ package com.infocorp.data
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import com.infocorp.data.corporationdto.CorporationDto
-import com.infocorp.data.corporationdto.ResumeStateDto
 import com.infocorp.data.datastorage.CorporationDao
 import com.infocorp.data.datastorage.FavouriteDao
 import com.infocorp.data.datastorage.OldCorpDao
 import com.infocorp.data.datastorage.ResumeStateDao
+import com.infocorp.data.datastorage.UserCorporationDao
 import com.infocorp.data.mapper.CorporationMapper
 import com.infocorp.data.network.CorporationService
 import com.infocorp.domain.CorporationRepository
@@ -24,6 +24,7 @@ class CorporationRepositoryImpl @Inject constructor(
     private val daoFavourite: FavouriteDao,
     private val daoOldCorps: OldCorpDao,
     private val daoResume: ResumeStateDao,
+    private val daoUserCorp: UserCorporationDao,
     private val retrofitService: CorporationService
 ) : CorporationRepository {
 
@@ -52,9 +53,20 @@ class CorporationRepositoryImpl @Inject constructor(
         return dataFromDB.map { dto -> dto.map { mapper.corporationDtoToCorporation(it) } }
     }
 
+    override suspend fun downloadOneCorporation(idCorporation: String): Flow<Corporation?> {
+        val corpDto = daoCorp.downloadOneCorporations(idCorporation)
+
+       return corpDto.map { mapper.corporationDtoToCorporation(it) }
+    }
+
+
     override fun downloadAllResume(): Flow<List<ResumeState>> {
         val listResumeDto = daoResume.loadAllResumes()
-        return listResumeDto.map { dto -> dto.map{ mapper.resumeStateDtoToResumeState(it)} }
+        return listResumeDto.map { dto -> dto.map { mapper.resumeStateDtoToResumeState(it) } }
+    }
+
+    override fun downloadAllStateResume(state:Int): Flow<Int> {
+       return daoResume.loadAllStates(state)
     }
 
     override fun downloadFavouriteFromLocalStorage(): Flow<List<Corporation>> {
@@ -97,7 +109,12 @@ class CorporationRepositoryImpl @Inject constructor(
         daoResume.removeResumeFromDatabase(resumeDto)
     }
 
-    override suspend fun updateResume(resume: ResumeState, result:Int, notes: String, dateResponse: String) {
+    override suspend fun updateResume(
+        resume: ResumeState,
+        result: Int,
+        notes: String,
+        dateResponse: String
+    ) {
         val resumeDto = mapper.resumeStateToResumeStateDto(resume)
         daoResume.updateResume(resumeDto.id, result, notes, dateResponse)
     }

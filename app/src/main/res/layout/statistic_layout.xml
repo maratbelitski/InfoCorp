@@ -7,7 +7,7 @@
     tools:visibility="visible"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/normal_padding_size"
+    app:cardUseCompatPadding="true"
     app:cardBackgroundColor="@color/second_background_color"
     app:cardCornerRadius="@dimen/card_corners_radius"
     app:layout_constraintEnd_toEndOf="parent"
@@ -132,7 +132,6 @@
             android:paddingStart="@dimen/normal_margin_size"
             android:text="@string/total_resume_sent"
             android:textIsSelectable="false"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvInUserBase" />
 
@@ -147,6 +146,86 @@
             app:layout_constraintBottom_toBottomOf="@+id/tvSubmittedResume"
             app:layout_constraintStart_toStartOf="@+id/countAllInBase"
             app:layout_constraintTop_toTopOf="@+id/tvSubmittedResume"
+            tools:text="10" />
+
+        <TextView
+            android:id="@+id/tvNotResponse"
+            style="@style/MyStyle.TextViewNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/normal_margin_size"
+            android:padding="@dimen/min_margin_size"
+            android:paddingStart="@dimen/normal_margin_size"
+            android:text="@string/not_responded"
+            android:textIsSelectable="false"
+            app:layout_constraintEnd_toEndOf="@+id/tvSubmittedResume"
+            app:layout_constraintStart_toStartOf="@+id/tvSubmittedResume"
+            app:layout_constraintTop_toBottomOf="@+id/tvSubmittedResume" />
+
+        <TextView
+            android:id="@+id/countNotResponse"
+            style="@style/MyStyle.TextViewNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/min_margin_size"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tvNotResponse"
+            app:layout_constraintStart_toStartOf="@+id/countAllInBase"
+            app:layout_constraintTop_toTopOf="@+id/tvNotResponse"
+            tools:text="10" />
+
+        <TextView
+            android:id="@+id/tvReject"
+            style="@style/MyStyle.TextViewNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/normal_margin_size"
+            android:padding="@dimen/min_margin_size"
+            android:paddingStart="@dimen/normal_margin_size"
+            android:text="@string/rejection"
+            android:textIsSelectable="false"
+            app:layout_constraintStart_toStartOf="@+id/tvNotResponse"
+            app:layout_constraintTop_toBottomOf="@+id/tvNotResponse" />
+
+        <TextView
+            android:id="@+id/countReject"
+            style="@style/MyStyle.TextViewNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/min_margin_size"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tvReject"
+            app:layout_constraintStart_toStartOf="@+id/countAllInBase"
+            app:layout_constraintTop_toTopOf="@+id/tvReject"
+            tools:text="10" />
+
+        <TextView
+            android:id="@+id/tvInvite"
+            style="@style/MyStyle.TextViewNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/normal_margin_size"
+            android:padding="@dimen/min_margin_size"
+            android:paddingStart="@dimen/normal_margin_size"
+            android:text="@string/invites"
+            android:textIsSelectable="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvReject"
+            app:layout_constraintTop_toBottomOf="@+id/tvReject" />
+
+        <TextView
+            android:id="@+id/countInvite"
+            style="@style/MyStyle.TextViewNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/min_margin_size"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tvInvite"
+            app:layout_constraintStart_toStartOf="@+id/countAllInBase"
+            app:layout_constraintTop_toTopOf="@+id/tvInvite"
             tools:text="10" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
