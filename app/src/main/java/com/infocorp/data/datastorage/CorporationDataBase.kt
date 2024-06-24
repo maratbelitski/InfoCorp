@@ -22,21 +22,25 @@ import com.infocorp.utils.Constants.DATABASE_NAME
         OldCorporationsDto::class,
         UserCorporationDto::class,
         ResumeStateDto::class],
-    version = 5,
-    autoMigrations = [
-        AutoMigration(
-            from = 1,
-            to = 2
-        ),
-        AutoMigration(
-            from = 3,
-            to = 4
-        ),
-        AutoMigration(
-            from = 4,
-            to = 5
-        )
-    ],
+    version = 1,
+//    autoMigrations = [
+//        AutoMigration(
+//            from = 1,
+//            to = 2
+//        ),
+//        AutoMigration(
+//            from = 3,
+//            to = 4
+//        ),
+//        AutoMigration(
+//            from = 4,
+//            to = 5
+//        ),
+//        AutoMigration(
+//            from = 5,
+//            to = 6
+//        ),
+//    ],
     exportSchema = true
 )
 abstract class CorporationDataBase : RoomDatabase() {
@@ -62,7 +66,7 @@ abstract class CorporationDataBase : RoomDatabase() {
                         CorporationDataBase::class.java,
                         DATABASE_NAME.value
                     )
-                        .addMigrations(MIGRATION_2_3)
+                       // .addMigrations(MIGRATION_2_3)
                         .build()
 
                     INSTANCE = instance
@@ -73,9 +77,9 @@ abstract class CorporationDataBase : RoomDatabase() {
     }
 }
 
-val MIGRATION_2_3 = object : Migration(2, 3) {
-    override fun migrate(db: SupportSQLiteDatabase) {
-        db.execSQL( "CREATE TABLE IF NOT EXISTS `resumeStateTable` (`id` TEXT NOT NULL, `idCorporation` TEXT NOT NULL, `poster` TEXT NOT NULL, `title` TEXT NOT NULL, `dateSent` TEXT NOT NULL, `dateResponse` TEXT NOT NULL, `result` INTEGER NOT NULL, `notes` TEXT NOT NULL, PRIMARY KEY(`id`))")
-    }
-}
+//val MIGRATION_2_3 = object : Migration(2, 3) {
+//    override fun migrate(db: SupportSQLiteDatabase) {
+//        db.execSQL( "CREATE TABLE IF NOT EXISTS `resumeStateTable` (`id` TEXT NOT NULL, `idCorporation` TEXT NOT NULL, `poster` TEXT NOT NULL, `title` TEXT NOT NULL, `dateSent` TEXT NOT NULL, `dateResponse` TEXT NOT NULL, `result` INTEGER NOT NULL, `notes` TEXT NOT NULL, PRIMARY KEY(`id`))")
+//    }
+//}
 

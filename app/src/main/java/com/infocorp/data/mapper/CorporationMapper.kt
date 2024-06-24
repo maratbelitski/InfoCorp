@@ -113,7 +113,8 @@ class CorporationMapper @Inject constructor() {
             dateSent = resumeDto.dateSent,
             dateResponse = resumeDto.dateResponse,
             result = resumeDto.result,
-            notes = resumeDto.notes
+            notes = resumeDto.notes,
+            corporation = resumeDto.corporation
         )
     }
 
@@ -126,7 +127,8 @@ class CorporationMapper @Inject constructor() {
             dateSent = resume.dateSent,
             dateResponse = resume.dateResponse,
             result = resume.result,
-            notes = resume.notes
+            notes = resume.notes,
+            corporation = resume.corporation
         )
     }
 }

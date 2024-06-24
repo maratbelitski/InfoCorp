@@ -13,5 +13,6 @@ data class ResumeState(
     val dateSent: String = "",
     val dateResponse: String = "",
     val result: Int = 0,
-    val notes: String = ""
+    val notes: String = "",
+    val corporation:Corporation
 ) : Parcelable

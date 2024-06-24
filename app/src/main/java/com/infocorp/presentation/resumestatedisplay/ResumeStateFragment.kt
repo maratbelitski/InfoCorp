@@ -23,6 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.drop
+import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -39,8 +40,6 @@ class ResumeStateFragment : Fragment() {
     }
 
     private var updateStateBottomMenu: (() -> Unit)? = null
-
-    private var hasNavigated = false
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -69,25 +68,10 @@ class ResumeStateFragment : Fragment() {
             fragmentViewModel.updateResume(it, it.result, it.notes, it.dateResponse)
         }
 
-        myAdapter.onClick = { corp ->
-
-            lifecycleScope.launch {
-
-                fragmentViewModel.getCorporationFromResume(corp.idCorporation)
-
-                fragmentViewModel.corpFromResume
-                    .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-                    .drop(1)
-                    .collect {
-                        if (!hasNavigated) {
-                            val action = ResumeStateFragmentDirections
-                                .actionResumeStateFragmentToDetailCorporationFragment(it)
-                            findNavController().navigate(action)
-
-                            hasNavigated = true
-                        }
-                    }
-            }
+        myAdapter.onClick = {
+            val action = ResumeStateFragmentDirections
+                .actionResumeStateFragmentToDetailCorporationFragment(it.corporation)
+            findNavController().navigate(action)
         }
     }
 
@@ -166,11 +150,6 @@ class ResumeStateFragment : Fragment() {
 
         updateStateBottomMenu?.invoke()
         binding.recycler.adapter = myAdapter
-    }
-
-    override fun onResume() {
-        super.onResume()
-        hasNavigated = false
     }
 
 

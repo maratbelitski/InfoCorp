@@ -26,9 +26,9 @@ class ResumeStateViewModel @Inject constructor(
     val allResume: StateFlow<List<ResumeState>>
         get() = _allResume.asStateFlow()
 
-    private var _corpFromResume = MutableStateFlow(Corporation())
-    val corpFromResume: StateFlow<Corporation>
-        get() = _corpFromResume.asStateFlow()
+//    private var _corpFromResume = MutableStateFlow(Corporation())
+//    val corpFromResume: StateFlow<Corporation>
+//        get() = _corpFromResume.asStateFlow()
 
     private var _shimmer = MutableStateFlow(true)
     val shimmer: StateFlow<Boolean>
@@ -67,21 +67,20 @@ class ResumeStateViewModel @Inject constructor(
         }
     }
 
-    fun getCorporationFromResume(idCorporation: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-
-            val corpFlow = repository.downloadOneCorporation(idCorporation)
-            val corpUserFlow = repositoryUser.downloadOneUserCorporations(idCorporation)
-
-            corpFlow.collect { corp ->
-                if (corp?.name?.isNotEmpty() == true) {
-                    _corpFromResume.emit(corp)
-                } else {
-                    corpUserFlow.collect {
-                        it?.let { _corpFromResume.emit(it) }
-                    }
-                }
-            }
-        }
-    }
+//  suspend fun getCorporationFromResume(idCorporation: String) {
+//       // viewModelScope.launch(Dispatchers.IO) {
+//            val corpFlow = repository.downloadOneCorporation(idCorporation)
+//            val corpUserFlow = repositoryUser.downloadOneUserCorporations(idCorporation)
+//
+//            corpFlow.collect { corp ->
+//                if (corp?.name?.isNotEmpty() == true) {
+//                    _corpFromResume.emit(corp)
+//                } else {
+//                    corpUserFlow.collect {
+//                        it?.let { _corpFromResume.emit(it) }
+//                    }
+//                }
+//           // }
+//        }
+//    }
 }

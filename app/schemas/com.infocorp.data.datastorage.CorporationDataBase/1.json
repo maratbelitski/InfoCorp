@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "0203479489717553f78abb91e58cf04a",
+    "identityHash": "8b7a445cb1473e0b4685f42f1b03f7cb",
     "entities": [
       {
         "tableName": "corporationsTable",
@@ -73,6 +73,13 @@
             "columnName": "website",
             "affinity": "TEXT",
             "notNull": true
+          },
+          {
+            "fieldPath": "notes",
+            "columnName": "notes",
+            "affinity": "TEXT",
+            "notNull": false,
+            "defaultValue": "''"
           }
         ],
         "primaryKey": {
@@ -193,6 +200,13 @@
             "columnName": "website",
             "affinity": "TEXT",
             "notNull": true
+          },
+          {
+            "fieldPath": "notes",
+            "columnName": "notes",
+            "affinity": "TEXT",
+            "notNull": true,
+            "defaultValue": "''"
           }
         ],
         "primaryKey": {
@@ -203,12 +217,146 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "resumeStateTable",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `idCorporation` TEXT NOT NULL, `poster` TEXT NOT NULL, `title` TEXT NOT NULL, `dateSent` TEXT NOT NULL, `dateResponse` TEXT NOT NULL, `result` INTEGER NOT NULL, `notes` TEXT NOT NULL, `resume_id` TEXT NOT NULL, `resume_idFirebase` TEXT NOT NULL, `resume_isFavourite` INTEGER NOT NULL, `resume_isNew` INTEGER NOT NULL, `resume_name` TEXT NOT NULL, `resume_poster` TEXT NOT NULL, `resume_description` TEXT NOT NULL, `resume_address` TEXT NOT NULL, `resume_phones` TEXT NOT NULL, `resume_email` TEXT NOT NULL, `resume_notes` TEXT NOT NULL, `resume_website` TEXT NOT NULL, PRIMARY KEY(`idCorporation`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idCorporation",
+            "columnName": "idCorporation",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "poster",
+            "columnName": "poster",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dateSent",
+            "columnName": "dateSent",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dateResponse",
+            "columnName": "dateResponse",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "result",
+            "columnName": "result",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "notes",
+            "columnName": "notes",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "corporation.id",
+            "columnName": "resume_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "corporation.idFirebase",
+            "columnName": "resume_idFirebase",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "corporation.isFavourite",
+            "columnName": "resume_isFavourite",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "corporation.isNew",
+            "columnName": "resume_isNew",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "corporation.name",
+            "columnName": "resume_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "corporation.poster",
+            "columnName": "resume_poster",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "corporation.description",
+            "columnName": "resume_description",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "corporation.address",
+            "columnName": "resume_address",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "corporation.phones",
+            "columnName": "resume_phones",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "corporation.email",
+            "columnName": "resume_email",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "corporation.notes",
+            "columnName": "resume_notes",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "corporation.website",
+            "columnName": "resume_website",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "idCorporation"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0203479489717553f78abb91e58cf04a')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8b7a445cb1473e0b4685f42f1b03f7cb')"
     ]
   }
 }

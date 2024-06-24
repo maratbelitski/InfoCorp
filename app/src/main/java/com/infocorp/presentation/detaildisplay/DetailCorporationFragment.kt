@@ -63,18 +63,18 @@ class DetailCorporationFragment : Fragment() {
     private fun onListeners() {
         binding.btnGoToAdditionally.setOnClickListener {
             val action = DetailCorporationFragmentDirections
-                .actionDetailCorporationFragmentToAdditionallyFragment(arguments.corporation)
+                .actionDetailCorporationFragmentToAdditionallyFragment(arguments.corpValue)
             findNavController().navigate(action)
         }
 
         binding.btnEditInfo.setOnClickListener {
             val action = DetailCorporationFragmentDirections
-                .actionDetailCorporationFragmentToCreateUserCorporationFragment(arguments.corporation)
+                .actionDetailCorporationFragmentToCreateUserCorporationFragment(arguments.corpValue)
             findNavController().navigate(action)
         }
 
         binding.emailCard.btnSendResume.setOnClickListener {
-            val addresses = arguments.corporation.email.split(",").toTypedArray()
+            val addresses = arguments.corpValue.email.split(",").toTypedArray()
             val tittleCv = fragmentViewModel.getTittleCvUser()
             val bodyCv = fragmentViewModel.getBodyCvUser()
             val linkCv = fragmentViewModel.getLinkCvUser()
@@ -82,11 +82,12 @@ class DetailCorporationFragment : Fragment() {
 
             lifecycleScope.launch(Dispatchers.IO) {
                 val resume = ResumeState(
-                    idCorporation = arguments.corporation.id,
-                    poster = arguments.corporation.poster,
-                    title = arguments.corporation.name,
+                    idCorporation = arguments.corpValue.id,
+                    poster = arguments.corpValue.poster,
+                    title = arguments.corpValue.name,
                     dateSent = CurrentDate.getCurrentDate(),
-                    notes = arguments.corporation.notes
+                    notes = arguments.corpValue.notes,
+                   corporation = arguments.corpValue
                 )
                 fragmentViewModel.addResumeToDatabase(resume)
             }
@@ -96,20 +97,20 @@ class DetailCorporationFragment : Fragment() {
     private fun initArgs() {
         with(binding) {
             Glide.with(posterCard.ivPoster)
-                .load(arguments.corporation.poster)
+                .load(arguments.corpValue.poster)
                 .placeholder(R.drawable.corp_list_logo)
                 .into(posterCard.ivPoster)
 
             val defaultValue = getString(R.string.not_specified)
             val defaultColor = ContextCompat.getColor(requireContext(), R.color.unknown_text_color)
 
-            val name = arguments.corporation.name
-            var description = arguments.corporation.description
-            var address = arguments.corporation.address
-            var phones = arguments.corporation.phones
-            var email = arguments.corporation.email
-            var website = arguments.corporation.website
-            var notes = arguments.corporation.notes
+            val name = arguments.corpValue.name
+            var description = arguments.corpValue.description
+            var address = arguments.corpValue.address
+            var phones = arguments.corpValue.phones
+            var email = arguments.corpValue.email
+            var website = arguments.corpValue.website
+            var notes = arguments.corpValue.notes
 
 
             if (description.isBlank()) {

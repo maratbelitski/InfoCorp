@@ -1,8 +1,11 @@
 package com.infocorp.data.corporationdto
 
 import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.infocorp.domain.model.Corporation
 import kotlinx.parcelize.Parcelize
 import java.util.UUID
 
@@ -18,5 +21,9 @@ data class ResumeStateDto(
     val dateSent: String = "",
     val dateResponse: String = "",
     val result: Int = 0,
-    val notes: String = ""
+    val notes: String = "",
+
+
+    @Embedded(prefix = "resume_")
+    val corporation:Corporation
 ) : Parcelable

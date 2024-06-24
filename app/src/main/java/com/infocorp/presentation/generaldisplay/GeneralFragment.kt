@@ -67,6 +67,7 @@ class GeneralFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentGeneralBinding.inflate(layoutInflater)
+        fragmentViewModel.clearLocalDataBase()
         return binding.root
     }
 
@@ -95,8 +96,6 @@ class GeneralFragment : Fragment() {
             val listIdOldCorps = fragmentViewModel.downloadListIdOldCorps()
 
             val listFromFirebase = mutableListOf<CorporationDto>()
-
-            fragmentViewModel.clearLocalDataBase()
 
             firebaseDB.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {

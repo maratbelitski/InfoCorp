@@ -54,7 +54,7 @@
         android:label="fragment_detail_corporation"
         tools:layout="@layout/fragment_detail_corporation" >
         <argument
-            android:name="corporation"
+            android:name="corpValue"
             app:argType="com.infocorp.domain.model.Corporation" />
         <action
             android:id="@+id/action_detailCorporationFragment_to_additionallyFragment"
