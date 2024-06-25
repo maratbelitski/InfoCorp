@@ -18,6 +18,7 @@ import com.infocorp.R
 import com.infocorp.databinding.FragmentDetailCorporationBinding
 import com.infocorp.domain.model.ResumeState
 import com.infocorp.presentation.mainactivity.MainActivity
+import com.infocorp.utils.Constants
 import com.infocorp.utils.CurrentDate
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -87,7 +88,8 @@ class DetailCorporationFragment : Fragment() {
                     title = arguments.corpValue.name,
                     dateSent = CurrentDate.getCurrentDate(),
                     notes = arguments.corpValue.notes,
-                   corporation = arguments.corpValue
+                    corporation = arguments.corpValue,
+                    result = Constants.NO_ANSWER.value.toInt()
                 )
                 fragmentViewModel.addResumeToDatabase(resume)
             }

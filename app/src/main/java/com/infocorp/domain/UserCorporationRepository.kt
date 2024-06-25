@@ -6,7 +6,6 @@ import com.infocorp.domain.model.Corporation
 import kotlinx.coroutines.flow.Flow
 
 interface UserCorporationRepository {
-    suspend fun downloadOneUserCorporations(idCorporation: String):Flow<Corporation?>
     fun sendUserCorporation(userCorp: UserCorporationDto)
     fun addUserCorporationToDataBase(userCorp: UserCorporationDto)
     fun removeCorpFromUserDataBase(userCorp: Corporation)

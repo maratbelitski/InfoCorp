@@ -21,6 +21,7 @@ import com.infocorp.R
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.datastorage.CorporationDataBase
 import com.infocorp.databinding.FragmentGeneralBinding
+import com.infocorp.domain.model.ResumeState
 import com.infocorp.presentation.mainactivity.MainActivity
 import com.infocorp.utils.Constants
 import com.infocorp.utils.CurrentDate
@@ -28,6 +29,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 
@@ -94,6 +96,7 @@ class GeneralFragment : Fragment() {
 
             val listIdFavourite = fragmentViewModel.downloadListIdFavourite()
             val listIdOldCorps = fragmentViewModel.downloadListIdOldCorps()
+            val listResumeStates: List<ResumeState> = fragmentViewModel.downloadStateResume()
 
             val listFromFirebase = mutableListOf<CorporationDto>()
 
@@ -119,6 +122,12 @@ class GeneralFragment : Fragment() {
                             for (value in listIdOldCorps) {
                                 if (value == corpDtoWithChildId.id) {
                                     corpDtoWithChildId.isNew = false
+                                }
+                            }
+
+                            for (value in listResumeStates) {
+                                if (value.idCorporation == corpDtoWithChildId.id) {
+                                    corpDtoWithChildId.resumeState = value.result
                                 }
                             }
 

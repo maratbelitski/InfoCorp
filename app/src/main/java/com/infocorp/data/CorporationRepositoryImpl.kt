@@ -7,7 +7,6 @@ import com.infocorp.data.datastorage.CorporationDao
 import com.infocorp.data.datastorage.FavouriteDao
 import com.infocorp.data.datastorage.OldCorpDao
 import com.infocorp.data.datastorage.ResumeStateDao
-import com.infocorp.data.datastorage.UserCorporationDao
 import com.infocorp.data.mapper.CorporationMapper
 import com.infocorp.data.network.CorporationService
 import com.infocorp.domain.CorporationRepository
@@ -24,7 +23,6 @@ class CorporationRepositoryImpl @Inject constructor(
     private val daoFavourite: FavouriteDao,
     private val daoOldCorps: OldCorpDao,
     private val daoResume: ResumeStateDao,
-    private val daoUserCorp: UserCorporationDao,
     private val retrofitService: CorporationService
 ) : CorporationRepository {
 
@@ -52,13 +50,6 @@ class CorporationRepositoryImpl @Inject constructor(
         val dataFromDB = daoCorp.downloadAllCorporations()
         return dataFromDB.map { dto -> dto.map { mapper.corporationDtoToCorporation(it) } }
     }
-
-    override suspend fun downloadOneCorporation(idCorporation: String): Flow<Corporation?> {
-        val corpDto = daoCorp.downloadOneCorporations(idCorporation)
-
-       return corpDto.map { mapper.corporationDtoToCorporation(it) }
-    }
-
 
     override fun downloadAllResume(): Flow<List<ResumeState>> {
         val listResumeDto = daoResume.loadAllResumes()
@@ -117,6 +108,12 @@ class CorporationRepositoryImpl @Inject constructor(
     ) {
         val resumeDto = mapper.resumeStateToResumeStateDto(resume)
         daoResume.updateResume(resumeDto.id, result, notes, dateResponse)
+    }
+
+    override suspend fun updateResumeState(corporation: Corporation, resumeState: Int) {
+        val corpDto = mapper.corporationToCorporationDto(corporation)
+
+        daoCorp.updateResumeState(corpDto.id, resumeState)
     }
 
     override fun searchCorporation(list: List<Corporation>, text: String): List<Corporation> {

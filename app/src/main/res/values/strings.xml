@@ -125,4 +125,5 @@
     <string name="not_responded">Not responded:</string>
     <string name="rejection">Rejections:</string>
     <string name="invites">Invites:</string>
+    <string name="resume">Resume:</string>
 </resources>

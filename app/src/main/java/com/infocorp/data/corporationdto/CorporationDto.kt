@@ -25,6 +25,7 @@ data class CorporationDto(
     @SerializedName("email") val email: String = "",
     @SerializedName("website") val website: String = "",
     @SerializedName("notes")
-    @ColumnInfo(defaultValue = "")
-    val notes: String? = ""
+    val notes: String? = "",
+    @SerializedName("resumeState")
+    var resumeState:Int? = 0
 ) : Parcelable

@@ -22,6 +22,6 @@ data class UserCorporationDto(
     val phones: String = "",
     val email: String = "",
     val website: String = "",
-    @ColumnInfo(defaultValue = "")
-    val notes: String = ""
+    val notes: String = "",
+    val resumeState: Int = 0
 ) : Parcelable

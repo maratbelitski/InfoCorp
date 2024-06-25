@@ -27,7 +27,8 @@ enum class Constants(val value: String) {
 
     NOT_SPECIFIED("Not specified"),
 
-    NO_ANSWER("0"),
+    DEFAULT("0"),
     REJECT("1"),
-    INVITE("2")
+    INVITE("2"),
+    NO_ANSWER("3"),
 }

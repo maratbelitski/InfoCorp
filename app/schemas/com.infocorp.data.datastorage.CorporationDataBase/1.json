@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "8b7a445cb1473e0b4685f42f1b03f7cb",
+    "identityHash": "4eb4fc69158beec85ce4cedbec40d54d",
     "entities": [
       {
         "tableName": "corporationsTable",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `idFirebase` TEXT NOT NULL, `isFavourite` INTEGER NOT NULL, `isNew` INTEGER NOT NULL, `name` TEXT NOT NULL, `poster` TEXT NOT NULL, `description` TEXT NOT NULL, `address` TEXT NOT NULL, `phones` TEXT NOT NULL, `email` TEXT NOT NULL, `website` TEXT NOT NULL, `notes` TEXT DEFAULT '', PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `idFirebase` TEXT NOT NULL, `isFavourite` INTEGER NOT NULL, `isNew` INTEGER NOT NULL, `name` TEXT NOT NULL, `poster` TEXT NOT NULL, `description` TEXT NOT NULL, `address` TEXT NOT NULL, `phones` TEXT NOT NULL, `email` TEXT NOT NULL, `website` TEXT NOT NULL, `notes` TEXT, `resumeState` INTEGER, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -78,8 +78,13 @@
             "fieldPath": "notes",
             "columnName": "notes",
             "affinity": "TEXT",
-            "notNull": false,
-            "defaultValue": "''"
+            "notNull": false
+          },
+          {
+            "fieldPath": "resumeState",
+            "columnName": "resumeState",
+            "affinity": "INTEGER",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -133,7 +138,7 @@
       },
       {
         "tableName": "UserCorporationsTable",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `idFirebase` TEXT NOT NULL, `isFavourite` INTEGER NOT NULL, `isNew` INTEGER NOT NULL, `name` TEXT NOT NULL, `poster` TEXT NOT NULL, `description` TEXT NOT NULL, `address` TEXT NOT NULL, `phones` TEXT NOT NULL, `email` TEXT NOT NULL, `website` TEXT NOT NULL, `notes` TEXT NOT NULL DEFAULT '', PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `idFirebase` TEXT NOT NULL, `isFavourite` INTEGER NOT NULL, `isNew` INTEGER NOT NULL, `name` TEXT NOT NULL, `poster` TEXT NOT NULL, `description` TEXT NOT NULL, `address` TEXT NOT NULL, `phones` TEXT NOT NULL, `email` TEXT NOT NULL, `website` TEXT NOT NULL, `notes` TEXT NOT NULL, `resumeState` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -205,8 +210,13 @@
             "fieldPath": "notes",
             "columnName": "notes",
             "affinity": "TEXT",
-            "notNull": true,
-            "defaultValue": "''"
+            "notNull": true
+          },
+          {
+            "fieldPath": "resumeState",
+            "columnName": "resumeState",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -220,7 +230,7 @@
       },
       {
         "tableName": "resumeStateTable",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `idCorporation` TEXT NOT NULL, `poster` TEXT NOT NULL, `title` TEXT NOT NULL, `dateSent` TEXT NOT NULL, `dateResponse` TEXT NOT NULL, `result` INTEGER NOT NULL, `notes` TEXT NOT NULL, `resume_id` TEXT NOT NULL, `resume_idFirebase` TEXT NOT NULL, `resume_isFavourite` INTEGER NOT NULL, `resume_isNew` INTEGER NOT NULL, `resume_name` TEXT NOT NULL, `resume_poster` TEXT NOT NULL, `resume_description` TEXT NOT NULL, `resume_address` TEXT NOT NULL, `resume_phones` TEXT NOT NULL, `resume_email` TEXT NOT NULL, `resume_notes` TEXT NOT NULL, `resume_website` TEXT NOT NULL, PRIMARY KEY(`idCorporation`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `idCorporation` TEXT NOT NULL, `poster` TEXT NOT NULL, `title` TEXT NOT NULL, `dateSent` TEXT NOT NULL, `dateResponse` TEXT NOT NULL, `result` INTEGER NOT NULL, `notes` TEXT NOT NULL, `resume_id` TEXT NOT NULL, `resume_idFirebase` TEXT NOT NULL, `resume_isFavourite` INTEGER NOT NULL, `resume_isNew` INTEGER NOT NULL, `resume_name` TEXT NOT NULL, `resume_poster` TEXT NOT NULL, `resume_description` TEXT NOT NULL, `resume_address` TEXT NOT NULL, `resume_phones` TEXT NOT NULL, `resume_email` TEXT NOT NULL, `resume_notes` TEXT NOT NULL, `resume_website` TEXT NOT NULL, `resume_resumeState` INTEGER NOT NULL, PRIMARY KEY(`idCorporation`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -341,6 +351,12 @@
             "columnName": "resume_website",
             "affinity": "TEXT",
             "notNull": true
+          },
+          {
+            "fieldPath": "corporation.resumeState",
+            "columnName": "resume_resumeState",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -356,7 +372,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8b7a445cb1473e0b4685f42f1b03f7cb')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4eb4fc69158beec85ce4cedbec40d54d')"
     ]
   }
 }

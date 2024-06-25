@@ -27,6 +27,9 @@ interface CorporationDao {
     @Query("UPDATE corporationsTable SET isFavourite=:isFavourite WHERE id =:id")
     fun updateFavorite(id: String, isFavourite: Boolean)
 
+    @Query("UPDATE corporationsTable SET resumeState=:resumeState WHERE id =:id")
+    fun updateResumeState(id: String, resumeState: Int)
+
     @Query("UPDATE corporationsTable SET isNew=:isNew WHERE id =:id")
     fun updateNew(id: String, isNew: Boolean)
 

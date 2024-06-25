@@ -3,6 +3,8 @@ package com.infocorp.presentation.detaildisplay
 import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import com.infocorp.data.corporationdto.ResumeStateDto
+import com.infocorp.domain.CorporationRepository
+import com.infocorp.domain.model.Corporation
 import com.infocorp.domain.model.ResumeState
 import com.infocorp.domain.usecases.resume.AddSubmittedResumeUseCase
 import com.infocorp.utils.Constants

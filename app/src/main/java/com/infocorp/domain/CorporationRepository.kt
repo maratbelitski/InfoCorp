@@ -1,7 +1,6 @@
 package com.infocorp.domain
 
 import androidx.lifecycle.LiveData
-import com.infocorp.data.corporationdto.ResumeStateDto
 import com.infocorp.domain.model.Corporation
 import com.infocorp.domain.model.Data
 import com.infocorp.domain.model.ResumeState
@@ -9,8 +8,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface CorporationRepository {
     fun downloadDataFromLocalStorage(): LiveData<List<Corporation>>
-   suspend fun downloadOneCorporation(idCorporation: String): Flow<Corporation?>
-
     fun downloadAllResume(): Flow<List<ResumeState>>
     fun downloadAllStateResume(state:Int): Flow<Int>
     fun downloadFavouriteFromLocalStorage(): Flow<List<Corporation>>
@@ -21,6 +18,7 @@ interface CorporationRepository {
     fun removeCorpFromFavourite(corporation: Corporation)
     suspend fun removeResumeFromDatabase(resume: ResumeState)
     suspend fun updateResume(resume: ResumeState, result:Int, notes: String, dateResponse: String)
+    suspend fun updateResumeState(corporation: Corporation, resumeState: Int)
     fun searchCorporation(list: List<Corporation>, text: String): List<Corporation>
     fun registrationUser(email: String, password: String): Pair<String, String>
     suspend fun getInfoEgrByTitle(titleCorp: String): List<Data>
