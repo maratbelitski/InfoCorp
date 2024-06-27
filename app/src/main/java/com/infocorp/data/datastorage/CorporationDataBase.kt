@@ -1,13 +1,13 @@
 package com.infocorp.data.datastorage
 
 import android.content.Context
-import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.corporationdto.FavouriteCorporationsDto
 import com.infocorp.data.corporationdto.OldCorporationsDto
+import com.infocorp.data.corporationdto.ResumeStateDto
 import com.infocorp.data.corporationdto.UserCorporationDto
 import com.infocorp.utils.Constants.DATABASE_NAME
 
@@ -17,14 +17,9 @@ import com.infocorp.utils.Constants.DATABASE_NAME
     [CorporationDto::class,
         FavouriteCorporationsDto::class,
         OldCorporationsDto::class,
-        UserCorporationDto::class],
-    version = 2,
-    autoMigrations = [
-        AutoMigration(
-            from = 1,
-            to = 2
-        )
-    ],
+        UserCorporationDto::class,
+        ResumeStateDto::class],
+    version = 1,
     exportSchema = true
 )
 abstract class CorporationDataBase : RoomDatabase() {
@@ -32,6 +27,7 @@ abstract class CorporationDataBase : RoomDatabase() {
     abstract fun getDaoUserCorp(): UserCorporationDao
     abstract fun getDaoNewCorps(): OldCorpDao
     abstract fun getDaoFavourite(): FavouriteDao
+    abstract fun getDaoResume(): ResumeStateDao
 
     companion object {
 

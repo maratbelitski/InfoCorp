@@ -54,6 +54,30 @@
                 app:layout_constraintStart_toStartOf="@+id/tvName"
                 app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
+            <TextView
+                android:id="@+id/tvResumeState"
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/shape_shimmer_child"
+                android:minWidth="60dp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivPoster"
+                app:layout_constraintStart_toStartOf="@+id/tvName"
+                app:layout_constraintTop_toBottomOf="@+id/tvDirection" />
+
+            <ImageView
+                android:id="@+id/ivResumeState"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:background="@drawable/shape_shimmer_child"
+                android:minWidth="15dp"
+
+                android:minHeight="15dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvResumeState"
+                app:layout_constraintEnd_toEndOf="@+id/tvName"
+                app:layout_constraintStart_toEndOf="@+id/tvResumeState"
+                app:layout_constraintTop_toTopOf="@+id/tvResumeState" />
+
             <ImageView
                 android:id="@+id/ivArrow"
                 android:layout_width="wrap_content"

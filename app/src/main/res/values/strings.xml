@@ -28,9 +28,9 @@
     <string name="response_usr_egr">Response USR (EGR)</string>
     <string name="input_name_corp">Input name corp</string>
     <string name="user_corporations">User corporations</string>
-    <string name="a_list_of_your_custom">A list of your custom corporations. Corporations that you have created and information about corporations that you have changed.</string>
-    <string name="create_your_corporation">Here you can create your own corporation and send the information to a common database.</string>
-    <string name="change_info_corporation">Here you can edit/change the information about the corporation and send it to a shared database.</string>
+    <string name="a_list_of_your_custom">A list of your custom corporations. Corporations that you have created and information about corporations that you have changed. The information is stored only on your device.</string>
+    <string name="create_your_corporation">Here you can create your own corporation and send the information to a common database. The information is stored only on your device.</string>
+    <string name="change_info_corporation">Here you can edit/change the information about the corporation and send it to a shared database. The information is stored only on your device.</string>
     <string name="create">Create your own corporation</string>
     <string name="edit_information">Edit information</string>
     <string name="send_the_data">If you want the data about this company to be included in the general database, send the data to the developer</string>
@@ -110,4 +110,20 @@
     <string name="your_list_is_empty">Your list is empty</string>
     <string name="notes">Notes</string>
     <string name="add_notes">Add notes</string>
+    <string name="status">Status</string>
+    <string name="sent_text">Sent:</string>
+    <string name="response_text">Response:</string>
+    <string name="result">Result</string>
+    <string name="invite_text">invite</string>
+    <string name="rejection_text">rejection</string>
+    <string name="not_responded_text">not responded</string>
+    <string name="save_notes">save changes</string>
+    <string name="submitted_resumes">Submitted resumes</string>
+    <string name="list_of_resumes">The list of resumes you have sent to the company</string>
+    <string name="total_resume_sent">Total resume sent:</string>
+    <string name="response_date">Enter date</string>
+    <string name="not_responded">Not responded:</string>
+    <string name="rejection">Rejections:</string>
+    <string name="invites">Invites:</string>
+    <string name="resume">Resume:</string>
 </resources>

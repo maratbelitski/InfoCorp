@@ -16,5 +16,6 @@ data class Corporation(
     val phones: String = "",
     val email: String = "",
     val notes: String = "",
-    val website: String = ""
+    val website: String = "",
+    val resumeState:Int = 0
 ) : Parcelable

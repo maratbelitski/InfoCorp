@@ -26,9 +26,9 @@
     <string name="response_usr_egr">Ответ из ЕГР</string>
     <string name="input_name_corp">Введите название</string>
     <string name="user_corporations">Организации пользователя</string>
-    <string name="a_list_of_your_custom">Список ваших пользовательских компаний. Компании, которые вы создали, и информация о компаниях, которые вы изменили.</string>
-    <string name="create_your_corporation">Здесь вы можете создать свою собственную компанию и отправить информацию в общую базу данных.</string>
-    <string name="change_info_corporation">Здесь вы можете отредактировать/изменить информацию о компании и отправить ее в общую базу данных.</string>
+    <string name="a_list_of_your_custom">Список ваших пользовательских компаний. Компании, которые вы создали, и информация о компаниях, которые вы изменили. Информация хранится только на вашем устройстве.</string>
+    <string name="create_your_corporation">Здесь вы можете создать свою собственную компанию и отправить информацию в общую базу данных. Информация хранится только на вашем устройстве.</string>
+    <string name="change_info_corporation">Здесь вы можете отредактировать/изменить информацию о компании и отправить ее в общую базу данных. Информация хранится только на вашем устройстве.</string>
     <string name="create">Создайте свою организацию</string>
     <string name="edit_information">Отредактировать данные</string>
     <string name="send_the_data">Если вы хотите, чтобы данные об этой компании были включены в общую базу данных, отправьте их разработчику</string>
@@ -107,4 +107,20 @@
     <string name="your_list_is_empty">Ваш список пуст</string>
     <string name="notes">Заметки</string>
     <string name="add_notes">Добавить заметки</string>
+    <string name="status">Статус</string>
+    <string name="sent_text">Отправлено:</string>
+    <string name="response_text">Ответ:</string>
+    <string name="result">Результат</string>
+    <string name="invite_text">приглашение</string>
+    <string name="rejection_text">отказ</string>
+    <string name="not_responded_text">без ответа</string>
+    <string name="save_notes">сохранить изменения</string>
+    <string name="submitted_resumes">Отправленные резюме</string>
+    <string name="list_of_resumes">Список содержит резюме разосланные Вами в компании</string>
+    <string name="total_resume_sent">Всего отправлено резюме:</string>
+    <string name="response_date">Дата</string>
+    <string name="not_responded">Без ответа:</string>
+    <string name="rejection">Отказы:</string>
+    <string name="invites">Приглашения:</string>
+    <string name="resume">Резюме:</string>
 </resources>

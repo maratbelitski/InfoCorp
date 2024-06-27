@@ -14,6 +14,9 @@
             android:id="@+id/action_generalFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_generalFragment_to_resumeStateFragment"
+            app:destination="@id/resumeStateFragment" />
     </fragment>
     <fragment
         android:id="@+id/listCorporationsFragment"
@@ -51,7 +54,7 @@
         android:label="fragment_detail_corporation"
         tools:layout="@layout/fragment_detail_corporation" >
         <argument
-            android:name="corporation"
+            android:name="corpValue"
             app:argType="com.infocorp.domain.model.Corporation" />
         <action
             android:id="@+id/action_detailCorporationFragment_to_additionallyFragment"
@@ -192,5 +195,20 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/accountFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/resumeStateFragment"
+        android:name="com.infocorp.presentation.resumestatedisplay.ResumeStateFragment"
+        android:label="fragment_resume_state"
+        tools:layout="@layout/fragment_resume_state" >
+        <action
+            android:id="@+id/action_resumeStateFragment_to_detailCorporationFragment"
+            app:destination="@id/detailCorporationFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/resumeStateFragment" />
     </fragment>
 </navigation>

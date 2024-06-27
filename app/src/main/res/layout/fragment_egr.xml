@@ -32,7 +32,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler"
@@ -49,7 +50,6 @@
                 android:layout_marginTop="@dimen/normal_margin_size">
 
                 <include layout="@layout/shimmer_item_response_egr" />
-
             </com.facebook.shimmer.ShimmerFrameLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

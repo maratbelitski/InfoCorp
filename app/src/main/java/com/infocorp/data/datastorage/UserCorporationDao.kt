@@ -6,6 +6,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.infocorp.data.corporationdto.CorporationDto
 import com.infocorp.data.corporationdto.UserCorporationDto
 import kotlinx.coroutines.flow.Flow
 
@@ -17,6 +18,9 @@ interface UserCorporationDao {
 
     @Query("SELECT * FROM userCorporationsTable ORDER BY name")
     fun downloadAllUserCorporations(): LiveData<List<UserCorporationDto>>
+
+    @Query("SELECT * FROM usercorporationstable WHERE id=:idCorporation LIMIT 1")
+    fun downloadOneUserCorporations(idCorporation: String): Flow<UserCorporationDto?>
 
     @Delete
     fun removeCorpFromDataBase(corporation: UserCorporationDto)
