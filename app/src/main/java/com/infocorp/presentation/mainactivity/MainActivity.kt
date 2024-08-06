@@ -28,6 +28,8 @@ import java.util.Locale
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    //fixed
+
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }

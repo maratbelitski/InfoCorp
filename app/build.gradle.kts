@@ -4,9 +4,9 @@ plugins {
     id("androidx.navigation.safeargs")
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
+    kotlin("kapt")
     id("kotlin-parcelize")
     id("com.google.dagger.hilt.android")
-    kotlin("kapt")
 }
 
 android {
