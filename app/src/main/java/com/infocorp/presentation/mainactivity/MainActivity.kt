@@ -28,7 +28,7 @@ import java.util.Locale
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    //Add commit
+    //fixed
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
