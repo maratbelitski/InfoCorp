@@ -1,6 +1,7 @@
 package com.infocorp.data.datastorage
 
 import android.content.Context
+import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase

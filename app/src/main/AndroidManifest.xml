@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
 
-
     <application
         android:name=".presentation.CorporationApp"
         android:allowBackup="true"
@@ -40,6 +39,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+<!--        <meta-data-->
+<!--            android:name="com.google.android.gms.ads.APPLICATION_ID"-->
+<!--            android:value="ca-app-pub-1912940735550668~4019486421" />-->
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
